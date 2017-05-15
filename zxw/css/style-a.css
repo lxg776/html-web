@@ -120,11 +120,63 @@ img {
 	padding-top:8px;
 }
 
+
+
+.mycar-footer {
+   
+
+	width:100%;
+	background:#ffffff;
+	position:fixed;
+	bottom:8px;
+}
+
+.mycar-footer .select-all {
+	position:absolute;
+	left:12px;
+	top:12px;
+}
+
+.mycar-footer .t1 {
+	position:absolute;
+	left:40px;
+	top:12px;
+}
+.mycar-footer .del {
+	position:absolute;
+	left:80px;
+	top:12px;
+}
+.mycar-footer .goods-text {
+	position:absolute;
+	left:500px;
+	top:12px;
+}
+.mycar-footer .price-text {
+	position:absolute;
+	left:600px;
+	top:12px;
+}
+
+.mycar-footer .pay-btn {
+	position:absolute;
+	width:100px;
+	height:48px;
+	right:0px;
+	text-align:center;
+	color:#ffffff;
+	background:#878787;
+	font-size:18px;
+	padding-top:10px;
+}
+
+
+
 .my-part01 .left {
    
 	float:left;
 	width:200px;
-	min-height:520px;
+	min-height:320px;
 	padding-top:32px;
 	background:#ffffff;
 }
@@ -279,7 +331,7 @@ img {
 }
 
 
-.my-part01 .car-list li a{
+.my-part01 .car-list li .item-del{
 	color:#42BD40;
 	padding:6px 2px;	
 }
