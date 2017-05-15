@@ -1777,6 +1777,15 @@ column-width: 210px；*/
 	padding-top:4px;
 	
 }
+
+.radio-frame{
+	border-color:#eaeaea;
+	border-width:1px;
+	border-style:solid;
+	width:16px;
+	height:16px;	
+}
+
 .dialog .btn:hover{
 	background:#ffc170;	
 }
