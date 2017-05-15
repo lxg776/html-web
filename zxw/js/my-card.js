@@ -13,6 +13,99 @@ $(function(){
 	}
 	
 	
+	function chageCountAndPrice(){
+		
+		select_count = 0;
+		totalPrice = parseFloat("0.00");
+		
+		$(".car-list .radio-frame").each(function(index, element) {
+				if($(this).is(':checked')){
+					select_count=select_count+1;
+					itemPrice = $(this).parent().parent().children(".pli").children(".item-price").text();
+					itemPrice = parseFloat(price_replace(itemPrice,"¥"));
+					totalPrice = totalPrice + itemPrice ;
+				}else{
+					$(".mycar-footer .select-all").prop("checked",false);
+		$(".order-head .radio-frame").prop("checked",false);
+				}
+        });
+		
+		if(select_count>0){
+			$(".mycar-footer .pay-btn").addClass("redbtn");
+		}else{
+			$(".mycar-footer .pay-btn").removeClass("redbtn");
+			$(".mycar-footer .select-all").prop("checked",false);
+		$(".order-head .radio-frame").prop("checked",false);
+		}
+		
+		$(".mycar-footer .count").text(select_count);
+		$(".mycar-footer .all-price").text(text2price(totalPrice));
+	}
+	
+	$(".car-list .item-del").click(function(){
+		
+		$(this).parent().parent().parent().remove();
+		chageCountAndPrice();
+	});
+	
+	
+	function selectAll(fla){
+		if(fla){
+			$(".car-list .radio-frame").prop("checked",true); 
+		}else{
+			$(".car-list .radio-frame").prop("checked",false); 
+		}
+		$(".mycar-footer .select-all").prop("checked",fla);
+		$(".order-head .radio-frame").prop("checked",fla);  
+		
+		chageCountAndPrice();
+	}
+	
+	function delectAll(){
+			$(".car-list .radio-frame").each(function(index, element) {
+				if($(this).is(':checked')){
+					$(this).parent().parent().parent().remove();
+				}
+        });
+		chageCountAndPrice();
+		
+	}
+	
+	
+	
+	$(".mycar-footer .delAll").click(function(){
+		delectAll();
+	});	
+		
+		
+	$(".mycar-footer .select-all").change(function(){
+		if($(this).is(':checked')){
+			selectAll(true);
+		}else{
+			selectAll(false);
+		}
+	});	
+		
+	
+	$(".car-list .radio-frame").change(function(){
+		
+		
+		chageCountAndPrice();
+	});
+	
+	
+	$(".order-head .radio-frame").change(function(){
+		
+		
+		if($(this).is(':checked')){
+			selectAll(true);
+		}else{
+			selectAll(false);
+		}
+	});
+	
+	
+	
 	
 	$(".my-part01 .car-list .c-add").click(function(){
 				//toFixed
@@ -29,77 +122,47 @@ $(function(){
 					//$(this).parent().parent().next("li > div").text());
 					itemPrice = text2price(price)*count;
 					$(this).parent().parent().next("li").children(".item-price").text("¥"+text2price(itemPrice+""));
+					
+					chageCountAndPrice();
 				}
 				
  
 		}	
 	);
 	
-	$(".my-part01 .car-list .c-sub").click(function(){
+	
+	
+		$(".my-part01 .car-list .c-sub").click(function(){
+				//toFixed
 				count = parseInt($(this).next(".c-count").text());
+				price = price_replace($(this).parent().parent().prev("li").text(),"¥");
+				
+				
+				
+				//p1 = $(this).parent().parent().parent().next("li").html();
+				//console.log(index)
 				if(count>1){
-					$(this).prev(".c-count").text(count-1);
-					
+					count=count-1;
+					$(this).next(".c-count").text(count);
+					//$(this).parent().parent().next("li > div").text());
+					itemPrice = text2price(price)*count;
+					$(this).parent().parent().next("li").children(".item-price").text("¥"+text2price(itemPrice+""));
+					chageCountAndPrice();
 				}
 				
  
 		}	
 	);
+
 	
 
 	
-	$(".sc-fenlei .nav").on({
-		mouseenter:function(){
-					$(".sc-fenlei .nav li").on("mouseenter",function(){
-							navFla = true;
-							$(".sc-fenlei .nav-show").fadeIn(300);
-							var $index = $(this).index();
-							$(".sc-fenlei .nav-show .item").hide();
-							$(".sc-fenlei .nav-show .item:eq("+$index+")").show();
-						
-						})
-			},
-			mouseleave:function(){
-				navFla = false;
-				 //$('.sc-fenlei .nav-show').delay(2000).fadeOut(100);
-					setTimeout(function(){
-						if(navFla){
-			//$(".sc-fenlei .nav-show").fadeIn(300);
-					}else{
-						$(".sc-fenlei .nav-show").fadeOut(100);
-					}
-					},1000);
-				 //$(".sc-fenlei .nav-show").fadeOut(100);
-				}
-	}
+
 	
 	
-	)
-	//console.log("999999")
+
 	
 	
-	$(".sc-fenlei .nav-show").on({
-		mouseenter:function(){
-			       navFla = true;
-					$(".sc-fenlei .nav-show").show();
-			 
-			},
-			mouseleave:function(){
-				navFla = false;
-				 			setTimeout(function(){
-						if(navFla){
-			//$(".sc-fenlei .nav-show").fadeIn(300);
-					}else{
-						$(".sc-fenlei .nav-show").fadeOut(100);
-					}
-					},1000);
-				//setTimeout(navShow(),10000);
-				
-			}
-	}
-	
-	
-	)
 	
 })
 

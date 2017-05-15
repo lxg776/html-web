@@ -149,12 +149,12 @@ img {
 }
 .mycar-footer .goods-text {
 	position:absolute;
-	left:500px;
+	left:450px;
 	top:12px;
 }
 .mycar-footer .price-text {
 	position:absolute;
-	left:600px;
+	left:550px;
 	top:12px;
 }
 
@@ -168,6 +168,13 @@ img {
 	background:#878787;
 	font-size:18px;
 	padding-top:10px;
+}
+
+.mycar-footer .redbtn {
+	
+	color:#ffffff;
+	background:#e51c23;
+	
 }
 
 
