@@ -536,6 +536,7 @@ img {
 }
 
 .confirm-goods {
+	padding-bottom:64px;
 	
 }
 
@@ -549,12 +550,59 @@ img {
 	margin-top:12px;
 }
 
-.my-part01 .order-head li{
+.confirm-goods .info-head li{
 	padding:8px 13px;
 	float:left;
 	color:#909090;
 	font-size:13px;
 }
+
+.confirm-goods .list{
+	float:left;
+	
+	background:#ffffff;
+	margin-left:16px;
+	margin-right:16px;
+	padding-bottom:16px;
+	
+}
+
+.confirm-goods .list .item{
+	float:left;
+	margin-top:16px;
+}
+
+.confirm-goods .list .item li{
+	float:left;
+	padding-left:10px;
+	padding-top:16px;
+}
+
+.confirm-goods .list .goodsimg{
+	float:left;
+	width:56px;
+	max-width:100%;
+}
+
+.confirm-goods .list .goodsname{
+	float:left;
+	width:220px;
+	margin-left:8px;
+	
+}
+.confirm-goods .list .guige{
+	float:left;
+	width:160px;
+	text-align:center;
+	font-size:12px;
+	color:#cccccc;
+	
+}
+
+
+
+
+
 
 
 .confirm-address .address-list .selected{
@@ -578,6 +626,48 @@ img {
 	color:#cccccc;
 	font-size:13px;
 }
+
+
+.confirm-footer {
+   
+
+	width:100%;
+	background:#ffffff;
+	position:fixed;
+	bottom:2px;
+}
+
+
+
+
+
+.confirm-footer .price-text {
+	position:absolute;
+	right:180px;
+	top:10px;
+	color:#e51c23;
+	font-size:18px;
+}
+
+.confirm-footer .t1 {
+	position:absolute;
+	right:265px;
+	top:13px;
+}
+
+.confirm-footer .pay-btn {
+	position:absolute;
+	width:140px;
+	height:48px;
+	right:0px;
+	text-align:center;
+	color:#ffffff;
+	background:#e51c23;
+	font-size:18px;
+	padding-top:10px;
+}
+
+
 
 
 /* 宽度和高度需要相等 */
