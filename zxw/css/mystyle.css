@@ -16,7 +16,9 @@ body {
     color: #555;
     line-height: 1.7;
 	padding:0px;
-	margin:0px;
+	margin:0px auto;
+	width:100%;
+	min-width:1440px;
 }
 
 a {
