@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="css/mystyle.css">
+<link rel="stylesheet" href="css/base.css">
+<title>装修网</title>
+
+
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.jqzoom-2.2.js" type="text/javascript"></script>
+
+
+ <script type="text/javascript">
+        /*使用jqzoom*/
+        $(function() {
+            //放大镜实现js
+            $(".jqzoom").jqueryzoom({
+                xzoom: 400, //放大图的宽度(默认是 200)
+                yzoom: 400, //放大图的高度(默认是 200)
+                offset: 10, //离原图的距离(默认是 10)
+                position: "right", //放大图的定位(默认是 "right")
+                preload: 1,
+				lens:2
+            });
+
+
+
+            //底部图片hover切换实现js
+            $('.img-list img').hover(function(){
+				$('.img-list img').removeClass("t-img-hover");
+				$(this).addClass("t-img-hover");
+              $('.jqzoom img').attr('src',$(this).attr('src'));
+              $('.jqzoom img').attr('jqimg',$(this).attr('src'));
+            },function(){
+              $.noop();
+            });
+        });
+    </script>
+
+
+</head>
+
+<body>
+<div class="top-menu">
+<div class="container rel" style="height:36px;">
+
+<div class="right">
+<div class="item">登录</div>
+<div class="item">注册</div>
+</div>
+</div>
+
+
+</div>
+
+
+<div class="top-nav">
+  <div class="container" style="height:150px;"><div class="fl" style="padding-top:16px;">
+           	<img src="image/zx_logo.jpg"/>
+        </div>
+        <div class="fr" style="padding-top:110px;padding-right:16px;">
+           <span>电话热线:<a>6226666</a></span>
+        </div></div>
+
+</div>
+<!-- 菜单-->
+<div class="menu">
+ <div class="container" >
+ 		<div class="fl" style="display:inline-block;">
+            <a href="#" class="item">首页</a>
+            <a href="#" class="item">免费量房</a>
+            <a href="#" class="item">免费设计</a>
+            <a href="#" class="item">免费预算</a>
+            <a href="#" class="item">装修案例</a>
+            <a href="#" class="item ">装修百科</a>
+            <a href="#" class="item selected">找工人</a>
+            <a href="#" class="item">第三方质检</a>
+             <a href="#" class="item">建材商城</a>
+        </div>
+           		
+    </div>
+</div>
+
+    	<!-- part1 postion-->
+<div class="xq-part1">
+ 	<div class="container">
+ 			<div class="postion">
+            		<ul>
+                  	<li class="item"><a href="#" class="gray-cc">首页</a>&nbsp;&nbsp;></li>  
+                      <li class="item"><a href="#" class="gray-cc">找工人</a>&nbsp;&nbsp;></li> 
+                       <li class="item"><a class="black54" href="#">工人详情</a>&nbsp;&nbsp;</li> 
+                  </ul>
+            </div>
+            
+            
+            
+            </div>
+</div>
+<!-- 详情-->
+<div class="xq-pinfo" style="margin-top:16px;">
+	<div class="container frame" style="min-height:350px;">
+    	<div class="rel">
+        	
+            <div class="rimg frame"><img src="image/gongren-img.png"></div>
+        
+        	
+        	<a href="#" class="red_btn abs" style="top:193px; left:140px;">委托设计</a>
+        	<div  class="abs" style="top:193px; left:50px;">人气:<font class="red_e5">99</font></div>
+            
+            <div class="abs" style="top:24px; left:240px; width:300px;"><ul>
+            <li class="item"><span class="ltext"><b>姓名：</b></span><span class="rtext">梁先生</span></li>
+             <li class="item"><span class="ltext"><b>毕业学校：</b></span><span class="rtext">百色学院</span></li>
+              <li class="item"><span class="ltext"><b>就职公司：</b></span><span class="rtext">靖西好装修公司</span></li>
+              <li class="item"><span class="ltext"><b>工作经验：</b></span><span class="rtext">三年</span></li>
+              <li class="item"><span class="ltext"><b>设计师类型：</b></span><span class="rtext">室内家庭装修</span></li>
+                <li class="item"><span class="ltext"><b>擅长风格：</b></span><span class="rtext">田园风格，简欧风格，日式风格，中式风格</span></li>
+                <li class="item"><span class="ltext"><b>擅长领域：</b></span><span class="rtext">酒吧，公寓套房，酒店，餐厅</span></li>
+<li class="item"><span class="ltext"><b>设计理念：</b></span><span class="rtext">好的设计理念至关重要，它不仅是设计的精髓所在，而且能令作品具有个性化、专业化和与众不同的效果。</span></li>
+            </ul></div>
+        
+        </div>
+
+	</div>
+
+</div>
+
+ <!-- 案例推荐-->
+    <div class="part-anli">
+    		<div class="container" style="padding-top:16px; padding-bottom:16px; clear:both">
+            	  <span class="title">
+            他的案例
+            </span>
+				<div>
+               	<ul>	 <!-- 01-->
+                			<li class="item"><img  src="image/slider_01.png" class="gimg"/><div class="name">山水国际3房2厅</div> <div class="count">10张</div>
+                            <div class="info"><span>三房两厅</span> <span>古典式</span> <span>花费:</span><span style="color:#EE6A7E">10w~15w</span></div>
+                            
+                            </li>
+                             <!-- 02-->
+                        <li class="item"><img  src="image/slider_01.png" class="gimg"/><div class="name">山水国际3房2厅</div> <div class="count">10张</div>
+                            <div class="info"><span>三房两厅</span> <span>古典式</span> <span>花费:</span><span style="color:#EE6A7E">10w~15w</span></div>
+                            
+                            </li>
+                               <li class="item"><img  src="image/slider_01.png" class="gimg"/><div class="name">山水国际3房2厅</div> <div class="count">10张</div>
+                            <div class="info"><span>三房两厅</span> <span>古典式</span> <span>花费:</span><span style="color:#EE6A7E">10w~15w</span></div>
+                            
+                            </li>
+                               <li class="item"><img  src="image/slider_01.png" class="gimg"/><div class="name">山水国际3房2厅</div> <div class="count">10张</div>
+                            <div class="info"><span>三房两厅</span> <span>古典式</span> <span>花费:</span><span style="color:#EE6A7E">10w~15w</span></div>
+                            
+                            </li>
+                
+                	</ul> 
+                
+               </div>
+            </div>    
+    </div>
+	
+</body>
+</html>

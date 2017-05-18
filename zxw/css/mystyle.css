@@ -259,6 +259,14 @@ ul{
 	font-size:12px;
 }
 
+.red_btn{
+	
+	padding:2px 8px 2px 8px;
+	background:#e51c23;
+	color:#ffffff;
+	font-size:12px;
+}
+
 
 
 
@@ -402,6 +410,7 @@ ul{
 
 
 .part-anli{
+	padding-bottom:32px;
 	
 	
 }
@@ -417,6 +426,10 @@ ul{
 	height:220px;
 	list-style-type:none;
 	position:relative;
+	
+	border-style:solid;
+	border-width:1px;
+	border-color:#ffffff;
 	
 }
 
@@ -458,8 +471,7 @@ ul{
 
 .part-anli .item:hover{
 	border-color:#ffa726;
-	border-style:solid;
-	border-width:1px;
+	
 }
 <!-- sc-fenlei 分类-->
 .sc-fenlei{
@@ -1266,6 +1278,47 @@ ul{
 }
 
 
+.xq-pinfo{
+	
+	
+	
+	
+}
+
+.xq-pinfo .item{
+	width:480px;
+	float:left;
+	margin-top:4px;
+	
+
+}
+.xq-pinfo .item .ltext{
+	color:#2b2b2b;
+	
+
+}
+.xq-pinfo .item .rtext{
+	
+	color:#545454;
+	
+
+}
+
+
+.xq-pinfo .rimg{
+	position:absolute;
+	top:24px;
+	left:50px;
+	width:160px;
+	height:160px;
+	padding:4px;
+}
+
+.xq-pinfo .rimg img{
+
+	width:150px;
+	height:150px;	
+}
 
 
 
