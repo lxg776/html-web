@@ -17,25 +17,14 @@ import com.xwke.base.core.sql.exception.AiyiIdTypeException;
 
 
 
-/**
- * Sql���ɹ�����
- * @author ��ʤ��
- * @time 2016��5��3������3:39:51
- * @email 719348277@qq.com
- * @param <T> Ҫ����Sql��ʵ����
- */
+
 public class SqlUtil<T extends Po> {
 	
 	
 	
 
 
-	/**
-	 * ��ȡʵ�����ĳ���ֶ�
-	 * @param t
-	 * @param fieldName
-	 * @return
-	 */
+	
 	public Field getField(Class<?> t, String fieldName){
 		Field[] fields = t.getDeclaredFields();
 		for (Field field : fields) {
@@ -46,11 +35,7 @@ public class SqlUtil<T extends Po> {
 		return null;
 	}
 	
-	/**
-	 * ��ȡ��ѯsql���ֶ��б�
-	 * @param po
-	 * @return
-	 */
+	
 	public List<Pram> getPramListOfSelect(Po po){
 		List<Pram> list = new ArrayList<>();
 		Class<? extends Po> thisClass = po.getClass();
@@ -96,11 +81,7 @@ public class SqlUtil<T extends Po> {
 		return list;
 	}
 	
-	/**
-	 * ��ȡʵ�����Ӧ�ı���
-	 * @param po
-	 * @return
-	 */
+	
 	public String getTableName(Po po){
 		Class<? extends Po> c = po.getClass();
 		if(c.isAnnotationPresent(TableName.class)){
@@ -126,7 +107,7 @@ public class SqlUtil<T extends Po> {
 		    		if(!f.getName().equalsIgnoreCase("ID") && !f.isAnnotationPresent(TempField.class)){
 		    			String fName = f.getName();
 		    			
-		    			//�ж��Ƿ���boolean����
+		    			
 		    			String getf = "get";
 		    			String fieldType = f.getGenericType().toString();
 		    			if (fieldType.indexOf("boolean") != -1 || fieldType.indexOf("Boolean") != -1) {
@@ -167,11 +148,7 @@ public class SqlUtil<T extends Po> {
 		return list;
 	}
 	
-	/**
-	 * ͨ��Class��ȡ���ɶ�ӦSql�ֶ�
-	 * @param po
-	 * @return
-	 */
+	
 	public List<Pram> getPramList(Class<T> po){
 		List<Pram> list = new ArrayList<>();
 		Class<? extends Po> thisClass = po;
@@ -235,7 +212,7 @@ public class SqlUtil<T extends Po> {
 		    		if(!f.getName().equalsIgnoreCase("ID") && !f.isAnnotationPresent(TempField.class)){
 		    			String fName = f.getName();
 		    			
-		    			//�ж��Ƿ���boolean����
+		    			
 		    			String getf = "get";
 		    			String fieldType = f.getGenericType().toString();
 		    			if (fieldType.indexOf("boolean") != -1 || fieldType.indexOf("Boolean") != -1) {

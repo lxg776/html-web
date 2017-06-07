@@ -5,7 +5,7 @@ import com.xwke.base.core.annotation.po.FieldName;
 import com.xwke.base.core.annotation.po.TableName;
 import com.xwke.base.core.beans.Po;
 
-@TableName(name = "q_user")
+@TableName(name = "q1_users")
 public class UserModle extends Po {
 	@FieldName(name="name")
 	String userName;
