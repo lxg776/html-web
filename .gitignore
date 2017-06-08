@@ -2,7 +2,6 @@ zxw/.DS_Store
 zxw/.idea/11.x code.iml
 zxw/.idea/markdown-navigator.xml
 zxw/.idea/workspace.xml
-*.xml
 spider/crud-src/.classpath
 spider/crud-src/.project
 spider/crud-src/.settings/.jsdtscope
