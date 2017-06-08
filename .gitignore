@@ -8,3 +8,8 @@ spider/crud-src/.project
 spider/crud-src/.settings/.jsdtscope
 spider/dao/.classpath
 spider/dao/.project
+spider/crud-src/.settings/org.eclipse.core.resources.prefs
+*.prefs
+spider/crud-src/.settings/org.eclipse.wst.common.component
+spider/crud-src/.settings/org.eclipse.wst.jsdt.ui.superType.container
+spider/crud-src/.settings/org.eclipse.wst.jsdt.ui.superType.name

@@ -1,4 +1,4 @@
-package com.xwke.base.dao;
+package org.huntsman;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
