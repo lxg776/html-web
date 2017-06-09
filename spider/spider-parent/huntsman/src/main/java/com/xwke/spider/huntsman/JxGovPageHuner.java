@@ -2,7 +2,7 @@ package com.xwke.spider.huntsman;
 
 import java.util.List;
 
-import com.xwke.spider.huntsman.configuration.JxGovConfiguration;
+import com.xwke.spider.huntsman.configuration.NewsConfiguration;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
@@ -14,7 +14,7 @@ import us.codecraft.webmagic.selector.Html;
 
 public class JxGovPageHuner implements PageProcessor {
 
-	private Site site = new JxGovConfiguration().getSite();
+	private Site site = new NewsConfiguration().getSite();
 
 	public void process(Page page) {
 		// TODO Auto-generated method stub
@@ -40,8 +40,8 @@ public class JxGovPageHuner implements PageProcessor {
 		List<String> imgUrls = page.getHtml().$(".container .show img")
 				.regex("<img(?:\\s+.+?)*?\\s+src=\"([^\"]*?)\".+>").all();
 
-		System.out.println("00---"+page.getUrl());
-		System.out.println("11---"+page.getRawText());
+		System.out.println("00---" + page.getUrl());
+		System.out.println("11---" + page.getRawText());
 
 		for (String item : imgUrls) {
 
@@ -58,7 +58,7 @@ public class JxGovPageHuner implements PageProcessor {
 
 	public static void main(String[] args) {
 		JxGovPageHuner processor = new JxGovPageHuner();
-		String pipelinePath = new JxGovConfiguration().getNewsFolder();
+
 		int crawlSize = 100_0000;
 		Spider.create(new JxGovPageHuner())
 				.addUrl("http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=41528")

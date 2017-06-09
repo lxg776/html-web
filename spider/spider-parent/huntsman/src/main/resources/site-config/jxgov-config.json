@@ -1,0 +1,15 @@
+{
+	"site": {
+		"domain": "http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=22",
+		"headers": {
+			"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36",
+			"authorization": "Your own authorization here."
+		},
+		"retryTimes": 3,
+		"sleepTime": 10
+	},
+	"imgFolder": "D:/jx/gov/images_hd",
+	"thumbnail": "D:/jx/gov/images_thum",
+	"columnId": "1"
+	
+}
