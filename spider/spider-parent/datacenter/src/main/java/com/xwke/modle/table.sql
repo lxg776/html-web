@@ -3,15 +3,12 @@ CREATE TABLE s_news (
   title varchar(50)NOT NULL,
   summary varchar(100),
   content text,
-  grasping_time varchar(20),
-  pub_status int(3),
+  graspingTime varchar(20),
+  pubStatus int(3),
   source varchar(20),
-  source_url varchar(20),
-  thum_img varchar(100),	
-  pic_array varchar(200),
-  thum_img_array varchar(200),
-  author varchar(50),
-  column_id int(11), 	
+  thumimg varchar(50),	
+  picArray varchar(50),
+  columnId int(11), 	
   PRIMARY KEY  (`id`)
 )
 

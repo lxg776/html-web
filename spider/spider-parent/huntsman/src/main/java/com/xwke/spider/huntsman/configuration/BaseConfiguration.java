@@ -9,6 +9,13 @@ public class BaseConfiguration extends AbstractConfiguration {
 
 	protected Site site;
 	protected String baseDir;
+	
+	
+	
+
+	public BaseConfiguration(String path) {
+		super(path);
+	}
 
 	public Site getSite() {
 		return site;

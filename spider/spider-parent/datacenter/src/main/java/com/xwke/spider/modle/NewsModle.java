@@ -33,6 +33,12 @@ public class NewsModle extends Po{
 	@FieldName(name="pub_status")
 	private int pubStatus;
 	/** 
+	* 发布时间
+	*/
+	private String pubTime;
+	
+	
+	/** 
 	* 文章来源
 	*/
 	private String source;
@@ -53,8 +59,29 @@ public class NewsModle extends Po{
 	@FieldName(name="column_id")
 	private long columnId;
 	
+	@FieldName(name="pic_array")
+	private String imagesJsonStr;
+	
+	@FieldName(name="thum_img")
+	private String thumImg;//封面图片
 	
 	
+	
+	
+	
+
+	public String getThumImg() {
+		return thumImg;
+	}
+	public void setThumImg(String thumImg) {
+		this.thumImg = thumImg;
+	}
+	public String getImagesJsonStr() {
+		return imagesJsonStr;
+	}
+	public void setImagesJsonStr(String imagesJsonStr) {
+		this.imagesJsonStr = imagesJsonStr;
+	}
 	public long getId() {
 		return id;
 	}
@@ -117,6 +144,12 @@ public class NewsModle extends Po{
 	
 	public void setColumnId(long columnId) {
 		this.columnId = columnId;
+	}
+	public String getPubTime() {
+		return pubTime;
+	}
+	public void setPubTime(String pubTime) {
+		this.pubTime = pubTime;
 	}
 	
 	

@@ -55,7 +55,7 @@
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- 自动扫描mapping.xml文件 -->
-		<property name="mapperLocations" value="classpath:com/xwke/base/core/mapper/*.xml"></property>
+		<property name="mapperLocations" value="classpath:com/aiyi/*/mapper/*.xml"></property>
 
 	</bean>
 
@@ -86,13 +86,6 @@
 	<bean name="sqlSessionTemplateASS" id="sqlSession"
 		class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactoryBean" />
-	</bean>
-	
-	
-	<bean name="jxGovConfig"  id="jxgov"
-		class="com.xwke.spider.huntsman.configuration.NewsConfiguration">
-		 <constructor-arg name="path"  value="site-config/jxgov-config.json"/>
-		
 	</bean>
 
 
