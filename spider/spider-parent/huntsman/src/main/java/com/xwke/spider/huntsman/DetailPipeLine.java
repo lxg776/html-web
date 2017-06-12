@@ -13,8 +13,9 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSONArray;
 import com.xwke.spider.huntsman.configuration.NewsConfiguration;
 import com.xwke.spider.huntsman.util.CommonUtil;
-import com.xwke.spider.huntsman.util.MyDataUtil;
+
 import com.xwke.spider.modle.NewsModle;
+import com.xwke.spider.modle.dao.NewsDao;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.ResultItems;
@@ -31,6 +32,9 @@ public class DetailPipeLine extends FilePipeline {
 	
 	@Resource
 	ThreadPoolTaskExecutor taskExecutor;
+	
+	@Resource
+	NewsDao newDao;
 	
 
 	@Override
@@ -63,8 +67,8 @@ public class DetailPipeLine extends FilePipeline {
 			System.out.println(source);
 			
 			
-			String htmlContent = Xsoup.compile("//div[@class='main']").evaluate(document).get().toString();
-			
+			String htmlContent = Xsoup.compile("//div[@class='main']").evaluate(document).getElements().html().toString();
+			System.out.println(htmlContent);
 			
 			List<String> imgUrls = html.$(".container .show img")
 					.regex("<img(?:\\s+.+?)*?\\s+src=\"([^\"]*?)\".+>").all();
@@ -76,13 +80,14 @@ public class DetailPipeLine extends FilePipeline {
 
 			newsModle.setTitle(title);
 			newsModle.setPubTime(date);
-			newsModle.setGraspingTime(MyDataUtil.getNowDate());
+			//newsModle.setGraspingTime(MyDataUtil.getNowDate());
 			newsModle.setSourceUrl(sourceUrl);
 			newsModle.setSource(source);
 			newsModle.setImagesJsonStr(imagesString);
 			newsModle.setContent(htmlContent);
 			//下载网上图片
 			CommonUtil.handleImagesByContent(newsModle, imgUrls, config,taskExecutor);
+			newDao.add(newsModle);
 			
 
 		}

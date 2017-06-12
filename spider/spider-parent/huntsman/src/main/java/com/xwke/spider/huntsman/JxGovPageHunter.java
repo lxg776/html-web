@@ -30,15 +30,14 @@ public class JxGovPageHunter implements PageProcessor {
 
 	public void crawl() {
 		Spider.create(this).addUrl(getSite().getDomain())
-				.addPipeline(new DetailPipeLine()).thread(20).run();
-	}
-
-	public JxGovPageHunter() {
-		Spider.create(this).addUrl(getSite().getDomain())
 				.addPipeline(detailPipeLine).thread(20).run();
 	}
 
-	@Resource(name = "jxgov")
+	public JxGovPageHunter() {
+		
+	}
+
+	@Resource(name = "jxGovConfig")
 	NewsConfiguration jxGovConfig;
 	
 	@Resource(name="detailPipeLine")

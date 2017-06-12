@@ -2575,3 +2575,356 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No b
 [INFO] [2017-06-11 22:08:02][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@6fd02e5: startup date [Sun Jun 11 22:08:02 CST 2017]; root of context hierarchy
 [INFO] [2017-06-11 22:08:03][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@6fd02e5: startup date [Sun Jun 11 22:08:02 CST 2017]; root of context hierarchy
 [WARN] [2017-06-11 22:08:03][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession
+[INFO] [2017-06-12 16:46:24][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-12 16:46:24][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-12 16:46:24][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5b87ed94, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@6e0e048a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5bc79255, org.springframework.test.context.transaction.TransactionalTestExecutionListener@47ef968d, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@23e028a9]
+[INFO] [2017-06-12 16:46:25][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-12 16:46:25][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@4b1c1ea0: startup date [Mon Jun 12 16:46:25 CST 2017]; root of context hierarchy
+[INFO] [2017-06-12 16:46:26][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'taskExecutor'
+[WARN] [2017-06-12 16:46:26][org.springframework.context.support.GenericApplicationContext]Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jxGovPageHunter' defined in file [D:\wtf\git\html-web\spider\spider-parent\huntsman\target\classes\com\xwke\spider\huntsman\JxGovPageHunter.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.xwke.spider.huntsman.JxGovPageHunter]: Constructor threw exception; nested exception is java.lang.NullPointerException
+[INFO] [2017-06-12 16:46:26][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'taskExecutor'
+[ERROR] [2017-06-12 16:46:26][org.springframework.test.context.TestContextManager]Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@6e0e048a] to prepare test instance [test.huntsman.TestInsert@a530d0a]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:117)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:230)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:272)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:236)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:386)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:323)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:143)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jxGovPageHunter' defined in file [D:\wtf\git\html-web\spider\spider-parent\huntsman\target\classes\com\xwke\spider\huntsman\JxGovPageHunter.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.xwke.spider.huntsman.JxGovPageHunter]: Constructor threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1099)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:866)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:128)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:108)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:251)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116)
+	... 26 more
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.xwke.spider.huntsman.JxGovPageHunter]: Constructor threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:154)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1147)
+	... 42 more
+Caused by: java.lang.NullPointerException
+	at com.xwke.spider.huntsman.JxGovPageHunter.getSite(JxGovPageHunter.java:67)
+	at us.codecraft.webmagic.Spider.<init>(Spider.java:128)
+	at us.codecraft.webmagic.Spider.create(Spider.java:118)
+	at com.xwke.spider.huntsman.JxGovPageHunter.<init>(JxGovPageHunter.java:37)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:142)
+	... 44 more
+[INFO] [2017-06-12 16:46:58][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@48cf768c: startup date [Mon Jun 12 16:46:58 CST 2017]; root of context hierarchy
+[INFO] [2017-06-12 16:46:59][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[WARN] [2017-06-12 16:47:00][org.springframework.context.support.ClassPathXmlApplicationContext]Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'detailPipeLine': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+[INFO] [2017-06-12 16:49:51][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@48cf768c: startup date [Mon Jun 12 16:49:51 CST 2017]; root of context hierarchy
+[INFO] [2017-06-12 16:49:51][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-12 16:49:53][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[WARN] [2017-06-12 16:49:53][org.springframework.context.support.ClassPathXmlApplicationContext]Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jxGovPageHunter' defined in file [D:\wtf\git\html-web\spider\spider-parent\huntsman\target\classes\com\xwke\spider\huntsman\JxGovPageHunter.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.xwke.spider.huntsman.JxGovPageHunter]: Constructor threw exception; nested exception is java.lang.NullPointerException
+[INFO] [2017-06-12 16:49:53][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[INFO] [2017-06-12 16:52:31][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@48cf768c: startup date [Mon Jun 12 16:52:31 CST 2017]; root of context hierarchy
+[INFO] [2017-06-12 16:52:31][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-12 16:52:33][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[WARN] [2017-06-12 16:52:33][org.springframework.context.support.ClassPathXmlApplicationContext]Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jxGovPageHunter' defined in file [D:\wtf\git\html-web\spider\spider-parent\huntsman\target\classes\com\xwke\spider\huntsman\JxGovPageHunter.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.xwke.spider.huntsman.JxGovPageHunter]: Constructor threw exception; nested exception is java.lang.NullPointerException
+[INFO] [2017-06-12 16:52:33][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[INFO] [2017-06-12 16:53:33][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@48cf768c: startup date [Mon Jun 12 16:53:33 CST 2017]; root of context hierarchy
+[INFO] [2017-06-12 16:53:33][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-12 16:53:35][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-12 16:53:37][us.codecraft.webmagic.Spider]Spider http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028 started!
+[INFO] [2017-06-12 16:53:37][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028
+[INFO] [2017-06-12 17:02:20][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@48cf768c: startup date [Mon Jun 12 17:02:20 CST 2017]; root of context hierarchy
+[INFO] [2017-06-12 17:02:20][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-12 17:02:22][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-12 17:02:24][us.codecraft.webmagic.Spider]Spider http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028 started!
+[INFO] [2017-06-12 17:02:24][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028
+[ERROR] [2017-06-12 17:02:25][us.codecraft.webmagic.Spider]process request Request{url='http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028', method='null', extras={statusCode=200}, priority=0} error
+java.lang.NullPointerException
+	at com.xwke.spider.huntsman.util.CommonUtil.handleImagesByContent(CommonUtil.java:51)
+	at com.xwke.spider.huntsman.DetailPipeLine.process(DetailPipeLine.java:89)
+	at us.codecraft.webmagic.Spider.processRequest(Spider.java:420)
+	at us.codecraft.webmagic.Spider$1.run(Spider.java:321)
+	at us.codecraft.webmagic.thread.CountableThreadPool$1.run(CountableThreadPool.java:74)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[INFO] [2017-06-12 17:06:10][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@48cf768c: startup date [Mon Jun 12 17:06:10 CST 2017]; root of context hierarchy
+[INFO] [2017-06-12 17:06:10][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-12 17:06:12][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'taskExecutor'
+[INFO] [2017-06-12 17:06:14][us.codecraft.webmagic.Spider]Spider http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028 started!
+[INFO] [2017-06-12 17:06:14][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028
+[ERROR] [2017-06-12 17:06:16][us.codecraft.webmagic.Spider]process request Request{url='http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028', method='null', extras={statusCode=200}, priority=0} error
+java.lang.NullPointerException
+	at com.xwke.spider.huntsman.util.CommonUtil.handleImagesByContent(CommonUtil.java:51)
+	at com.xwke.spider.huntsman.DetailPipeLine.process(DetailPipeLine.java:89)
+	at us.codecraft.webmagic.Spider.processRequest(Spider.java:420)
+	at us.codecraft.webmagic.Spider$1.run(Spider.java:321)
+	at us.codecraft.webmagic.thread.CountableThreadPool$1.run(CountableThreadPool.java:74)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[INFO] [2017-06-12 17:06:52][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3224f60b: startup date [Mon Jun 12 17:06:52 CST 2017]; root of context hierarchy
+[INFO] [2017-06-12 17:06:53][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-12 17:06:54][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'taskExecutor'
+[INFO] [2017-06-12 17:06:57][us.codecraft.webmagic.Spider]Spider http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028 started!
+[INFO] [2017-06-12 17:06:57][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028
+[INFO] [2017-06-12 17:11:48][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3224f60b: startup date [Mon Jun 12 17:11:48 CST 2017]; root of context hierarchy
+[INFO] [2017-06-12 17:11:48][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-12 17:11:50][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'taskExecutor'
+[INFO] [2017-06-12 17:12:43][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3224f60b: startup date [Mon Jun 12 17:12:43 CST 2017]; root of context hierarchy
+[INFO] [2017-06-12 17:12:43][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-12 17:12:45][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'taskExecutor'
+[INFO] [2017-06-12 17:12:52][us.codecraft.webmagic.Spider]Spider http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028 started!
+[INFO] [2017-06-12 17:12:52][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028
+[ERROR] [2017-06-12 17:15:48][us.codecraft.webmagic.Spider]process request Request{url='http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028', method='null', extras={statusCode=200}, priority=0} error
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+### The error may exist in file [D:\wtf\git\html-web\spider\spider-parent\datacenter\target\classes\com\xwke\base\core\mapper\Core-Mapper.xml]
+### The error may involve com.xwke.base.core.dao.fetchSeqNextval
+### The error occurred while executing a query
+### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:75)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:371)
+	at com.sun.proxy.$Proxy10.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:163)
+	at com.xwke.base.core.dao.DaoImpl.nextId(DaoImpl.java:700)
+	at com.xwke.base.core.dao.DaoImpl.add(DaoImpl.java:147)
+	at com.xwke.spider.huntsman.DetailPipeLine.process(DetailPipeLine.java:90)
+	at us.codecraft.webmagic.Spider.processRequest(Spider.java:420)
+	at us.codecraft.webmagic.Spider$1.run(Spider.java:321)
+	at us.codecraft.webmagic.thread.CountableThreadPool$1.run(CountableThreadPool.java:74)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+### The error may exist in file [D:\wtf\git\html-web\spider\spider-parent\datacenter\target\classes\com\xwke\base\core\mapper\Core-Mapper.xml]
+### The error may involve com.xwke.base.core.dao.fetchSeqNextval
+### The error occurred while executing a query
+### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:30)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:122)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:113)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:73)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:358)
+	... 11 more
+Caused by: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:81)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67)
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:315)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:75)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:61)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:303)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:154)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:102)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:82)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:120)
+	... 18 more
+Caused by: org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Access denied for user 'root'@'localhost' (using password: YES))
+	at org.apache.commons.dbcp.BasicDataSource.createDataSource(BasicDataSource.java:1225)
+	at org.apache.commons.dbcp.BasicDataSource.getConnection(BasicDataSource.java:880)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:111)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:77)
+	... 28 more
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3878)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3814)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:871)
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1694)
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1215)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2255)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2286)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2085)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:795)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:44)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:400)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:327)
+	at org.apache.commons.dbcp.DriverConnectionFactory.createConnection(DriverConnectionFactory.java:38)
+	at org.apache.commons.dbcp.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:294)
+	at org.apache.commons.dbcp.BasicDataSource.validateConnectionFactory(BasicDataSource.java:1247)
+	at org.apache.commons.dbcp.BasicDataSource.createDataSource(BasicDataSource.java:1221)
+	... 31 more
+[INFO] [2017-06-12 17:18:11][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@48cf768c: startup date [Mon Jun 12 17:18:11 CST 2017]; root of context hierarchy
+[INFO] [2017-06-12 17:18:12][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-12 17:18:13][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'taskExecutor'
+[INFO] [2017-06-12 17:18:15][us.codecraft.webmagic.Spider]Spider http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028 started!
+[INFO] [2017-06-12 17:18:15][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028
+[INFO] [2017-06-12 17:18:18][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+[INFO] [2017-06-12 17:18:18][org.springframework.jdbc.support.SQLErrorCodesFactory]SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]
+[ERROR] [2017-06-12 17:18:18][us.codecraft.webmagic.Spider]process request Request{url='http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028', method='null', extras={statusCode=200}, priority=0} error
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'pub_time' in 'field list'
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: insert into s_news (title,content,summary,grasping_time,pub_status,pub_time,source,source_url,author,column_id,pic_array,thum_img) value ('武平镇：今日“村民”路胜比昔日“官府”路 ','<div class="main">   <p><span style="font-size:14px;">&nbsp; &nbsp;6月8日，武平镇头塘屯（凌安村）至二塘屯（六合村）的村屯水泥道路建成，该路段的通车，打破武平镇至靖西城区的交通瓶颈，使六合、金色、多纳、立录等十多个村直接通达城区，不用再绕道铝厂或三联，少走10—20公里路程，大大方便2万多群众进出城区，也拉近了武平与中心城区的距离，使两地联系更为紧密。</span></p>   <p><span style="font-size:14px;">&nbsp; &nbsp;该路段长约4公里，以前是一条人行道，无法通车。民清时期，该路段是靖西至天保（今德保）的驿道，是“官府”路（官员走的路），头塘和二塘是是两个重要驿站。今日是武平镇凌安村至六合村的村屯路，是“村民”路。建成通车的村民路，宽4.5米，水泥路面，与凌安至大龙潭公园的水泥路相连直通市中心。一位80多岁的老大爷感慨道：“今日的‘村民路’比当年的‘官府’路好多了。 ”</span></p>   <p style="text-align: center;"><span style="font-size:14px;">&nbsp;&nbsp;<br> &nbsp;<img alt="" src="https://www.jingxi.net/images/20171812/d0faf8d7aaf74c6eb8941533d2757709.jpg" style="width: 500px; height: 484px;"><br> 　　图为二塘后山上残存的古驿道</span></p>   <p style="text-align: center;"><span style="font-size:14px;"><img alt="" src="https://www.jingxi.net/images/20171812/3e069374b1b749ca8a2d5c0707fbf2e6.jpg" style="width: 500px; height: 375px;">&nbsp; &nbsp;<br> 　　图为建成通车的路段。（发稿人：钟兴华）</span></p>   <p style="text-align: right;"><span style="font-size:14px;">责任编辑：韦晓燕</span></p>   <!--内容关联投票-->  </div>',null,null,'0','2017-06-08 17:36:27','百色新闻网','http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028',null,'0','["http://www.jingxi.gov.cn/uploadfile/2017/0608/20170608054344792.jpg","http://www.jingxi.gov.cn/uploadfile/2017/0608/20170608054516999.jpg"]','D:/jx/gov/images_thum/20171812/d0faf8d7aaf74c6eb8941533d2757709.jpg');
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'pub_time' in 'field list'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'pub_time' in 'field list'
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:231)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:371)
+	at com.sun.proxy.$Proxy10.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:240)
+	at com.xwke.base.core.dao.DaoImpl.add(DaoImpl.java:149)
+	at com.xwke.spider.huntsman.DetailPipeLine.process(DetailPipeLine.java:90)
+	at us.codecraft.webmagic.Spider.processRequest(Spider.java:420)
+	at us.codecraft.webmagic.Spider$1.run(Spider.java:321)
+	at us.codecraft.webmagic.thread.CountableThreadPool$1.run(CountableThreadPool.java:74)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'pub_time' in 'field list'
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.Util.getInstance(Util.java:387)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:939)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3878)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3814)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2478)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2625)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2551)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1861)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1192)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:169)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:45)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:73)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:49)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:115)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:75)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:170)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:157)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:358)
+	... 10 more
+[INFO] [2017-06-12 17:24:44][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@48cf768c: startup date [Mon Jun 12 17:24:44 CST 2017]; root of context hierarchy
+[INFO] [2017-06-12 17:24:45][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-12 17:24:46][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'taskExecutor'
+[INFO] [2017-06-12 17:24:49][us.codecraft.webmagic.Spider]Spider http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028 started!
+[INFO] [2017-06-12 17:24:49][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028
+[INFO] [2017-06-12 17:24:51][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+[INFO] [2017-06-12 17:24:51][org.springframework.jdbc.support.SQLErrorCodesFactory]SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]
+[ERROR] [2017-06-12 17:24:51][us.codecraft.webmagic.Spider]process request Request{url='http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028', method='null', extras={statusCode=200}, priority=0} error
+org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Data too long for column 'source_url' at row 1
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: insert into s_news (title,content,summary,grasping_time,pub_status,pub_time,source,source_url,author,column_id,pic_array,thum_img) value ('武平镇：今日“村民”路胜比昔日“官府”路 ','<div class="main">   <p><span style="font-size:14px;">&nbsp; &nbsp;6月8日，武平镇头塘屯（凌安村）至二塘屯（六合村）的村屯水泥道路建成，该路段的通车，打破武平镇至靖西城区的交通瓶颈，使六合、金色、多纳、立录等十多个村直接通达城区，不用再绕道铝厂或三联，少走10—20公里路程，大大方便2万多群众进出城区，也拉近了武平与中心城区的距离，使两地联系更为紧密。</span></p>   <p><span style="font-size:14px;">&nbsp; &nbsp;该路段长约4公里，以前是一条人行道，无法通车。民清时期，该路段是靖西至天保（今德保）的驿道，是“官府”路（官员走的路），头塘和二塘是是两个重要驿站。今日是武平镇凌安村至六合村的村屯路，是“村民”路。建成通车的村民路，宽4.5米，水泥路面，与凌安至大龙潭公园的水泥路相连直通市中心。一位80多岁的老大爷感慨道：“今日的‘村民路’比当年的‘官府’路好多了。 ”</span></p>   <p style="text-align: center;"><span style="font-size:14px;">&nbsp;&nbsp;<br> &nbsp;<img alt="" src="https://www.jingxi.net/images/20172412/b77dc71edadd43508e0d75099ff467f2.jpg" style="width: 500px; height: 484px;"><br> 　　图为二塘后山上残存的古驿道</span></p>   <p style="text-align: center;"><span style="font-size:14px;"><img alt="" src="https://www.jingxi.net/images/20172412/d3303652805e46dd83bc97b631556fd5.jpg" style="width: 500px; height: 375px;">&nbsp; &nbsp;<br> 　　图为建成通车的路段。（发稿人：钟兴华）</span></p>   <p style="text-align: right;"><span style="font-size:14px;">责任编辑：韦晓燕</span></p>   <!--内容关联投票-->  </div>',null,null,'0','2017-06-08 17:36:27','百色新闻网','http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028',null,'0','["http://www.jingxi.gov.cn/uploadfile/2017/0608/20170608054344792.jpg","http://www.jingxi.gov.cn/uploadfile/2017/0608/20170608054516999.jpg"]','https://www.jingxi.net/thumbnail/20172412/b77dc71edadd43508e0d75099ff467f2.jpg');
+### Cause: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Data too long for column 'source_url' at row 1
+; SQL []; Data truncation: Data too long for column 'source_url' at row 1; nested exception is com.mysql.jdbc.MysqlDataTruncation: Data truncation: Data too long for column 'source_url' at row 1
+	at org.springframework.jdbc.support.SQLStateSQLExceptionTranslator.doTranslate(SQLStateSQLExceptionTranslator.java:102)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:371)
+	at com.sun.proxy.$Proxy10.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:240)
+	at com.xwke.base.core.dao.DaoImpl.add(DaoImpl.java:149)
+	at com.xwke.spider.huntsman.DetailPipeLine.process(DetailPipeLine.java:90)
+	at us.codecraft.webmagic.Spider.processRequest(Spider.java:420)
+	at us.codecraft.webmagic.Spider$1.run(Spider.java:321)
+	at us.codecraft.webmagic.thread.CountableThreadPool$1.run(CountableThreadPool.java:74)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Data too long for column 'source_url' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3876)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3814)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2478)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2625)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2551)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1861)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1192)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.execute(DelegatingPreparedStatement.java:169)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:45)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:73)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:49)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:115)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:75)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:170)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:157)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:358)
+	... 10 more
+[INFO] [2017-06-12 17:27:24][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@48cf768c: startup date [Mon Jun 12 17:27:24 CST 2017]; root of context hierarchy
+[INFO] [2017-06-12 17:27:25][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-12 17:27:26][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'taskExecutor'
+[INFO] [2017-06-12 17:27:28][us.codecraft.webmagic.Spider]Spider http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028 started!
+[INFO] [2017-06-12 17:27:28][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=25&id=42028
+[INFO] [2017-06-12 17:39:53][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@48cf768c: startup date [Mon Jun 12 17:39:53 CST 2017]; root of context hierarchy
+[INFO] [2017-06-12 17:39:53][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-12 17:39:55][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-12 17:39:57][us.codecraft.webmagic.Spider]Spider http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=22 started!
+[INFO] [2017-06-12 17:39:57][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=22
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=42142
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=41942
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=41970
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=42007
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=42027
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=42057
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=42060
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=42064
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=42140
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=42143
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=41782
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=41993
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=41943
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=42025
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=41939
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=42055
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=42059
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=42061
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=42101
+[INFO] [2017-06-12 17:39:59][us.codecraft.webmagic.downloader.HttpClientDownloader]downloading page http://www.jingxi.gov.cn/index.php?m=content&c=index&a=show&catid=22&id=41783

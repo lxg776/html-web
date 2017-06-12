@@ -42,7 +42,7 @@ public class CommonUtil {
 				String replaceUrl = config.getPictureSite()+dateFileName+"/"+fileName;
 				content=content.replaceAll(itemImgUrl, replaceUrl);
 				//设置缩略图
-				String Thumbnail = config.getThumbnail()+dateFileName+"/"+fileName;
+				String Thumbnail = config.getThumbnailSite()+dateFileName+"/"+fileName;
 				if(itemImgUrl.equals(imgUrls.get(0))){
 					newsModle.setThumImg(Thumbnail);
 				}

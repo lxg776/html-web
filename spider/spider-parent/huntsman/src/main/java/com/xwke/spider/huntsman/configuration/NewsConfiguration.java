@@ -53,9 +53,29 @@ public class NewsConfiguration {
 	 * 图片的站点
 	 */
 	private String pictureSite;
+	/**
+	 * 缩略图片站点
+	 */
+	private String thumbnailSite;
 	
 	
 	
+	
+	
+
+	public String getThumbnailSite() {
+		return thumbnailSite;
+	}
+
+
+
+
+	public void setThumbnailSite(String thumbnailSite) {
+		this.thumbnailSite = thumbnailSite;
+	}
+
+
+
 
 	public String getPictureSite() {
 		return pictureSite;
@@ -109,6 +129,8 @@ public class NewsConfiguration {
 		setThumbnail(jsonObject.getString("thumbnail"));
 		setColumnId(jsonObject.getString("columnId"));
 		setPictureSite(jsonObject.getString("pictureSite"));
+		setThumbnailSite(jsonObject.getString("thumbnailSite"));
+		
 	}
 
 }
