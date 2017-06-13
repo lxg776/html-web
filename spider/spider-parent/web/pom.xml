@@ -36,5 +36,21 @@
 	</dependencies>
 	<build>
 		<finalName>web</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<url>http://localhost:8080/web/text</url>
+					<!-- 如果setting.xml下配置了用户名和密码，则这里不需要再配置username和password -->
+					<username>liangxg</username>
+					<password>lxg123321</password>
+					<!-- server一定要和setting.xml中配置的相同 -->
+					<server>tomcat8.5</server>
+					<path>/spider</path>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>
