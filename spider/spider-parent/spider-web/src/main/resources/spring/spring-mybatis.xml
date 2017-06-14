@@ -88,11 +88,9 @@
 	</bean>
 
 
-	<bean name="jxGovConfig" id="jxgov"
-		class="com.xwke.spider.huntsman.configuration.NewsConfiguration">
-		<constructor-arg name="path" value="site-config/jxgov-config.json" />
+	
+	
 
-	</bean>
 
 
 	<!-- 异步线程池 -->
