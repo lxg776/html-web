@@ -8,8 +8,8 @@
 		<artifactId>spider-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.xwke.spider</groupId>
-	<artifactId>web</artifactId>
+	
+	<artifactId>spider-web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>web Maven Webapp</name>
@@ -39,7 +39,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>web</finalName>
+		<finalName>spider-web</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
