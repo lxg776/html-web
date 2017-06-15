@@ -1,29 +1,45 @@
 package com.xwke.spider.huntsman.configuration;
 
-
-
+import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.xwke.spider.huntsman.util.FileHelper;
 import us.codecraft.webmagic.Site;
 
-
 public class NewsConfiguration {
 
-	String path;
-	String config;
-	Site site;
+	private String path;
+	private String config;
+	private Site site;
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	public String getConfig() {
+		return config;
+	}
+
+	public void setConfig(String config) {
+		this.config = config;
+	}
+
+	public NewsConfiguration() {
+
+	}
 
 	public NewsConfiguration(String path) {
 		// this.path = path;
-		this.path = this.getClass().getResource("/").getPath()+path;
+		this.path = this.getClass().getResource("/").getPath() + path;
+		System.out.println(path);
 		resolve();
 	}
-	
-	
-	
-	
+
 	public Site getSite() {
 		return site;
 	}
@@ -31,9 +47,6 @@ public class NewsConfiguration {
 	public void setSite(Site site) {
 		this.site = site;
 	}
-
-
-
 
 	/**
 	 * 图片存放的文件夹
@@ -47,7 +60,7 @@ public class NewsConfiguration {
 	 * 抓取进去的栏目id
 	 */
 	private String columnId;
-	
+
 	/**
 	 * 图片的站点
 	 */
@@ -56,39 +69,22 @@ public class NewsConfiguration {
 	 * 缩略图片站点
 	 */
 	private String thumbnailSite;
-	
-	
-	
-	
-	
 
 	public String getThumbnailSite() {
 		return thumbnailSite;
 	}
 
-
-
-
 	public void setThumbnailSite(String thumbnailSite) {
 		this.thumbnailSite = thumbnailSite;
 	}
-
-
-
 
 	public String getPictureSite() {
 		return pictureSite;
 	}
 
-
-
-
 	public void setPictureSite(String pictureSite) {
 		this.pictureSite = pictureSite;
 	}
-
-
-
 
 	public String getColumnId() {
 		return columnId;
@@ -117,7 +113,7 @@ public class NewsConfiguration {
 	/**
 	 * 解析的方法
 	 */
-	
+
 	protected void resolve() {
 		// TODO Auto-generated method stub
 		config = FileHelper.getRawText(path);
@@ -129,7 +125,7 @@ public class NewsConfiguration {
 		setColumnId(jsonObject.getString("columnId"));
 		setPictureSite(jsonObject.getString("pictureSite"));
 		setThumbnailSite(jsonObject.getString("thumbnailSite"));
-		
+
 	}
 
 }

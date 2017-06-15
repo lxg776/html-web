@@ -37,7 +37,7 @@ public class JxGovPageHunter implements PageProcessor {
 		
 	}
 
-	@Resource(name = "jxGovConfig")
+	@Resource(name = "jxgov")
 	NewsConfiguration jxGovConfig;
 	
 	@Resource(name="detailPipeLine")
