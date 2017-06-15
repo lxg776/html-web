@@ -17,7 +17,7 @@ public class NewsController {
     @RequestMapping(value = "/news/list", method = RequestMethod.GET)
     public String showBlogs(ModelMap modelMap) {
         
-        return "wtf";
+        return "index";
     }
 
 }
