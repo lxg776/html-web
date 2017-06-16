@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Created by dzkan on 2016/3/18.
+ * Created by liangxg on 2016/3/18.
  */
 @Controller
 public class NewsController {
 
 
     // 查看所有博文
-    @RequestMapping(value = "/news/list", method = RequestMethod.GET)
-    public String showBlogs(ModelMap modelMap) {
+    @RequestMapping(value = "/bitch", method = RequestMethod.GET)
+    public String toMain(ModelMap modelMap) {
         
-        return "index";
+        return "main";
     }
 
 }
