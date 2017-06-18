@@ -336,7 +336,7 @@ public class DaoImpl<T extends Po, PK extends Serializable> implements BaseDao<T
 				sql += " ";
 			}
 		}
-		sql += "from " + tableName + where.getWherePrams() + ";";
+		sql += "from " + tableName + where.getWherePrams();
 		
 		List<Map<String, Object>> selectList = sqlSessionTemplateASS.selectList("selectList", sql);
 		

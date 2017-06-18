@@ -9,9 +9,9 @@ public class NewsColumnModle extends Po {
 
 	private long id;
 	@FieldName(name="c_name")
-	private String name;
+	private String columnName;
 	@FieldName(name="c_describe")
-	private String describe;
+	private String columnDescribe;
 
 	public long getId() {
 		return id;
@@ -21,20 +21,22 @@ public class NewsColumnModle extends Po {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getColumnName() {
+		return columnName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setColumnName(String columnName) {
+		this.columnName = columnName;
 	}
 
-	public String getDescribe() {
-		return describe;
+	public String getColumnDescribe() {
+		return columnDescribe;
 	}
 
-	public void setDescribe(String describe) {
-		this.describe = describe;
+	public void setColumnDescribe(String columnDescribe) {
+		this.columnDescribe = columnDescribe;
 	}
+
+
 
 }

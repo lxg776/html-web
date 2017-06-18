@@ -12,5 +12,11 @@ import com.xwke.spider.modle.NewsModle;
 public class NewsDao extends DaoImpl<NewsModle, Serializable> {
 	@Resource
 	private SqlSessionTemplate sqlSessionTemplateASS;
+	
+	
+	
+	public void getList(){
+		
+	}
 
 }

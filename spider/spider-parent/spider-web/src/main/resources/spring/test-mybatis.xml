@@ -18,9 +18,7 @@
 						http://www.springframework.org/schema/task/spring-task-3.2.xsd">
 
 	<!-- 自动扫描 -->
-	<context:component-scan base-package="com.xwke.*" annotation-config="true" />
-
-
+	<context:component-scan base-package="com.xwke.*" />
 	<!-- 启用Spring对@AspectJ的支持 -->
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 
@@ -57,7 +55,8 @@
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- 自动扫描mapping.xml文件 -->
-		<property name="mapperLocations" value="classpath:com/xwke/base/core/mapper/*.xml"></property>
+		<property name="mapperLocations" value="classpath*:com/xwke/base/core/mapper/*.xml"></property>
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
 
 	</bean>
 
@@ -66,7 +65,11 @@
 		value="sqlSessionFactory"></property> </bean> -->
 
 
-
+	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 
 
 	<!-- 注解驱动 -->
@@ -76,8 +79,7 @@
 	<!-- 开启AOP监听 只对当前配置文件有效 -->
 	<aop:aspectj-autoproxy expose-proxy="true" />
 
-	<!-- 任务执行定时器，启动注解任务 -->
-	<task:annotation-driven />
+
 
 
 	<!-- 创建一个sqlSession实例，线程安全的，可以在所有DAO实例共享，原理是将sqlSession，事务与当前线程挂钩 -->
@@ -85,6 +87,8 @@
 		class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactoryBean" />
 	</bean>
+
+
 
 
 </beans>
