@@ -11,7 +11,7 @@
 
 
 		<c:if test="${page.pageNum -5 le 0}">
-			<c:forEach begin="0" end="${page.pageNum-1}" var="index">
+			<c:forEach begin="1" end="${page.pageNum-1}" var="index">
 				<li><a href="javascript:void(0);"
 					onclick="getDataList(${index})">${index}</a></li>
 			</c:forEach>

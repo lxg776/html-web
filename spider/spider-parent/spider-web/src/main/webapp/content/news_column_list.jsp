@@ -28,7 +28,16 @@
 <!-- end: Favicon -->
 
 
+<script type="text/javascript">
+	
+	var listUrl="${ctx}"+"/news/columnList?pageNum=";
+	function getDataList(pageNum) {
+		window.location.href=listUrl+pageNum;
+	}
 
+
+
+</script>
 
 </head>
 
@@ -87,15 +96,15 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td></td>
-									<td class="center">2012/01/01</td>
-									<td class="center">Member</td>
+								<c:forEach var="item" items="${page.dataList}" >
+									<tr>
+									<td>${item.id}</td>
+									<td class="center">${item.columnName}</td>
+									<td class="center">${item.columnDescribe}</td>
 									<td class="center"><a href="#" style="color: #F00">删除</a>
 									</td>
 								</tr>
-
-
+								</c:forEach>
 							</tbody>
 						</table>
 						<%@include file="/common/c_pagination.jsp"%>

@@ -11,8 +11,8 @@ import com.xwke.spider.huntsman.configuration.NewsConfiguration;
 import com.xwke.spider.huntsman.listener.DownImgListener;
 import com.xwke.spider.huntsman.thread.DownTask;
 import com.xwke.spider.modle.NewsModle;
+import com.xwke.spider.modle.PageOnterModle;
 
-import c_pagination.PageOnterModle;
 
 public class CommonUtil {
 

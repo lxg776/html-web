@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -15,14 +16,16 @@ import com.xwke.base.core.beans.WherePrams;
 import com.xwke.spider.dao.NewsCoumnDao;
 import com.xwke.spider.huntsman.util.CommonUtil;
 import com.xwke.spider.modle.NewsColumnModle;
+import com.xwke.spider.modle.PageOnterModle;
 
-import c_pagination.PageOnterModle;
 
 /**
  * Created by liangxg on 2016/3/18.
  */
 @Controller
 public class NewsController {
+	
+	int pageSize=10;
 
 	@Resource
 	NewsCoumnDao newsCoumnDao;
@@ -35,15 +38,13 @@ public class NewsController {
 	}
 
 	@RequestMapping(value = "/news/columnList", method = RequestMethod.GET)
-	public String newsColumnList(ModelMap modelMap) {
+	public String newsColumnList(@RequestParam(value= "pageNum" , defaultValue= "1") int pageNum, ModelMap modelMap) {
 
-		Page<NewsColumnModle> pageonter = PageHelper.startPage(6, 10);
+		Page<NewsColumnModle> pageonter = PageHelper.startPage(pageNum, pageSize);
 		List<NewsColumnModle> list = newsCoumnDao.list(new WherePrams(null, null, null));
 		PageOnterModle page = CommonUtil.getPageOnter(pageonter);
-
 		modelMap.addAttribute("page", CommonUtil.getPageOnter(pageonter));
-
-		return "main_bf";
+		return "news_column_list";
 	}
 
 	@RequestMapping(value = "/news/toAddColumn", method = RequestMethod.GET)
