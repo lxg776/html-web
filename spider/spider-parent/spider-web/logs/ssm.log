@@ -535,3 +535,396 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.ServletResponse
 [INFO] [2017-06-18 20:15:03][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@1e397ed7: startup date [Sun Jun 18 20:15:02 CST 2017]; root of context hierarchy
 [INFO] [2017-06-18 20:15:03][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
 [WARN] [2017-06-18 20:15:03][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession
+[INFO] [2017-06-19 09:07:37][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 09:07:37][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 09:07:37][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@51efea79, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5034c75a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@396a51ab, org.springframework.test.context.transaction.TransactionalTestExecutionListener@51081592, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7f9a81e8]
+[INFO] [2017-06-19 09:07:38][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 09:07:39][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 09:07:40][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:07:40 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:07:42][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-19 09:07:43][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:07:40 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:07:43][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[WARN] [2017-06-19 09:07:43][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession
+[INFO] [2017-06-19 09:14:16][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 09:14:16][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 09:14:16][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@51efea79, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5034c75a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@396a51ab, org.springframework.test.context.transaction.TransactionalTestExecutionListener@51081592, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7f9a81e8]
+[INFO] [2017-06-19 09:14:16][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 09:14:17][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 09:14:18][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:14:18 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:14:21][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-19 09:14:22][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:14:18 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:14:22][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[WARN] [2017-06-19 09:14:22][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession
+[INFO] [2017-06-19 09:18:20][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 09:18:20][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 09:18:20][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@51efea79, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5034c75a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@396a51ab, org.springframework.test.context.transaction.TransactionalTestExecutionListener@51081592, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7f9a81e8]
+[INFO] [2017-06-19 09:18:20][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 09:18:20][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 09:18:21][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:18:21 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:18:23][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-19 09:18:23][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:18:21 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:18:23][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[WARN] [2017-06-19 09:18:23][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession
+[INFO] [2017-06-19 09:19:08][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 09:19:08][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 09:19:08][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@51efea79, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5034c75a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@396a51ab, org.springframework.test.context.transaction.TransactionalTestExecutionListener@51081592, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7f9a81e8]
+[INFO] [2017-06-19 09:19:09][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 09:19:09][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 09:19:09][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:19:09 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:19:11][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-19 09:19:11][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:19:09 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:19:11][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[WARN] [2017-06-19 09:19:11][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession
+[INFO] [2017-06-19 09:21:41][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 09:21:41][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 09:21:41][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@51efea79, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5034c75a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@396a51ab, org.springframework.test.context.transaction.TransactionalTestExecutionListener@51081592, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7f9a81e8]
+[INFO] [2017-06-19 09:21:41][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 09:21:41][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 09:21:42][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:21:42 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:21:44][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-19 09:21:44][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:21:42 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:21:44][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[WARN] [2017-06-19 09:21:44][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession
+[INFO] [2017-06-19 09:22:06][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 09:22:06][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 09:22:06][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4c15e7fd, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@23986957, org.springframework.test.context.support.DirtiesContextTestExecutionListener@23f7d05d, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1e730495, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7d3a22a9]
+[INFO] [2017-06-19 09:22:06][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 09:22:07][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 09:22:07][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@6f96c77: startup date [Mon Jun 19 09:22:07 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:22:10][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-19 09:23:38][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@6f96c77: startup date [Mon Jun 19 09:22:07 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:23:38][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[WARN] [2017-06-19 09:23:38][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession
+[INFO] [2017-06-19 09:24:31][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 09:24:31][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 09:24:31][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4c15e7fd, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@23986957, org.springframework.test.context.support.DirtiesContextTestExecutionListener@23f7d05d, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1e730495, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7d3a22a9]
+[INFO] [2017-06-19 09:24:31][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 09:24:31][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 09:24:32][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@6f96c77: startup date [Mon Jun 19 09:24:32 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:24:34][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-19 09:25:04][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@6f96c77: startup date [Mon Jun 19 09:24:32 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:25:04][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[WARN] [2017-06-19 09:25:04][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession
+[INFO] [2017-06-19 09:27:51][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 09:27:51][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 09:27:51][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@51efea79, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5034c75a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@396a51ab, org.springframework.test.context.transaction.TransactionalTestExecutionListener@51081592, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7f9a81e8]
+[INFO] [2017-06-19 09:27:51][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 09:27:52][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 09:27:52][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:27:52 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:27:55][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-19 09:27:55][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:27:52 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:27:55][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[WARN] [2017-06-19 09:27:55][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession
+[INFO] [2017-06-19 09:30:55][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 09:30:55][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 09:30:55][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@51efea79, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5034c75a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@396a51ab, org.springframework.test.context.transaction.TransactionalTestExecutionListener@51081592, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7f9a81e8]
+[INFO] [2017-06-19 09:30:55][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 09:30:55][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 09:30:56][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:30:56 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:30:58][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-19 09:30:58][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:30:56 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:30:58][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[WARN] [2017-06-19 09:30:58][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession
+[INFO] [2017-06-19 09:33:59][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 09:33:59][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 09:33:59][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@51efea79, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5034c75a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@396a51ab, org.springframework.test.context.transaction.TransactionalTestExecutionListener@51081592, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7f9a81e8]
+[INFO] [2017-06-19 09:33:59][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 09:34:00][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 09:34:00][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:34:00 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:34:02][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-19 09:34:04][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:34:00 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:34:04][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[WARN] [2017-06-19 09:34:05][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession
+[INFO] [2017-06-19 09:34:31][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 09:34:31][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 09:34:31][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@51efea79, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5034c75a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@396a51ab, org.springframework.test.context.transaction.TransactionalTestExecutionListener@51081592, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7f9a81e8]
+[INFO] [2017-06-19 09:34:31][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 09:34:31][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 09:34:32][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:34:32 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:34:34][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-19 09:34:35][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5f341870: startup date [Mon Jun 19 09:34:32 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 09:34:35][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[WARN] [2017-06-19 09:34:35][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession
+[INFO] [2017-06-19 10:20:54][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 10:20:54][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 10:20:54][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6d00a15d, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@51efea79, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5034c75a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@396a51ab, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@51081592]
+[INFO] [2017-06-19 10:20:54][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 10:20:55][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 10:20:55][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@14bf9759: startup date [Mon Jun 19 10:20:55 CST 2017]; root of context hierarchy
+[WARN] [2017-06-19 10:20:56][org.springframework.context.support.GenericApplicationContext]Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'newsCoumnDao' defined in file [D:\wtf\git\html-web\spider\spider-parent\spider-web\target\classes\com\xwke\spider\dao\NewsCoumnDao.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.xwke.spider.dao.NewsCoumnDao]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.xwke.base.core.dao cannot be resolved
+	DaoImpl cannot be resolved to a type
+
+[ERROR] [2017-06-19 10:20:56][org.springframework.test.context.TestContextManager]Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@51efea79] to prepare test instance [test.Test01@7c7a06ec]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:117)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:230)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'newsCoumnDao' defined in file [D:\wtf\git\html-web\spider\spider-parent\spider-web\target\classes\com\xwke\spider\dao\NewsCoumnDao.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.xwke.spider.dao.NewsCoumnDao]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.xwke.base.core.dao cannot be resolved
+	DaoImpl cannot be resolved to a type
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1099)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:866)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:128)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:108)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:251)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116)
+	... 25 more
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.xwke.spider.dao.NewsCoumnDao]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.xwke.base.core.dao cannot be resolved
+	DaoImpl cannot be resolved to a type
+
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:154)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1147)
+	... 41 more
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	The import com.xwke.base.core.dao cannot be resolved
+	DaoImpl cannot be resolved to a type
+
+	at com.xwke.spider.dao.NewsCoumnDao.<init>(NewsCoumnDao.java:7)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:142)
+	... 43 more
+[INFO] [2017-06-19 10:22:43][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 10:22:43][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 10:22:43][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6d00a15d, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@51efea79, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5034c75a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@396a51ab, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@51081592]
+[INFO] [2017-06-19 10:22:43][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 10:22:43][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 10:22:44][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@14bf9759: startup date [Mon Jun 19 10:22:44 CST 2017]; root of context hierarchy
+[WARN] [2017-06-19 10:22:45][org.springframework.context.support.GenericApplicationContext]Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'newsCoumnDao' defined in file [D:\wtf\git\html-web\spider\spider-parent\spider-web\target\classes\com\xwke\spider\dao\NewsCoumnDao.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.xwke.spider.dao.NewsCoumnDao]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.xwke.base.core.dao cannot be resolved
+	DaoImpl cannot be resolved to a type
+
+[ERROR] [2017-06-19 10:22:45][org.springframework.test.context.TestContextManager]Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@51efea79] to prepare test instance [test.Test01@7c7a06ec]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:117)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:230)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'newsCoumnDao' defined in file [D:\wtf\git\html-web\spider\spider-parent\spider-web\target\classes\com\xwke\spider\dao\NewsCoumnDao.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.xwke.spider.dao.NewsCoumnDao]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.xwke.base.core.dao cannot be resolved
+	DaoImpl cannot be resolved to a type
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1099)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:866)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:128)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:108)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:251)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116)
+	... 25 more
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.xwke.spider.dao.NewsCoumnDao]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.xwke.base.core.dao cannot be resolved
+	DaoImpl cannot be resolved to a type
+
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:154)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1147)
+	... 41 more
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	The import com.xwke.base.core.dao cannot be resolved
+	DaoImpl cannot be resolved to a type
+
+	at com.xwke.spider.dao.NewsCoumnDao.<init>(NewsCoumnDao.java:8)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:142)
+	... 43 more
+[INFO] [2017-06-19 10:25:25][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 10:25:25][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 10:25:25][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6d00a15d, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@51efea79, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5034c75a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@396a51ab, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@51081592]
+[INFO] [2017-06-19 10:25:26][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 10:25:26][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 10:25:27][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@14bf9759: startup date [Mon Jun 19 10:25:27 CST 2017]; root of context hierarchy
+[WARN] [2017-06-19 10:25:27][org.springframework.context.support.GenericApplicationContext]Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'newsCoumnDao' defined in file [D:\wtf\git\html-web\spider\spider-parent\spider-web\target\classes\com\xwke\spider\dao\NewsCoumnDao.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.xwke.spider.dao.NewsCoumnDao]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
+	The hierarchy of the type NewsCoumnDao is inconsistent
+
+[ERROR] [2017-06-19 10:25:27][org.springframework.test.context.TestContextManager]Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@51efea79] to prepare test instance [test.Test01@c730b35]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:117)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:230)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'newsCoumnDao' defined in file [D:\wtf\git\html-web\spider\spider-parent\spider-web\target\classes\com\xwke\spider\dao\NewsCoumnDao.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.xwke.spider.dao.NewsCoumnDao]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
+	The hierarchy of the type NewsCoumnDao is inconsistent
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1099)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:866)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:128)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:108)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:251)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116)
+	... 25 more
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.xwke.spider.dao.NewsCoumnDao]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
+	The hierarchy of the type NewsCoumnDao is inconsistent
+
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:154)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1147)
+	... 41 more
+Caused by: java.lang.Error: Unresolved compilation problem: 
+	The hierarchy of the type NewsCoumnDao is inconsistent
+
+	at com.xwke.spider.dao.NewsCoumnDao.<init>(NewsCoumnDao.java:12)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:142)
+	... 43 more
+[INFO] [2017-06-19 10:38:53][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 10:38:53][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 10:38:53][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@9629756, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@62ee68d8, org.springframework.test.context.support.DirtiesContextTestExecutionListener@735b5592, org.springframework.test.context.transaction.TransactionalTestExecutionListener@58651fd0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4520ebad]
+[INFO] [2017-06-19 10:38:54][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 10:38:54][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 10:38:55][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@42dafa95: startup date [Mon Jun 19 10:38:55 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 10:38:58][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-19 10:38:59][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@42dafa95: startup date [Mon Jun 19 10:38:55 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 10:38:59][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[WARN] [2017-06-19 10:38:59][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession
+[INFO] [2017-06-19 10:40:27][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 10:40:27][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 10:40:27][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@9629756, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@62ee68d8, org.springframework.test.context.support.DirtiesContextTestExecutionListener@735b5592, org.springframework.test.context.transaction.TransactionalTestExecutionListener@58651fd0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4520ebad]
+[INFO] [2017-06-19 10:40:28][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 10:40:28][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 10:40:28][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@42dafa95: startup date [Mon Jun 19 10:40:28 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 10:40:30][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-19 10:40:31][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@42dafa95: startup date [Mon Jun 19 10:40:28 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 10:40:31][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[WARN] [2017-06-19 10:40:31][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession
+[INFO] [2017-06-19 11:19:32][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 11:19:32][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 11:19:32][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@9629756, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@62ee68d8, org.springframework.test.context.support.DirtiesContextTestExecutionListener@735b5592, org.springframework.test.context.transaction.TransactionalTestExecutionListener@58651fd0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4520ebad]
+[INFO] [2017-06-19 11:19:32][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 11:19:33][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 11:19:33][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@42dafa95: startup date [Mon Jun 19 11:19:33 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 11:19:35][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-19 11:19:35][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@42dafa95: startup date [Mon Jun 19 11:19:33 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 11:19:35][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[WARN] [2017-06-19 11:19:35][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession
+[INFO] [2017-06-19 11:20:33][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 11:20:33][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 11:20:33][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@9629756, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@62ee68d8, org.springframework.test.context.support.DirtiesContextTestExecutionListener@735b5592, org.springframework.test.context.transaction.TransactionalTestExecutionListener@58651fd0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4520ebad]
+[INFO] [2017-06-19 11:20:33][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 11:20:33][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 11:20:34][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@42dafa95: startup date [Mon Jun 19 11:20:34 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 11:20:35][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-19 11:20:37][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@42dafa95: startup date [Mon Jun 19 11:20:34 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 11:20:37][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[WARN] [2017-06-19 11:20:37][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession
+[INFO] [2017-06-19 15:30:32][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-06-19 15:30:32][org.springframework.test.context.support.DefaultTestContextBootstrapper]Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+[INFO] [2017-06-19 15:30:32][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@9629756, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@62ee68d8, org.springframework.test.context.support.DirtiesContextTestExecutionListener@735b5592, org.springframework.test.context.transaction.TransactionalTestExecutionListener@58651fd0, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4520ebad]
+[INFO] [2017-06-19 15:30:32][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-beans.xml]
+[INFO] [2017-06-19 15:30:32][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-mybatis.xml]
+[INFO] [2017-06-19 15:30:33][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@42dafa95: startup date [Mon Jun 19 15:30:33 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 15:30:35][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Initializing ExecutorService  'threadPool'
+[INFO] [2017-06-19 15:30:36][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@42dafa95: startup date [Mon Jun 19 15:30:33 CST 2017]; root of context hierarchy
+[INFO] [2017-06-19 15:30:36][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]Shutting down ExecutorService 'threadPool'
+[WARN] [2017-06-19 15:30:36][org.springframework.beans.factory.support.DisposableBeanAdapter]Invocation of destroy method 'close' failed on bean with name 'sqlSession': java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession

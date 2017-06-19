@@ -2,15 +2,19 @@ package com.xwke.spider.huntsman;
 
 
 import java.util.List;
+
 import javax.annotation.Resource;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONArray;
+import com.xwke.spider.dao.NewsDao;
 import com.xwke.spider.huntsman.configuration.NewsConfiguration;
 import com.xwke.spider.huntsman.util.CommonUtil;
+import com.xwke.spider.modle.NewsModle;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.ResultItems;

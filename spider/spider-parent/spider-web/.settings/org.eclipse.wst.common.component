@@ -7,9 +7,6 @@
         <dependent-module archiveName="datacenter-0.0.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/datacenter/datacenter">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="huntsman-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/huntsman/huntsman">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="context-root" value="spider-web"/>
         <property name="java-output-path" value="/spider-web/target/classes"/>
     </wb-module>

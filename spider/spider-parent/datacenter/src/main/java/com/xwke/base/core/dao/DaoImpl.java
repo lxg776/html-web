@@ -27,7 +27,7 @@ import com.xwke.base.core.util.Formatter;
 import com.xwke.base.core.util.GenericsUtils;
 
 
-@SuppressWarnings("unused")
+
 @Repository
 public class DaoImpl<T extends Po, PK extends Serializable> implements BaseDao<T, PK> {
 
