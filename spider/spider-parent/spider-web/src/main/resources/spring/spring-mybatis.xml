@@ -95,7 +95,7 @@
 
 
 	<!-- 异步线程池 -->
-	<bean id="threadPool"
+	<bean id="threadPool2"
 		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
 		<!-- 核心线程数 -->
 		<property name="corePoolSize" value="3" />

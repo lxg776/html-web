@@ -1,5 +1,7 @@
 package com.xwke.spider.huntsman.job;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.lang3.StringUtils;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;
@@ -7,10 +9,9 @@ import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
-import org.quartz.SchedulerFactory;
 import org.quartz.TriggerBuilder;
 import org.quartz.TriggerKey;
-import org.quartz.impl.StdSchedulerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,27 +20,28 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ScheduleService {
+	 /** 调度工厂Bean */
+    @Resource
+	private  Scheduler scheduler;
 
-	private static Scheduler scheduler = null;
-
-	static {
-		if (scheduler == null) {
-			init();
-		}
-	}
-
-	public synchronized static void init() {
-		if (scheduler != null) {
-			return;
-		}
-		SchedulerFactory factory = new StdSchedulerFactory();
-		try {
-			scheduler = factory.getScheduler();
-			scheduler.start();
-		} catch (Throwable t) {
-			//log.error("create schedule exception", t);
-		}
-	}
+//	static {
+//		if (scheduler == null) {
+//			init();
+//		}
+//	}
+//
+//	public synchronized static void init() {
+//		if (scheduler != null) {
+//			return;
+//		}
+//		SchedulerFactory factory = new StdSchedulerFactory();
+//		try {
+//			scheduler = factory.getScheduler();
+//			scheduler.start();
+//		} catch (Throwable t) {
+//			//log.error("create schedule exception", t);
+//		}
+//	}
 
 	/**
 	 * 把所有可能的job放入调度中, 项目启动时使用
