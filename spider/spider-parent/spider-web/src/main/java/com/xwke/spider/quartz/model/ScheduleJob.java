@@ -35,8 +35,8 @@ public class ScheduleJob extends Pageable {
     /** 任务运行时间表达式 */
     private String            cronExpression;
 
-    /** 是否异步 */
-    private Boolean           isSync;
+    /** 执行者 */
+    private String            executor;
 
     /** 任务描述 */
     private String            description;
@@ -49,6 +49,9 @@ public class ScheduleJob extends Pageable {
 
     /** 任务执行url */
     private String            url;
+    
+    /** 任务执行url */
+    private String classPath;
 
     public Long getScheduleJobId() {
         return scheduleJobId;
@@ -106,13 +109,7 @@ public class ScheduleJob extends Pageable {
         this.cronExpression = cronExpression;
     }
 
-    public Boolean getIsSync() {
-        return isSync;
-    }
 
-    public void setIsSync(Boolean isSync) {
-        this.isSync = isSync;
-    }
 
     public String getDescription() {
         return description;
@@ -156,7 +153,7 @@ public class ScheduleJob extends Pageable {
                 ", jobTrigger='" + jobTrigger + '\'' +
                 ", status='" + status + '\'' +
                 ", cronExpression='" + cronExpression + '\'' +
-                ", isSync=" + isSync +
+                ", executor=" + executor +
                 ", description='" + description + '\'' +
                 ", gmtCreate=" + gmtCreate +
                 ", gmtModify=" + gmtModify +

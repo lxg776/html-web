@@ -32,7 +32,7 @@ public class ScheduleJobController {
      *
      * @return
      */
-    @RequestMapping(value = "/job/addtask", method = RequestMethod.GET)
+    @RequestMapping(value = "/job/input-schedule-job", method = RequestMethod.GET)
     public String inputScheduleJob(ScheduleJobVo scheduleJobVo, ModelMap modelMap) {
 
         if (scheduleJobVo.getScheduleJobId() != null) {
@@ -49,12 +49,12 @@ public class ScheduleJobController {
      *
      * @return
      */
-    @RequestMapping(value = "delete-schedule-job", method = RequestMethod.GET)
+    @RequestMapping(value = "/job/delete-schedule-job", method = RequestMethod.GET)
     public String deleteScheduleJob(Long scheduleJobId) {
 
         scheduleJobService.delete(scheduleJobId);
 
-        return "redirect:list-schedule-job.shtml";
+        return "redirect:list-schedule-job";
     }
 
     /**
@@ -62,12 +62,12 @@ public class ScheduleJobController {
      *
      * @return
      */
-    @RequestMapping(value = "run-once-schedule-job", method = RequestMethod.GET)
+    @RequestMapping(value = "/job/run-once-schedule-job", method = RequestMethod.GET)
     public String runOnceScheduleJob(Long scheduleJobId) {
 
         scheduleJobService.runOnce(scheduleJobId);
 
-        return "redirect:list-schedule-job.shtml";
+        return "redirect:list-schedule-job";
     }
 
     /**
@@ -75,10 +75,10 @@ public class ScheduleJobController {
      *
      * @return
      */
-    @RequestMapping(value = "pause-schedule-job", method = RequestMethod.GET)
+    @RequestMapping(value = "/job/pause-schedule-job", method = RequestMethod.GET)
     public String pauseScheduleJob(Long scheduleJobId) {
         scheduleJobService.pauseJob(scheduleJobId);
-        return "redirect:list-schedule-job.shtml";
+        return "redirect:list-schedule-job";
     }
 
     /**
@@ -86,10 +86,10 @@ public class ScheduleJobController {
      *
      * @return
      */
-    @RequestMapping(value = "resume-schedule-job", method = RequestMethod.GET)
+    @RequestMapping(value = "/job/resume-schedule-job", method = RequestMethod.GET)
     public String resumeScheduleJob(Long scheduleJobId) {
         scheduleJobService.resumeJob(scheduleJobId);
-        return "redirect:list-schedule-job.shtml";
+        return "redirect:list-schedule-job";
     }
 
     /**

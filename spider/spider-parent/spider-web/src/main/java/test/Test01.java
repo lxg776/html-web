@@ -6,8 +6,6 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -17,7 +15,6 @@ import com.github.pagehelper.PageHelper;
 import com.xwke.base.core.beans.WherePrams;
 import com.xwke.spider.dao.NewsCoumnDao;
 import com.xwke.spider.huntsman.job.ScheduleService;
-import com.xwke.spider.huntsman.job.ScheduledJobSetting;
 import com.xwke.spider.modle.NewsColumnModle;
 import com.xwke.spider.quartz.service.ScheduleJobService;
 import com.xwke.spider.quartz.vo.ScheduleJobVo;
@@ -97,10 +94,13 @@ public class Test01 {
 		scheduleJobVo.setAliasName("wtf110");
 		scheduleJobVo.setCronExpression("0/10 * * * * ? ");
 		scheduleJobVo.setDescription("哈哈");
-		scheduleJobVo.setIsSync(false);
-		scheduleJobVo.setJobGroup("wtf");
-		scheduleJobVo.setJobName("my name");
+		//scheduleJobVo.setIsSync(false);
+		scheduleJobVo.setExecutor("wtfhaha");
+		scheduleJobVo.setJobGroup("wtf1");
+		scheduleJobVo.setJobName("my01");
+		scheduleJobVo.setExecutor("jxgov_spider");
 		scheduleJobService.insert(scheduleJobVo);
+		
 		
 		
 	}

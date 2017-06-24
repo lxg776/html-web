@@ -1,11 +1,11 @@
 package com.xwke.spider.quartz.service.impl;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.quartz.CronTrigger;
+import org.quartz.Job;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
 import org.quartz.JobKey;
@@ -20,192 +20,207 @@ import com.dexcoder.commons.bean.BeanConverter;
 import com.dexcoder.dal.JdbcDao;
 import com.dexcoder.dal.build.Criteria;
 import com.xwke.spider.quartz.model.ScheduleJob;
+import com.xwke.spider.quartz.quartz.JxGovSpiderJobFactory;
 import com.xwke.spider.quartz.service.ScheduleJobService;
 import com.xwke.spider.quartz.utils.ScheduleUtils;
 import com.xwke.spider.quartz.vo.ScheduleJobVo;
 
 /**
- * author : fengjing
- * createTime : 2016-08-04
- * description : 定时任务服务实现
- * version : 1.0
+ * author : fengjing createTime : 2016-08-04 description : 定时任务服务实现 version :
+ * 1.0
  */
 @Service
 public class ScheduleJobServiceImpl implements ScheduleJobService {
 
-    /** 调度工厂Bean */
-    @Autowired
-    private Scheduler scheduler;
+	public static String EXECUTOR_JXGOV_SPIDER = "jxgov_spider";
 
-    /** 通用dao */
-    @Autowired
-    private JdbcDao jdbcDao;
+	/** 调度工厂Bean */
+	@Autowired
+	private Scheduler scheduler;
 
-    public void initScheduleJob() {
-        List<ScheduleJob> scheduleJobList = jdbcDao.queryList(Criteria.select(ScheduleJob.class));
-        if (CollectionUtils.isEmpty(scheduleJobList)) {
-            return;
-        }
-        for (ScheduleJob scheduleJob : scheduleJobList) {
+	/** 通用dao */
+	@Autowired
+	private JdbcDao jdbcDao;
 
-            CronTrigger cronTrigger = ScheduleUtils.getCronTrigger(scheduler, scheduleJob.getJobName(), scheduleJob.getJobGroup());
+	@Autowired
+	private JxGovSpiderJobFactory jxGovJob;
 
-            //不存在，创建一个
-            if (cronTrigger == null) {
-                ScheduleUtils.createScheduleJob(scheduler, scheduleJob);
-            } else {
-                //已存在，那么更新相应的定时设置
-                ScheduleUtils.updateScheduleJob(scheduler, scheduleJob);
-            }
-        }
-    }
+	public void initScheduleJob() {
+		List<ScheduleJob> scheduleJobList = jdbcDao.queryList(Criteria.select(ScheduleJob.class));
+		if (CollectionUtils.isEmpty(scheduleJobList)) {
+			return;
+		}
+		for (ScheduleJob scheduleJob : scheduleJobList) {
 
-    public Long insert(ScheduleJobVo scheduleJobVo) {
-        ScheduleJob scheduleJob = scheduleJobVo.getTargetObject(ScheduleJob.class);
-        ScheduleUtils.createScheduleJob(scheduler, scheduleJob);
-        return jdbcDao.insert(scheduleJob);
-    }
+			CronTrigger cronTrigger = ScheduleUtils.getCronTrigger(scheduler, scheduleJob.getJobName(),
+					scheduleJob.getJobGroup());
 
-    public void update(ScheduleJobVo scheduleJobVo) {
-        ScheduleJob scheduleJob = scheduleJobVo.getTargetObject(ScheduleJob.class);
-        ScheduleUtils.updateScheduleJob(scheduler, scheduleJob);
-        jdbcDao.update(scheduleJob);
-    }
+			Class<? extends Job> jobClass = null;
 
-    public void delUpdate(ScheduleJobVo scheduleJobVo) {
-        ScheduleJob scheduleJob = scheduleJobVo.getTargetObject(ScheduleJob.class);
-        //先删除
-        ScheduleUtils.deleteScheduleJob(scheduler, scheduleJob.getJobName(), scheduleJob.getJobGroup());
-        //再创建
-        ScheduleUtils.createScheduleJob(scheduler, scheduleJob);
-        //数据库直接更新即可
-        jdbcDao.update(scheduleJob);
-    }
+			// 不存在，创建一个
+			if (cronTrigger == null) {
+				ScheduleUtils.createScheduleJob(scheduler, scheduleJob, jobClass);
+			} else {
+				// 已存在，那么更新相应的定时设置
+				ScheduleUtils.updateScheduleJob(scheduler, scheduleJob);
+			}
+		}
+	}
 
-    public void delete(Long scheduleJobId) {
-        ScheduleJob scheduleJob = jdbcDao.get(ScheduleJob.class, scheduleJobId);
-        //删除运行的任务
-        ScheduleUtils.deleteScheduleJob(scheduler, scheduleJob.getJobName(), scheduleJob.getJobGroup());
-        //删除数据
-        jdbcDao.delete(ScheduleJob.class, scheduleJobId);
-    }
+	public Class<? extends Job> getJobClassByVo(ScheduleJobVo scheduleJobVo) {
+		Class<? extends Job> jobClass = null;
 
-    public void runOnce(Long scheduleJobId) {
-        ScheduleJob scheduleJob = jdbcDao.get(ScheduleJob.class, scheduleJobId);
-        ScheduleUtils.runOnce(scheduler, scheduleJob.getJobName(), scheduleJob.getJobGroup());
-    }
+		if (EXECUTOR_JXGOV_SPIDER.equals(scheduleJobVo.getExecutor())) {
+			jobClass = jxGovJob.getClass();
+		}
+		return jobClass;
+	}
 
-    public void pauseJob(Long scheduleJobId) {
-        ScheduleJob scheduleJob = jdbcDao.get(ScheduleJob.class, scheduleJobId);
-        ScheduleUtils.pauseJob(scheduler, scheduleJob.getJobName(), scheduleJob.getJobGroup());
-        //演示数据库就不更新了
-    }
+	public Long insert(ScheduleJobVo scheduleJobVo) {
+		ScheduleJob scheduleJob = scheduleJobVo.getTargetObject(ScheduleJob.class);
+		ScheduleUtils.createScheduleJob(scheduler, scheduleJob, getJobClassByVo(scheduleJobVo));
+		return jdbcDao.insert(scheduleJob);
+	}
 
-    public void resumeJob(Long scheduleJobId) {
-        ScheduleJob scheduleJob = jdbcDao.get(ScheduleJob.class, scheduleJobId);
-        ScheduleUtils.resumeJob(scheduler, scheduleJob.getJobName(), scheduleJob.getJobGroup());
-        //演示数据库就不更新了
-    }
+	public void update(ScheduleJobVo scheduleJobVo) {
+		ScheduleJob scheduleJob = scheduleJobVo.getTargetObject(ScheduleJob.class);
+		ScheduleUtils.updateScheduleJob(scheduler, scheduleJob);
+		jdbcDao.update(scheduleJob);
+	}
 
-    public ScheduleJobVo get(Long scheduleJobId) {
-        ScheduleJob scheduleJob = jdbcDao.get(ScheduleJob.class, scheduleJobId);
-        return scheduleJob.getTargetObject(ScheduleJobVo.class);
-    }
+	public void delUpdate(ScheduleJobVo scheduleJobVo) {
+		ScheduleJob scheduleJob = scheduleJobVo.getTargetObject(ScheduleJob.class);
+		// 先删除
+		ScheduleUtils.deleteScheduleJob(scheduler, scheduleJob.getJobName(), scheduleJob.getJobGroup());
+		// 再创建
+		ScheduleUtils.createScheduleJob(scheduler, scheduleJob, getJobClassByVo(scheduleJobVo));
+		// 数据库直接更新即可
+		jdbcDao.update(scheduleJob);
+	}
 
-    public List<ScheduleJobVo> queryList(ScheduleJobVo scheduleJobVo) {
+	public void delete(Long scheduleJobId) {
+		ScheduleJob scheduleJob = jdbcDao.get(ScheduleJob.class, scheduleJobId);
+		// 删除运行的任务
+		ScheduleUtils.deleteScheduleJob(scheduler, scheduleJob.getJobName(), scheduleJob.getJobGroup());
+		// 删除数据
+		jdbcDao.delete(ScheduleJob.class, scheduleJobId);
+	}
 
-        List<ScheduleJob> scheduleJobs = jdbcDao.queryList(scheduleJobVo.getTargetObject(ScheduleJob.class));
+	public void runOnce(Long scheduleJobId) {
+		ScheduleJob scheduleJob = jdbcDao.get(ScheduleJob.class, scheduleJobId);
+		ScheduleUtils.runOnce(scheduler, scheduleJob.getJobName(), scheduleJob.getJobGroup());
+	}
 
-        List<ScheduleJobVo> scheduleJobVoList = BeanConverter.convert(ScheduleJobVo.class, scheduleJobs);
-        try {
-            for (ScheduleJobVo vo : scheduleJobVoList) {
+	public void pauseJob(Long scheduleJobId) {
+		ScheduleJob scheduleJob = jdbcDao.get(ScheduleJob.class, scheduleJobId);
+		ScheduleUtils.pauseJob(scheduler, scheduleJob.getJobName(), scheduleJob.getJobGroup());
+		// 演示数据库就不更新了
+	}
 
-                JobKey jobKey = ScheduleUtils.getJobKey(vo.getJobName(), vo.getJobGroup());
-                List<? extends Trigger> triggers = scheduler.getTriggersOfJob(jobKey);
-                if (CollectionUtils.isEmpty(triggers)) {
-                    continue;
-                }
+	public void resumeJob(Long scheduleJobId) {
+		ScheduleJob scheduleJob = jdbcDao.get(ScheduleJob.class, scheduleJobId);
+		ScheduleUtils.resumeJob(scheduler, scheduleJob.getJobName(), scheduleJob.getJobGroup());
+		// 演示数据库就不更新了
+	}
 
-                //这里一个任务可以有多个触发器， 但是我们一个任务对应一个触发器，所以只取第一个即可，清晰明了
-                Trigger trigger = triggers.iterator().next();
-                vo.setJobTrigger(trigger.getKey().getName());
+	public ScheduleJobVo get(Long scheduleJobId) {
+		ScheduleJob scheduleJob = jdbcDao.get(ScheduleJob.class, scheduleJobId);
+		return scheduleJob.getTargetObject(ScheduleJobVo.class);
+	}
 
-                Trigger.TriggerState triggerState = scheduler.getTriggerState(trigger.getKey());
-                vo.setStatus(triggerState.name());
+	public List<ScheduleJobVo> queryList(ScheduleJobVo scheduleJobVo) {
 
-                if (trigger instanceof CronTrigger) {
-                    CronTrigger cronTrigger = (CronTrigger) trigger;
-                    String cronExpression = cronTrigger.getCronExpression();
-                    vo.setCronExpression(cronExpression);
-                }
-            }
-        } catch (SchedulerException e) {
-            //演示用，就不处理了
-        }
-        return scheduleJobVoList;
-    }
+		List<ScheduleJob> scheduleJobs = jdbcDao.queryList(scheduleJobVo.getTargetObject(ScheduleJob.class));
 
-    /**
-     * 获取运行中的job列表
-     * @return
-     */
-    public List<ScheduleJobVo> queryExecutingJobList() {
-        try {
-            // 存放结果集
-            List<ScheduleJobVo> jobList = new ArrayList<ScheduleJobVo>();
+		List<ScheduleJobVo> scheduleJobVoList = BeanConverter.convert(ScheduleJobVo.class, scheduleJobs);
+		try {
+			for (ScheduleJobVo vo : scheduleJobVoList) {
 
-            // 获取scheduler中的JobGroupName
-            for (String group:scheduler.getJobGroupNames()){
-                // 获取JobKey 循环遍历JobKey
-                for(JobKey jobKey:scheduler.getJobKeys(GroupMatcher.<JobKey>groupEquals(group))){
-                    JobDetail jobDetail = scheduler.getJobDetail(jobKey);
-                    JobDataMap jobDataMap = jobDetail.getJobDataMap();
-                    ScheduleJob scheduleJob = (ScheduleJob)jobDataMap.get(ScheduleJobVo.JOB_PARAM_KEY);
-                    ScheduleJobVo scheduleJobVo = new ScheduleJobVo();
-                    BeanConverter.convert(scheduleJobVo,scheduleJob);
-                    List<? extends Trigger> triggers = scheduler.getTriggersOfJob(jobKey);
-                    Trigger trigger = triggers.iterator().next();
-                    Trigger.TriggerState triggerState = scheduler.getTriggerState(trigger.getKey());
-                    scheduleJobVo.setJobTrigger(trigger.getKey().getName());
-                    scheduleJobVo.setStatus(triggerState.name());
-                    if (trigger instanceof CronTrigger) {
-                        CronTrigger cronTrigger = (CronTrigger) trigger;
-                        String cronExpression = cronTrigger.getCronExpression();
-                        scheduleJobVo.setCronExpression(cronExpression);
-                    }
-                    // 获取正常运行的任务列表
-                    if(triggerState.name().equals("NORMAL")){
-                        jobList.add(scheduleJobVo);
-                    }
-                }
-            }
+				JobKey jobKey = ScheduleUtils.getJobKey(vo.getJobName(), vo.getJobGroup());
+				List<? extends Trigger> triggers = scheduler.getTriggersOfJob(jobKey);
+				if (CollectionUtils.isEmpty(triggers)) {
+					continue;
+				}
 
-            /** 非集群环境获取正在执行的任务列表 */
-            /**
-            List<JobExecutionContext> executingJobs = scheduler.getCurrentlyExecutingJobs();
-            List<ScheduleJobVo> jobList = new ArrayList<ScheduleJobVo>(executingJobs.size());
-            for (JobExecutionContext executingJob : executingJobs) {
-                ScheduleJobVo job = new ScheduleJobVo();
-                JobDetail jobDetail = executingJob.getJobDetail();
-                JobKey jobKey = jobDetail.getKey();
-                Trigger trigger = executingJob.getTrigger();
-                job.setJobName(jobKey.getName());
-                job.setJobGroup(jobKey.getGroup());
-                job.setJobTrigger(trigger.getKey().getName());
-                Trigger.TriggerState triggerState = scheduler.getTriggerState(trigger.getKey());
-                job.setStatus(triggerState.name());
-                if (trigger instanceof CronTrigger) {
-                    CronTrigger cronTrigger = (CronTrigger) trigger;
-                    String cronExpression = cronTrigger.getCronExpression();
-                    job.setCronExpression(cronExpression);
-                }
-                jobList.add(job);
-            }*/
+				// 这里一个任务可以有多个触发器， 但是我们一个任务对应一个触发器，所以只取第一个即可，清晰明了
+				Trigger trigger = triggers.iterator().next();
+				vo.setJobTrigger(trigger.getKey().getName());
 
-            return jobList;
-        } catch (SchedulerException e) {
-            return null;
-        }
+				Trigger.TriggerState triggerState = scheduler.getTriggerState(trigger.getKey());
+				vo.setStatus(triggerState.name());
 
-    }
+				if (trigger instanceof CronTrigger) {
+					CronTrigger cronTrigger = (CronTrigger) trigger;
+					String cronExpression = cronTrigger.getCronExpression();
+					vo.setCronExpression(cronExpression);
+				}
+			}
+		} catch (SchedulerException e) {
+			// 演示用，就不处理了
+		}
+		return scheduleJobVoList;
+	}
+
+	/**
+	 * 获取运行中的job列表
+	 * 
+	 * @return
+	 */
+	public List<ScheduleJobVo> queryExecutingJobList() {
+		try {
+			// 存放结果集
+			List<ScheduleJobVo> jobList = new ArrayList<ScheduleJobVo>();
+
+			// 获取scheduler中的JobGroupName
+			for (String group : scheduler.getJobGroupNames()) {
+				// 获取JobKey 循环遍历JobKey
+				for (JobKey jobKey : scheduler.getJobKeys(GroupMatcher.<JobKey>groupEquals(group))) {
+					JobDetail jobDetail = scheduler.getJobDetail(jobKey);
+					JobDataMap jobDataMap = jobDetail.getJobDataMap();
+					ScheduleJob scheduleJob = (ScheduleJob) jobDataMap.get(ScheduleJobVo.JOB_PARAM_KEY);
+					ScheduleJobVo scheduleJobVo = new ScheduleJobVo();
+					BeanConverter.convert(scheduleJobVo, scheduleJob);
+					List<? extends Trigger> triggers = scheduler.getTriggersOfJob(jobKey);
+					Trigger trigger = triggers.iterator().next();
+					Trigger.TriggerState triggerState = scheduler.getTriggerState(trigger.getKey());
+					scheduleJobVo.setJobTrigger(trigger.getKey().getName());
+					scheduleJobVo.setStatus(triggerState.name());
+					if (trigger instanceof CronTrigger) {
+						CronTrigger cronTrigger = (CronTrigger) trigger;
+						String cronExpression = cronTrigger.getCronExpression();
+						scheduleJobVo.setCronExpression(cronExpression);
+					}
+					// 获取正常运行的任务列表
+					if (triggerState.name().equals("NORMAL")) {
+						jobList.add(scheduleJobVo);
+					}
+				}
+			}
+
+			/** 非集群环境获取正在执行的任务列表 */
+			/**
+			 * List<JobExecutionContext> executingJobs =
+			 * scheduler.getCurrentlyExecutingJobs(); List<ScheduleJobVo>
+			 * jobList = new ArrayList<ScheduleJobVo>(executingJobs.size()); for
+			 * (JobExecutionContext executingJob : executingJobs) {
+			 * ScheduleJobVo job = new ScheduleJobVo(); JobDetail jobDetail =
+			 * executingJob.getJobDetail(); JobKey jobKey = jobDetail.getKey();
+			 * Trigger trigger = executingJob.getTrigger();
+			 * job.setJobName(jobKey.getName());
+			 * job.setJobGroup(jobKey.getGroup());
+			 * job.setJobTrigger(trigger.getKey().getName());
+			 * Trigger.TriggerState triggerState =
+			 * scheduler.getTriggerState(trigger.getKey());
+			 * job.setStatus(triggerState.name()); if (trigger instanceof
+			 * CronTrigger) { CronTrigger cronTrigger = (CronTrigger) trigger;
+			 * String cronExpression = cronTrigger.getCronExpression();
+			 * job.setCronExpression(cronExpression); } jobList.add(job); }
+			 */
+
+			return jobList;
+		} catch (SchedulerException e) {
+			return null;
+		}
+
+	}
 }

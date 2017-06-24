@@ -32,7 +32,7 @@ CREATE TABLE `SCHEDULE_JOB` (
   `job_trigger` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `cron_expression` varchar(255) DEFAULT NULL,
-  `is_sync` varchar(1) NOT NULL,
+  `executor` varchar(255) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `gmt_create` timestamp NULL DEFAULT NULL,

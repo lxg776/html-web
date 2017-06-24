@@ -1,6 +1,5 @@
 package com.xwke.spider.huntsman.util;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,7 +11,6 @@ import com.xwke.spider.huntsman.listener.DownImgListener;
 import com.xwke.spider.huntsman.thread.DownTask;
 import com.xwke.spider.modle.NewsModle;
 import com.xwke.spider.modle.PageOnterModle;
-
 
 public class CommonUtil {
 

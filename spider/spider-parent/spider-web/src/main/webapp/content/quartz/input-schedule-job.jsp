@@ -119,15 +119,11 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label for="isSync" class="col-sm-2 control-label">是否异步</label>
+					   <div class="form-group">
+							<label for="executor" class="col-sm-2 control-label">执行者</label>
 							<div class="col-sm-8">
-								<input type="radio" name="isSync" value="false"
-									<c:if test="${scheduleJobVo.isSync == 'false'}">
-									 checked </c:if> />同步
-								<input type="radio" name="isSync" value="true"
-									<c:if test="${scheduleJobVo.isSync == 'false'}"> </c:if>
-									checked />异步
+								<input type="text" name="executor"
+									value="${scheduleJobVo.executor}" class="form-control">
 							</div>
 						</div>
 

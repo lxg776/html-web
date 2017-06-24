@@ -7,6 +7,8 @@
 		class="com.xwke.spider.huntsman.configuration.NewsConfiguration">
 		<property name="path" value="site-config/jxgov-config.json" />
 	</bean>
+	
+
 
 
 </beans>

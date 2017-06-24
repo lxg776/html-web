@@ -38,8 +38,8 @@ public class ScheduleJobVo extends Pageable {
     /** 任务运行时间表达式 */
     private String             cronExpression;
 
-    /** 是否异步 */
-    private Boolean            isSync;
+    /** 执行者 */
+    private String            executor;
 
     /** 任务描述 */
     private String             description;
@@ -133,15 +133,17 @@ public class ScheduleJobVo extends Pageable {
         this.gmtModify = gmtModify;
     }
 
-    public Boolean getIsSync() {
-        return isSync;
-    }
 
-    public void setIsSync(Boolean isSync) {
-        this.isSync = isSync;
-    }
 
-    public String getUrl() {
+    public String getExecutor() {
+		return executor;
+	}
+
+	public void setExecutor(String executor) {
+		this.executor = executor;
+	}
+
+	public String getUrl() {
         return url;
     }
 
