@@ -33,4 +33,7 @@
 	</bean>
 
 
+
+	<mvc:resources location="/cdn/bootstrap/" mapping="/bootstrap/**" />
+
 </beans>

@@ -1,9 +1,9 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 
-<link id="bootstrap-style" href="${cdnPrefix}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="${cdnPrefix}/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-<link id="base-style" href="${cdnPrefix}/bootstrap/css/style.css" rel="stylesheet">
-<link id="base-style-responsive" href="${cdnPrefix}/bootstrap/css/style-responsive.css"
+<link id="bootstrap-style" href="http://127.0.0.1:8080/spider-web/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="${ctx}/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link id="base-style" href="${ctx}/bootstrap/css/style.css" rel="stylesheet">
+<link id="base-style-responsive" href="${ctx}/bootstrap/css/style-responsive.css"
 	rel="stylesheet">
-<link rel="shortcut icon" href="${cdnPrefix}/bootstrap/img/favicon.ico">
+<link rel="shortcut icon" href="${ctx}/bootstrap/img/favicon.ico">
 

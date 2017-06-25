@@ -16,7 +16,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<junit.version>4.12</junit.version>
+		<junit.version>4.7</junit.version>
 		<webmagic.version>0.6.1</webmagic.version>
 		<spring.version>4.3.8.RELEASE</spring.version>
 		<mybatis.version>3.3.0</mybatis.version>
