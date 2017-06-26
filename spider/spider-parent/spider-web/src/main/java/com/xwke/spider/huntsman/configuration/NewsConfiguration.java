@@ -29,18 +29,16 @@ public class NewsConfiguration {
 
 	public void setConfig(String config) {
 		this.config = config;
+		resolve();
 	}
 
 	public NewsConfiguration() {
 
 	}
 
-	public NewsConfiguration(String path) {
-		// this.path = path;
-		this.path = this.getClass().getResource("/").getPath() + path;
+	public NewsConfiguration(String config) {
+		setConfig(config);
 
-		// System.out.println(path);
-		resolve();
 	}
 
 	public Site getSite() {
@@ -120,7 +118,7 @@ public class NewsConfiguration {
 	protected void resolve() {
 		// TODO Auto-generated method stub
 		logger.debug("jxConfigPath:" + path);
-		config = FileHelper.getRawText(path);
+		// config = FileHelper.getRawText(path);
 		logger.debug("jxConfig:" + config);
 
 		JSONObject jsonObject = JSON.parseObject(config);

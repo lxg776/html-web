@@ -22,9 +22,9 @@ public class NewsDao extends DaoImpl<NewsModle, Serializable> {
 	public long getCountBySourceUrl(String url) {
 		// TODO Auto-generated method stub
 
-		String sql = "select count(id) from " + getTableName() + " where source_url = '" + url+"'";
+		String sql = "select count(id) from " + getTableName() + " where source_url = '" + url + "'";
 		logger.debug(sql);
-		return sqlSessionTemplateASS.insert("getCountBySourceUrl", sql);
+		return sqlSessionTemplateASS.selectOne("getCountBySourceUrl", sql);
 
 	}
 
@@ -35,8 +35,8 @@ public class NewsDao extends DaoImpl<NewsModle, Serializable> {
 	 */
 	public void addNews(NewsModle newsModle) {
 		long count = getCountBySourceUrl(newsModle.getSourceUrl());
-		if (count == 0) {
-			addNews(newsModle);
+		if (count <= 0) {
+			add(newsModle);
 		}
 
 	}

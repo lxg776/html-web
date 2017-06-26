@@ -8,7 +8,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
+import com.xwke.base.core.beans.WherePrams;
+import com.xwke.spider.dao.SiteConfigDao;
 import com.xwke.spider.huntsman.configuration.NewsConfiguration;
+import com.xwke.spider.modle.SiteConfigModle;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -32,14 +35,18 @@ public class JxGovPageHunter implements PageProcessor {
 	 * @param urls
 	 */
 	public void crawl(String[] urls) {
+
+		// jxGovConfig.setConfig("123123");
 		Spider.create(this).addUrl(urls).addPipeline(detailPipeLine).thread(20).run();
 	}
 
-	@Resource(name = "jxgov")
 	NewsConfiguration jxGovConfig;
 
 	@Resource(name = "detailPipeLine")
 	DetailPipeLine detailPipeLine;
+
+	@Resource
+	SiteConfigDao siteConfigDao;
 
 	public void process(Page page) {
 
@@ -60,6 +67,14 @@ public class JxGovPageHunter implements PageProcessor {
 
 	public Site getSite() {
 		// TODO Auto-generated method stub
+		if (jxGovConfig == null) {
+			jxGovConfig = new NewsConfiguration();
+			List<SiteConfigModle> list = siteConfigDao.list(new WherePrams("c_alias", " = ", "jxGov"));
+			if (list != null && list.size() > 0) {
+				jxGovConfig.setConfig(list.get(0).getConfigJsonText());
+			}
+		}
+
 		return jxGovConfig.getSite();
 	}
 
@@ -68,7 +83,8 @@ public class JxGovPageHunter implements PageProcessor {
 
 		JxGovPageHunter hunter = ctx02.getBean(JxGovPageHunter.class);
 
-		//hunter.crawl("	http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=22,http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=26");
+		// hunter.crawl("
+		// http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=22,http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=26");
 
 	}
 

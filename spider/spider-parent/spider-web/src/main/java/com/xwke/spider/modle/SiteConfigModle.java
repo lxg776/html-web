@@ -2,6 +2,7 @@ package com.xwke.spider.modle;
 
 import com.xwke.base.core.annotation.po.FieldName;
 import com.xwke.base.core.annotation.po.TableName;
+import com.xwke.base.core.beans.Po;
 
 /**
  * 网站抓取相关配置信息
@@ -10,7 +11,7 @@ import com.xwke.base.core.annotation.po.TableName;
  *
  */
 @TableName(name = "s_site_config")
-public class SiteConfigModle {
+public class SiteConfigModle extends Po{
 
 	private long id;
 

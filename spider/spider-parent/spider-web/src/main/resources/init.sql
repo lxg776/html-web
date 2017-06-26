@@ -14,7 +14,7 @@ CREATE TABLE s_news (
   author varchar(100),
   column_id int(11), 	
   PRIMARY KEY  (`id`)
-)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 CREATE TABLE s_news_column(
   id int(11) NOT NULL auto_increment,
