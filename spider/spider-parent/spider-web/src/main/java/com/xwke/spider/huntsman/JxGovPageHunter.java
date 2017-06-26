@@ -19,18 +19,26 @@ import us.codecraft.webmagic.processor.PageProcessor;
 public class JxGovPageHunter implements PageProcessor {
 
 	public void crawl() {
-		Spider.create(this).addUrl(getSite().getDomain())
-				.addPipeline(detailPipeLine).thread(20).run();
+		Spider.create(this).addUrl(getSite().getDomain()).addPipeline(detailPipeLine).thread(20).run();
 	}
 
 	public JxGovPageHunter() {
-		
+
+	}
+
+	/**
+	 * 抓取多urls
+	 * 
+	 * @param urls
+	 */
+	public void crawl(String[] urls) {
+		Spider.create(this).addUrl(urls).addPipeline(detailPipeLine).thread(20).run();
 	}
 
 	@Resource(name = "jxgov")
 	NewsConfiguration jxGovConfig;
-	
-	@Resource(name="detailPipeLine")
+
+	@Resource(name = "detailPipeLine")
 	DetailPipeLine detailPipeLine;
 
 	public void process(Page page) {
@@ -41,8 +49,7 @@ public class JxGovPageHunter implements PageProcessor {
 		}
 
 		// 把"amp"转化成空格
-		List<String> urls = page.getHtml().$(".box .list li")
-				.regex("<a(?:\\s+.+?)*?\\s+href=\"([^\"]*?)\".+>(.*?)</a>")
+		List<String> urls = page.getHtml().$(".box .list li").regex("<a(?:\\s+.+?)*?\\s+href=\"([^\"]*?)\".+>(.*?)</a>")
 				.all();
 		for (int i = 0; i < urls.size(); i++) {
 			String url = urls.get(i);
@@ -57,15 +64,11 @@ public class JxGovPageHunter implements PageProcessor {
 	}
 
 	public static void main(String[] args) {
-		ApplicationContext ctx02 = new ClassPathXmlApplicationContext(
-				"classpath:/spring/spring-mybatis.xml");
+		ApplicationContext ctx02 = new ClassPathXmlApplicationContext("classpath:/spring/spring-mybatis.xml");
 
 		JxGovPageHunter hunter = ctx02.getBean(JxGovPageHunter.class);
 
-		hunter.crawl();
-
-		// ApplicationContext ctx=new
-		// ClassPathXmlApplicationContext("classpath:/spring/application-huntsman.xml");
+		//hunter.crawl("	http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=22,http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=26");
 
 	}
 

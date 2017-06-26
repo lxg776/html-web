@@ -1,6 +1,6 @@
 package com.xwke.spider.huntsman.configuration;
 
-import org.springframework.stereotype.Component;
+import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -8,6 +8,8 @@ import com.xwke.spider.huntsman.util.FileHelper;
 import us.codecraft.webmagic.Site;
 
 public class NewsConfiguration {
+
+	private static Logger logger = Logger.getLogger(NewsConfiguration.class);
 
 	private String path;
 	private String config;
@@ -36,7 +38,8 @@ public class NewsConfiguration {
 	public NewsConfiguration(String path) {
 		// this.path = path;
 		this.path = this.getClass().getResource("/").getPath() + path;
-		System.out.println(path);
+
+		// System.out.println(path);
 		resolve();
 	}
 
@@ -116,7 +119,9 @@ public class NewsConfiguration {
 
 	protected void resolve() {
 		// TODO Auto-generated method stub
+		logger.debug("jxConfigPath:" + path);
 		config = FileHelper.getRawText(path);
+		logger.debug("jxConfig:" + config);
 
 		JSONObject jsonObject = JSON.parseObject(config);
 		site = JSON.parseObject(jsonObject.getString("site"), Site.class);

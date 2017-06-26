@@ -2,6 +2,7 @@ package com.xwke.spider.quartz.quartz;
 
 import javax.annotation.Resource;
 
+import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import com.xwke.spider.dao.NewsCoumnDao;
 import com.xwke.spider.dao.NewsDao;
+import com.xwke.spider.huntsman.JxGovPageHunter;
 import com.xwke.spider.huntsman.util.MyDataUtil;
 import com.xwke.spider.modle.NewsColumnModle;
 import com.xwke.spider.quartz.model.ScheduleJob;
@@ -24,13 +26,19 @@ import com.xwke.spider.quartz.vo.ScheduleJobVo;
 public class JxGovSpiderJobFactory extends QuartzJobBean {
 
 	@Resource
-	NewsCoumnDao newsCoumnDao;
+	JxGovPageHunter jxGovPageHunter;
 
 	@Override
 	protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
-		NewsColumnModle newsColumnModle = new NewsColumnModle();
-		newsColumnModle.setColumnName("我是10s先生");
-		newsColumnModle.setColumnDescribe(MyDataUtil.getNowDate());
-		newsCoumnDao.add(newsColumnModle);
+
+		JobDataMap mergedJobDataMap = context.getMergedJobDataMap();
+		ScheduleJob scheduleJob = (ScheduleJob) mergedJobDataMap.get(ScheduleJobVo.JOB_PARAM_KEY);
+		String urls[] = null;
+		if (scheduleJob.getUrl() != null) {
+			urls = scheduleJob.getUrl().split(",");
+		}
+		if (null != urls && urls.length > 1) {
+			jxGovPageHunter.crawl(urls);
+		}
 	}
 }

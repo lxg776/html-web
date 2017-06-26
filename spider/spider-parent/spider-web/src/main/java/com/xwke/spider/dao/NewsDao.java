@@ -14,11 +14,30 @@ import com.xwke.spider.modle.NewsModle;
 public class NewsDao extends DaoImpl<NewsModle, Serializable> {
 	@Resource
 	private SqlSessionTemplate sqlSessionTemplateASS;
-	
-	
-	
-	public void getList(){
-		
+
+	public void getList() {
+
 	}
 
+	public long getCountBySourceUrl(String url) {
+		// TODO Auto-generated method stub
+
+		String sql = "select count(id) from " + getTableName() + " where source_url = '" + url+"'";
+		logger.debug(sql);
+		return sqlSessionTemplateASS.insert("getCountBySourceUrl", sql);
+
+	}
+
+	/**
+	 * 添加新闻
+	 * 
+	 * @param newsModle
+	 */
+	public void addNews(NewsModle newsModle) {
+		long count = getCountBySourceUrl(newsModle.getSourceUrl());
+		if (count == 0) {
+			addNews(newsModle);
+		}
+
+	}
 }

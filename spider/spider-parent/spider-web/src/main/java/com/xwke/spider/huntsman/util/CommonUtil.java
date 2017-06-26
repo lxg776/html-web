@@ -65,9 +65,9 @@ public class CommonUtil {
 
 					@Override
 					public void onSuccess(String url) {
-						if (itemImgUrl.equals(imgUrls.get(0))) {
-							newsModle.setThumImg(Thumbnail);
-						}
+//						if (itemImgUrl.equals(imgUrls.get(0))) {
+//							newsModle.setThumImg(Thumbnail);
+//						}
 					}
 
 					@Override
