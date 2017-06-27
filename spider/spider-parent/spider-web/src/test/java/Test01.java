@@ -1,4 +1,7 @@
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -7,14 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.xwke.base.core.beans.WherePrams;
 import com.xwke.spider.dao.NewsCoumnDao;
 import com.xwke.spider.dao.SiteConfigDao;
 import com.xwke.spider.huntsman.JxGovPageHunter;
 import com.xwke.spider.huntsman.job.ScheduleService;
-import com.xwke.spider.huntsman.util.FileHelper;
-import com.xwke.spider.modle.SiteConfigModle;
 import com.xwke.spider.quartz.service.ScheduleJobService;
+import com.xwke.spider.quartz.vo.ScheduleJobVo;
+
+import net.coobird.thumbnailator.Thumbnails;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "classpath:spring/spring-beans.xml", "classpath:spring/spring-job.xml",
@@ -100,9 +103,10 @@ public class Test01 {
 		// scheduleJobVo.setJobName("my01");
 		// scheduleJobVo.setExecutor("jxgov_spider");
 		// scheduleJobService.insert(scheduleJobVo);
-		String[] urls = "http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=22,http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=26"
-				.split(",");
-		hunter.crawl(urls);
+		// String[] urls =
+		// "http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=22,http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=26"
+		// .split(",");
+		// hunter.crawl(urls);
 
 	}
 
@@ -134,10 +138,40 @@ public class Test01 {
 		// "/site-config/jxgov-config.json");
 		// modle.setConfigJsonText(text);
 		// siteDao.add(modle);
+		//
+		// // SiteConfigModle siteConfigModle = new SiteConfigModle();
+		// SiteConfigModle siteConfigModle = siteDao.list(new
+		// WherePrams("c_alias", " = ", "jxGov")).get(0);
+		// System.out.println(siteConfigModle.getConfigJsonText());
+		// ScheduleJobVo vo = new ScheduleJobVo();
+		// vo.setExecutor("jxwtf");
+		// vo.setUrl("wtf00251");
+		// vo.setAliasName("kao7");
+		// vo.setJobName("bitch7");
+		// vo.setDescription("嘎嘎嘎");
+		// vo.setCronExpression("0/10 * * * * ?");
+		// vo.setJobGroup("fuck");
+		//
+		//
+		// scheduleJobService.insert(vo);
+	}
 
-		// SiteConfigModle siteConfigModle = new SiteConfigModle();
-		SiteConfigModle siteConfigModle = siteDao.list(new WherePrams("c_alias", " = ", "jxGov")).get(0);
-		System.out.println(siteConfigModle.getConfigJsonText());
+	@Test
+	public void testJpeg() {
+
+		File file = new File("D:/wtf/spider_images/t");
+		if (!file.exists()) {
+			file.mkdirs();
+		}
+
+		try {
+			Thumbnails.of(new File("D:/wtf/spider_images/images_hd/20170027a189142fb5624251ac626a5839bee375.jpg"))
+					.size(380, 380).outputQuality(1.0f).outputFormat("jpg").toFile("D:/wtf/spider_images/t/101.jpg");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 }

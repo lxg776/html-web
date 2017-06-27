@@ -3,10 +3,10 @@ package com.xwke.spider.dao;
 import java.io.Serializable;
 
 import javax.annotation.Resource;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.github.pagehelper.util.StringUtil;
 import com.xwke.base.core.dao.DaoImpl;
 import com.xwke.spider.modle.NewsModle;
 
@@ -14,10 +14,6 @@ import com.xwke.spider.modle.NewsModle;
 public class NewsDao extends DaoImpl<NewsModle, Serializable> {
 	@Resource
 	private SqlSessionTemplate sqlSessionTemplateASS;
-
-	public void getList() {
-
-	}
 
 	public long getCountBySourceUrl(String url) {
 		// TODO Auto-generated method stub
@@ -28,16 +24,26 @@ public class NewsDao extends DaoImpl<NewsModle, Serializable> {
 
 	}
 
+	public boolean isExistBySource(String sourceUrl) {
+		if (StringUtil.isEmpty(sourceUrl)) {
+			return true;
+		}
+		long count = getCountBySourceUrl(sourceUrl);
+		if (count <= 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 	/**
 	 * 添加新闻
 	 * 
 	 * @param newsModle
 	 */
 	public void addNews(NewsModle newsModle) {
-		long count = getCountBySourceUrl(newsModle.getSourceUrl());
-		if (count <= 0) {
+		if (!isExistBySource(newsModle.getSourceUrl())) {
 			add(newsModle);
 		}
-
 	}
 }

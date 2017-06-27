@@ -8,9 +8,9 @@
         "retryTimes": 3,
         "sleepTime": 10
     },
-    "imgFolder": "D:/jx/gov/images_hd/",
-    "thumbnail": "D:/jx/gov/images_thum/",
-    "pictureSite": "https://www.jingxi.net/images/",
-    "thumbnailSite": "https://www.jingxi.net/thumbnail/",
+    "imgFolder": "D:/wtf/spider_images/images_hd/",
+    "thumbnail": "D:/wtf/spider_images/images_thum/",
+    "pictureSite": "http://127.0.0.1:8080/images01/images_hd/",
+    "thumbnailSite": "http://127.0.0.1:8080/images01/thumbnail/",
     "columnId": "1"
 }

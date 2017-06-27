@@ -5,159 +5,156 @@ import java.util.Date;
 import com.dexcoder.commons.pager.Pageable;
 
 /**
- * author : fengjing
- * createTime : 2016-08-04
- * description : 计划任务模型
- * version : 1.0
+ * author : fengjing createTime : 2016-08-04 description : 计划任务模型 version : 1.0
  */
 public class ScheduleJob extends Pageable {
 
-    private static final long serialVersionUID = 4888005949821878223L;
+	private static final long serialVersionUID = 4888005949821878223L;
 
-    /** 任务id */
-    private Long              scheduleJobId;
+	/** 任务id */
+	private Long scheduleJobId;
 
-    /** 任务名称 */
-    private String            jobName;
+	/** 任务名称 */
+	private String jobName;
 
-    /** 任务别名 */
-    private String            aliasName;
+	/** 任务别名 */
+	private String aliasName;
 
-    /** 任务分组 */
-    private String            jobGroup;
+	/** 任务分组 */
+	private String jobGroup;
 
-    /** 触发器 */
-    private String            jobTrigger;
+	/** 触发器 */
+	private String jobTrigger;
 
-    /** 任务状态 */
-    private String            status;
+	/** 任务状态 */
+	private String status;
 
-    /** 任务运行时间表达式 */
-    private String            cronExpression;
+	/** 任务运行时间表达式 */
+	private String cronExpression;
 
-    /** 执行者 */
-    private String            executor;
+	/** 执行者 */
+	private String executor;
 
-    /** 任务描述 */
-    private String            description;
+	/** 任务描述 */
+	private String description;
 
-    /** 创建时间 */
-    private Date              gmtCreate;
+	/** 创建时间 */
+	private Date gmtCreate;
 
-    /** 修改时间 */
-    private Date              gmtModify;
+	/** 修改时间 */
+	private Date gmtModify;
 
-    /** 任务执行url */
-    private String            url;
-    
-    /** 任务执行url */
-    private String classPath;
+	/** 任务执行url */
+	private String url;
 
-    public Long getScheduleJobId() {
-        return scheduleJobId;
-    }
+	/** 任务执行url */
+	private String classPath;
+	
+	
+	
 
-    public void setScheduleJobId(Long scheduleJobId) {
-        this.scheduleJobId = scheduleJobId;
-    }
+	public String getExecutor() {
+		return executor;
+	}
 
-    public String getJobName() {
-        return jobName;
-    }
+	public void setExecutor(String executor) {
+		this.executor = executor;
+	}
 
-    public void setJobName(String jobName) {
-        this.jobName = jobName;
-    }
+	public Long getScheduleJobId() {
+		return scheduleJobId;
+	}
 
-    public String getAliasName() {
-        return aliasName;
-    }
+	public void setScheduleJobId(Long scheduleJobId) {
+		this.scheduleJobId = scheduleJobId;
+	}
 
-    public void setAliasName(String aliasName) {
-        this.aliasName = aliasName;
-    }
+	public String getJobName() {
+		return jobName;
+	}
 
-    public String getJobGroup() {
-        return jobGroup;
-    }
+	public void setJobName(String jobName) {
+		this.jobName = jobName;
+	}
 
-    public void setJobGroup(String jobGroup) {
-        this.jobGroup = jobGroup;
-    }
+	public String getAliasName() {
+		return aliasName;
+	}
 
-    public String getJobTrigger() {
-        return jobTrigger;
-    }
+	public void setAliasName(String aliasName) {
+		this.aliasName = aliasName;
+	}
 
-    public void setJobTrigger(String jobTrigger) {
-        this.jobTrigger = jobTrigger;
-    }
+	public String getJobGroup() {
+		return jobGroup;
+	}
 
-    public String getStatus() {
-        return status;
-    }
+	public void setJobGroup(String jobGroup) {
+		this.jobGroup = jobGroup;
+	}
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+	public String getJobTrigger() {
+		return jobTrigger;
+	}
 
-    public String getCronExpression() {
-        return cronExpression;
-    }
+	public void setJobTrigger(String jobTrigger) {
+		this.jobTrigger = jobTrigger;
+	}
 
-    public void setCronExpression(String cronExpression) {
-        this.cronExpression = cronExpression;
-    }
+	public String getStatus() {
+		return status;
+	}
 
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
+	public String getCronExpression() {
+		return cronExpression;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setCronExpression(String cronExpression) {
+		this.cronExpression = cronExpression;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public Date getGmtCreate() {
-        return gmtCreate;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public void setGmtCreate(Date gmtCreate) {
-        this.gmtCreate = gmtCreate;
-    }
+	public Date getGmtCreate() {
+		return gmtCreate;
+	}
 
-    public Date getGmtModify() {
-        return gmtModify;
-    }
+	public void setGmtCreate(Date gmtCreate) {
+		this.gmtCreate = gmtCreate;
+	}
 
-    public void setGmtModify(Date gmtModify) {
-        this.gmtModify = gmtModify;
-    }
+	public Date getGmtModify() {
+		return gmtModify;
+	}
 
-    public String getUrl() {
-        return url;
-    }
+	public void setGmtModify(Date gmtModify) {
+		this.gmtModify = gmtModify;
+	}
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
+	public String getUrl() {
+		return url;
+	}
 
-    @Override
-    public String toString() {
-        return "ScheduleJob{" +
-                "scheduleJobId=" + scheduleJobId +
-                ", jobName='" + jobName + '\'' +
-                ", aliasName='" + aliasName + '\'' +
-                ", jobGroup='" + jobGroup + '\'' +
-                ", jobTrigger='" + jobTrigger + '\'' +
-                ", status='" + status + '\'' +
-                ", cronExpression='" + cronExpression + '\'' +
-                ", executor=" + executor +
-                ", description='" + description + '\'' +
-                ", gmtCreate=" + gmtCreate +
-                ", gmtModify=" + gmtModify +
-                ", url='" + url + '\'' +
-                '}';
-    }
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	@Override
+	public String toString() {
+		return "ScheduleJob{" + "scheduleJobId=" + scheduleJobId + ", jobName='" + jobName + '\'' + ", aliasName='"
+				+ aliasName + '\'' + ", jobGroup='" + jobGroup + '\'' + ", jobTrigger='" + jobTrigger + '\''
+				+ ", status='" + status + '\'' + ", cronExpression='" + cronExpression + '\'' + ", executor='" + executor
+				+ '\'' + ", description='" + description + '\'' + ", gmtCreate=" + gmtCreate + ", gmtModify="
+				+ gmtModify + ", url='" + url + '\'' + '}';
+	}
 }

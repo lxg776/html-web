@@ -47,7 +47,7 @@ public class DetailPipeLine extends FilePipeline {
 		Html html = page.getHtml();
 
 		String sourceUrl = page.getUrl().get();
-		if (null != html) {
+		if (null != html && !newDao.isExistBySource(sourceUrl)) {
 			String content = html.$(".container .show").get();
 			Document document = Jsoup.parse(content);
 			String title = Xsoup.compile("//h1/text()").evaluate(document).get().toString();
@@ -78,8 +78,8 @@ public class DetailPipeLine extends FilePipeline {
 			newsModle.setImagesJsonStr(imagesString);
 			newsModle.setContent(htmlContent);
 			// 下载网上图片
-			CommonUtil.handleImagesByContent(newsModle, imgUrls, config, taskExecutor);
 			newDao.addNews(newsModle);
+			CommonUtil.handleImagesByContent(newsModle, imgUrls, config, taskExecutor);
 
 		}
 
