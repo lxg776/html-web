@@ -78,7 +78,7 @@ public class DownloadPictureUtil {
 			}
 
 			// 文件真实路径
-			String realPath = dirPath.concat(filePath);
+			String realPath = dirPath.concat("/"+filePath);
 			File file = new File(realPath);
 			if (file == null || !file.exists()) {
 				file.createNewFile();

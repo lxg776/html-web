@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.alibaba.fastjson.JSONArray;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.xwke.base.core.beans.WherePrams;
@@ -21,7 +22,10 @@ import com.xwke.spider.huntsman.JxGovPageHunter;
 import com.xwke.spider.huntsman.job.ScheduleService;
 import com.xwke.spider.modle.NewsColumnModle;
 import com.xwke.spider.modle.NewsModle;
+import com.xwke.spider.modle.PageOnterModle;
 import com.xwke.spider.quartz.service.ScheduleJobService;
+import com.xwke.spider.vo.NewsModleVo;
+import com.xwke.spider.web.service.NewsService;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -35,20 +39,22 @@ public class Test01 {
 	ScheduleService service;
 
 	@Resource
-	NewsDao newsDao;
+	NewsService newsService;
 
 	@Autowired
 	private ScheduleJobService scheduleJobService;
 
 	@Test
 	public void test01() {
-		Page<NewsColumnModle> pageonter = PageHelper.startPage(2, 10);
-		List<NewsModle> newsList = newsDao.list(new WherePrams("column_id", "=", 0));
+		PageOnterModle page = newsService.getNewsList(1);
+		List<NewsModleVo> newsList = page.getDataList();
 
-		
-
-		for (NewsModle item : newsList) {
+		for (NewsModleVo item : newsList) {
 			System.out.println(item.getTitle());
+			NewsModleVo ss = item.getTargetObject(NewsModleVo.class);
+
+			System.out.println("size" + ss.getImgList().size());
+
 		}
 
 		// for (int i = 0; i < 100; i++) {
@@ -121,10 +127,9 @@ public class Test01 {
 		// scheduleJobVo.setJobName("my01");
 		// scheduleJobVo.setExecutor("jxgov_spider");
 		// scheduleJobService.insert(scheduleJobVo);
-		// String[] urls =
-		// "http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=22,http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=26"
-		// .split(",");
-		// hunter.crawl(urls);
+		String[] urls = "http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=22,http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=26"
+				.split(",");
+		hunter.crawl(urls);
 
 	}
 
@@ -176,19 +181,21 @@ public class Test01 {
 
 	@Test
 	public void testJpeg() {
-
-		File file = new File("D:/wtf/spider_images/t");
-		if (!file.exists()) {
-			file.mkdirs();
-		}
-
-		try {
-			Thumbnails.of(new File("D:/wtf/spider_images/images_hd/20170027a189142fb5624251ac626a5839bee375.jpg"))
-					.size(380, 380).outputQuality(1.0f).outputFormat("jpg").toFile("D:/wtf/spider_images/t/101.jpg");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//
+		// File file = new File("D:/wtf/spider_images/t");
+		// if (!file.exists()) {
+		// file.mkdirs();
+		// }
+		//
+		// try {
+		// Thumbnails.of(new
+		// File("D:/wtf/spider_images/images_hd/20170027a189142fb5624251ac626a5839bee375.jpg"))
+		// .size(380,
+		// 380).outputQuality(1.0f).outputFormat("jpg").toFile("D:/wtf/spider_images/t/101.jpg");
+		// } catch (IOException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
 
 	}
 

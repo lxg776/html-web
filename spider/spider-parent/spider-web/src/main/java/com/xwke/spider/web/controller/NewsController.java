@@ -19,6 +19,7 @@ import com.xwke.spider.huntsman.util.CommonUtil;
 import com.xwke.spider.modle.NewsColumnModle;
 import com.xwke.spider.modle.NewsModle;
 import com.xwke.spider.modle.PageOnterModle;
+import com.xwke.spider.web.service.NewsService;
 
 /**
  * Created by liangxg on 2016/3/18.
@@ -32,7 +33,7 @@ public class NewsController {
 	NewsCoumnDao newsCoumnDao;
 
 	@Resource
-	NewsDao newsDao;
+	NewsService newsService;
 
 	// 查看所有博文
 	@RequestMapping(value = "/bitch", method = RequestMethod.GET)
@@ -46,6 +47,7 @@ public class NewsController {
 
 		Page<NewsColumnModle> pageonter = PageHelper.startPage(pageNum, pageSize);
 		List<NewsColumnModle> list = newsCoumnDao.list(new WherePrams(null, null, null));
+
 		modelMap.addAttribute("page", CommonUtil.getPageOnter(pageonter));
 		return "news_column_list";
 	}
@@ -59,10 +61,7 @@ public class NewsController {
 
 	@RequestMapping(value = "/news/newsList", method = RequestMethod.GET)
 	public String newsList(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum, ModelMap modelMap) {
-
-		Page<NewsColumnModle> pageonter = PageHelper.startPage(pageNum, 20);
-		List<NewsModle> newsList = newsDao.list(new WherePrams("column_id", "=", 0));
-		modelMap.addAttribute("page", CommonUtil.getPageOnter(pageonter));
+		modelMap.addAttribute("page", newsService.getNewsList(pageNum));
 		return "news_list";
 
 	}

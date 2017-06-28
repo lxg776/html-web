@@ -29,7 +29,7 @@
 
 
 <script type="text/javascript">
-	var listUrl = "${ctx}" + "/news/columnList?pageNum=";
+	var listUrl = "${ctx}" + "/news/newsList?pageNum=";
 	function getDataList(pageNum) {
 		window.location.href = listUrl + pageNum;
 	}
@@ -99,7 +99,7 @@
 												<span><input type="checkbox" id="inlineCheckbox1"
 													value="option1"></span>
 											</div></span></td>
-									<td style="text-align: center; vertical-align: middle;">998</td>
+									<td style="text-align: center; vertical-align: middle;">${item.id}</td>
 									<td><div class="newsItem">
 											<div class="title">
 												<a href="#">${item.title}</a>
@@ -119,10 +119,10 @@
 
 										</div>
 										<div style="padding-top: 8px; clear: both;">
-											<div class="sp">2017-06-10</div>
-											<div class="sp">来源：靖西政府网</div>
+											<div class="sp">${item.pubTime}</div>
+											<div class="sp">来源：${item.source}</div>
 											<div class="sp">
-												<a href="#">原文地址</a>
+												<a href="${item.sourceUrl}" target="_blank">原文地址</a>
 											</div>
 										</div></td>
 								</tr>

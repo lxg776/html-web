@@ -77,9 +77,10 @@ public class DetailPipeLine extends FilePipeline {
 			newsModle.setSource(source);
 			newsModle.setImagesJsonStr(imagesString);
 			newsModle.setContent(htmlContent);
+
+			CommonUtil.handleImagesByContent(newsModle, imgUrls, config, taskExecutor);
 			// 下载网上图片
 			newDao.addNews(newsModle);
-			CommonUtil.handleImagesByContent(newsModle, imgUrls, config, taskExecutor);
 
 		}
 
