@@ -56,7 +56,6 @@
 			<!-- start: Main Menu -->
 			<%@ include file="/content/ui/m-left.jsp"%>
 			<!-- end: Main Menu -->
-			1
 			<noscript>
 				<div class="alert alert-block span10">
 					<h4 class="alert-heading">Warning!</h4>

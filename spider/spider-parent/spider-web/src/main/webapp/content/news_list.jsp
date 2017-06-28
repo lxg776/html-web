@@ -29,14 +29,10 @@
 
 
 <script type="text/javascript">
-	
-	var listUrl="${ctx}"+"/news/columnList?pageNum=";
+	var listUrl = "${ctx}" + "/news/columnList?pageNum=";
 	function getDataList(pageNum) {
-		window.location.href=listUrl+pageNum;
+		window.location.href = listUrl + pageNum;
 	}
-
-
-
 </script>
 
 </head>
@@ -52,7 +48,6 @@
 			<!-- start: Main Menu -->
 			<%@ include file="/content/ui/m-left.jsp"%>
 			<!-- end: Main Menu -->
-
 			<noscript>
 				<div class="alert alert-block span10">
 					<h4 class="alert-heading">Warning!</h4>
@@ -74,7 +69,7 @@
 				</ul>
 
 				<!-- 新闻栏目 -->
-				<div class="box span6" style="width: 800px;">
+				<div class="box span6" style="width: 1100px;">
 					<div class="box-header">
 						<h2>
 							<i class="halflings-icon white align-justify"></i><span
@@ -86,23 +81,50 @@
 						</div>
 					</div>
 					<div class="box-content">
-						<table class="table table-bordered">
+						<table class="table table-bordered table-striped table-condensed">
 							<thead>
 								<tr>
-									<th style="width: 100px;">id</th>
-									<th style="width: 200px;">名称</th>
-									<th style="width: 300px;">描述</th>
-									<th style="width: 200px;">操作</th>
+									<th style="text-align: center; min-width: 100px;">选择</th>
+									<th style="text-align: center; min-width: 100px;">id</th>
+									<th style="text-align: center; min-width: 800px;">内容</th>
 								</tr>
 							</thead>
 							<tbody>
+							
 								<c:forEach var="item" items="${page.dataList}" >
-									<tr>
-									<td>${item.id}</td>
-									<td class="center">${item.columnName}</td>
-									<td class="center">${item.columnDescribe}</td>
-									<td class="center"><a href="#" style="color: #F00">删除</a>
-									</td>
+								<tr>
+									<td style="text-align: center; vertical-align: middle;"><span
+										class=""><div class="checker"
+												id="uniform-inlineCheckbox1">
+												<span><input type="checkbox" id="inlineCheckbox1"
+													value="option1"></span>
+											</div></span></td>
+									<td style="text-align: center; vertical-align: middle;">998</td>
+									<td><div class="newsItem">
+											<div class="title">
+												<a href="#">${item.title}</a>
+											</div>
+											<c:if test="">
+											<ul class="imageList">
+												<li><img
+													src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2374756793,1172628664&amp;fm=26&amp;gp=0.jpg"></li>
+												<li><img
+													src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2374756793,1172628664&amp;fm=26&amp;gp=0.jpg"></li>
+												<li><img
+													src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2374756793,1172628664&amp;fm=26&amp;gp=0.jpg"></li>
+												<li><img
+													src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2374756793,1172628664&amp;fm=26&amp;gp=0.jpg"></li>
+											</ul>
+											</c:if>
+
+										</div>
+										<div style="padding-top: 8px; clear: both;">
+											<div class="sp">2017-06-10</div>
+											<div class="sp">来源：靖西政府网</div>
+											<div class="sp">
+												<a href="#">原文地址</a>
+											</div>
+										</div></td>
 								</tr>
 								</c:forEach>
 							</tbody>

@@ -69,6 +69,8 @@ public class NewsModle extends Po{
 	
 	
 	
+	
+	
 
 	public String getThumImg() {
 		return thumImg;

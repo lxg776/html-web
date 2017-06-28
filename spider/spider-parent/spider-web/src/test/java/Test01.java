@@ -1,6 +1,7 @@
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -10,12 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.xwke.base.core.beans.WherePrams;
 import com.xwke.spider.dao.NewsCoumnDao;
+import com.xwke.spider.dao.NewsDao;
 import com.xwke.spider.dao.SiteConfigDao;
 import com.xwke.spider.huntsman.JxGovPageHunter;
 import com.xwke.spider.huntsman.job.ScheduleService;
+import com.xwke.spider.modle.NewsColumnModle;
+import com.xwke.spider.modle.NewsModle;
 import com.xwke.spider.quartz.service.ScheduleJobService;
-import com.xwke.spider.quartz.vo.ScheduleJobVo;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -28,11 +34,23 @@ public class Test01 {
 	@Resource
 	ScheduleService service;
 
+	@Resource
+	NewsDao newsDao;
+
 	@Autowired
 	private ScheduleJobService scheduleJobService;
 
 	@Test
 	public void test01() {
+		Page<NewsColumnModle> pageonter = PageHelper.startPage(2, 10);
+		List<NewsModle> newsList = newsDao.list(new WherePrams("column_id", "=", 0));
+
+		
+
+		for (NewsModle item : newsList) {
+			System.out.println(item.getTitle());
+		}
+
 		// for (int i = 0; i < 100; i++) {
 		// NewsColumnModle item = new NewsColumnModle();
 		// item.setColumnDescribe("lxg776");
