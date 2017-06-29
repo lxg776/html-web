@@ -68,16 +68,13 @@ public class DetailPipeLine extends FilePipeline {
 			List<String> imgUrls = html.$(".container .show img").regex("<img(?:\\s+.+?)*?\\s+src=\"([^\"]*?)\".+>")
 					.all();
 
-			String imagesString = JSONArray.toJSONString(imgUrls);
 
 			newsModle.setTitle(title);
 			newsModle.setPubTime(date);
-			// newsModle.setGraspingTime(MyDataUtil.getNowDate());
+			
 			newsModle.setSourceUrl(sourceUrl);
 			newsModle.setSource(source);
-			newsModle.setImagesJsonStr(imagesString);
 			newsModle.setContent(htmlContent);
-
 			CommonUtil.handleImagesByContent(newsModle, imgUrls, config, taskExecutor);
 			// 下载网上图片
 			newDao.addNews(newsModle);

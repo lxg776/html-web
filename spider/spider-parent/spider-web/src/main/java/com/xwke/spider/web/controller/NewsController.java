@@ -14,11 +14,11 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.xwke.base.core.beans.WherePrams;
 import com.xwke.spider.dao.NewsCoumnDao;
-import com.xwke.spider.dao.NewsDao;
+
 import com.xwke.spider.huntsman.util.CommonUtil;
 import com.xwke.spider.modle.NewsColumnModle;
-import com.xwke.spider.modle.NewsModle;
-import com.xwke.spider.modle.PageOnterModle;
+
+
 import com.xwke.spider.web.service.NewsService;
 
 /**

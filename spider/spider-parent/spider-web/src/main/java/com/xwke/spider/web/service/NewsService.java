@@ -34,7 +34,7 @@ public class NewsService {
 		for (NewsModle item : newsList) {
 			NewsModleVo vo = item.getTargetObject(NewsModleVo.class);
 			vo.setImgList(JSONArray.parseArray(vo.getImagesJsonStr(), String.class));
-			//vo.setThumbnailList(JSONArray.parseArray(vo.getThumImg(), String.class));
+			vo.setThumbnailList(JSONArray.parseArray(vo.getThumImg(), String.class));
 			voList.add(vo);
 		}
 		page.setDataList(voList);

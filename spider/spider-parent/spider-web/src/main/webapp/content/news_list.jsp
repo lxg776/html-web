@@ -90,42 +90,38 @@
 								</tr>
 							</thead>
 							<tbody>
-							
-								<c:forEach var="item" items="${page.dataList}" >
-								<tr>
-									<td style="text-align: center; vertical-align: middle;"><span
-										class=""><div class="checker"
-												id="uniform-inlineCheckbox1">
-												<span><input type="checkbox" id="inlineCheckbox1"
-													value="option1"></span>
-											</div></span></td>
-									<td style="text-align: center; vertical-align: middle;">${item.id}</td>
-									<td><div class="newsItem">
-											<div class="title">
-												<a href="#">${item.title}</a>
-											</div>
-											<c:if test="">
-											<ul class="imageList">
-												<li><img
-													src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2374756793,1172628664&amp;fm=26&amp;gp=0.jpg"></li>
-												<li><img
-													src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2374756793,1172628664&amp;fm=26&amp;gp=0.jpg"></li>
-												<li><img
-													src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2374756793,1172628664&amp;fm=26&amp;gp=0.jpg"></li>
-												<li><img
-													src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2374756793,1172628664&amp;fm=26&amp;gp=0.jpg"></li>
-											</ul>
-											</c:if>
 
-										</div>
-										<div style="padding-top: 8px; clear: both;">
-											<div class="sp">${item.pubTime}</div>
-											<div class="sp">来源：${item.source}</div>
-											<div class="sp">
-												<a href="${item.sourceUrl}" target="_blank">原文地址</a>
+								<c:forEach var="item" items="${page.dataList}">
+									<tr>
+										<td style="text-align: center; vertical-align: middle;"><span
+											class=""><div class="checker"
+													id="uniform-inlineCheckbox1">
+													<span><input type="checkbox" id="inlineCheckbox1"
+														value="option1"></span>
+												</div></span></td>
+										<td style="text-align: center; vertical-align: middle;">${item.id}</td>
+										<td><div class="newsItem">
+												<div class="title">
+													<a href="#">${item.title}</a>
+												</div>
+												<c:if test="${item.imgList!= null && fn:length(item.imgList) > 0}">
+													<ul class="imageList">
+														<c:forEach items="${item.imgList}" var="url" >
+														
+															<li><img src="${url}" /></li>
+														</c:forEach>
+													</ul>
+												</c:if>
+
 											</div>
-										</div></td>
-								</tr>
+											<div style="padding-top: 8px; clear: both;">
+												<div class="sp">${item.pubTime}</div>
+												<div class="sp">来源：${item.source}</div>
+												<div class="sp">
+													<a href="${item.sourceUrl}" target="_blank">原文地址</a>
+												</div>
+											</div></td>
+									</tr>
 								</c:forEach>
 							</tbody>
 						</table>

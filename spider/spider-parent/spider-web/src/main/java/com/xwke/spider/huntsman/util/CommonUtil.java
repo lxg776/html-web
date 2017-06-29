@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.aspectj.util.FileUtil;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import com.alibaba.fastjson.JSONArray;
@@ -52,14 +53,22 @@ public class CommonUtil {
 			ThreadPoolTaskExecutor taskExecutor) {
 
 		String content = newsModle.getContent();
-		List<String> thumbnails = thumbnails = new ArrayList();
+		List<String> thumbnails  = new ArrayList();
+		List<String> imagesList  = new ArrayList();
+		String dateFileName = MyDataUtil.getNowDate2FileName();
+		File group = new File(config.getThumbnail() + dateFileName);
+		if (!group.exists()) {
+			group.mkdirs();
+		}
+		
 		if (null != imgUrls && imgUrls.size() > 0) {
 			for (String itemImgUrl : imgUrls) {
-				String dateFileName = MyDataUtil.getNowDate2FileName();
+
 				String endType = itemImgUrl.substring(itemImgUrl.lastIndexOf(".") + 1, itemImgUrl.length());
 				String fileName = getUUid() + "." + endType;
 				String filePath = config.getImgFolder() + dateFileName;
 				String replaceUrl = config.getPictureSite() + dateFileName + "/" + fileName;
+				imagesList.add(replaceUrl);
 				content = content.replaceAll(itemImgUrl, replaceUrl);
 				// 设置缩略图
 				String thumbnail = config.getThumbnailSite() + dateFileName + "/" + fileName;
@@ -70,11 +79,12 @@ public class CommonUtil {
 				// }
 
 				// 线程池下载图片
+
 				taskExecutor.execute(new DownTask(itemImgUrl, filePath, fileName, new DownImgListener() {
 
 					@Override
 					public void onSuccess(String url) {
-						//生成压缩图片
+						// 生成压缩图片
 						String postion = config.getThumbnail() + dateFileName + "/" + fileName;
 						try {
 							Thumbnails.of(new File(filePath + "/" + fileName)).size(240, 240).outputQuality(1.0f)
@@ -97,8 +107,9 @@ public class CommonUtil {
 				}));
 			}
 		}
-		//String imagesString = JSONArray.toJSONString(imgUrls);
+		// String imagesString = JSONArray.toJSONString(imgUrls);
 		newsModle.setThumImgArray(JSONArray.toJSONString(thumbnails));
+		newsModle.setImagesJsonStr(JSONArray.toJSONString(imagesList));
 		newsModle.setContent(content);
 
 	}

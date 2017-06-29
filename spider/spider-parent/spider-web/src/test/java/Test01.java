@@ -50,11 +50,14 @@ public class Test01 {
 		List<NewsModleVo> newsList = page.getDataList();
 
 		for (NewsModleVo item : newsList) {
-			System.out.println(item.getTitle());
+			// System.out.println(item.getTitle());
 			NewsModleVo ss = item.getTargetObject(NewsModleVo.class);
 
-			System.out.println("size" + ss.getImgList().size());
-
+			if (ss.getImgList() != null && ss.getImgList().size() > 0) {
+				for (String img:ss.getImgList()) {
+					System.out.println(img+"0");
+				}
+			}
 		}
 
 		// for (int i = 0; i < 100; i++) {
@@ -127,9 +130,9 @@ public class Test01 {
 		// scheduleJobVo.setJobName("my01");
 		// scheduleJobVo.setExecutor("jxgov_spider");
 		// scheduleJobService.insert(scheduleJobVo);
-		String[] urls = "http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=22,http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=26"
-				.split(",");
-		hunter.crawl(urls);
+//		String[] urls = "http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=22,http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=26"
+//				.split(",");
+//		hunter.crawl(urls);
 
 	}
 
