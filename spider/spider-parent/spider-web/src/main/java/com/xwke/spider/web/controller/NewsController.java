@@ -14,9 +14,12 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.xwke.base.core.beans.WherePrams;
 import com.xwke.spider.dao.NewsCoumnDao;
+
 import com.xwke.spider.huntsman.util.CommonUtil;
 import com.xwke.spider.modle.NewsColumnModle;
-import com.xwke.spider.web.service.impl.NewsServiceImpl;
+
+
+import com.xwke.spider.web.service.NewsService;
 
 /**
  * Created by liangxg on 2016/3/18.
@@ -30,7 +33,7 @@ public class NewsController {
 	NewsCoumnDao newsCoumnDao;
 
 	@Resource
-	NewsServiceImpl newsService;
+	NewsService newsService;
 
 	// 查看所有博文
 	@RequestMapping(value = "/bitch", method = RequestMethod.GET)
