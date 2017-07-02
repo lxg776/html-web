@@ -955,8 +955,6 @@ ul{
 .fl-p1{
 	
 	
-	
-	
 }
 .fl-p1 .left .title{
 	width:200px;
@@ -1015,6 +1013,11 @@ ul{
 .fl-p1 .left .main .hiden-ul{
 	display:none;
 	
+}
+
+.hide{
+	
+	display:none;
 }
 
 .fl-p1 .left .main .hiden-ul li{

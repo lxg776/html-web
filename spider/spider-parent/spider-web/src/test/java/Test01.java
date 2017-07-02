@@ -20,11 +20,13 @@ import com.xwke.spider.dao.NewsDao;
 import com.xwke.spider.dao.SiteConfigDao;
 import com.xwke.spider.huntsman.JxGovPageHunter;
 import com.xwke.spider.huntsman.job.ScheduleService;
+import com.xwke.spider.modle.ContentTagModle;
 import com.xwke.spider.modle.NewsColumnModle;
 import com.xwke.spider.modle.NewsModle;
 import com.xwke.spider.modle.PageOnterModle;
 import com.xwke.spider.quartz.service.ScheduleJobService;
 import com.xwke.spider.vo.NewsModleVo;
+import com.xwke.spider.web.service.ContentTagService;
 import com.xwke.spider.web.service.NewsService;
 
 import net.coobird.thumbnailator.Thumbnails;
@@ -41,23 +43,39 @@ public class Test01 {
 	@Resource
 	NewsService newsService;
 
+	@Resource
+	ContentTagService tagService;
+
 	@Autowired
 	private ScheduleJobService scheduleJobService;
 
 	@Test
 	public void test01() {
-		PageOnterModle page = newsService.getNewsList(1);
-		List<NewsModleVo> newsList = page.getDataList();
+		// PageOnterModle page = newsService.getNewsList(1);
+		// List<NewsModleVo> newsList = page.getDataList();
+		//
+		// for (NewsModleVo item : newsList) {
+		// // System.out.println(item.getTitle());
+		// NewsModleVo ss = item.getTargetObject(NewsModleVo.class);
+		//
+		// if (ss.getImgList() != null && ss.getImgList().size() > 0) {
+		// for (String img:ss.getImgList()) {
+		// System.out.println(img+"0");
+		// }
+		// }
+		// }
 
-		for (NewsModleVo item : newsList) {
-			// System.out.println(item.getTitle());
-			NewsModleVo ss = item.getTargetObject(NewsModleVo.class);
+		ContentTagModle tagModle = new ContentTagModle();
+		tagModle.setRemarks("wtf99");
+		tagModle.setTagName("靖西政府网");
 
-			if (ss.getImgList() != null && ss.getImgList().size() > 0) {
-				for (String img:ss.getImgList()) {
-					System.out.println(img+"0");
-				}
-			}
+		// tagService.addTag(tagModle);
+
+		List<ContentTagModle> list = tagService.getTagList();
+		for (ContentTagModle item : list) {
+				System.out.println(item.getId());
+				System.out.println(item.getRemarks());
+				System.out.println(item.getTagName());
 		}
 
 		// for (int i = 0; i < 100; i++) {
@@ -130,9 +148,10 @@ public class Test01 {
 		// scheduleJobVo.setJobName("my01");
 		// scheduleJobVo.setExecutor("jxgov_spider");
 		// scheduleJobService.insert(scheduleJobVo);
-//		String[] urls = "http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=22,http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=26"
-//				.split(",");
-//		hunter.crawl(urls);
+		// String[] urls =
+		// "http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=22,http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=26"
+		// .split(",");
+		// hunter.crawl(urls);
 
 	}
 
