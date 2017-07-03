@@ -73,9 +73,9 @@ public class Test01 {
 
 		List<ContentTagModle> list = tagService.getTagList();
 		for (ContentTagModle item : list) {
-				System.out.println(item.getId());
-				System.out.println(item.getRemarks());
-				System.out.println(item.getTagName());
+			System.out.println(item.getId());
+			System.out.println(item.getRemarks());
+			System.out.println(item.getTagName());
 		}
 
 		// for (int i = 0; i < 100; i++) {
@@ -138,6 +138,9 @@ public class Test01 {
 	@Test
 	public void testJob2() {
 
+		Long id = new Long(1);
+		ContentTagModle tag = tagService.get(id);
+		System.out.println(tag.getTagName());
 		// ScheduleJobVo scheduleJobVo =new ScheduleJobVo();
 		// scheduleJobVo.setAliasName("wtf110");
 		// scheduleJobVo.setCronExpression("0/10 * * * * ? ");

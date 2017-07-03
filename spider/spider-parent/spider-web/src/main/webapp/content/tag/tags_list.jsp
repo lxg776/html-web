@@ -78,10 +78,10 @@
 					<div class="box-header">
 						<h2>
 							<i class="halflings-icon white align-justify"></i><span
-								class="break"></span>新闻栏目
+								class="break"></span>标签
 						</h2>
 						<div class="box-icon">
-							<a href="#" class="btn-setting" style="color: #FFF">添加栏目</a>
+							<a href="#" class="btn-setting" style="color: #FFF">添加标签</a>
 
 						</div>
 					</div>
@@ -96,18 +96,18 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="item" items="${page.dataList}" >
+								<c:forEach var="item" items="${dataList}" >
 									<tr>
 									<td>${item.id}</td>
-									<td class="center">${item.columnName}</td>
-									<td class="center">${item.columnDescribe}</td>
-									<td class="center"><a href="#" style="color: #F00">删除</a>
+									<td class="center">${item.tagName}</td>
+									<td class="center">${item.remarks}</td>
+									<td class="center"><a href="#" style="color: #F00">编辑</a>/<a href="#" style="color: #F00">删除</a>
 									</td>
 								</tr>
 								</c:forEach>
 							</tbody>
 						</table>
-						<%@include file="/common/c_pagination.jsp"%>
+						
 					</div>
 
 				</div>

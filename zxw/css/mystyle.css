@@ -18,7 +18,7 @@ body {
 	padding:0px;
 	margin:0px auto;
 	width:100%;
-	min-width:1440px;
+	min-width:1080px;
 }
 
 a {
@@ -955,6 +955,8 @@ ul{
 .fl-p1{
 	
 	
+	
+	
 }
 .fl-p1 .left .title{
 	width:200px;
@@ -1141,6 +1143,7 @@ ul{
 .fl-p1  .goods-list{
 	width:882px;
 	height:auto;
+	float:left;
 	
 		
 }
@@ -1964,3 +1967,33 @@ column-width: 210px；*/
 .dialog .btn:hover{
 	background:#ffc170;	
 }
+
+.copy-right{
+	
+	
+}
+.copy-right .link{
+	margin:0px auto;
+	width:400px;
+	text-align:center;
+	
+}
+
+
+.copy-right ul{
+	margin:0px;
+	padding:0px;
+	
+	
+}
+
+.copy-right .link .item{
+	display:inline-block;
+	padding:4px;
+}
+.copy-right .link .item a{
+	color:#616161;
+}
+
+.mt5{ margin-top:5px;}
+

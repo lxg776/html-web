@@ -52,4 +52,11 @@ public class ContentTagServiceImpl implements ContentTagService {
 		return tags;
 	}
 
+	@Override
+	public void deleteTag(ContentTagModle modle) {
+		// TODO Auto-generated method stub
+		jdbcDao.delete(ContentTagModle.class, modle.getId());
+
+	}
+
 }
