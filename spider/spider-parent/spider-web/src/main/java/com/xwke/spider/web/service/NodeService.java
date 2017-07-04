@@ -5,13 +5,14 @@ import java.util.List;
 import javax.xml.soap.Node;
 
 import com.xwke.spider.modle.NodeModle;
+import com.xwke.spider.vo.NodeVo;
 
 public interface NodeService {
 
 	/**
 	 * 新增节点
 	 */
-	public void addNode(NodeModle nodeModle);
+	public void addRootNode(NodeVo nodeModle);
 
 	/**
 	 * 编辑节点
@@ -26,11 +27,16 @@ public interface NodeService {
 	/**
 	 * 新增子点
 	 */
-	public void addChildNode(long fid, List<Node> childList);
+	public void addChildNode(long fid, int node_level, List<NodeModle> childList);
 
 	/**
 	 * 新增标签
 	 */
 	public void addChildNode(long fid, int tagId);
+
+	/**
+	 * 获取全部节点
+	 */
+	public List<NodeVo> getAllNode();
 
 }

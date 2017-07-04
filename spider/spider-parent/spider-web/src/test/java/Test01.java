@@ -1,6 +1,7 @@
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -23,11 +24,14 @@ import com.xwke.spider.huntsman.job.ScheduleService;
 import com.xwke.spider.modle.ContentTagModle;
 import com.xwke.spider.modle.NewsColumnModle;
 import com.xwke.spider.modle.NewsModle;
+import com.xwke.spider.modle.NodeModle;
 import com.xwke.spider.modle.PageOnterModle;
 import com.xwke.spider.quartz.service.ScheduleJobService;
 import com.xwke.spider.vo.NewsModleVo;
+import com.xwke.spider.vo.NodeVo;
 import com.xwke.spider.web.service.ContentTagService;
 import com.xwke.spider.web.service.NewsService;
+import com.xwke.spider.web.service.NodeService;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -49,54 +53,42 @@ public class Test01 {
 	@Autowired
 	private ScheduleJobService scheduleJobService;
 
+	@Resource
+	NodeService nodeService;
+
 	@Test
 	public void test01() {
-		// PageOnterModle page = newsService.getNewsList(1);
-		// List<NewsModleVo> newsList = page.getDataList();
-		//
-		// for (NewsModleVo item : newsList) {
-		// // System.out.println(item.getTitle());
-		// NewsModleVo ss = item.getTargetObject(NewsModleVo.class);
-		//
-		// if (ss.getImgList() != null && ss.getImgList().size() > 0) {
-		// for (String img:ss.getImgList()) {
-		// System.out.println(img+"0");
-		// }
-		// }
-		// }
+		// NodeModle nodeModle = new NodeModle();
+		// nodeModle.setNodeName("a01");
+		// nodeModle.setSort(3);
+		// nodeService.add(nodeModle);
+		// nodeService.addNode(nodeModle);
 
-		ContentTagModle tagModle = new ContentTagModle();
-		tagModle.setRemarks("wtf99");
-		tagModle.setTagName("靖西政府网");
+		// NodeVo node = new NodeVo();
+		// node.setNode_level(0);
+		// node.setNodeName("a03");
+		// node.setSort(3);
+		// nodeService.addRootNode(node);
+		List<NodeModle> nodeList = new ArrayList<>();
+		NodeModle n1 = new NodeModle();
+		n1.setNodeName("d01");
+		n1.setSort(1);
+		nodeList.add(n1);
+		NodeModle n2 = new NodeModle();
+		n2.setNodeName("d02");
+		n2.setSort(1);
+		nodeList.add(n2);
 
-		// tagService.addTag(tagModle);
+		nodeService.addChildNode(11, 1, nodeList);
 
-		List<ContentTagModle> list = tagService.getTagList();
-		for (ContentTagModle item : list) {
-			System.out.println(item.getId());
-			System.out.println(item.getRemarks());
-			System.out.println(item.getTagName());
-		}
+	}
 
-		// for (int i = 0; i < 100; i++) {
-		// NewsColumnModle item = new NewsColumnModle();
-		// item.setColumnDescribe("lxg776");
-		// item.setColumnName("wtf" + i);
-		// newsCoumnDao.add(item);
-		// }
+	@Test
+	public void test02() {
+		String sql = "select count(1) from s_node_relation where f_id = %d and c_id = %d ";
+		sql = String.format(sql, new Long(2), new Long(1));
 
-		// Page<NewsColumnModle> pageonter = PageHelper.startPage(6, 11);
-		//
-		// List<NewsColumnModle> list = newsCoumnDao.list(new WherePrams(null,
-		// null, null));
-		// for (NewsColumnModle item : list) {
-		// System.out.println(item.getId());
-		// System.out.println(item.getColumnName());
-		// }
-		// System.out.println(pageonter.getPageNum());
-		// System.out.println(pageonter.getPages());
-		// System.out.println(pageonter.getTotal());
-		// System.out.println(pageonter.);
+		System.out.println(sql);
 	}
 
 	//

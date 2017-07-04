@@ -29,15 +29,7 @@ public class NodeModle extends BaseModle {
 	 */
 	private int sort;
 
-	/**
-	 * 父id
-	 */
-	private NodeModle fatherNode;
-
-	/**
-	 * 子列表
-	 */
-	private List<NodeModle> childList;
+	
 
 	public int getSort() {
 		return sort;
@@ -63,21 +55,7 @@ public class NodeModle extends BaseModle {
 		this.nodeName = nodeName;
 	}
 
-	public NodeModle getFatherNode() {
-		return fatherNode;
-	}
 
-	public void setFatherNode(NodeModle fatherNode) {
-		this.fatherNode = fatherNode;
-	}
-
-	public List<NodeModle> getChildList() {
-		return childList;
-	}
-
-	public void setChildList(List<NodeModle> childList) {
-		this.childList = childList;
-	}
 	
 
 }

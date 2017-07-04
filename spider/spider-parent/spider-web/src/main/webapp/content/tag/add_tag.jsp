@@ -59,10 +59,10 @@
 				<ul class="breadcrumb">
 					<li><i class="icon-home"></i> <a href="index.html">首页</a> <i
 						class="icon-angle-right"></i></li>
-					<li><a href="#">新闻栏目</a></li>
+					<li><a href="#">标签</a></li>
 					<i class="icon-angle-right"></i>
 					</li>
-					<li><a href="#">添加</a></li>
+					<li><a href="#">编辑</a></li>
 				</ul>
 				<div class="box span12" style="width: 800px;">
 
@@ -76,11 +76,22 @@
 					<div class="box-content">
 						<form action="saveTag" method="post" class="form-horizontal">
 							<fieldset>
+
+								<c:if test="${tagModle.id!=null}">
+
+									<div class="control-group">
+										<label class="control-label" for="typeahead">id </label> <label
+											class="control-label" for="typeahead">${tagModle.id}
+										</label>
+									</div>
+								</c:if>
+
 								<div class="control-group">
 									<label class="control-label" for="typeahead">名称 </label>
 									<div class="controls">
 										<input type="text" class="span6 typeahead" id="typeahead"
-											value="${tagModle.tagName}" data-provide="typeahead">
+											name="tagName" value="${tagModle.tagName}"
+											data-provide="typeahead">
 
 									</div>
 								</div>
@@ -89,11 +100,13 @@
 									<label class="control-label" for="typeahead">描述 </label>
 									<div class="controls">
 										<input type="text" class="span6 typeahead" id="typeahead"
-											value="${tagModle.remarks}" data-provide="typeahead">
+											value="${tagModle.remarks}" name="remarks"
+											data-provide="typeahead">
 
 									</div>
 								</div>
-								<input type="hidden" value="${tagModle.id}">
+								<input type="hidden" name="id" value="${tagModle.id}"> <input
+									type="hidden" name="keyWord" value="${tagModle.keyWord}">
 
 								<div class="form-actions">
 									<button type="submit" class="btn btn-primary">保存</button>
