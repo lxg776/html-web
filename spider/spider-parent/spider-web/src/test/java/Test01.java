@@ -12,12 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.xwke.base.core.beans.WherePrams;
 import com.xwke.spider.dao.NewsCoumnDao;
 import com.xwke.spider.dao.NewsDao;
+import com.xwke.spider.dao.NodeDao;
 import com.xwke.spider.dao.SiteConfigDao;
 import com.xwke.spider.huntsman.JxGovPageHunter;
 import com.xwke.spider.huntsman.job.ScheduleService;
@@ -56,6 +58,9 @@ public class Test01 {
 	@Resource
 	NodeService nodeService;
 
+	@Resource
+	NodeDao nodeDao;
+
 	@Test
 	public void test01() {
 		// NodeModle nodeModle = new NodeModle();
@@ -69,17 +74,18 @@ public class Test01 {
 		// node.setNodeName("a03");
 		// node.setSort(3);
 		// nodeService.addRootNode(node);
-		List<NodeModle> nodeList = new ArrayList<>();
-		NodeModle n1 = new NodeModle();
-		n1.setNodeName("d01");
-		n1.setSort(1);
-		nodeList.add(n1);
-		NodeModle n2 = new NodeModle();
-		n2.setNodeName("d02");
-		n2.setSort(1);
-		nodeList.add(n2);
-
-		nodeService.addChildNode(11, 1, nodeList);
+		// List<NodeModle> nodeList = new ArrayList<>();
+		// NodeModle n1 = new NodeModle();
+		// n1.setNodeName("d01");
+		// n1.setSort(1);
+		// nodeList.add(n1);
+		// NodeModle n2 = new NodeModle();
+		// n2.setNodeName("d02");
+		// n2.setSort(1);
+		// nodeList.add(n2);
+		// nodeService.addChildNode(11, 1, nodeList);
+		List<NodeVo> dataList = nodeDao.getAllNode();
+		System.out.println(JSONArray.toJSONString(dataList));
 
 	}
 

@@ -72,23 +72,19 @@ public class NodeServiceImpl implements NodeService {
 		// TODO Auto-generated method stub
 
 	}
-	
-	
+
 	/**
 	 * 获取所以节点
 	 * 
 	 * @param fid
 	 * @param cid
 	 * 
-	 * 获取所以节点 在进行组装
+	 *            获取所以节点 在进行组装
 	 */
 	@Override
 	public List<NodeVo> getAllNode() {
 		// TODO Auto-generated method stub
-		
-		
-		
-		return null;
+		return nodeDao.getAllNode();
 	}
 
 }

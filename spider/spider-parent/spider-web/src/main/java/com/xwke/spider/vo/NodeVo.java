@@ -1,10 +1,13 @@
 package com.xwke.spider.vo;
 
 import java.util.List;
+
+import com.xwke.base.core.annotation.po.FieldName;
 import com.xwke.spider.modle.NodeModle;
 
 public class NodeVo extends NodeModle {
 	// 等级
+
 	private int node_level;
 
 	public int getNode_level() {
@@ -18,27 +21,30 @@ public class NodeVo extends NodeModle {
 	/**
 	 * 父id
 	 */
-	private NodeModle fatherNode;
+	@FieldName(name = "f_id")
+	private long fid;
 
 	/**
 	 * 子列表
 	 */
-	private List<NodeModle> childList;
+	private List<NodeVo> childList;
 
-	public NodeModle getFatherNode() {
-		return fatherNode;
+	public long getFid() {
+		return fid;
 	}
 
-	public void setFatherNode(NodeModle fatherNode) {
-		this.fatherNode = fatherNode;
+	public void setFid(long fid) {
+		this.fid = fid;
 	}
 
-	public List<NodeModle> getChildList() {
+	public List<NodeVo> getChildList() {
 		return childList;
 	}
 
-	public void setChildList(List<NodeModle> childList) {
+	public void setChildList(List<NodeVo> childList) {
 		this.childList = childList;
 	}
+
+	
 
 }
