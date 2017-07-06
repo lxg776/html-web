@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.xml.soap.Node;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -84,8 +85,9 @@ public class Test01 {
 		// n2.setSort(1);
 		// nodeList.add(n2);
 		// nodeService.addChildNode(11, 1, nodeList);
-		List<NodeVo> dataList = nodeDao.getAllNode();
-		System.out.println(JSONArray.toJSONString(dataList));
+		// List<NodeVo> dataList = nodeDao.getAllNode();
+		NodeVo vo = nodeService.getNodeByid(new Long(7));
+		System.out.println(vo.getNodeName());
 
 	}
 

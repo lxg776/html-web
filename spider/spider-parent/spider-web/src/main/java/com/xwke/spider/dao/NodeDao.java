@@ -30,6 +30,20 @@ public class NodeDao extends DaoImpl<NodeModle, Serializable> {
 		return sqlSessionTemplateASS.selectOne("getCountNodeRel", sql);
 	}
 
+	public NodeVo getNodeVoByid(Long id) {
+		String sql = String.format(
+				"select node.id, node.node_name as nodeName,rel.f_id as fid , rel.node_level from s_news_node as node  join  s_node_relation as rel on node.id = rel.c_id and node.id = %d;",
+				id);
+
+		List<Map<String, Object>> selectList = listBySql(sql);
+		if (selectList.size() > 0) {
+			Map<String, Object> map = selectList.get(0);
+			NodeVo vo = CommonUtil.injectBean(NodeVo.class, map);
+			return vo;
+		}
+		return null;
+	}
+
 	/*
 	 * 添加子节点与父节点的关系
 	 */

@@ -87,4 +87,11 @@ public class NodeServiceImpl implements NodeService {
 		return nodeDao.getAllNode();
 	}
 
+	@Override
+	public NodeVo getNodeByid(Long id) {
+		// TODO Auto-generated method stub
+
+		return nodeDao.getNodeVoByid(id);
+	}
+
 }

@@ -39,4 +39,6 @@ public interface NodeService {
 	 */
 	public List<NodeVo> getAllNode();
 
+	public NodeVo getNodeByid(Long id);
+
 }

@@ -27,16 +27,85 @@
 
 <!-- end: Favicon -->
 
+<style type="text/css">
+.jqstooltip {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	background: rgb(0, 0, 0) transparent;
+	background-color: rgba(0, 0, 0, 0.6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,
+		endColorstr=#99000000);
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	color: white;
+	font: 10px arial, san serif;
+	text-align: left;
+	white-space: nowrap;
+	padding: 5px;
+	border: 1px solid white;
+	z-index: 10000;
+}
+
+.jqsfield {
+	color: white;
+	font: 10px arial, san serif;
+	text-align: left;
+}
+
+.menuTree {
+	margin-left: -30px;
+}
+
+.menuTree div {
+	padding-left: 30px;
+}
+
+.menuTree div ul {
+	overflow: hidden;
+	display: none;
+	height: auto;
+}
+
+.menuTree span {
+	display: block;
+	height: 25px;
+	line-height: 25px;
+	padding-left: 5px;
+	margin: 1px 0;
+	cursor: pointer;
+	border-bottom: 1px solid #CCC;
+}
+
+.menuTree span:hover {
+	background-color: #e6e6e6;
+	color: #cf0404;
+}
+
+.menuTree a {
+	color: #00F;
+	text-decoration: none;
+}
+
+.menuTree a:hover {
+	color: #06F;
+}
+
+.btn {
+	height: 30px;
+	margin-top: 10px;
+	border-bottom: 1px solid #CCC;
+}
+</style>
+
+
 
 <script type="text/javascript">
-	
-	var listUrl="${ctx}"+"/news/columnList?pageNum=";
+	var listUrl = "${ctx}" + "/news/columnList?pageNum=";
 	function getDataList(pageNum) {
-		window.location.href=listUrl+pageNum;
+		window.location.href = listUrl + pageNum;
 	}
-
-
-
 </script>
 
 </head>
@@ -64,54 +133,42 @@
 			</noscript>
 
 			<!-- start: Content -->
-			<div id="content" class="span10">
+	<div id="content" class="span11" style="min-height: 794px;">
+			
+			
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="index.html">节点管理</a> 
+					<i class="icon-angle-right"></i>
+				</li>
+				<li><a href="#">列表</a></li>
+			</ul>
 
+			<!--/row-->
 
-				<ul class="breadcrumb">
-					<li><i class="icon-home"></i> <a href="index.html">首页</a> <i
-						class="icon-angle-right"></i></li>
-					<li><a href="#">栏目列表</a></li>
-				</ul>
-
-				<!-- 新闻栏目 -->
-				<div class="box span6" style="width: 800px;">
+			<!--/row-->
+			
+			<!--/row-->
+			
+			<div class="row-fluid  ui-sortable">	
+				<div class="box span12">
 					<div class="box-header">
-						<h2>
-							<i class="halflings-icon white align-justify"></i><span
-								class="break"></span>标签
-						</h2>
-						<div class="box-icon">
-							<a href="${ctx}/tag/toSaveTag"  style="color: #FFF">添加标签</a>
-
+						<h2><i class="halflings-icon white align-justify"></i><span class="break"></span>全部节点</h2>
+							<div class="box-icon">
+							<a href="${ctx}/node/toAdd"  style="color: #FFF">添加根节点</a>
 						</div>
 					</div>
 					<div class="box-content">
-						<table class="table table-bordered">
-							<thead>
-								<tr>
-									<th style="width: 100px;">id</th>
-									<th style="width: 200px;">名称</th>
-									<th style="width: 300px;">描述</th>
-									<th style="width: 200px;">操作</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="item" items="${dataList}" >
-									<tr>
-									<td>${item.id}</td>
-									<td class="center">${item.tagName}</td>
-									<td class="center">${item.remarks}</td>
-									<td class="center"><a href="${ctx}/tag/toSaveTag?id=${item.id}&&keyWord=edit" style="color: #F00">编辑</a>/<a href="#" style="color: #F00">删除</a>
-									</td>
-								</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-						
+    				<div id="menuTree" class="menuTree"></div>
+						   
 					</div>
+				</div><!--/span-->
+			</div><!--/row-->
+    
 
-				</div>
-			</div>
+	</div>
+			<!--/span-->
 		</div>
 	</div>
 
@@ -142,5 +199,84 @@
 	</footer>
 	<!-- start: JavaScript-->
 	<%@ include file="/common/s.jsp"%>
+
+	<script language="javascript">
+		var json = ${jsonStr}
+		/*递归实现获取无级树数据并生成DOM结构*/
+		var str = "";
+		var forTree = function(o) {
+			for (var i = 0; i < o.length; i++) {
+				var urlstr = "";
+				try {
+					if (typeof o[i]["url"] == "undefined") {
+						
+						urlstr = "<div><span>"
+								+ o[i]["nodeName"]
+								+ " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.baidu.com'>edit</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"${ctx}/node/toAdd?fid="+o[i]["id"]+"\">add</a></span><ul>";
+					} else {
+						urlstr = "<div><span><a href=" + o[i]["id"] + ">"
+								+ o[i]["nodeName"] + "</a>99</span><ul>";
+					}
+					str += urlstr;
+					if (o[i]["childList"] != null) {
+						forTree(o[i]["childList"]);
+					}
+					str += "</ul></div>";
+				} catch (e) {
+				}
+			}
+			return str;
+		}
+		/*添加无级树*/
+		document.getElementById("menuTree").innerHTML = forTree(json);
+		/*树形菜单*/
+		var menuTree = function() {
+			//给有子对象的元素加[+-]
+			$("#menuTree ul").each(function(index, element) {
+				var ulContent = $(element).html();
+				var spanContent = $(element).siblings("span").html();
+
+				if (ulContent) {
+					$(element).siblings("span").html("[+] " + spanContent)
+				}
+			});
+
+			$("#menuTree").find("div span").click(function() {
+				var ul = $(this).siblings("ul");
+				var spanStr = $(this).html();
+				var spanContent = spanStr.substr(3, spanStr.length);
+				console.log(spanContent);
+				if (ul.find("div").html() != null) {
+					if (ul.css("display") == "none") {
+						ul.show(300);
+						$(this).html("[-] " + spanContent);
+					} else {
+						ul.hide(300);
+						$(this).html("[+] " + spanContent);
+					}
+				}
+			})
+		}()
+		/*展开*/
+		$("#btn_open").click(function() {
+			$("#menuTree ul").show(300);
+			curzt("-");
+		})
+		/*收缩*/
+		$("#btn_close").click(function() {
+			$("#menuTree ul").hide(300);
+			curzt("+");
+		})
+		function curzt(v) {
+			$("#menuTree span").each(function(index, element) {
+				var ul = $(this).siblings("ul");
+				var spanStr = $(this).html();
+				var spanContent = spanStr.substr(3, spanStr.length);
+				if (ul.find("div").html() != null) {
+					$(this).html("[" + v + "] " + spanContent);
+				}
+			});
+		}
+	</script>
 </body>
 </html>
