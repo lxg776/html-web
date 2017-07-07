@@ -94,4 +94,11 @@ public class NodeServiceImpl implements NodeService {
 		return nodeDao.getNodeVoByid(id);
 	}
 
+	@Override
+	public int updateNode(NodeModle model) {
+		// TODO Auto-generated method stub
+
+		return nodeDao.update(model);
+	}
+
 }

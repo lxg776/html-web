@@ -41,4 +41,9 @@ public interface NodeService {
 
 	public NodeVo getNodeByid(Long id);
 
+	/**
+	 * 更新节点信息
+	 */
+	int updateNode(NodeModle model);
+
 }

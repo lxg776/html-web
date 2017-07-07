@@ -74,7 +74,7 @@
 					</div>
 					<!-- 新闻栏目 -->
 					<div class="box-content">
-						<form action="saveTag" method="post" class="form-horizontal">
+						<form action="add" method="post" class="form-horizontal">
 							<fieldset>
 
 								<c:if test="${fatherNode!=null}">
@@ -84,23 +84,29 @@
 											class="control-label" for="typeahead">${fatherNode.id}/${fatherNode.nodeName}
 										</label>
 									</div>
-									
-									<input type="hidden" name="fid" value="${fatherNode.id}" /> 
-									<input type="hidden" name="level" value="${fatherNode.node_level}" /> 
+
+									<input type="hidden" name="fid" value="${fatherNode.id}" />
+									<input type="hidden" name="level"
+										value="${fatherNode.node_level}" />
 								</c:if>
 
 								<div class="control-group">
 									<label class="control-label" for="typeahead">名称 </label>
 									<div class="controls">
 										<input type="text" class="span6 typeahead" id="typeahead"
-											name="node_Name" data-provide="typeahead">
+											name="node_name" data-provide="typeahead">
 
 									</div>
 								</div>
 
-
+								<div class="control-group">
+									<label class="control-label" for="typeahead">权重 </label>
+									<div class="controls">
+										<input type="text" class="span6 typeahead" id="typeahead"
+											name="sort" data-provide="typeahead">
+									</div>
+								</div>
 								
-
 								<div class="form-actions">
 									<button type="submit" class="btn btn-primary">保存</button>
 									<button type="reset" class="btn">取消</button>
