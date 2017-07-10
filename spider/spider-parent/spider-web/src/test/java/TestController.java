@@ -33,7 +33,7 @@ public class TestController {
 //		mockMvc.perform(MockMvcRequestBuilders.get("/index.html"))
 //				.andExpect(MockMvcResultMatchers.view().name("/index")).andReturn();
 		
-		mockMvc.perform(MockMvcRequestBuilders.post("/node/add").param("node_name", "tag01").param("sort", "2"));
+		//mockMvc.perform(MockMvcRequestBuilders.post("/node/add").param("node_name", "tag01").param("sort", "2"));
 		
 		
 	 //mockMvc.perform((post("/loginTest").param("userName", "admin").param("password", "123"))).andExpect(status().isOk()) 

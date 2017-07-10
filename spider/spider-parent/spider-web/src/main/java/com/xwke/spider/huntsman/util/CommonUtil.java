@@ -14,6 +14,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import com.alibaba.fastjson.JSONArray;
 import com.github.pagehelper.Page;
+import com.xwke.base.core.sql.where.SqlUtil;
 import com.xwke.spider.huntsman.configuration.NewsConfiguration;
 import com.xwke.spider.huntsman.listener.DownImgListener;
 import com.xwke.spider.huntsman.thread.DownTask;
@@ -56,14 +57,14 @@ public class CommonUtil {
 			ThreadPoolTaskExecutor taskExecutor) {
 
 		String content = newsModle.getContent();
-		List<String> thumbnails  = new ArrayList();
-		List<String> imagesList  = new ArrayList();
+		List<String> thumbnails = new ArrayList();
+		List<String> imagesList = new ArrayList();
 		String dateFileName = MyDataUtil.getNowDate2FileName();
 		File group = new File(config.getThumbnail() + dateFileName);
 		if (!group.exists()) {
 			group.mkdirs();
 		}
-		
+
 		if (null != imgUrls && imgUrls.size() > 0) {
 			for (String itemImgUrl : imgUrls) {
 
@@ -122,62 +123,63 @@ public class CommonUtil {
 		uuid = uuid.replaceAll("-", "");
 		return uuid;
 	}
-	
-	
+
 	// 使用泛型
-		public static final <T> T injectBean(Class<T> beanClass, Map parasMap) {
-			T bean = null;
-			try {
-				// 通过反射生成对象
-				bean = beanClass.newInstance();
-				// 还可以用Class.forName生成对象
-			} catch (InstantiationException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			}
-			// 获取类的方法
-			Method[] methods = beanClass.getMethods();
-			int len = methods.length;
-			for (int i = 0; i < len; ++i) {
-				Method method = methods[i];
-				String methodName = method.getName();
-				// 如果方法名是set开头的且名字长度大于3的
-				if (methodName.startsWith("set") && methodName.length() > 3) {
-					// 获取方法的参数类型
-					Class[] types = method.getParameterTypes();
-					// 只有一个参数的方法才继续执行
-					if (types.length == 1) {
-						// 取字段名且让其首字母小写
-						String attrName = firstCharToLowerCase(methodName.substring(3));
-						// map中是否有属性名
-						if (parasMap.containsKey(attrName)) {
-							Object value = parasMap.get(attrName);
-							try {
-								// 通过反射的方式执行bean的mothod方法，在这里相当于执行set方法赋值
-								method.invoke(bean, new Object[] { value });
-							} catch (IllegalAccessException e) {
-								e.printStackTrace();
-							} catch (InvocationTargetException e) {
-								e.printStackTrace();
-							}
+	public static final <T> T injectBean(Class<T> beanClass, Map parasMap) {
+		T bean = null;
+		try {
+			// 通过反射生成对象
+			bean = beanClass.newInstance();
+			// 还可以用Class.forName生成对象
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		// 获取类的方法
+		Method[] methods = beanClass.getMethods();
+		int len = methods.length;
+		for (int i = 0; i < len; ++i) {
+			Method method = methods[i];
+			String methodName = method.getName();
+			// 如果方法名是set开头的且名字长度大于3的
+			if (methodName.startsWith("set") && methodName.length() > 3) {
+				// 获取方法的参数类型
+				Class[] types = method.getParameterTypes();
+				// 只有一个参数的方法才继续执行
+				if (types.length == 1) {
+					// 取字段名且让其首字母小写
+					String attrName = firstCharToLowerCase(methodName.substring(3));
+					// map中是否有属性名
+					if (parasMap.containsKey(attrName)) {
+						Object value = parasMap.get(attrName);
+						try {
+							// 通过反射的方式执行bean的mothod方法，在这里相当于执行set方法赋值
+							method.invoke(bean, new Object[] { value });
+						} catch (IllegalAccessException e) {
+							e.printStackTrace();
+						} catch (InvocationTargetException e) {
+							e.printStackTrace();
 						}
 					}
+
 				}
-			}
 
-			return bean;
-		}
-
-		// 取字段名且让其首字母小写
-		public static String firstCharToLowerCase(String substring) {
-			if (substring != null && substring.charAt(0) >= 'A' && substring.charAt(0) <= 'Z') {
-				char[] arr = substring.toCharArray();
-				arr[0] = (char) (arr[0] + 32);
-				return new String(arr);
-			} else {
-				return substring;
 			}
 		}
+
+		return bean;
+	}
+
+	// 取字段名且让其首字母小写
+	public static String firstCharToLowerCase(String substring) {
+		if (substring != null && substring.charAt(0) >= 'A' && substring.charAt(0) <= 'Z') {
+			char[] arr = substring.toCharArray();
+			arr[0] = (char) (arr[0] + 32);
+			return new String(arr);
+		} else {
+			return substring;
+		}
+	}
 
 }

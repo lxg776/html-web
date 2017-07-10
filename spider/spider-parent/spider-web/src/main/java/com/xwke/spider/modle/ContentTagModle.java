@@ -7,8 +7,11 @@ import com.xwke.base.core.annotation.po.TableName;
 @TableName(name = "s_content_tag")
 @Table(name = "s_content_tag", pkField = "id", pkColumn = "id")
 public class ContentTagModle extends BaseModle {
+	
+	
+	
 
-	private Long id;
+	private Integer id;
 	@FieldName(name = "tag_name")
 	private String tagName;
 	//备注
@@ -24,11 +27,14 @@ public class ContentTagModle extends BaseModle {
 
 	
 
-	public Long getId() {
+	
+	
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

@@ -64,31 +64,9 @@ public class Test01 {
 
 	@Test
 	public void test01() {
-		// NodeModle nodeModle = new NodeModle();
-		// nodeModle.setNodeName("a01");
-		// nodeModle.setSort(3);
-		// nodeService.add(nodeModle);
-		// nodeService.addNode(nodeModle);
-
-		// NodeVo node = new NodeVo();
-		// node.setNode_level(0);
-		// node.setNodeName("a03");
-		// node.setSort(3);
-		// nodeService.addRootNode(node);
-		// List<NodeModle> nodeList = new ArrayList<>();
-		// NodeModle n1 = new NodeModle();
-		// n1.setNodeName("d01");
-		// n1.setSort(1);
-		// nodeList.add(n1);
-		// NodeModle n2 = new NodeModle();
-		// n2.setNodeName("d02");
-		// n2.setSort(1);
-		// nodeList.add(n2);
-		// nodeService.addChildNode(11, 1, nodeList);
-		// List<NodeVo> dataList = nodeDao.getAllNode();
-		NodeVo vo = nodeService.getNodeByid(new Long(7));
-		System.out.println(vo.getNodeName());
-
+		//nodeService.addTag(new Long(7), new Long(7));
+		
+		System.out.println(tagService.getTagListByNodeId(new Long(13)));
 	}
 
 	@Test
@@ -138,8 +116,8 @@ public class Test01 {
 	@Test
 	public void testJob2() {
 
-		Long id = new Long(1);
-		ContentTagModle tag = tagService.get(id);
+		//Long id = new Long(1);
+		ContentTagModle tag = tagService.get(1);
 		System.out.println(tag.getTagName());
 		// ScheduleJobVo scheduleJobVo =new ScheduleJobVo();
 		// scheduleJobVo.setAliasName("wtf110");

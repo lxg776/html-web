@@ -29,6 +29,14 @@ public class NodeDao extends DaoImpl<NodeModle, Serializable> {
 		sql = String.format(sql, fid, cid);
 		return sqlSessionTemplateASS.selectOne("getCountNodeRel", sql);
 	}
+	
+	public int addTag(Long tagId, Long nodeId,String status) {
+		String sql = "insert into s_node_tag_relation(tag_id,node_id,status)values(%d,%d,'%s')";
+		sql = String.format(sql, tagId, nodeId,status);
+		return excuse(sql);
+		//return sqlSessionTemplateASS.selectOne("getCountNodeRel", sql);
+	}
+	
 
 	public NodeVo getNodeVoByid(Long id) {
 		String sql = String.format(

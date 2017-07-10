@@ -54,101 +54,76 @@
 			</noscript>
 
 			<!-- start: Content -->
-			<div id="content" class="span11" style="min-height: 794px;">
-
+			<div id="content" class="span10">
 
 				<ul class="breadcrumb">
-					<li><i class="icon-home"></i> <a href="index.html">节点管理</a> <i
+					<li><i class="icon-home"></i> <a href="index.html">首页</a> <i
 						class="icon-angle-right"></i></li>
+					<li><a href="#">标签</a></li>
+					<i class="icon-angle-right"></i>
+					</li>
 					<li><a href="#">编辑</a></li>
 				</ul>
+				<div class="box span12" style="width: 800px;">
 
+					<div class="box-header" data-original-title>
+						<h2>
+							<i class="halflings-icon white edit"></i><span class="break"></span>添加标签
+						</h2>
 
-				<div class="row-fluid  ui-sortable">
-					<div class="box span12">
-						<!-- 新闻栏目 -->
-						<div class="box-content">
-
+					</div>
+					<!-- 新闻栏目 -->
+					<div class="box-content">
+						<form action="saveTag" method="post" class="form-horizontal">
 							<fieldset>
 
-								<div class="control-group">
-									<label class="control-label" for="typeahead">id </label>
-									<div class="controls">
-										<input type="text" class="span6 typeahead" id="typeahead"
-											disabled="disabled" name="sort" value="${node.id}"
-											data-provide="typeahead">
+								<c:if test="${tagModle.id!=null}">
+
+									<div class="control-group">
+										<label class="control-label" for="typeahead">id </label> <label
+											class="control-label" for="typeahead">${tagModle.id}
+										</label>
 									</div>
-								</div>
+								</c:if>
 
 								<div class="control-group">
 									<label class="control-label" for="typeahead">名称 </label>
 									<div class="controls">
 										<input type="text" class="span6 typeahead" id="typeahead"
-											disabled="disabled" name="node_name" value="${node.nodeName}"
+											name="tagName" value="${tagModle.tagName}"
 											data-provide="typeahead">
 
 									</div>
 								</div>
 
+								<div class="control-group">
+									<label class="control-label" for="typeahead">描述 </label>
+									<div class="controls">
+										<input type="text" class="span6 typeahead" id="typeahead"
+											value="${tagModle.remarks}" name="remarks"
+											data-provide="typeahead">
 
+									</div>
+								</div>
+								<input type="hidden" name="id" value="${tagModle.id}"> <input
+									type="hidden" name="keyWord" value="${tagModle.keyWord}">
 
-
+								<div class="form-actions">
+									<button type="submit" class="btn btn-primary">保存</button>
+									<button type="reset" class="btn">取消</button>
+								</div>
 							</fieldset>
-
-
-						</div>
-
+						</form>
 
 					</div>
 
 				</div>
-
-
-				<div class="row-fluid  ui-sortable">
-					<form action="addTag"  method="post" id="subform">
-						<div class="box span12">
-							<div class="box-header">
-								<h2>
-									<i class="halflings-icon white align-justify"></i><span
-										class="break"></span>标签选择
-								</h2>
-								<div class="box-icon">
-									<a href="#"  onclick="document.getElementById('subform').submit();return false" style="color: #FFF">完成</a>
-								</div>
-							</div>
-							<div class="box-content">
-								<table class="table table-bordered">
-									<thead>
-										<tr>
-											<th style="width: 100px;">选择</th>
-											<th style="width: 100px;">id</th>
-											<th style="width: 200px;">名称</th>
-											<th style="width: 300px;">描述</th>
-
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach var="item" items="${tagList}">
-											<tr>
-												<td><input type="checkbox" name="tagIds"
-													value="${item.id}" /></td>
-												<td>${item.id}</td>
-												<td class="center">${item.tagName}</td>
-												<td class="center">${item.remarks}</td>
-
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-
-								<input type="hidden" name="nodeId" value="${node.id}">
-					</form>
-				</div>
 			</div>
 		</div>
-		<!--/row-->
 	</div>
-	</div>
+
+
+
 
 	<div class="common-modal modal fade" id="common-Modal1" tabindex="-1"
 		role="dialog" aria-hidden="true">
@@ -159,12 +134,6 @@
 			</ul>
 		</div>
 	</div>
-	</div>
-
-
-
-
-
 
 	<div class="clearfix"></div>
 

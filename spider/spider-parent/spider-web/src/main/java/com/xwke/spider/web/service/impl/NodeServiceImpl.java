@@ -8,7 +8,9 @@ import javax.xml.soap.Node;
 import org.springframework.stereotype.Service;
 
 import com.xwke.spider.dao.NodeDao;
+import com.xwke.spider.modle.ContentTagModle;
 import com.xwke.spider.modle.NodeModle;
+import com.xwke.spider.vo.ContentTagVo;
 import com.xwke.spider.vo.NodeVo;
 import com.xwke.spider.web.service.NodeService;
 
@@ -99,6 +101,12 @@ public class NodeServiceImpl implements NodeService {
 		// TODO Auto-generated method stub
 
 		return nodeDao.update(model);
+	}
+
+	@Override
+	public int addTag(Long tagId, Long nodeId) {
+		// TODO Auto-generated method stub
+		return nodeDao.addTag(tagId, nodeId, ContentTagVo.STATUS_WORK);
 	}
 
 }

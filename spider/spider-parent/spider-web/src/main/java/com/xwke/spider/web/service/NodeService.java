@@ -44,6 +44,13 @@ public interface NodeService {
 	/**
 	 * 更新节点信息
 	 */
-	int updateNode(NodeModle model);
+	public int updateNode(NodeModle model);
+	
+	/**
+	 * 添加标签
+	 * @param tagId
+	 * @return
+	 */
+	public int addTag(Long tagId, Long nodeId);
 
 }

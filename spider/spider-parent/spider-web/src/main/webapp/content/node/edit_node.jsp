@@ -113,7 +113,7 @@
 									class="break"></span>标签列表
 							</h2>
 							<div class="box-icon">
-								<a href="${ctx}/node/toAdd" style="color: #FFF">添加标签</a>
+								<a href="${ctx}/node/toAddTag?nodeId=${node.id}" style="color: #FFF">添加标签</a>
 							</div>
 						</div>
 						<div class="box-content">
@@ -127,12 +127,12 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="item" items="${dataList}">
+									<c:forEach var="item" items="${tagList}">
 										<tr>
 											<td>${item.id}</td>
 											<td class="center">${item.tagName}</td>
 											<td class="center">${item.remarks}</td>
-											<td class="center"><a href="#" style="color: #F00">删除</a>
+											<td class="center"><a href="${ctx}/node/delTag?nodeId=${node.id}&&tagId=${item.id}" style="color: #F00">删除</a>
 											</td>
 										</tr>
 									</c:forEach>

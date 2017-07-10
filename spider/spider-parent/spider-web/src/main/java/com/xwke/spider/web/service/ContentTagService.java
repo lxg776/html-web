@@ -8,12 +8,18 @@ public interface ContentTagService {
 
 	public void addTag(ContentTagModle modle);
 
-	List<ContentTagModle> getTagList();
+	public List<ContentTagModle> getTagList();
 
-	void updateTag(ContentTagModle modle);
+	public void updateTag(ContentTagModle modle);
 
-	ContentTagModle get(Long id);
+	public ContentTagModle get(Integer id);
 
-	void deleteTag(ContentTagModle modle);
+	public void deleteTag(ContentTagModle modle);
+
+	public List<ContentTagModle> getTagListByNodeId(Long nodeId);
+
+	public List<ContentTagModle> getUnAddTagListByNodeId(Long nodeId);
+
+	public int delTagnodeRel(Long nodeId, Long tagId);
 
 }

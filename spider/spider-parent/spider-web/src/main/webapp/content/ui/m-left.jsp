@@ -6,7 +6,7 @@
 						<li><a href="${ctx}/news/columnList"><i class="icon-bar-chart"></i><span class="hidden-tablet">新闻栏目</span></a></li>	
 						<li><a href="${ctx}/job/list-schedule-job"><i class="icon-tasks"></i><span class="hidden-tablet">定时任务</span></a></li>
 						<li><a href="${ctx}/news/newsList"><i class="icon-envelope"></i><span class="hidden-tablet">新闻内容</span></a></li>
-						<li><a href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> UI Features</span></a></li>
+						<li><a href="${ctx}/node/list"><i class="icon-folder-open"></i><span class="hidden-tablet">节点管理</span></a></li>
 						<li><a href="widgets.html"><i class="icon-dashboard"></i><span class="hidden-tablet"> Widgets</span></a></li>
 						<li>
 							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Dropdown</span><span class="label label-important"> 3 </span></a>

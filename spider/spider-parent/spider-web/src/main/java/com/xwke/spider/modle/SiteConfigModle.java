@@ -2,7 +2,7 @@ package com.xwke.spider.modle;
 
 import com.xwke.base.core.annotation.po.FieldName;
 import com.xwke.base.core.annotation.po.TableName;
-import com.xwke.base.core.beans.Po;
+
 
 /**
  * 网站抓取相关配置信息
@@ -11,20 +11,22 @@ import com.xwke.base.core.beans.Po;
  *
  */
 @TableName(name = "s_site_config")
-public class SiteConfigModle extends Po{
+public class SiteConfigModle extends BaseModle{
 
-	private long id;
+	private Long id;
 
 	@FieldName(name = "c_jsontext")
 	private String configJsonText;
 	@FieldName(name = "c_alias")
 	private String alias;
 
-	public long getId() {
+	
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
