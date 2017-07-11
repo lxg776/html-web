@@ -81,7 +81,8 @@ create table s_node_tag_relation(
 )
 
 create table s_image_record (
-		id int(11) NOT NULL auto_increment,
+		id bigint(20) NOT NULL AUTO_INCREMENT,
+		`news_id` varchar(255) DEFAULT NULL,
 		`image_url` varchar(255) DEFAULT NULL,
 		`save_path` varchar(255) DEFAULT NULL,
 		`load_count` int(3),
