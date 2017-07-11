@@ -52,7 +52,7 @@ public class SiteConfigController {
 			service.delConfig(configMolde);
 		}
 
-		return "redirect:list";
+		return "redirect:configList";
 	}
 
 }

@@ -74,10 +74,10 @@
 					<div class="box-header">
 						<h2>
 							<i class="halflings-icon white align-justify"></i><span
-								class="break"></span>新闻栏目
+								class="break"></span>配置列表
 						</h2>
 						<div class="box-icon">
-							<a href="#" class="btn-setting" style="color: #FFF">添加栏目</a>
+							<a href="${ctx}/site/toSave?id=0" style="color: #FFF">添加配置</a>
 
 						</div>
 					</div>
@@ -95,7 +95,7 @@
 									<tr>
 									<td>${item.id}</td>
 									<td class="center">${item.alias}</td>
-									<td class="center"><a href="#" style="color: #F00">编辑</a>
+									<td class="center"><a href="${ctx}/site/toSave?id=${item.id}&&keyWord=edit" style="color: #F00">编辑</a>
 									</td>
 								</tr>
 								</c:forEach>
