@@ -65,7 +65,7 @@
 				<ul class="breadcrumb">
 					<li><i class="icon-home"></i> <a href="index.html">首页</a> <i
 						class="icon-angle-right"></i></li>
-					<li><a href="#">栏目列表</a></li>
+					<li><a href="#">新闻列表</a></li>
 					
 				</ul>
 
@@ -77,11 +77,47 @@
 								class="break"></span>新闻栏目
 						</h2>
 						<div class="box-icon">
-							<a href="#" class="btn-setting" style="color: #FFF">添加栏目</a>
+							<a href="#" class="btn-setting" style="color: #FFF">备用</a>
 
 						</div>
 					</div>
 					<div class="box-content">
+					
+							<form class="form-horizontal">
+								 <fieldset>
+								 	      <div class="control-group">
+								<label class="control-label" for="selectError1">节点选择</label>
+								<div class="controls">
+								  <select class="chosen-select"  data-placeholder="选择节点" multiple>
+									<option>a 1</option>
+									<option>a 2</option>
+									<option>ab 3</option>
+									<option>ac 4</option>
+									<option>a 5</option>
+								  </select>
+								</div>
+							  </div>
+								 </fieldset>
+							<div class="control-group">
+								<label class="control-label" for="selectError3">查询类型</label>
+								<div class="controls">
+								  <select id="selectError3">
+									<option>id</option>
+									<option>标题</option>
+								  </select>
+								</div>
+							  </div>
+							<div class="control-group">
+								<label class="control-label" for="appendedInputButton">查询内容</label>
+								<div class="controls">
+								  <div class="input-append">
+									<input id="appendedInputButton" size="16" type="text"><button class="btn" type="button">Search</button>
+								  </div>
+								</div>
+							  </div>  
+							</form>
+					
+					
 						<table class="table table-bordered table-striped table-condensed">
 							<thead>
 								<tr>
@@ -161,5 +197,16 @@
 	</footer>
 	<!-- start: JavaScript-->
 	<%@ include file="/common/s.jsp"%>
+	
+	<script type="text/javascript">
+	
+	$(".chosen-select").chosen({
+		no_results_text: "没有找到结果！",//搜索无结果时显示的提示
+	 		search_contains:true,   //关键字模糊搜索，设置为false，则只从开头开始匹配
+		allow_single_deselect:true, //是否允许取消选择
+			max_selected_options:6  //当select为多选时，最多选择个数
+		});
+	</script>
+
 </body>
 </html>

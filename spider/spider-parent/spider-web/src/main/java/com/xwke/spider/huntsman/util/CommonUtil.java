@@ -18,8 +18,10 @@ import com.xwke.base.core.sql.where.SqlUtil;
 import com.xwke.spider.huntsman.configuration.NewsConfiguration;
 import com.xwke.spider.huntsman.listener.DownImgListener;
 import com.xwke.spider.huntsman.thread.DownTask;
+import com.xwke.spider.modle.ImageRecordModle;
 import com.xwke.spider.modle.NewsModle;
 import com.xwke.spider.modle.PageOnterModle;
+import com.xwke.spider.web.service.ImageRecordService;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -54,7 +56,7 @@ public class CommonUtil {
 	 *            线程池
 	 */
 	public static void handleImagesByContent(NewsModle newsModle, List<String> imgUrls, NewsConfiguration config,
-			ThreadPoolTaskExecutor taskExecutor) {
+			ThreadPoolTaskExecutor taskExecutor, ImageRecordService imageRecordService) {
 
 		String content = newsModle.getContent();
 		List<String> thumbnails = new ArrayList();
@@ -106,7 +108,12 @@ public class CommonUtil {
 					@Override
 					public void onFail(String url) {
 						// TODO Auto-generated method stub
-						System.out.println("失败下载" + url);
+						ImageRecordModle modle = new ImageRecordModle();
+						modle.setImageUrl(url);
+						modle.setSavePath(filePath + "/" + fileName);
+						modle.setStatus("fail");
+						modle.setLoadCount(1);
+						imageRecordService.addImageRecord(modle);
 					}
 				}));
 			}

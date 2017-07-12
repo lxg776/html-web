@@ -10,11 +10,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 import org.springframework.stereotype.Component;
 
-import com.xwke.spider.dao.NewsCoumnDao;
+import com.xwke.spider.dao.ExecutorDao;
 import com.xwke.spider.dao.NewsDao;
 import com.xwke.spider.huntsman.JxGovPageHunter;
 import com.xwke.spider.huntsman.util.MyDataUtil;
-import com.xwke.spider.modle.NewsColumnModle;
+import com.xwke.spider.modle.ExecutorModle;
 import com.xwke.spider.quartz.model.ScheduleJob;
 import com.xwke.spider.quartz.vo.ScheduleJobVo;
 

@@ -129,10 +129,24 @@
 						<div class="form-group">
 							<label for="url" class="col-sm-2 control-label">任务执行url</label>
 							<div class="col-sm-8">
-								<input type="text" name="url" value="${scheduleJobVo.url}"
-									class="form-control">
+							<textarea name="url"  rows="30" cols="50" style="width: 600px;height: 400px;">${scheduleJobVo.url}</textarea>
+							
+								
 							</div>
 						</div>
+						
+							<div class="control-group">
+								<label class="control-label" for="selectError1">内容标签</label>
+								<div class="controls">
+								  <select class="chosen-select"  data-placeholder="选择节点" multiple>
+									<option>a 1</option>
+									<option>a 2</option>
+									<option>ab 3</option>
+									<option>ac 4</option>
+									<option>a 5</option>
+								  </select>
+								</div>
+							  </div>
 
 						<div class="form-group">
 							<label for="description" class="col-sm-2 control-label">任务描述</label>
@@ -185,5 +199,15 @@
 	</footer>
 	<!-- start: JavaScript-->
 	<%@ include file="/common/s.jsp"%>
+	
+	<script type="text/javascript">
+	
+	$(".chosen-select").chosen({
+		no_results_text: "没有找到结果！",//搜索无结果时显示的提示
+	 		search_contains:true,   //关键字模糊搜索，设置为false，则只从开头开始匹配
+		allow_single_deselect:true, //是否允许取消选择
+			max_selected_options:6  //当select为多选时，最多选择个数
+		});
+	</script>
 </body>
 </html>

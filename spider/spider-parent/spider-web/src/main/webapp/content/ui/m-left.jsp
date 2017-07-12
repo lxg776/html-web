@@ -3,10 +3,10 @@
 <div id="sidebar-left" class="span2">
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
-						<li><a href="${ctx}/news/columnList"><i class="icon-bar-chart"></i><span class="hidden-tablet">新闻栏目</span></a></li>	
+						<li><a href="${ctx}/node/list"><i class="icon-folder-open"></i><span class="hidden-tablet">节点管理</span></a></li>
 						<li><a href="${ctx}/job/list-schedule-job"><i class="icon-tasks"></i><span class="hidden-tablet">定时任务</span></a></li>
 						<li><a href="${ctx}/news/newsList"><i class="icon-envelope"></i><span class="hidden-tablet">新闻内容</span></a></li>
-						<li><a href="${ctx}/node/list"><i class="icon-folder-open"></i><span class="hidden-tablet">节点管理</span></a></li>
+						<li><a href="${ctx}/executor/list"><i class="icon-bar-chart"></i><span class="hidden-tablet">执行者</span></a></li>	
 						<li><a href="${ctx}/site/configList"><i class="icon-dashboard"></i><span class="hidden-tablet">抓取配置</span></a></li>
 						<li><a href="${ctx}/record/imagesList"><i class="icon-picture"></i><span class="hidden-tablet">图片下载记录</span></a></li>
 						<li>

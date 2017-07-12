@@ -14,7 +14,7 @@ import com.mysql.fabric.xmlrpc.base.Array;
 import com.xwke.base.core.beans.WherePrams;
 import com.xwke.spider.dao.NewsDao;
 import com.xwke.spider.huntsman.util.CommonUtil;
-import com.xwke.spider.modle.NewsColumnModle;
+import com.xwke.spider.modle.ExecutorModle;
 import com.xwke.spider.modle.NewsModle;
 import com.xwke.spider.modle.PageOnterModle;
 import com.xwke.spider.vo.NewsModleVo;
@@ -27,7 +27,7 @@ public class NewsServiceImpl implements NewsService {
 	NewsDao newsDao;
 
 	public PageOnterModle getNewsList(int pageNum) {
-		Page<NewsColumnModle> pageonter = PageHelper.startPage(pageNum, 20);
+		Page<ExecutorModle> pageonter = PageHelper.startPage(pageNum, 20);
 		List<NewsModle> newsList = newsDao.list(new WherePrams("column_id", "=", 0));
 		PageOnterModle page = CommonUtil.getPageOnter(pageonter);
 

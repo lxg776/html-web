@@ -1,7 +1,5 @@
 package com.xwke.spider.huntsman.util;
 
-
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -22,26 +20,21 @@ public class DownloadPictureUtil {
 	/**
 	 * 从网络上下载图片
 	 */
-	public static void downloadPicture(String url, String dirPath,
-			String filePath, DownImgListener listener) {
+	public static void downloadPicture(String url, String dirPath, String filePath, DownImgListener listener) {
 
 		DefaultHttpClient httpclient = new DefaultHttpClient();
 
 		HttpGet httpget = new HttpGet(url);
 
-		httpget.setHeader(
-				"User-Agent",
+		httpget.setHeader("User-Agent",
 				"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.79 Safari/537.1");
-		httpget.setHeader("Accept",
-				"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+		httpget.setHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
 
 		try {
 			HttpResponse resp = httpclient.execute(httpget);
 			if (HttpStatus.SC_OK == resp.getStatusLine().getStatusCode()) {
 				HttpEntity entity = resp.getEntity();
-
 				InputStream in = entity.getContent();
-
 				savePicToDisk(in, dirPath, filePath);
 
 			}
@@ -67,9 +60,9 @@ public class DownloadPictureUtil {
 	 * @param in
 	 * @param dirPath
 	 * @param filePath
+	 * @throws IOException
 	 */
-	private static void savePicToDisk(InputStream in, String dirPath,
-			String filePath) {
+	private static void savePicToDisk(InputStream in, String dirPath, String filePath) throws IOException {
 
 		try {
 			File dir = new File(dirPath);
@@ -78,7 +71,7 @@ public class DownloadPictureUtil {
 			}
 
 			// 文件真实路径
-			String realPath = dirPath.concat("/"+filePath);
+			String realPath = dirPath.concat("/" + filePath);
 			File file = new File(realPath);
 			if (file == null || !file.exists()) {
 				file.createNewFile();
@@ -93,14 +86,8 @@ public class DownloadPictureUtil {
 			fos.flush();
 			fos.close();
 
-		} catch (IOException e) {
-			e.printStackTrace();
 		} finally {
-			try {
-				in.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			in.close();
 		}
 	}
 

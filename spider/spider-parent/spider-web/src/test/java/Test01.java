@@ -18,14 +18,14 @@ import com.alibaba.fastjson.JSONArray;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.xwke.base.core.beans.WherePrams;
-import com.xwke.spider.dao.NewsCoumnDao;
+import com.xwke.spider.dao.ExecutorDao;
 import com.xwke.spider.dao.NewsDao;
 import com.xwke.spider.dao.NodeDao;
 import com.xwke.spider.dao.SiteConfigDao;
 import com.xwke.spider.huntsman.JxGovPageHunter;
 import com.xwke.spider.huntsman.job.ScheduleService;
 import com.xwke.spider.modle.ContentTagModle;
-import com.xwke.spider.modle.NewsColumnModle;
+import com.xwke.spider.modle.ExecutorModle;
 import com.xwke.spider.modle.NewsModle;
 import com.xwke.spider.modle.NodeModle;
 import com.xwke.spider.modle.PageOnterModle;
@@ -43,7 +43,7 @@ import net.coobird.thumbnailator.Thumbnails;
 		"classpath:spring/spring-mybatis.xml" })
 public class Test01 {
 	@Resource
-	NewsCoumnDao newsCoumnDao;
+	ExecutorDao newsCoumnDao;
 	@Resource
 	ScheduleService service;
 

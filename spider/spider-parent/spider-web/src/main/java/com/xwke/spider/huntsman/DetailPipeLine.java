@@ -10,10 +10,12 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONArray;
+import com.xwke.spider.dao.ImageRecordDao;
 import com.xwke.spider.dao.NewsDao;
 import com.xwke.spider.huntsman.configuration.NewsConfiguration;
 import com.xwke.spider.huntsman.util.CommonUtil;
 import com.xwke.spider.modle.NewsModle;
+import com.xwke.spider.web.service.ImageRecordService;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.ResultItems;
@@ -33,6 +35,9 @@ public class DetailPipeLine extends FilePipeline {
 
 	@Resource
 	NewsDao newDao;
+	
+	@Resource 
+	ImageRecordService imageRecordService;
 
 	@Override
 	public void process(ResultItems resultItems, Task task) {
@@ -75,7 +80,8 @@ public class DetailPipeLine extends FilePipeline {
 			newsModle.setSourceUrl(sourceUrl);
 			newsModle.setSource(source);
 			newsModle.setContent(htmlContent);
-			CommonUtil.handleImagesByContent(newsModle, imgUrls, config, taskExecutor);
+			
+			CommonUtil.handleImagesByContent(newsModle, imgUrls, config, taskExecutor,imageRecordService);
 			// 下载网上图片
 			newDao.addNews(newsModle);
 

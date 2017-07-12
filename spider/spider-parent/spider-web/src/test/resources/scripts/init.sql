@@ -16,7 +16,7 @@ CREATE TABLE s_news (
   PRIMARY KEY  (`id`)
 )
 
-CREATE TABLE s_news_column(
+CREATE TABLE s_executor(
   id int(11) NOT NULL auto_increment,
   c_name varchar(50) NOT NULL,
   c_describe varchar(100),

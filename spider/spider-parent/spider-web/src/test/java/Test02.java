@@ -6,7 +6,6 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.xwke.spider.modle.ImageRecordModle;
 import com.xwke.spider.web.service.ImageRecordService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -18,13 +17,13 @@ public class Test02 {
 
 	@Test
 	public void test01() {
-		ImageRecordModle modle = new ImageRecordModle();
-		modle.setNewsId(10);
-		modle.setImageUrl("http://www.baidu.com");
-		modle.setLoadCount(3);
-		modle.setSavePath("d://ww1/12/88");
-		modle.setStatus("success");
-		imageRecordService.addImageRecord(modle);
+//		ImageRecordModle modle = new ImageRecordModle();
+//		modle.setNewsId(10);
+//		modle.setImageUrl("http://www.baidu.com");
+//		modle.setLoadCount(3);
+//		modle.setSavePath("d://ww1/12/88");
+//		modle.setStatus("success");
+//		imageRecordService.addImageRecord(modle);
 		// nodeService.addTag(new Long(7), new Long(7));
 
 	}

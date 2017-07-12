@@ -54,11 +54,7 @@ public class NewsModle extends BaseModle {
 	 * 作者
 	 */
 	private String author;
-	/**
-	 * 栏目id
-	 */
-	@FieldName(name = "column_id")
-	private long columnId;
+
 
 	@FieldName(name = "pic_array")
 	private String imagesJsonStr;
@@ -167,13 +163,7 @@ public class NewsModle extends BaseModle {
 		this.author = author;
 	}
 
-	public long getColumnId() {
-		return columnId;
-	}
-
-	public void setColumnId(long columnId) {
-		this.columnId = columnId;
-	}
+	
 
 	public String getPubTime() {
 		return pubTime;

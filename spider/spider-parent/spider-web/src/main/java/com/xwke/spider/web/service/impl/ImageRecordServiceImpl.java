@@ -14,7 +14,7 @@ import com.xwke.base.core.beans.WherePrams;
 import com.xwke.spider.dao.ImageRecordDao;
 import com.xwke.spider.huntsman.util.CommonUtil;
 import com.xwke.spider.modle.ImageRecordModle;
-import com.xwke.spider.modle.NewsColumnModle;
+import com.xwke.spider.modle.ExecutorModle;
 import com.xwke.spider.modle.NewsModle;
 import com.xwke.spider.modle.PageOnterModle;
 import com.xwke.spider.modle.SiteConfigModle;
@@ -39,7 +39,7 @@ public class ImageRecordServiceImpl implements ImageRecordService {
 	
 	@Override
 	public PageOnterModle getList(int pageNum) {
-		Page<NewsColumnModle> pageonter = PageHelper.startPage(pageNum, 20);
+		Page<ExecutorModle> pageonter = PageHelper.startPage(pageNum, 20);
 		imageRecordDao.list(new WherePrams(null, null, null));
 		PageOnterModle page = CommonUtil.getPageOnter(pageonter);
 
