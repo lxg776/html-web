@@ -33,6 +33,8 @@ public class JxGovSpiderJobFactory extends QuartzJobBean {
 
 		JobDataMap mergedJobDataMap = context.getMergedJobDataMap();
 		ScheduleJob scheduleJob = (ScheduleJob) mergedJobDataMap.get(ScheduleJobVo.JOB_PARAM_KEY);
+		
+		
 		String urls[] = null;
 		if (scheduleJob.getUrl() != null) {
 			urls = scheduleJob.getUrl().split(",");

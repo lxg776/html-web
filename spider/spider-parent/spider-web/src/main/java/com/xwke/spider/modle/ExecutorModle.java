@@ -8,10 +8,100 @@ import com.xwke.base.core.beans.Po;
 public class ExecutorModle extends BaseModle {
 
 	private long id;
-	@FieldName(name="c_name")
+	@FieldName(name = "c_name")
 	private String name;
-	@FieldName(name="c_describe")
+	@FieldName(name = "c_describe")
 	private String executorDescribe;
+
+	// 详情 docment的选择表达
+	private String docmentSelector;
+
+	// 列表 docment的选择表达
+	private String listDocmentSelector;
+
+	/** 链接列表选择表达式 */
+	private String linksUrlSelector;
+
+	/** 标题表达式 */
+	private String titleSelector;
+
+	/** 标题选择表达式 */
+	private String dateSelector;
+
+	/** 标题选择表达式 */
+	private String authorSelector;
+	/** 来源选择表达式*/
+	private String sourceSelector;
+	/** 新闻图片选择表达式*/
+	private String imgUrlsSelector;
+	
+	
+	
+	
+
+	public String getImgUrlsSelector() {
+		return imgUrlsSelector;
+	}
+
+	public void setImgUrlsSelector(String imgUrlsSelector) {
+		this.imgUrlsSelector = imgUrlsSelector;
+	}
+
+	public String getSourceSelector() {
+		return sourceSelector;
+	}
+
+	public void setSourceSelector(String sourceSelector) {
+		this.sourceSelector = sourceSelector;
+	}
+
+	public String getDateSelector() {
+		return dateSelector;
+	}
+
+	public void setDateSelector(String dateSelector) {
+		this.dateSelector = dateSelector;
+	}
+
+	public String getAuthorSelector() {
+		return authorSelector;
+	}
+
+	public void setAuthorSelector(String authorSelector) {
+		this.authorSelector = authorSelector;
+	}
+
+	public String getTitleSelector() {
+		return titleSelector;
+	}
+
+	public void setTitleSelector(String titleSelector) {
+		this.titleSelector = titleSelector;
+	}
+
+	public String getLinksUrlSelector() {
+		return linksUrlSelector;
+	}
+
+	public void setLinksUrlSelector(String linksUrlSelector) {
+		this.linksUrlSelector = linksUrlSelector;
+	}
+
+	public String getDocmentSelector() {
+		return docmentSelector;
+	}
+
+	public void setDocmentSelector(String docmentSelector) {
+		this.docmentSelector = docmentSelector;
+	}
+
+	public String getListDocmentSelector() {
+		return listDocmentSelector;
+	}
+
+	public void setListDocmentSelector(String listDocmentSelector) {
+		this.listDocmentSelector = listDocmentSelector;
+	}
 
 	public long getId() {
 		return id;
@@ -36,13 +126,5 @@ public class ExecutorModle extends BaseModle {
 	public void setExecutorDescribe(String executorDescribe) {
 		this.executorDescribe = executorDescribe;
 	}
-
-
-
-
-
-	
-
-
 
 }

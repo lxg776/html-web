@@ -26,6 +26,7 @@ public class NewsServiceImpl implements NewsService {
 	@Resource
 	NewsDao newsDao;
 
+	@Override
 	public PageOnterModle getNewsList(int pageNum) {
 		Page<ExecutorModle> pageonter = PageHelper.startPage(pageNum, 20);
 		List<NewsModle> newsList = newsDao.list(new WherePrams("column_id", "=", 0));
@@ -40,6 +41,11 @@ public class NewsServiceImpl implements NewsService {
 		}
 		page.setDataList(voList);
 		return page;
+	}
+
+	@Override
+	public int addNews(NewsModle modle) {
+		return newsDao.addNews(modle);
 	}
 
 }

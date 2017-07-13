@@ -62,9 +62,9 @@ public class DetailPipeLine extends FilePipeline {
 			String text = Xsoup.compile("//div[@class='info']/span").evaluate(document).get().toString();
 			text = text.replaceAll("&nbsp;", "");
 			String date = text.substring(text.indexOf("<span>") + "<span>".length(), text.indexOf("来源："));
-			String source = text.substring(text.indexOf("来源：") + "来源：".length(), text.indexOf("评论："));
+			
 			System.out.println(date);
-			System.out.println(source);
+			//System.out.println(source);
 
 			String htmlContent = Xsoup.compile("//div[@class='main']").evaluate(document).getElements().html()
 					.toString();
@@ -76,9 +76,8 @@ public class DetailPipeLine extends FilePipeline {
 
 			newsModle.setTitle(title);
 			newsModle.setPubTime(date);
-			
 			newsModle.setSourceUrl(sourceUrl);
-			newsModle.setSource(source);
+		
 			newsModle.setContent(htmlContent);
 			
 			CommonUtil.handleImagesByContent(newsModle, imgUrls, config, taskExecutor,imageRecordService);

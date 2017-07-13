@@ -74,18 +74,7 @@ public class JxGovPageHunter implements PageProcessor {
 				jxGovConfig.setConfig(list.get(0).getConfigJsonText());
 			}
 		}
-
 		return jxGovConfig.getSite();
-	}
-
-	public static void main(String[] args) {
-		ApplicationContext ctx02 = new ClassPathXmlApplicationContext("classpath:/spring/spring-mybatis.xml");
-
-		JxGovPageHunter hunter = ctx02.getBean(JxGovPageHunter.class);
-
-		// hunter.crawl("
-		// http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=22,http://www.jingxi.gov.cn/index.php?m=content&c=index&a=lists&catid=26");
-
 	}
 
 }

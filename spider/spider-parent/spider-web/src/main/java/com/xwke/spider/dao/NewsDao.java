@@ -41,9 +41,11 @@ public class NewsDao extends DaoImpl<NewsModle, Serializable> {
 	 * 
 	 * @param newsModle
 	 */
-	public void addNews(NewsModle newsModle) {
+	public int addNews(NewsModle newsModle) {
 		if (!isExistBySource(newsModle.getSourceUrl())) {
-			add(newsModle);
+			return add(newsModle);
 		}
+
+		return -1;
 	}
 }
