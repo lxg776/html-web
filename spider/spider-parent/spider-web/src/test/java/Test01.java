@@ -37,6 +37,7 @@ import com.xwke.spider.web.service.NewsService;
 import com.xwke.spider.web.service.NodeService;
 
 import net.coobird.thumbnailator.Thumbnails;
+import us.codecraft.webmagic.selector.Html;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "classpath:spring/spring-beans.xml", "classpath:spring/spring-job.xml",
@@ -64,8 +65,8 @@ public class Test01 {
 
 	@Test
 	public void test01() {
-		//nodeService.addTag(new Long(7), new Long(7));
-		
+		// nodeService.addTag(new Long(7), new Long(7));
+
 		System.out.println(tagService.getTagListByNodeId(new Long(13)));
 	}
 
@@ -76,6 +77,8 @@ public class Test01 {
 
 		System.out.println(sql);
 	}
+
+	
 
 	//
 	// @Test
@@ -116,7 +119,7 @@ public class Test01 {
 	@Test
 	public void testJob2() {
 
-		//Long id = new Long(1);
+		// Long id = new Long(1);
 		ContentTagModle tag = tagService.get(1);
 		System.out.println(tag.getTagName());
 		// ScheduleJobVo scheduleJobVo =new ScheduleJobVo();

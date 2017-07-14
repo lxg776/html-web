@@ -17,6 +17,7 @@ import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
+import us.codecraft.webmagic.selector.Html;
 
 @Component
 public class JxGovPageHunter implements PageProcessor {
@@ -62,6 +63,7 @@ public class JxGovPageHunter implements PageProcessor {
 			String url = urls.get(i);
 			url = url.replace("amp;", "");
 			page.addTargetRequest(url);
+
 		}
 	}
 

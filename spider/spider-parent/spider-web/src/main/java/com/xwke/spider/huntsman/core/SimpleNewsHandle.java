@@ -77,14 +77,14 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 		NewsModle newsModle = new NewsModle();
 
 		// 标题
-		String title = Xsoup.compile(executor.getTitleSelector()).evaluate(mDocument).get().toString();
+		String title="";
 		if (!StringUtil.isBlank(executor.getTitleSelector())) {
-			title = Xsoup.compile(executor.getTitleSelector()).evaluate(mDocument).get().toString();
+			title = html.$(executor.getTitleSelector()).get();
 		}
 		// 发布时间
 		String date = "";
 		if (!StringUtil.isBlank(executor.getDateSelector())) {
-			date = Xsoup.compile(executor.getDateSelector()).evaluate(mDocument).get().toString();
+			title = html.$(executor.getDateSelector()).get();
 		}
 
 		// date = date.substring(date.indexOf("<span>") + "<span>".length(),
@@ -162,7 +162,11 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 	public ExecutorModle geExecutorModle(NewsConfiguration config) {
 		// TODO Auto-generated method stub
 		ExecutorModle executor = new ExecutorModle();
-
+		executor.setListDocmentSelector(".container .list");
+		executor.setLinksUrlSelector(".container .list li");
+		executor.setExecutorDescribe("靖西政府网");
+		executor.setTitleSelector(".show h1");
+		executor.setDateSelector(".show .info span");
 		return executor;
 	}
 

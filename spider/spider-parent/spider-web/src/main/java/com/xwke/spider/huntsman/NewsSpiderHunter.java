@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import com.xwke.base.core.beans.WherePrams;
 import com.xwke.spider.dao.SiteConfigDao;
 import com.xwke.spider.huntsman.configuration.NewsConfiguration;
+import com.xwke.spider.huntsman.core.SimpleNewsHandle;
 import com.xwke.spider.modle.ExecutorModle;
 import com.xwke.spider.modle.SiteConfigModle;
 
@@ -23,11 +24,13 @@ public class NewsSpiderHunter implements PageProcessor {
 	@Resource
 	SiteConfigDao siteConfigDao;
 	
+	@Resource
+	SimpleNewsHandle newsHandle;
+	
 	// 网站的配置
 	private NewsConfiguration config;
+
 	
-	// 内容解析者
-	private ExecutorModle executorModle;
 
 	public void crawl() {
 		Spider.create(this).addUrl(getSite().getDomain()).thread(20).run();
@@ -35,8 +38,9 @@ public class NewsSpiderHunter implements PageProcessor {
 
 	@Override
 	public void process(Page page) {
-		// TODO Auto-generated method stub
-
+	
+		//处理新闻
+		newsHandle.handleNewsByExeutor(config, page);
 	}
 
 	@Override
