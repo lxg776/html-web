@@ -12,8 +12,10 @@ public class ExectorVo extends ExecutorModle{
 	public final static String KEY_NEWSLIST="newsList"; 
 	public final static String KEY_NEWSDETAIL="detail"; 
 	public final static String KEY_TITLEL="title"; 
-
-	
+	public final static String KEY_PUB_DATE="pubDate";
+	public final static String KEY_AUTHOR="author"; 
+	public final static String KEY_SOURCE="source"; 
+	public final static String KEY_IMGURLS="imgurls"; 
 	
 	
 	public static String OPERATION_LOCATION="location"; //定位操作

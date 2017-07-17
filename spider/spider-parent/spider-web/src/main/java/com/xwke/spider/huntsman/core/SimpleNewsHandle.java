@@ -44,9 +44,9 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 	@Override
 	public boolean isNewsListPage(ExectorVo executor, Page page) {
 		Html html = page.getHtml();
-		String content = html.$(executor.getListDocmentSelector()).get();
+		Document content = getListDocument(executor, page);
 		// TODO Auto-generated method stub
-		if (StringUtil.isBlank(content)) {
+		if (null == content) {
 			return false;
 		} else {
 			return true;
@@ -155,41 +155,42 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 		NewsModle newsModle = new NewsModle();
 		// 操作集合
 		Map<String, List<DataOperationModle>> map = executor.getOperationMap();
+		// 标题
 		String title = "";
 		if (map.containsKey(ExectorVo.KEY_TITLEL)) {
 			title = (String) getResultByOperation(html, map.get(ExectorVo.KEY_TITLEL));
 		}
-
-		// 标题
-
-		if (!StringUtil.isBlank(executor.getTitleSelector())) {
-			title = html.$(executor.getTitleSelector()).get();
-		}
 		// 发布时间
 		String date = "";
-		if (!StringUtil.isBlank(executor.getDateSelector())) {
-			title = html.$(executor.getDateSelector()).get();
+		if (map.containsKey(ExectorVo.KEY_PUB_DATE)) {
+			date = (String) getResultByOperation(html, map.get(ExectorVo.KEY_PUB_DATE));
 		}
-
-		// date = date.substring(date.indexOf("<span>") + "<span>".length(),
-		// date.indexOf("来源："));
-
+		// 作者
 		String author = "";
-		if (!StringUtil.isBlank(executor.getAuthorSelector())) {
-			author = Xsoup.compile(executor.getAuthorSelector()).evaluate(mDocument).get().toString();
+		if (map.containsKey(ExectorVo.KEY_AUTHOR)) {
+			author = (String) getResultByOperation(html, map.get(ExectorVo.KEY_AUTHOR));
 		}
-
 		String source = "";
-		if (!StringUtil.isBlank(executor.getSourceSelector())) {
-			source = Xsoup.compile(executor.getSourceSelector()).evaluate(mDocument).get().toString();
+		if (map.containsKey(ExectorVo.KEY_SOURCE)) {
+			source = (String) getResultByOperation(html, map.get(ExectorVo.KEY_SOURCE));
 		}
 
 		String sourceUrl = page.getUrl().get();
 
 		List<String> imgUrls = null;
+		if (map.containsKey(ExectorVo.KEY_IMGURLS)) {
+			List<DataOperationModle> operationList = map.get(ExectorVo.KEY_SOURCE);
+			if (operationList != null && operationList.size() > 0) {
+				DataOperationModle operationModle = operationList.get(operationList.size() - 1);
+				imgUrls = (String) getResultByOperation(html, map.get(ExectorVo.KEY_IMGURLS));
+				
+			}
+
+		
+		}
 
 		if (!StringUtil.isBlank(executor.getSourceSelector())) {
-			imgUrls = html.$(executor.getImgUrlsSelector()).regex("<img(?:\\s+.+?)*?\\s+src=\"([^\"]*?)\".+>").all();
+			
 			source = Xsoup.compile(executor.getSourceSelector()).evaluate(mDocument).get().toString();
 		}
 
@@ -227,8 +228,18 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 	@Override
 	public Document getDocument(ExectorVo executor, Page page) {
 		Html html = page.getHtml();
-		String content = html.$(executor.getDocmentSelector()).get();
-		Document document = Jsoup.parse(content);
+		// 操作集合
+		String content = null;
+		Map<String, List<DataOperationModle>> map = executor.getOperationMap();
+		if (map != null) {
+			if (map.containsKey(ExectorVo.KEY_NEWSDETAIL)) {
+				content = (String) getResultByOperation(html, map.get(ExectorVo.KEY_NEWSDETAIL));
+			}
+		}
+		Document document = null;
+		if (!StringUtil.isBlank(content)) {
+			document = Jsoup.parse(content);
+		}
 		// TODO Auto-generated method stub
 		return document;
 	}
@@ -238,14 +249,19 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 		// TODO Auto-generated method stub
 		Html html = page.getHtml();
 		// 操作集合
+		String content = null;
 		Map<String, List<DataOperationModle>> map = executor.getOperationMap();
 		if (map != null) {
-
+			if (map.containsKey(ExectorVo.KEY_NEWSLIST)) {
+				content = (String) getResultByOperation(html, map.get(ExectorVo.KEY_NEWSLIST));
+			}
 		}
 
-		String content = html.$(executor.getListDocmentSelector()).get();
+		Document document = null;
+		if (!StringUtil.isBlank(content)) {
+			document = Jsoup.parse(content);
+		}
 
-		Document document = Jsoup.parse(content);
 		return document;
 	}
 
@@ -253,11 +269,11 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 	public ExectorVo geExectorVo(NewsConfiguration config) {
 		// TODO Auto-generated method stub
 		ExectorVo executor = new ExectorVo();
-		executor.setListDocmentSelector(".container .list");
-		executor.setLinksUrlSelector(".container .list li");
-		executor.setExecutorDescribe("靖西政府网");
-		executor.setTitleSelector(".show h1");
-		executor.setDateSelector(".show .info span");
+		// executor.setListDocmentSelector(".container .list");
+		// executor.setLinksUrlSelector(".container .list li");
+		// executor.setExecutorDescribe("靖西政府网");
+		// executor.setTitleSelector(".show h1");
+		// executor.setDateSelector(".show .info span");
 		return executor;
 	}
 
