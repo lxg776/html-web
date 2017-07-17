@@ -12,12 +12,26 @@ public class ExecutorModle extends BaseModle {
 	private String name;
 	@FieldName(name = "c_describe")
 	private String executorDescribe;
+	
+	private String type;
+	
+	private String linkUrl;
+	
+	
+	
+	
+	
 
 	// 详情 docment的选择表达
 	private String docmentSelector;
 
 	// 列表 docment的选择表达
 	private String listDocmentSelector;
+	
+	
+	
+	
+	
 
 	/** 链接列表选择表达式 */
 	private String linksUrlSelector;

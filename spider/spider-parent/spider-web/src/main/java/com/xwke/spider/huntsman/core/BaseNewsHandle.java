@@ -1,13 +1,13 @@
 package com.xwke.spider.huntsman.core;
 
-import org.jsoup.nodes.Document;
 import java.util.List;
 
+import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Repository;
-
 import com.xwke.spider.huntsman.configuration.NewsConfiguration;
-import com.xwke.spider.modle.ExecutorModle;
 import com.xwke.spider.modle.NewsModle;
+import com.xwke.spider.vo.ExectorVo;
+
 import us.codecraft.webmagic.Page;
 
 /**
@@ -24,10 +24,10 @@ public abstract class BaseNewsHandle implements NewsHandle {
 	protected Document mListDocument;
 
 	/** 抓取的配置 */
-	protected ExecutorModle executor;
+	protected ExectorVo executor;
 
 	public void handleNewsByExeutor(NewsConfiguration config, Page page) {
-		executor = geExecutorModle(config);
+		executor = geExectorVo(config);
 		if (executor == null) {
 			return;
 		}
@@ -64,7 +64,7 @@ public abstract class BaseNewsHandle implements NewsHandle {
 	 * @param page
 	 * @return
 	 */
-	public abstract boolean isNewsListPage(ExecutorModle executor, Page page);
+	public abstract boolean isNewsListPage(ExectorVo executor, Page page);
 
 	/**
 	 * 获取新闻列表链接
@@ -73,7 +73,7 @@ public abstract class BaseNewsHandle implements NewsHandle {
 	 * @param page
 	 * @return
 	 */
-	public abstract List<String> getLinksUrl(ExecutorModle executor, Page page);
+	public abstract List<String> getLinksUrl(ExectorVo executor, Page page);
 
 	/**
 	 * 获取新闻列表链接
@@ -91,7 +91,7 @@ public abstract class BaseNewsHandle implements NewsHandle {
 	 * @param page
 	 * @return
 	 */
-	public abstract NewsModle getNewsByExeutor(ExecutorModle executor, Page page);
+	public abstract NewsModle getNewsByExeutor(ExectorVo executor, Page page);
 
 	/**
 	 * 获取新闻列表链接
@@ -100,7 +100,7 @@ public abstract class BaseNewsHandle implements NewsHandle {
 	 * @param page
 	 * @return
 	 */
-	public abstract boolean isNewsDetailPage(ExecutorModle executor, Page page);
+	public abstract boolean isNewsDetailPage(ExectorVo executor, Page page);
 
 	/**
 	 * 获取新闻列表链接
@@ -111,9 +111,9 @@ public abstract class BaseNewsHandle implements NewsHandle {
 	 */
 	public abstract void saveNews(NewsModle newsModle);
 
-	public abstract Document getDocument(ExecutorModle executor, Page page);
+	public abstract Document getDocument(ExectorVo executor, Page page);
 
-	public abstract Document getListDocument(ExecutorModle executor, Page page);
+	public abstract Document getListDocument(ExectorVo executor, Page page);
 
 	/**
 	 * 获取抓取配置
@@ -121,6 +121,6 @@ public abstract class BaseNewsHandle implements NewsHandle {
 	 * @param config
 	 * @return
 	 */
-	public abstract ExecutorModle geExecutorModle(NewsConfiguration config);
+	public abstract ExectorVo geExectorVo(NewsConfiguration config);
 
 }
