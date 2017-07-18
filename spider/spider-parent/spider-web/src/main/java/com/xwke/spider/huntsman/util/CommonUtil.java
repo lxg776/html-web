@@ -33,8 +33,9 @@ public class CommonUtil {
 		pageOnterModle.setPageNum(page.getPageNum());
 		pageOnterModle.setPages(page.getPages());
 		pageOnterModle.setTotal(page.getTotal());
-		pageOnterModle.setDataList(page.getResult());
-
+		if (null != page.getResult() && page.getResult().size() > 0) {
+			pageOnterModle.setDataList(page.getResult());
+		}
 		return pageOnterModle;
 	}
 

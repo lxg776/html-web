@@ -90,3 +90,12 @@ create table s_image_record (
 		`status` varchar(10), 
 		PRIMARY KEY  (`id`)
 )
+
+create table s_executor (
+  		id bigint(20) NOT NULL AUTO_INCREMENT,
+		`c_name` varchar(255) ,	
+		`c_describe` varchar(255),
+		`c_type` varchar(255),
+		`link_url`  varchar(255),
+		PRIMARY KEY  (`id`)
+)

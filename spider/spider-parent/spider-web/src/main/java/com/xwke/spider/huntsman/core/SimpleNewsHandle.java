@@ -182,26 +182,24 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 			List<DataOperationModle> operationList = map.get(ExectorVo.KEY_SOURCE);
 			if (operationList != null && operationList.size() > 0) {
 				DataOperationModle operationModle = operationList.get(operationList.size() - 1);
-				imgUrls = (String) getResultByOperation(html, map.get(ExectorVo.KEY_IMGURLS));
-				
+				imgUrls = html.$(operationModle.getParam1()).regex("<img(?:\\s+.+?)*?\\s+src=\"([^\"]*?)\".+>").all();
 			}
-
-		
 		}
 
-		if (!StringUtil.isBlank(executor.getSourceSelector())) {
-			
-			source = Xsoup.compile(executor.getSourceSelector()).evaluate(mDocument).get().toString();
-		}
+		// if (!StringUtil.isBlank(executor.getSourceSelector())) {
+		//
+		// source =
+		// Xsoup.compile(executor.getSourceSelector()).evaluate(mDocument).get().toString();
+		// }
 
 		newsModle.setTitle(title);
 		newsModle.setPubTime(date);
 		newsModle.setAuthor(author);
 		newsModle.setSource(source);
 		newsModle.setSourceUrl(sourceUrl);
-
-		CommonUtil.handleImagesByContent(newsModle, imgUrls, config, taskExecutor, imageRecordService);
-
+		if (imgUrls != null && imgUrls.size() > 0) {
+			CommonUtil.handleImagesByContent(newsModle, imgUrls, config, taskExecutor, imageRecordService);
+		}
 		return newsModle;
 	}
 
@@ -209,9 +207,9 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 	public boolean isNewsDetailPage(ExectorVo executor, Page page) {
 		// TODO Auto-generated method stub
 		Html html = page.getHtml();
-		String content = html.$(executor.getListDocmentSelector()).get();
+		Document content = getListDocument(executor, page);
 		// TODO Auto-generated method stub
-		if (StringUtil.isBlank(content)) {
+		if (null == content) {
 			return false;
 		} else {
 			return true;

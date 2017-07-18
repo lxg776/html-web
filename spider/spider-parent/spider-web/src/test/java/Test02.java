@@ -16,10 +16,10 @@ public class Test02 {
 				"reading a book"));
 		
 		
-		String text=page.getHtml().regex("(?<=\\bre)\\w+\\b").get();
+		//String text=page.getHtml().regex("(?<=\\bre)\\w+\\b").get();
 		
 		
-		System.out.println(text);
+		//System.out.println(text);
 	}
 
 }

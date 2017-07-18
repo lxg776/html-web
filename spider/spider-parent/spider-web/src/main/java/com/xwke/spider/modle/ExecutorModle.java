@@ -12,9 +12,9 @@ public class ExecutorModle extends BaseModle {
 	private String name;
 	@FieldName(name = "c_describe")
 	private String executorDescribe;
-
+	@FieldName(name = "c_type")
 	private String type;
-
+	@FieldName(name = "link_url")
 	private String linkUrl;
 
 	// // 详情 docment的选择表达
@@ -67,5 +67,23 @@ public class ExecutorModle extends BaseModle {
 	public void setExecutorDescribe(String executorDescribe) {
 		this.executorDescribe = executorDescribe;
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getLinkUrl() {
+		return linkUrl;
+	}
+
+	public void setLinkUrl(String linkUrl) {
+		this.linkUrl = linkUrl;
+	}
+	
+	
 
 }

@@ -29,14 +29,10 @@
 
 
 <script type="text/javascript">
-	
-	var listUrl="${ctx}"+"/executor/list?pageNum=";
+	var listUrl = "${ctx}" + "/executor/list?pageNum=";
 	function getDataList(pageNum) {
-		window.location.href=listUrl+pageNum;
+		window.location.href = listUrl + pageNum;
 	}
-
-
-
 </script>
 
 </head>
@@ -81,7 +77,7 @@
 								class="break"></span>执行者
 						</h2>
 						<div class="box-icon">
-							<a href="#" class="btn-setting" style="color: #FFF">添加栏目</a>
+							<a href="${ctx}/executor/toSave" style="color: #FFF">添加</a>
 
 						</div>
 					</div>
@@ -96,14 +92,14 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="item" items="${page.dataList}" >
+								<c:forEach var="item" items="${page.dataList}">
 									<tr>
-									<td>${item.id}</td>
-									<td class="center">${item.name}</td>
-									<td class="center">${item.executorDescribe}</td>
-									<td class="center"><a href="#" style="color: #F00">删除</a>
-									</td>
-								</tr>
+										<td>${item.id}</td>
+										<td class="center">${item.name}</td>
+										<td class="center">${item.executorDescribe}</td>
+										<td class="center"><a href="${ctx}/executor/toSave?keyWord=edit&&id=${item.id}" style="color: #0033FF">编辑</a>
+										/<a href="${ctx}/executor/toEditOperation?id=${item.id}" style="color: #F00">解析规则</a></td>
+									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
