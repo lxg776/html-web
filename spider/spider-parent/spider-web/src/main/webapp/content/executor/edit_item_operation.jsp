@@ -54,97 +54,122 @@
 			</noscript>
 
 			<!-- start: Content -->
-<div id="content" class="span10">
-			
-			
-			<ul class="breadcrumb">
-				<li>
-					<i class="icon-home"></i>
-					<a href="index.html">Home</a>
-					<i class="icon-angle-right"></i> 
-				</li>
-				<li>
-					<i class="icon-edit"></i>
-					<a href="#">Forms</a>
-				</li>
-			</ul>
-			
-			<div class="row-fluid sortable">
-				<div class="box span12">
-					<div data-original-title="" class="box-header">
-						<h2><i class="halflings-icon white edit"></i><span class="break"></span>抓取配置</h2>
-						<div class="box-icon">
-							<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
-							<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
-							<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+			<div id="content" class="span10">
+
+
+				<ul class="breadcrumb">
+					<li><i class="icon-home"></i> <a href="index.html">执行者</a> <i
+						class="icon-angle-right"></i></li>
+					<li><i class="icon-edit"></i> <a href="#">解析规则</a></li>
+					<li><i class="icon-edit"></i> <a href="#">操作编辑</a></li>
+				</ul>
+
+				<div class="row-fluid sortable">
+					<div class="box span12">
+						<div data-original-title="" class="box-header">
+							<h2>
+								<i class="halflings-icon white edit"></i><span class="break"></span>抓取配置
+							</h2>
+							<div class="box-icon">
+								<a href="#" class="btn-setting"><i
+									class="halflings-icon white wrench"></i></a> <a href="#"
+									class="btn-minimize"><i
+									class="halflings-icon white chevron-up"></i></a> <a href="#"
+									class="btn-close"><i class="halflings-icon white remove"></i></a>
+							</div>
+						</div>
+						<div class="box-content">
+							<form class="form-horizontal" action="saveOperation" method="post">
+								<h3>${vo.editFileShow}</h3>
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label" for="selectError3">操作类型</label>
+										<div class="controls">
+											<select id="selectError3" name="type">
+												<option value="loaction">元素定位</option>
+												<option value="cut">字符串截取</option>
+												<option value="gettext">正则过滤</option>
+											</select>
+										</div>
+									</div>
+
+
+									<div class="control-group">
+										<label class="control-label" for="typeahead">权重</label>
+										<div class="controls">
+											<input type="text" name="weight" value="${vo.weight}" class="span6 typeahead" id="typeahead"
+												data-provide="typeahead" data-items="4">
+
+										</div>
+									</div>
+
+
+									<div class="control-group">
+										<label class="control-label" for="typeahead">参数1</label>
+										<div class="controls">
+											<input type="text" class="span6 typeahead" id="typeahead"
+												name="param1" value="${vo.param1}"  data-provide="typeahead" data-items="4">
+
+										</div>
+									</div>
+
+
+
+									<div class="control-group">
+										<label class="control-label" for="typeahead">参数2</label>
+										<div class="controls">
+											<input type="text" class="span6 typeahead" id="typeahead"
+												name="param2" value="${vo.param2}"  data-provide="typeahead" data-items="4">
+
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="typeahead">参数3</label>
+										<div class="controls">
+											<input type="text" class="span6 typeahead" id="typeahead"
+												name="param3" value="${vo.param3}" data-provide="typeahead" data-items="4">
+
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="typeahead">参数4</label>
+										<div class="controls">
+											<input type="text" class="span6 typeahead" id="typeahead"
+												name="param4" value="${vo.param4}" data-provide="typeahead" data-items="4">
+
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="typeahead">参数5</label>
+										<div class="controls">
+											<input type="text" class="span6 typeahead" id="typeahead"
+												name="param5" value="${vo.param5}" data-provide="typeahead" data-items="4">
+
+										</div>
+									</div>
+
+									<div class="form-actions">
+										<button type="submit" class="btn btn-primary">保存</button>
+									</div>
+								</fieldset>
+								
+								<c:if test="${vo.keyWord != null }">
+									<input type="hidden" name="keyWord" value="${vo.keyWord}">
+								</c:if>
+									
+									<input type="hidden" name="fileName" value="${vo.fileName}">
+									<input type="hidden" name="executorId" value="${vo.executorId}">
+								
+							</form>
+
 						</div>
 					</div>
-					<div class="box-content">
-						<form class="form-horizontal">
-                        <h1>新闻标题</h1>
-						  <fieldset>
-                        <div class="control-group">
-								<label class="control-label" for="selectError3">操作类型</label>
-								<div class="controls">
-								  <select id="selectError3">
-									<option>元素定位</option>
-                                 <option>正则过滤</option>
-									<option>字符串截取</option>
-								  </select>
-								</div>
-							  </div>
-                          
-                          
-							<div class="control-group">
-							  <label class="control-label" for="typeahead">参数1</label>
-							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead" data-provide="typeahead" data-items="4">
-								
-							  </div>
-							</div>
-							
-	
+					<!--/span-->
 
-<div class="control-group">
-							  <label class="control-label" for="typeahead">参数2</label>
-							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead" data-provide="typeahead" data-items="4">
-								
-							  </div>
-							</div>
-<div class="control-group">
-							  <label class="control-label" for="typeahead">参数3</label>
-							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead" data-provide="typeahead" data-items="4">
-								
-							  </div>
-							</div>
-<div class="control-group">
-							  <label class="control-label" for="typeahead">参数4</label>
-							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead" data-provide="typeahead" data-items="4">
-								
-							  </div>
-							</div><div class="control-group">
-							  <label class="control-label" for="typeahead">参数5</label>
-							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead" data-provide="typeahead" data-items="4">
-								
-							  </div>
-							</div>
-							
-							<div class="form-actions">
-							  <button type="submit" class="btn btn-primary">保存</button>
-							</div>
-						  </fieldset>
-						</form>   
+				</div>
+				<!--/row-->
 
-					</div>
-				</div><!--/span-->
-
-			</div><!--/row-->
-
-	</div>
+			</div>
 		</div>
 	</div>
 

@@ -26,6 +26,7 @@ CREATE TABLE s_executor(
 CREATE TABLE s_data_operation(
   id int(11) NOT NULL auto_increment,
   weight  int(11),
+  file_name varchar(100),
   o_type varchar(100),
   param1 varchar(255),
   param2 varchar(255),
@@ -34,6 +35,14 @@ CREATE TABLE s_data_operation(
   param5 varchar(255),
   r_type varchar(255),
   
+  PRIMARY KEY  (`id`)
+)
+
+CREATE TABLE s_executor_operation_rel(
+  id int(11) NOT NULL auto_increment,
+  executor_id int(11),
+  operation_id int(11),
+  UNIQUE KEY `u_key` (`executor_id`,`operation_id`), 
   PRIMARY KEY  (`id`)
 )
 

@@ -16,10 +16,33 @@ CREATE TABLE s_news (
   PRIMARY KEY  (`id`)
 )
 
-CREATE TABLE s_news_column(
+CREATE TABLE s_executor(
   id int(11) NOT NULL auto_increment,
   c_name varchar(50) NOT NULL,
   c_describe varchar(100),
+  PRIMARY KEY  (`id`)
+)
+
+CREATE TABLE s_data_operation(
+  id int(11) NOT NULL auto_increment,
+  weight  int(11),
+  file_name varchar(100),
+  o_type varchar(100),
+  param1 varchar(255),
+  param2 varchar(255),
+  param3 varchar(255),
+  param4 varchar(255),
+  param5 varchar(255),
+  r_type varchar(255),
+  
+  PRIMARY KEY  (`id`)
+)
+
+CREATE TABLE s_executor_operation_rel(
+  id int(11) NOT NULL auto_increment,
+  executor_id int(11),
+  operation_id int(11),
+  UNIQUE KEY `u_key` (`executor_id`,`operation_id`), 
   PRIMARY KEY  (`id`)
 )
 
@@ -43,7 +66,6 @@ CREATE TABLE `SCHEDULE_JOB` (
 create table s_content_tag(
 	 id int(11) NOT NULL auto_increment,
 	 `tag_name` varchar(255) DEFAULT NULL,
-	 `remarks` varchar(255),
 	 PRIMARY KEY  (`id`)
 )
 
@@ -82,20 +104,11 @@ create table s_node_tag_relation(
 )
 
 create table s_image_record (
-  		id bigint(20) NOT NULL AUTO_INCREMENT,
-		`news_id` bigint(20) ,	
+		id bigint(20) NOT NULL AUTO_INCREMENT,
+		`news_id` varchar(255) DEFAULT NULL,
 		`image_url` varchar(255) DEFAULT NULL,
 		`save_path` varchar(255) DEFAULT NULL,
 		`load_count` int(3),
 		`status` varchar(10), 
-		PRIMARY KEY  (`id`)
-)
-
-create table s_executor (
-  		id bigint(20) NOT NULL AUTO_INCREMENT,
-		`c_name` varchar(255) ,	
-		`c_describe` varchar(255),
-		`c_type` varchar(255),
-		`link_url`  varchar(255),
 		PRIMARY KEY  (`id`)
 )

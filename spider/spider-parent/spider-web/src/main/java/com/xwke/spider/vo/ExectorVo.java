@@ -16,7 +16,7 @@ public class ExectorVo extends ExecutorModle {
 	public final static String KEY_IMGURLS = "imgurls";
 
 	public static String OPERATION_LOCATION = "location"; // 定位操作
-	public static String OPERATION_CUT = "cut"; // 定位操作
+	public static String OPERATION_CUT = "cut"; // 字符串截取
 	public static String OPERATION_GET_TEXT = "gettext"; // 获取text操作 过滤文本
 
 	private String keyWord;
@@ -29,14 +29,16 @@ public class ExectorVo extends ExecutorModle {
 		this.keyWord = keyWord;
 	}
 
-	private Map<String, List<DataOperationModle>> operationMap;
+	private Map<String, List<DataOperationVo>> operationMap;
 
-	public Map<String, List<DataOperationModle>> getOperationMap() {
+	public Map<String, List<DataOperationVo>> getOperationMap() {
 		return operationMap;
 	}
 
-	public void setOperationMap(Map<String, List<DataOperationModle>> operationMap) {
+	public void setOperationMap(Map<String, List<DataOperationVo>> operationMap) {
 		this.operationMap = operationMap;
 	}
+
+	
 
 }

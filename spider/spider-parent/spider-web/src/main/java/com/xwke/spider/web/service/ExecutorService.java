@@ -16,4 +16,10 @@ public interface ExecutorService {
 
 	public DataOperationVo getDataOperationById(long id);
 
+	public void addDataOperation(DataOperationVo vo);
+	
+	public void updateDataOperation(DataOperationVo vo);
+	
+	public ExectorVo getExecutorAndDataOperationById(long id);
+
 }

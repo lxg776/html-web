@@ -18,6 +18,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.xwke.base.core.beans.WherePrams;
+import com.xwke.spider.dao.DataOperationDao;
 import com.xwke.spider.dao.ExecutorDao;
 import com.xwke.spider.dao.NewsDao;
 import com.xwke.spider.dao.NodeDao;
@@ -42,7 +43,7 @@ import us.codecraft.webmagic.selector.Html;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "classpath:spring/spring-beans.xml", "classpath:spring/spring-job.xml",
 		"classpath:spring/spring-mybatis.xml" })
-public class Test01 {
+public class TestSql {
 	@Resource
 	ExecutorDao newsCoumnDao;
 	@Resource
@@ -63,11 +64,14 @@ public class Test01 {
 	@Resource
 	NodeDao nodeDao;
 
+	@Resource
+	DataOperationDao operationDao;
+
 	@Test
 	public void test01() {
 		// nodeService.addTag(new Long(7), new Long(7));
 
-		System.out.println(tagService.getTagListByNodeId(new Long(13)));
+	//	operationDao.addRelByOperationAndExector(2, 3);
 	}
 
 	@Test
@@ -77,8 +81,6 @@ public class Test01 {
 
 		System.out.println(sql);
 	}
-
-	
 
 	//
 	// @Test

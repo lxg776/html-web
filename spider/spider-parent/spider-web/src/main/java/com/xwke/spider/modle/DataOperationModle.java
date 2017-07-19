@@ -1,26 +1,47 @@
 package com.xwke.spider.modle;
 
+import com.xwke.base.core.annotation.po.FieldName;
 import com.xwke.base.core.annotation.po.TableName;
 
 @TableName(name = "s_data_operation")
 public class DataOperationModle extends BaseModle {
-	
-	
+
 	private Integer id;
-	
-	
+
+	private Integer weight;
+	@FieldName(name="o_type")
 	private String type;
+
+	public Integer getWeight() {
+		return weight;
+	}
+
+	public void setWeight(Integer weight) {
+		this.weight = weight;
+	}
 	
+	@FieldName(name="file_name")
+	private String fileName;
+	
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	@FieldName(name="param1")
 	private String param1;
-	
+	@FieldName(name="param2")
 	private String param2;
-	
+	@FieldName(name="param3")
 	private String param3;
-	
+	@FieldName(name="param4")
 	private String param4;
-	
+	@FieldName(name="param5")
 	private String param5;
 	
+	@FieldName(name="r_type")
 	private String returnType;
 
 	public Integer getId() {
@@ -86,10 +107,5 @@ public class DataOperationModle extends BaseModle {
 	public void setReturnType(String returnType) {
 		this.returnType = returnType;
 	}
-	
-	
-
-
-
 
 }

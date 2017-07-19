@@ -1,6 +1,7 @@
 package com.xwke.spider.web.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -69,6 +70,54 @@ public class ExecutorServiceImpl implements ExecutorService {
 		// TODO Auto-generated method stub
 		DataOperationModle modle = dataOperationDao.get(id);
 		DataOperationVo vo = modle.getTargetObject(DataOperationVo.class);
+
+		return vo;
+	}
+
+	/**
+	 * 添加操作
+	 */
+	@Override
+	public void addDataOperation(DataOperationVo vo) {
+		// TODO Auto-generated method stub
+		DataOperationModle modle = vo.getTargetObject(DataOperationModle.class);
+		dataOperationDao.addLocal(modle);
+		dataOperationDao.addRelByOperationAndExector(vo.getExecutorId(), modle.getId());
+
+	}
+
+	@Override
+	public void updateDataOperation(DataOperationVo vo) {
+		// TODO Auto-generated method stub
+		DataOperationModle modle = vo.getTargetObject(DataOperationModle.class);
+		dataOperationDao.update(modle);
+	}
+
+	@Override
+	public ExectorVo getExecutorAndDataOperationById(long id) {
+		ExecutorModle executorModle = executorDao.get(id);
+		ExectorVo vo = executorModle.getTargetObject(ExectorVo.class);
+
+		String sql = String.format(
+				"select o.id,o.weight,o.file_name as fileName,o.o_type as type , o.param1,o.param2, o.param3, o.param4, o.param5, o.r_type as rtype from s_data_operation as o join (select executor_id,operation_id from s_executor_operation_rel where executor_id =%d) as r on o.id=r.operation_id;",
+				id);
+		List<Map<String, Object>> mapList = executorDao.listBySql(sql);
+		
+		
+		
+		
+
+		if (null != mapList && mapList.size() > 0) {
+			for (Map itemMap : mapList) {
+				DataOperationVo data = CommonUtil.injectBean(DataOperationVo.class, itemMap);
+				String fileName = data.getFileName();
+				
+
+				System.out.println(data.getFileName());
+			}
+		}
+
+		// TODO Auto-generated method stub
 		return vo;
 	}
 

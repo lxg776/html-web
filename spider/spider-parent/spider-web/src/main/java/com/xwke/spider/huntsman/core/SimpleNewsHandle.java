@@ -15,15 +15,15 @@ import org.springframework.stereotype.Component;
 import com.xwke.spider.huntsman.configuration.NewsConfiguration;
 import com.xwke.spider.huntsman.util.CommonUtil;
 import com.xwke.spider.huntsman.util.HtmlUtil;
-import com.xwke.spider.modle.DataOperationModle;
+
 import com.xwke.spider.modle.NewsModle;
+import com.xwke.spider.vo.DataOperationVo;
 import com.xwke.spider.vo.ExectorVo;
 import com.xwke.spider.web.service.ImageRecordService;
 import com.xwke.spider.web.service.NewsService;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.selector.Html;
-import us.codecraft.xsoup.Xsoup;
 
 @Component
 public class SimpleNewsHandle extends BaseNewsHandle {
@@ -58,10 +58,10 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 	public List<String> getLinksUrl(ExectorVo executor, Page page) {
 		// TODO Auto-generated method stub
 		Html html = page.getHtml();
-		Map<String, List<DataOperationModle>> map = executor.getOperationMap();
+		Map<String, List<DataOperationVo>> map = executor.getOperationMap();
 		if (null != html && null != map) {
 			if (map.containsKey(ExectorVo.KEY_NEWSLIST)) {
-				List<DataOperationModle> operationList = map.get(ExectorVo.KEY_NEWSLIST);
+				List<DataOperationVo> operationList = map.get(ExectorVo.KEY_NEWSLIST);
 				String result = (String) getResultByOperation(html, operationList);
 				Html resultHtml = new Html(result);
 				List<String> urls = resultHtml.regex("<a(?:\\s+.+?)*?\\s+href=\"([^\"]*?)\".+>(.*?)</a>").all();
@@ -89,11 +89,11 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 		return linkUrls;
 	}
 
-	private Object getResultByOperation(Html html, List<DataOperationModle> operationList) {
+	private Object getResultByOperation(Html html, List<DataOperationVo> operationList) {
 		String result = null;
 		if (html != null && operationList != null && operationList.size() > 0) {
 
-			for (DataOperationModle operation : operationList) {
+			for (DataOperationVo operation : operationList) {
 				if (ExectorVo.OPERATION_LOCATION.equals(operation.getType())) {
 					result = getLocationOperation(html, operation);
 				} else if (ExectorVo.OPERATION_CUT.equals(operation.getType())) {
@@ -124,7 +124,7 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 	/*
 	 * 正则定位
 	 */
-	private String getLocationOperation(Html html, DataOperationModle operation) {
+	private String getLocationOperation(Html html, DataOperationVo operation) {
 		String result = "";
 		if (null != operation) {
 			result = html.$(operation.getParam1()).get();
@@ -137,7 +137,7 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 	/*
 	 * 字符串截取
 	 */
-	private String getValueByOperation(String str, DataOperationModle operation) {
+	private String getValueByOperation(String str, DataOperationVo operation) {
 		String result = "";
 		if (null != operation && !StringUtil.isBlank(str) && !StringUtil.isBlank(operation.getParam1())
 				&& !StringUtil.isBlank(operation.getParam2())) {
@@ -154,7 +154,7 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 		Html html = page.getHtml();
 		NewsModle newsModle = new NewsModle();
 		// 操作集合
-		Map<String, List<DataOperationModle>> map = executor.getOperationMap();
+		Map<String, List<DataOperationVo>> map = executor.getOperationMap();
 		// 标题
 		String title = "";
 		if (map.containsKey(ExectorVo.KEY_TITLEL)) {
@@ -179,9 +179,9 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 
 		List<String> imgUrls = null;
 		if (map.containsKey(ExectorVo.KEY_IMGURLS)) {
-			List<DataOperationModle> operationList = map.get(ExectorVo.KEY_SOURCE);
+			List<DataOperationVo> operationList = map.get(ExectorVo.KEY_SOURCE);
 			if (operationList != null && operationList.size() > 0) {
-				DataOperationModle operationModle = operationList.get(operationList.size() - 1);
+				DataOperationVo operationModle = operationList.get(operationList.size() - 1);
 				imgUrls = html.$(operationModle.getParam1()).regex("<img(?:\\s+.+?)*?\\s+src=\"([^\"]*?)\".+>").all();
 			}
 		}
@@ -228,7 +228,7 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 		Html html = page.getHtml();
 		// 操作集合
 		String content = null;
-		Map<String, List<DataOperationModle>> map = executor.getOperationMap();
+		Map<String, List<DataOperationVo>> map = executor.getOperationMap();
 		if (map != null) {
 			if (map.containsKey(ExectorVo.KEY_NEWSDETAIL)) {
 				content = (String) getResultByOperation(html, map.get(ExectorVo.KEY_NEWSDETAIL));
@@ -248,7 +248,7 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 		Html html = page.getHtml();
 		// 操作集合
 		String content = null;
-		Map<String, List<DataOperationModle>> map = executor.getOperationMap();
+		Map<String, List<DataOperationVo>> map = executor.getOperationMap();
 		if (map != null) {
 			if (map.containsKey(ExectorVo.KEY_NEWSLIST)) {
 				content = (String) getResultByOperation(html, map.get(ExectorVo.KEY_NEWSLIST));

@@ -104,8 +104,8 @@
 											<div class="control-group">
 
 												<label class="control-label" for="typeahead">新闻图片数据操作</label>
-												<button class="btn btn-small btn-danger"
-													style="margin-top: 4px; margin-left: 16px;">添加操作</button>
+												<a class="btn btn-small btn-danger" href="${ctx}/executor/toOperationEdit?fileName=newsImages&&executorId=${vo.id}"
+													style="margin-top: 4px; margin-left: 16px;">添加操作</a>
 
 												<div style="width: 1000px;">
 													<table class="table table-bordered">
@@ -125,7 +125,7 @@
 																<td class="center">Member</td>
 																<td class="center"><span
 																	class="label label-success">Active</span></td>
-																<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
+																<td class="center"><a href="executor/edit_item_operation?editFile = newsImg">编辑</a>/<a href="#">删除</a>
 																</td>
 															</tr>
 

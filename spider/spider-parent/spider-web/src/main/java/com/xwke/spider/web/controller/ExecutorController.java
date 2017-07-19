@@ -7,6 +7,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.github.pagehelper.util.StringUtil;
 import com.xwke.spider.vo.DataOperationVo;
 import com.xwke.spider.vo.ExectorVo;
 import com.xwke.spider.web.service.ExecutorService;
@@ -43,8 +45,10 @@ public class ExecutorController {
 	@RequestMapping(value = "/executor/toEditOperation", method = RequestMethod.GET)
 	public String toEditOperation(ExectorVo vo, ModelMap modelMap) {
 
-		ExectorVo returnVo = executorService.getExecutorById(vo.getId());
+		ExectorVo returnVo = executorService.getExecutorAndDataOperationById(vo.getId());
+		
 		modelMap.addAttribute("vo", returnVo);
+		
 		return "executor/edit_rule";
 
 	}
@@ -63,15 +67,36 @@ public class ExecutorController {
 
 	@RequestMapping(value = "/executor/toOperationEdit", method = RequestMethod.GET)
 	public String toOperationEdit(DataOperationVo vo, ModelMap modelMap) {
+		DataOperationVo returnVo = null;
+		if (vo.getId() != null) {
+			returnVo = executorService.getDataOperationById(vo.getId());
 
-		if (vo != null && vo.getId() != null) {
-			DataOperationVo returnVo = executorService.getDataOperationById(vo.getId());
-			returnVo.setKeyWord(vo.getKeyWord());
-			modelMap.addAttribute("vo", returnVo);
 		}
 
+		if (returnVo == null) {
+			returnVo = vo;
+		}
+		returnVo.setKeyWord(vo.getKeyWord());
+		returnVo.setExecutorId(vo.getExecutorId());
+		if (!StringUtil.isEmpty(returnVo.getFileName())) {
+			String editFile = returnVo.getEditFile();
+			if (DataOperationVo.FILE_NEWSIMGS.equals(editFile)) {
+				returnVo.setEditFileShow("新闻图片");
+			}
+		}
+		modelMap.addAttribute("vo", returnVo);
 		return "executor/edit_item_operation";
+	}
 
+	@RequestMapping(value = "/executor/saveOperation", method = RequestMethod.POST)
+	public String saveOperation(DataOperationVo vo) {
+		if ("edit".equals(vo.getKeyWord())) {
+			executorService.updateDataOperation(vo);
+		} else {
+			executorService.addDataOperation(vo);
+		}
+		// 返回编辑列表
+		return "redirect:toEditOperation?id=" + vo.getExecutorId();
 	}
 
 }
