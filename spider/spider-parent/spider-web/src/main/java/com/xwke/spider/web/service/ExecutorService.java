@@ -22,4 +22,8 @@ public interface ExecutorService {
 	
 	public ExectorVo getExecutorAndDataOperationById(long id);
 
+	
+
+	public void delDataOperation(int exectorId, int operationId);
+
 }

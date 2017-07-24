@@ -46,9 +46,9 @@ public class ExecutorController {
 	public String toEditOperation(ExectorVo vo, ModelMap modelMap) {
 
 		ExectorVo returnVo = executorService.getExecutorAndDataOperationById(vo.getId());
-		
+
 		modelMap.addAttribute("vo", returnVo);
-		
+
 		return "executor/edit_rule";
 
 	}
@@ -92,9 +92,18 @@ public class ExecutorController {
 	public String saveOperation(DataOperationVo vo) {
 		if ("edit".equals(vo.getKeyWord())) {
 			executorService.updateDataOperation(vo);
+		} else if ("del".equals(vo.getKeyWord())) {
+			executorService.delDataOperation(vo.getExecutorId(), vo.getId());
 		} else {
 			executorService.addDataOperation(vo);
 		}
+		// 返回编辑列表
+		return "redirect:toEditOperation?id=" + vo.getExecutorId();
+	}
+
+	@RequestMapping(value = "/executor/delOperation", method = RequestMethod.GET)
+	public String delOperation(DataOperationVo vo) {
+		executorService.delDataOperation(vo.getExecutorId(), vo.getId());
 		// 返回编辑列表
 		return "redirect:toEditOperation?id=" + vo.getExecutorId();
 	}

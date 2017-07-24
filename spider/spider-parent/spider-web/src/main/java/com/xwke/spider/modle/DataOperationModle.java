@@ -8,18 +8,20 @@ public class DataOperationModle extends BaseModle {
 
 	private Integer id;
 
-	private Integer weight;
+	private int weight;
+	
 	@FieldName(name="o_type")
 	private String type;
 
-	public Integer getWeight() {
+	
+	
+	public int getWeight() {
 		return weight;
 	}
 
-	public void setWeight(Integer weight) {
+	public void setWeight(int weight) {
 		this.weight = weight;
 	}
-	
 	@FieldName(name="file_name")
 	private String fileName;
 	

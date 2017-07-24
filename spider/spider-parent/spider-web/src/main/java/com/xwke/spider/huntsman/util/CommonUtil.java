@@ -36,6 +36,11 @@ public class CommonUtil {
 		if (null != page.getResult() && page.getResult().size() > 0) {
 			pageOnterModle.setDataList(page.getResult());
 		}
+		
+		if(null!=pageOnterModle.getDataList()){
+			pageOnterModle.setDataFla(true);
+		}
+		
 		return pageOnterModle;
 	}
 

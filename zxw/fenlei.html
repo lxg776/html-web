@@ -26,10 +26,47 @@
 
 
 <div class="top-nav">
-  <div class="container" style="height:150px;"><div class="fl" style="padding-top:16px;">
+  <div class="container rel" style="height:150px;"><div class="fl" style="padding-top:16px;">
            	<img src="image/zx_logo.jpg"/>
+            
+  	<div class="search-part">
+        <div class="search-type">
+        	<ul>
+            	<li class="item selected">商品</li>
+              <li class="item">工人</li>
+            	
+            </ul>
         </div>
-        <div class="fr" style="padding-top:110px;padding-right:16px;">
+        
+        <div class="search-area fl">
+        	<form>
+        		<div class="input-d"><input name="search" value="123211">   </div>
+        		<div class="button-d"><button type="submit">搜索</button>  </div>
+        	</form>
+        </div>
+        
+       <div class="search-hotword">
+        	<ul>
+            	<li class="item"><a href="#" class="a1">家具</a></li>
+              <li class="item"><a href="#" class="a2">电视柜</a></li>
+              <li class="item"><a href="#" class="a1">橱柜</a></li>
+              <li class="item"><a href="#" class="a1">瓷砖</a></li>
+              <li class="item"><a href="#" class="a1">门窗</a></li>
+            </ul>
+        </div>
+        
+        
+        
+        </div>
+            
+        </div>
+        
+
+        
+        
+        
+        
+        <div class="abs" style=" top:10px; right:8px;">
            <span>电话热线:<a>6226666</a></span>
         </div></div>
 
@@ -53,7 +90,7 @@
 
 </div>
 <div class="fl-p1">
- <div class="container rel">
+ <div class="container">
  			<!-- left-->
  			<div class="left frame">
             <div class="title gray-bg">所有分类</div>
@@ -366,13 +403,7 @@ $(window).resize(function () {          //当浏览器大小变化时
 	//chageSize();
 });
 
-$(document).ready(function(){
-	
-	var height = $(".fl-p1 .right").height();
-	
-	$(".fl-p1").css("height",height);
-	//chageSize();
-});
+
 
 </script>
 

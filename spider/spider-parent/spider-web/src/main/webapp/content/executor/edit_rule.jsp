@@ -54,370 +54,410 @@
 			</noscript>
 
 			<!-- start: Content -->
-				<div class="box-content">
-
-					<div id="content" class="span10">
 
 
-						<ul class="breadcrumb">
-							<li><i class="icon-home"></i> <a href="index.html">执行者</a>
-								<i class="icon-angle-right"></i></li>
-							<li><i class="icon-edit"></i> <a href="#">编辑</a></li>
-						</ul>
+			<div id="content" class="span10">
 
-						<div class="row-fluid sortable">
-							<div class="box span12">
-								<div data-original-title="" class="box-header">
-									<h2>
-										<i class="halflings-icon white edit"></i><span class="break"></span>抓取配置
-									</h2>
-									<div class="box-icon">
-										<a href="#" class="btn-setting"><i
-											class="halflings-icon white wrench"></i></a> <a href="#"
-											class="btn-minimize"><i
-											class="halflings-icon white chevron-up"></i></a> <a href="#"
-											class="btn-close"><i class="halflings-icon white remove"></i></a>
+
+				<ul class="breadcrumb">
+					<li><i class="icon-home"></i> <a href="index.html">执行者</a> <i
+						class="icon-angle-right"></i></li>
+					<li><i class="icon-edit"></i> <a href="#">编辑</a></li>
+				</ul>
+
+				<div class="row-fluid sortable">
+					<div class="box span12">
+						<div data-original-title="" class="box-header">
+							<h2>
+								<i class="halflings-icon white edit"></i><span class="break"></span>抓取配置
+							</h2>
+							<div class="box-icon">
+								<a href="#" class="btn-setting"><i
+									class="halflings-icon white wrench"></i></a> <a href="#"
+									class="btn-minimize"><i
+									class="halflings-icon white chevron-up"></i></a> <a href="#"
+									class="btn-close"><i class="halflings-icon white remove"></i></a>
+							</div>
+						</div>
+						<div class="box-content">
+							<form class="form-horizontal">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label" for="typeahead">别名</label>
+										<div class="controls">
+											<input type="text" class="span6 typeahead" id="typeahead"
+												value="${vo.name}" data-provide="typeahead" data-items="4"
+												disabled="disabled">
+
+										</div>
 									</div>
-								</div>
-								<div class="box-content">
-									<form class="form-horizontal">
-										<fieldset>
-											<div class="control-group">
-												<label class="control-label" for="typeahead">别名</label>
-												<div class="controls">
-													<input type="text" class="span6 typeahead" id="typeahead"
-												 value="${vo.name}" data-provide="typeahead"
+
+									<div class="control-group">
+										<label class="control-label" for="typeahead">测试连接</label>
+										<div class="controls">
+											<input type="text" class="span6 typeahead" id="typeahead"
+												value="${vo.linkUrl}" data-provide="typeahead"
 												data-items="4" disabled="disabled">
 
-												</div>
-											</div>
+										</div>
+									</div>
 
-											<div class="control-group">
-												<label class="control-label" for="typeahead">测试连接</label>
-												<div class="controls">
-													<input type="text" class="span6 typeahead" id="typeahead"
-													value="${vo.linkUrl}"	data-provide="typeahead" data-items="4" disabled="disabled">
+									<div class="control-group">
 
-												</div>
-											</div>
+										<label class="control-label" for="typeahead">新闻图片数据操作</label>
+										<a class="btn btn-small btn-danger"
+											href="${ctx}/executor/toOperationEdit?fileName=newsImages&&executorId=${vo.id}"
+											style="margin-top: 4px; margin-left: 16px;">添加操作</a>
 
-											<div class="control-group">
-
-												<label class="control-label" for="typeahead">新闻图片数据操作</label>
-												<a class="btn btn-small btn-danger" href="${ctx}/executor/toOperationEdit?fileName=newsImages&&executorId=${vo.id}"
-													style="margin-top: 4px; margin-left: 16px;">添加操作</a>
-
-												<div style="width: 1000px;">
-													<table class="table table-bordered">
-														<thead>
-															<tr>
-																<th>操作类型</th>
-																<th>参数</th>
-																<th>返回类型</th>
-																<th>权重</th>
-																<th>操作</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td></td>
-																<td class="center">2012/01/01</td>
-																<td class="center">Member</td>
-																<td class="center"><span
-																	class="label label-success">Active</span></td>
-																<td class="center"><a href="executor/edit_item_operation?editFile = newsImg">编辑</a>/<a href="#">删除</a>
-																</td>
-															</tr>
-
-														</tbody>
-													</table>
+										<div style="width: 1000px;">
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th>操作类型</th>
+														<th>参数</th>
+														<th>返回类型</th>
+														<th>权重</th>
+														<th>操作</th>
+													</tr>
+												</thead>
 
 
-												</div>
+												<tbody>
+													<c:forEach items="${vo.operationMap.newsImages}" var="item">
+														<tr>
+															<c:if test="${item.type == 'loaction'}">
+																<td>元素定位</td>
+															</c:if>
+															<c:if test="${item.type == 'cut'}">
+																<td>字符串截取</td>
+															</c:if>
+															<c:if test="${item.type == 'gettext'}">
+																<td>正则过滤</td>
+															</c:if>
+															<td class="center">${item.param1}<br />${item.param2}<br />${item.param3}<br />${item.param4}<br />${item.param5}</td>
+															<td class="center">${item.returnType}</td>
+															<td class="center">${item.weight}</td>
 
-											</div>
-											<div class="control-group">
+															<td class="center"><a
+																href="${ctx}/executor/toOperationEdit?fileName=newsImages&&executorId=${vo.id}&&id=${item.id}&&keyWord=edit">编辑</a>/
+																<a
+																href="${ctx}/executor/delOperation?executorId=${vo.id}&&id=${item.id}">删除</a>
 
-												<label class="control-label" for="typeahead">新闻列表数据操作</label>
-												<button class="btn btn-small btn-danger"
-													style="margin-top: 4px; margin-left: 16px;">添加操作</button>
-
-												<div style="width: 1000px;">
-													<table class="table table-bordered">
-														<thead>
-															<tr>
-																<th>操作类型</th>
-																<th>参数</th>
-																<th>返回类型</th>
-																<th>权重</th>
-																<th>操作</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td></td>
-																<td class="center">2012/01/01</td>
-																<td class="center">Member</td>
-																<td class="center"><span
-																	class="label label-success">Active</span></td>
-																<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
-																</td>
-															</tr>
-
-														</tbody>
-													</table>
+															</td>
+														</tr>
+													</c:forEach>
+												</tbody>
+											</table>
 
 
-												</div>
+										</div>
 
-											</div>
+									</div>
+									<div class="control-group">
 
-											<div class="control-group">
+										<label class="control-label" for="typeahead">新闻列表数据操作</label>
+										<a class="btn btn-small btn-danger"
+											href="${ctx}/executor/toOperationEdit?fileName=newsList&&executorId=${vo.id}"
+											style="margin-top: 4px; margin-left: 16px;">添加操作</a>
 
-												<label class="control-label" for="typeahead">标题数据操作</label>
-												<button class="btn btn-small btn-danger"
-													style="margin-top: 4px; margin-left: 16px;">添加操作</button>
+										<div style="width: 1000px;">
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th>操作类型</th>
+														<th>参数</th>
+														<th>返回类型</th>
+														<th>权重</th>
+														<th>操作</th>
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach items="${vo.operationMap.newsList}" var="item">
+														<tr>
+															<c:if test="${item.type == 'loaction'}">
+																<td>元素定位</td>
+															</c:if>
+															<c:if test="${item.type == 'cut'}">
+																<td>字符串截取</td>
+															</c:if>
+															<c:if test="${item.type == 'gettext'}">
+																<td>正则过滤</td>
+															</c:if>
+															<td class="center">${item.param1}<br />${item.param2}<br />${item.param3}<br />${item.param4}<br />${item.param5}</td>
+															<td class="center">${item.returnType}</td>
+															<td class="center">${item.weight}</td>
 
-												<div style="width: 1000px;">
-													<table class="table table-bordered">
-														<thead>
-															<tr>
-																<th>操作类型</th>
-																<th>参数</th>
-																<th>返回类型</th>
-																<th>权重</th>
-																<th>操作</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td></td>
-																<td class="center">2012/01/01</td>
-																<td class="center">Member</td>
-																<td class="center"><span
-																	class="label label-success">Active</span></td>
-																<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
-																</td>
-															</tr>
+															<td class="center"><a
+																href="${ctx}/executor/toOperationEdit?fileName=newsList&&executorId=${vo.id}&&id=${item.id}&&keyWord=edit">编辑</a>/
+																<a
+																href="${ctx}/executor/delOperation?executorId=${vo.id}&&id=${item.id}">删除</a>
 
-														</tbody>
-													</table>
-
-
-												</div>
-
-											</div>
-
-											<div class="control-group">
-
-												<label class="control-label" for="typeahead">发布时间操作</label>
-												<button class="btn btn-small btn-danger"
-													style="margin-top: 4px; margin-left: 16px;">添加操作</button>
-
-												<div style="width: 1000px;">
-													<table class="table table-bordered">
-														<thead>
-															<tr>
-																<th>操作类型</th>
-																<th>参数</th>
-																<th>返回类型</th>
-																<th>权重</th>
-																<th>操作</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td></td>
-																<td class="center">2012/01/01</td>
-																<td class="center">Member</td>
-																<td class="center"><span
-																	class="label label-success">Active</span></td>
-																<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
-																</td>
-															</tr>
-
-														</tbody>
-													</table>
+															</td>
+														</tr>
+													</c:forEach>
+												</tbody>
+											</table>
 
 
-												</div>
+										</div>
 
-											</div>
+									</div>
 
-											<div class="control-group">
+									<div class="control-group">
 
-												<label class="control-label" for="typeahead">作者数据操作</label>
-												<button class="btn btn-small btn-danger"
-													style="margin-top: 4px; margin-left: 16px;">添加操作</button>
+										<label class="control-label" for="typeahead">标题数据操作</label>
+										<a class="btn btn-small btn-danger"
+											href="${ctx}/executor/toOperationEdit?fileName=title&&executorId=${vo.id}"
+											style="margin-top: 4px; margin-left: 16px;">添加操作</a>
 
-												<div style="width: 1000px;">
-													<table class="table table-bordered">
-														<thead>
-															<tr>
-																<th>操作类型</th>
-																<th>参数</th>
-																<th>返回类型</th>
-																<th>权重</th>
-																<th>操作</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td></td>
-																<td class="center">2012/01/01</td>
-																<td class="center">Member</td>
-																<td class="center"><span
-																	class="label label-success">Active</span></td>
-																<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
-																</td>
-															</tr>
+										<div style="width: 1000px;">
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th>操作类型</th>
+														<th>参数</th>
+														<th>返回类型</th>
+														<th>权重</th>
+														<th>操作</th>
+													</tr>
+												</thead>
+										`<tbody>
+													<c:forEach items="${vo.operationMap.title}" var="item">
+														<tr>
+															<c:if test="${item.type == 'loaction'}">
+																<td>元素定位</td>
+															</c:if>
+															<c:if test="${item.type == 'cut'}">
+																<td>字符串截取</td>
+															</c:if>
+															<c:if test="${item.type == 'gettext'}">
+																<td>正则过滤</td>
+															</c:if>
+															<td class="center">${item.param1}<br />${item.param2}<br />${item.param3}<br />${item.param4}<br />${item.param5}</td>
+															<td class="center">${item.returnType}</td>
+															<td class="center">${item.weight}</td>
 
-														</tbody>
-													</table>
+															<td class="center"><a
+																href="${ctx}/executor/toOperationEdit?fileName=title&&executorId=${vo.id}&&id=${item.id}&&keyWord=edit">编辑</a>/
+																<a
+																href="${ctx}/executor/delOperation?executorId=${vo.id}&&id=${item.id}">删除</a>
 
-
-												</div>
-
-											</div>
-
-											<div class="control-group">
-
-												<label class="control-label" for="typeahead">作者数据操作</label>
-												<button class="btn btn-small btn-danger"
-													style="margin-top: 4px; margin-left: 16px;">添加操作</button>
-
-												<div style="width: 1000px;">
-													<table class="table table-bordered">
-														<thead>
-															<tr>
-																<th>操作类型</th>
-																<th>参数</th>
-																<th>返回类型</th>
-																<th>权重</th>
-																<th>操作</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td></td>
-																<td class="center">2012/01/01</td>
-																<td class="center">Member</td>
-																<td class="center"><span
-																	class="label label-success">Active</span></td>
-																<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
-																</td>
-															</tr>
-
-														</tbody>
-													</table>
+															</td>
+														</tr>
+													</c:forEach>
+												</tbody>
+											</table>
 
 
-												</div>
+										</div>
 
-											</div>
+									</div>
 
+									<div class="control-group">
 
-											<div class="control-group">
+										<label class="control-label" for="typeahead">发布时间操作</label>
+										<button class="btn btn-small btn-danger"
+											style="margin-top: 4px; margin-left: 16px;">添加操作</button>
 
-												<label class="control-label" for="typeahead">作者数据操作</label>
-												<button class="btn btn-small btn-danger"
-													style="margin-top: 4px; margin-left: 16px;">添加操作</button>
+										<div style="width: 1000px;">
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th>操作类型</th>
+														<th>参数</th>
+														<th>返回类型</th>
+														<th>权重</th>
+														<th>操作</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td></td>
+														<td class="center">2012/01/01</td>
+														<td class="center">Member</td>
+														<td class="center"><span class="label label-success">Active</span></td>
+														<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
+														</td>
+													</tr>
 
-												<div style="width: 1000px;">
-													<table class="table table-bordered">
-														<thead>
-															<tr>
-																<th>操作类型</th>
-																<th>参数</th>
-																<th>返回类型</th>
-																<th>权重</th>
-																<th>操作</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td></td>
-																<td class="center">2012/01/01</td>
-																<td class="center">Member</td>
-																<td class="center"><span
-																	class="label label-success">Active</span></td>
-																<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
-																</td>
-															</tr>
-
-														</tbody>
-													</table>
+												</tbody>
+											</table>
 
 
-												</div>
+										</div>
 
-											</div>
+									</div>
 
+									<div class="control-group">
 
-											<div class="control-group">
+										<label class="control-label" for="typeahead">作者数据操作</label>
+										<button class="btn btn-small btn-danger"
+											style="margin-top: 4px; margin-left: 16px;">添加操作</button>
 
-												<label class="control-label" for="typeahead">来源数据操作</label>
-												<button class="btn btn-small btn-danger"
-													style="margin-top: 4px; margin-left: 16px;">添加操作</button>
+										<div style="width: 1000px;">
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th>操作类型</th>
+														<th>参数</th>
+														<th>返回类型</th>
+														<th>权重</th>
+														<th>操作</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td></td>
+														<td class="center">2012/01/01</td>
+														<td class="center">Member</td>
+														<td class="center"><span class="label label-success">Active</span></td>
+														<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
+														</td>
+													</tr>
 
-												<div style="width: 1000px;">
-													<table class="table table-bordered">
-														<thead>
-															<tr>
-																<th>操作类型</th>
-																<th>参数</th>
-																<th>返回类型</th>
-																<th>权重</th>
-																<th>操作</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td></td>
-																<td class="center">2012/01/01</td>
-																<td class="center">Member</td>
-																<td class="center"><span
-																	class="label label-success">Active</span></td>
-																<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
-																</td>
-															</tr>
-
-														</tbody>
-													</table>
+												</tbody>
+											</table>
 
 
-												</div>
+										</div>
 
-											</div>
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label" for="typeahead">作者数据操作</label>
+										<button class="btn btn-small btn-danger"
+											style="margin-top: 4px; margin-left: 16px;">添加操作</button>
+
+										<div style="width: 1000px;">
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th>操作类型</th>
+														<th>参数</th>
+														<th>返回类型</th>
+														<th>权重</th>
+														<th>操作</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td></td>
+														<td class="center">2012/01/01</td>
+														<td class="center">Member</td>
+														<td class="center"><span class="label label-success">Active</span></td>
+														<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
+														</td>
+													</tr>
+
+												</tbody>
+											</table>
 
 
-											<div class="form-actions">
-												<button type="submit" class="btn btn-primary">保存预览</button>
-												<button type="reset" class="btn">取消</button>
-											</div>
-										</fieldset>
-									</form>
+										</div>
 
-								</div>
-							</div>
-							<!--/span-->
+									</div>
+
+
+									<div class="control-group">
+
+										<label class="control-label" for="typeahead">作者数据操作</label>
+										<button class="btn btn-small btn-danger"
+											style="margin-top: 4px; margin-left: 16px;">添加操作</button>
+
+										<div style="width: 1000px;">
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th>操作类型</th>
+														<th>参数</th>
+														<th>返回类型</th>
+														<th>权重</th>
+														<th>操作</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td></td>
+														<td class="center">2012/01/01</td>
+														<td class="center">Member</td>
+														<td class="center"><span class="label label-success">Active</span></td>
+														<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
+														</td>
+													</tr>
+
+												</tbody>
+											</table>
+
+
+										</div>
+
+									</div>
+
+
+									<div class="control-group">
+
+										<label class="control-label" for="typeahead">来源数据操作</label>
+										<button class="btn btn-small btn-danger"
+											style="margin-top: 4px; margin-left: 16px;">添加操作</button>
+
+										<div style="width: 1000px;">
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th>操作类型</th>
+														<th>参数</th>
+														<th>返回类型</th>
+														<th>权重</th>
+														<th>操作</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td></td>
+														<td class="center">2012/01/01</td>
+														<td class="center">Member</td>
+														<td class="center"><span class="label label-success">Active</span></td>
+														<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
+														</td>
+													</tr>
+
+												</tbody>
+											</table>
+
+
+										</div>
+
+									</div>
+
+
+									<div class="form-actions">
+										<button type="submit" class="btn btn-primary">保存预览</button>
+										<button type="reset" class="btn">取消</button>
+									</div>
+								</fieldset>
+							</form>
 
 						</div>
-						<!--/row-->
-
-						<!--/row-->
-
-						<!--/row-->
-
-
 					</div>
-
-
-
+					<!--/span-->
 
 				</div>
+				<!--/row-->
+
+				<!--/row-->
+
+				<!--/row-->
+
+
+			</div>
+
+
+
+
 		</div>
 	</div>
+
 
 
 

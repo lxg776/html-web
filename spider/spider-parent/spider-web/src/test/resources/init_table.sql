@@ -19,6 +19,8 @@ CREATE TABLE s_news (
 CREATE TABLE s_executor(
   id int(11) NOT NULL auto_increment,
   c_name varchar(50) NOT NULL,
+  c_type varchar(100),
+   link_url varchar(100),
   c_describe varchar(100),
   PRIMARY KEY  (`id`)
 )

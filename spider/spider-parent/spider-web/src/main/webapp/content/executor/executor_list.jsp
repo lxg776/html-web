@@ -91,19 +91,26 @@
 									<th style="width: 200px;">操作</th>
 								</tr>
 							</thead>
+						<c:if test="${page.dataFla == true}">
 							<tbody>
 								<c:forEach var="item" items="${page.dataList}">
 									<tr>
 										<td>${item.id}</td>
 										<td class="center">${item.name}</td>
 										<td class="center">${item.executorDescribe}</td>
-										<td class="center"><a href="${ctx}/executor/toSave?keyWord=edit&&id=${item.id}" style="color: #0033FF">编辑</a>
-										/<a href="${ctx}/executor/toEditOperation?id=${item.id}" style="color: #F00">解析规则</a></td>
+										<td class="center"><a
+											href="${ctx}/executor/toSave?keyWord=edit&&id=${item.id}"
+											style="color: #0033FF">编辑</a> /<a
+											href="${ctx}/executor/toEditOperation?id=${item.id}"
+											style="color: #F00">解析规则</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>
+						</c:if>
 						</table>
-						<%@include file="/common/c_pagination.jsp"%>
+						<c:if test="${page.dataFla == true}">
+							<%@include file="/common/c_pagination.jsp"%>
+						</c:if>
 					</div>
 
 				</div>

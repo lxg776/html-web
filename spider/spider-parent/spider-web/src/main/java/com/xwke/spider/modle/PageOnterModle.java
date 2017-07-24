@@ -11,6 +11,15 @@ public class PageOnterModle {
 	private int pages;// 总页数
 	private long total;// 总记录数
 	private List dataList;
+	private boolean dataFla=false;
+
+	public boolean isDataFla() {
+		return dataFla;
+	}
+
+	public void setDataFla(boolean dataFla) {
+		this.dataFla = dataFla;
+	}
 
 	public int getPageNum() {
 		return pageNum;

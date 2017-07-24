@@ -21,4 +21,20 @@ public class DataOperationDao extends DaoImpl<DataOperationModle, Serializable> 
 		return sqlSessionTemplateASS.insert("addLocal", sql);
 
 	}
+	
+	
+
+	public int delRelByOperationAndExector(int exectorId, int operationId) {
+		// TODO Auto-generated method stub
+
+		String sql = String.format("delete from s_executor_operation_rel where executor_id=%d and operation_id=%d",
+				exectorId, operationId);
+		logger.debug(sql);
+		return sqlSessionTemplateASS.delete("deleteByparm", sql);
+
+	}
+	
+	
+
+
 }

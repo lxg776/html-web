@@ -155,6 +155,7 @@
 								
 								<c:if test="${vo.keyWord != null }">
 									<input type="hidden" name="keyWord" value="${vo.keyWord}">
+									<input type="hidden" name="id" value="${vo.id}">
 								</c:if>
 									
 									<input type="hidden" name="fileName" value="${vo.fileName}">

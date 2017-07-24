@@ -1,4 +1,3 @@
-//console.log("123123")
 $(function(){
 	
 	$(".fl-p1 .left .main i").click(function(){
@@ -21,21 +20,30 @@ $(function(){
 	
 	$(".fl-p1 .left .main .a02").click(function(){
 		 $(this).parent().parent().parent().find(".a02").css("color", "#2b2b2b");
-		 console.log($(this).parent().parent())
-		
 		  //$(this).parent().parent().find(".a02").css("color", "#2b2b2b");
 		 $(this).css("color", "#e51c23");
 	});
 	
 	$(".fl-p1 .left .main .a03").click(function(){
 		 $(this).parent().parent().parent().find(".a03").css("color", "#2b2b2b");
-		 console.log($(this).parent().parent())
-		
 		  //$(this).parent().parent().find(".a02").css("color", "#2b2b2b");
 		 $(this).css("color", "#e51c23");
 	});
 	
 
+	
+		
+	$(".search-type .item").click(function(){
+	   // alert(11);
+		 
+		 
+		  $(this).parent().find(".item").removeClass("selected");		  
+		  $(this).addClass("selected");
+		 
+	});
+	
+
+	
 	
 })
 

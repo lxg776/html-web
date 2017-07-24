@@ -1,5 +1,7 @@
 package com.xwke.spider.web.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.util.StringUtil;
 import com.xwke.base.core.beans.WherePrams;
 import com.xwke.spider.dao.DataOperationDao;
 import com.xwke.spider.dao.ExecutorDao;
@@ -87,6 +90,14 @@ public class ExecutorServiceImpl implements ExecutorService {
 	}
 
 	@Override
+	public void delDataOperation(int exectorId, int operationId) {
+		// TODO Auto-generated method stub
+		dataOperationDao.del(operationId);
+		dataOperationDao.delRelByOperationAndExector(exectorId, operationId);
+
+	}
+
+	@Override
 	public void updateDataOperation(DataOperationVo vo) {
 		// TODO Auto-generated method stub
 		DataOperationModle modle = vo.getTargetObject(DataOperationModle.class);
@@ -101,22 +112,26 @@ public class ExecutorServiceImpl implements ExecutorService {
 		String sql = String.format(
 				"select o.id,o.weight,o.file_name as fileName,o.o_type as type , o.param1,o.param2, o.param3, o.param4, o.param5, o.r_type as rtype from s_data_operation as o join (select executor_id,operation_id from s_executor_operation_rel where executor_id =%d) as r on o.id=r.operation_id;",
 				id);
-		List<Map<String, Object>> mapList = executorDao.listBySql(sql);
-		
-		
-		
-		
+		List<Map<String, Object>> allMapList = executorDao.listBySql(sql);
+		Map<String, List<DataOperationVo>> operationMap = new HashMap();
 
-		if (null != mapList && mapList.size() > 0) {
-			for (Map itemMap : mapList) {
+		if (null != allMapList && allMapList.size() > 0) {
+			for (Map itemMap : allMapList) {
 				DataOperationVo data = CommonUtil.injectBean(DataOperationVo.class, itemMap);
 				String fileName = data.getFileName();
-				
-
-				System.out.println(data.getFileName());
+				if (StringUtil.isNotEmpty(fileName)) {
+					List<DataOperationVo> operationList;
+					if (operationMap.containsKey(fileName)) {
+						operationList = operationMap.get(fileName);
+					} else {
+						operationList = new ArrayList<>();
+					}
+					operationList.add(data);
+					operationMap.put(fileName, operationList);
+				}
 			}
 		}
-
+		vo.setOperationMap(operationMap);
 		// TODO Auto-generated method stub
 		return vo;
 	}
