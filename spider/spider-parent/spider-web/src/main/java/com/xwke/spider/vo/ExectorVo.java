@@ -2,7 +2,6 @@ package com.xwke.spider.vo;
 
 import java.util.List;
 import java.util.Map;
-import com.xwke.spider.modle.DataOperationModle;
 import com.xwke.spider.modle.ExecutorModle;
 
 public class ExectorVo extends ExecutorModle {
@@ -13,7 +12,7 @@ public class ExectorVo extends ExecutorModle {
 	public final static String KEY_PUB_DATE = "pubDate";
 	public final static String KEY_AUTHOR = "author";
 	public final static String KEY_SOURCE = "source";
-	public final static String KEY_IMGURLS = "imgurls";
+	public final static String KEY_IMGURLS = "newsImages";
 
 	public static String OPERATION_LOCATION = "location"; // 定位操作
 	public static String OPERATION_CUT = "cut"; // 字符串截取

@@ -110,7 +110,7 @@ public class ExecutorServiceImpl implements ExecutorService {
 		ExectorVo vo = executorModle.getTargetObject(ExectorVo.class);
 
 		String sql = String.format(
-				"select o.id,o.weight,o.file_name as fileName,o.o_type as type , o.param1,o.param2, o.param3, o.param4, o.param5, o.r_type as rtype from s_data_operation as o join (select executor_id,operation_id from s_executor_operation_rel where executor_id =%d) as r on o.id=r.operation_id;",
+				"select o.id,o.weight,o.file_name as fileName,o.o_type as type , o.param1,o.param2, o.param3, o.param4, o.param5, o.r_type as rtype from s_data_operation as o join (select executor_id,operation_id from s_executor_operation_rel where executor_id =%d) as r on o.id=r.operation_id order by o.weight desc;",
 				id);
 		List<Map<String, Object>> allMapList = executorDao.listBySql(sql);
 		Map<String, List<DataOperationVo>> operationMap = new HashMap();

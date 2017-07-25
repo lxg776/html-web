@@ -102,57 +102,7 @@
 										</div>
 									</div>
 
-									<div class="control-group">
 
-										<label class="control-label" for="typeahead">新闻图片数据操作</label>
-										<a class="btn btn-small btn-danger"
-											href="${ctx}/executor/toOperationEdit?fileName=newsImages&&executorId=${vo.id}"
-											style="margin-top: 4px; margin-left: 16px;">添加操作</a>
-
-										<div style="width: 1000px;">
-											<table class="table table-bordered">
-												<thead>
-													<tr>
-														<th>操作类型</th>
-														<th>参数</th>
-														<th>返回类型</th>
-														<th>权重</th>
-														<th>操作</th>
-													</tr>
-												</thead>
-
-
-												<tbody>
-													<c:forEach items="${vo.operationMap.newsImages}" var="item">
-														<tr>
-															<c:if test="${item.type == 'loaction'}">
-																<td>元素定位</td>
-															</c:if>
-															<c:if test="${item.type == 'cut'}">
-																<td>字符串截取</td>
-															</c:if>
-															<c:if test="${item.type == 'gettext'}">
-																<td>正则过滤</td>
-															</c:if>
-															<td class="center">${item.param1}<br />${item.param2}<br />${item.param3}<br />${item.param4}<br />${item.param5}</td>
-															<td class="center">${item.returnType}</td>
-															<td class="center">${item.weight}</td>
-
-															<td class="center"><a
-																href="${ctx}/executor/toOperationEdit?fileName=newsImages&&executorId=${vo.id}&&id=${item.id}&&keyWord=edit">编辑</a>/
-																<a
-																href="${ctx}/executor/delOperation?executorId=${vo.id}&&id=${item.id}">删除</a>
-
-															</td>
-														</tr>
-													</c:forEach>
-												</tbody>
-											</table>
-
-
-										</div>
-
-									</div>
 									<div class="control-group">
 
 										<label class="control-label" for="typeahead">新闻列表数据操作</label>
@@ -205,8 +155,8 @@
 
 									<div class="control-group">
 
-										<label class="control-label" for="typeahead">标题数据操作</label>
-										<a class="btn btn-small btn-danger"
+										<label class="control-label" for="typeahead">标题数据操作</label> <a
+											class="btn btn-small btn-danger"
 											href="${ctx}/executor/toOperationEdit?fileName=title&&executorId=${vo.id}"
 											style="margin-top: 4px; margin-left: 16px;">添加操作</a>
 
@@ -221,7 +171,8 @@
 														<th>操作</th>
 													</tr>
 												</thead>
-										`<tbody>
+												`
+												<tbody>
 													<c:forEach items="${vo.operationMap.title}" var="item">
 														<tr>
 															<c:if test="${item.type == 'loaction'}">
@@ -252,12 +203,68 @@
 										</div>
 
 									</div>
+									
+									
+																		<div class="control-group">
 
+										<label class="control-label" for="typeahead">新闻图片数据操作</label>
+										<a class="btn btn-small btn-danger"
+											href="${ctx}/executor/toOperationEdit?fileName=newsImages&&executorId=${vo.id}"
+											style="margin-top: 4px; margin-left: 16px;">添加操作</a>
+
+										<div style="width: 1000px;">
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th>操作类型</th>
+														<th>参数</th>
+														<th>返回类型</th>
+														<th>权重</th>
+														<th>操作</th>
+													</tr>
+												</thead>
+
+
+												<tbody>
+													<c:forEach items="${vo.operationMap.newsImages}" var="item">
+														<tr>
+															<c:if test="${item.type == 'loaction'}">
+																<td>元素定位</td>
+															</c:if>
+															<c:if test="${item.type == 'cut'}">
+																<td>字符串截取</td>
+															</c:if>
+															<c:if test="${item.type == 'gettext'}">
+																<td>正则过滤</td>
+															</c:if>
+															<td class="center">${item.param1}<br />${item.param2}<br />${item.param3}<br />${item.param4}<br />${item.param5}</td>
+															<td class="center">${item.returnType}</td>
+															<td class="center">${item.weight}</td>
+
+															<td class="center"><a
+																href="${ctx}/executor/toOperationEdit?fileName=newsImages&&executorId=${vo.id}&&id=${item.id}&&keyWord=edit">编辑</a>/
+																<a
+																href="${ctx}/executor/delOperation?executorId=${vo.id}&&id=${item.id}">删除</a>
+
+															</td>
+														</tr>
+													</c:forEach>
+												</tbody>
+											</table>
+
+
+										</div>
+
+									</div>
+									
+									
 									<div class="control-group">
 
 										<label class="control-label" for="typeahead">发布时间操作</label>
-										<button class="btn btn-small btn-danger"
-											style="margin-top: 4px; margin-left: 16px;">添加操作</button>
+										 <a
+											class="btn btn-small btn-danger"
+											href="${ctx}/executor/toOperationEdit?fileName=author&&executorId=${vo.id}"
+											style="margin-top: 4px; margin-left: 16px;">添加操作</a>
 
 										<div style="width: 1000px;">
 											<table class="table table-bordered">
@@ -271,14 +278,29 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr>
-														<td></td>
-														<td class="center">2012/01/01</td>
-														<td class="center">Member</td>
-														<td class="center"><span class="label label-success">Active</span></td>
-														<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
-														</td>
-													</tr>
+													<c:forEach items="${vo.operationMap.author}" var="item">
+														<tr>
+															<c:if test="${item.type == 'loaction'}">
+																<td>元素定位</td>
+															</c:if>
+															<c:if test="${item.type == 'cut'}">
+																<td>字符串截取</td>
+															</c:if>
+															<c:if test="${item.type == 'gettext'}">
+																<td>正则过滤</td>
+															</c:if>
+															<td class="center">${item.param1}<br />${item.param2}<br />${item.param3}<br />${item.param4}<br />${item.param5}</td>
+															<td class="center">${item.returnType}</td>
+															<td class="center">${item.weight}</td>
+
+															<td class="center"><a
+																href="${ctx}/executor/toOperationEdit?fileName=author&&executorId=${vo.id}&&id=${item.id}&&keyWord=edit">编辑</a>/
+																<a
+																href="${ctx}/executor/delOperation?executorId=${vo.id}&&id=${item.id}">删除</a>
+
+															</td>
+														</tr>
+													</c:forEach>
 
 												</tbody>
 											</table>
@@ -287,119 +309,14 @@
 										</div>
 
 									</div>
-
-									<div class="control-group">
-
-										<label class="control-label" for="typeahead">作者数据操作</label>
-										<button class="btn btn-small btn-danger"
-											style="margin-top: 4px; margin-left: 16px;">添加操作</button>
-
-										<div style="width: 1000px;">
-											<table class="table table-bordered">
-												<thead>
-													<tr>
-														<th>操作类型</th>
-														<th>参数</th>
-														<th>返回类型</th>
-														<th>权重</th>
-														<th>操作</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td></td>
-														<td class="center">2012/01/01</td>
-														<td class="center">Member</td>
-														<td class="center"><span class="label label-success">Active</span></td>
-														<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
-														</td>
-													</tr>
-
-												</tbody>
-											</table>
-
-
-										</div>
-
-									</div>
-
-									<div class="control-group">
-
-										<label class="control-label" for="typeahead">作者数据操作</label>
-										<button class="btn btn-small btn-danger"
-											style="margin-top: 4px; margin-left: 16px;">添加操作</button>
-
-										<div style="width: 1000px;">
-											<table class="table table-bordered">
-												<thead>
-													<tr>
-														<th>操作类型</th>
-														<th>参数</th>
-														<th>返回类型</th>
-														<th>权重</th>
-														<th>操作</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td></td>
-														<td class="center">2012/01/01</td>
-														<td class="center">Member</td>
-														<td class="center"><span class="label label-success">Active</span></td>
-														<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
-														</td>
-													</tr>
-
-												</tbody>
-											</table>
-
-
-										</div>
-
-									</div>
-
-
-									<div class="control-group">
-
-										<label class="control-label" for="typeahead">作者数据操作</label>
-										<button class="btn btn-small btn-danger"
-											style="margin-top: 4px; margin-left: 16px;">添加操作</button>
-
-										<div style="width: 1000px;">
-											<table class="table table-bordered">
-												<thead>
-													<tr>
-														<th>操作类型</th>
-														<th>参数</th>
-														<th>返回类型</th>
-														<th>权重</th>
-														<th>操作</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td></td>
-														<td class="center">2012/01/01</td>
-														<td class="center">Member</td>
-														<td class="center"><span class="label label-success">Active</span></td>
-														<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
-														</td>
-													</tr>
-
-												</tbody>
-											</table>
-
-
-										</div>
-
-									</div>
-
 
 									<div class="control-group">
 
 										<label class="control-label" for="typeahead">来源数据操作</label>
-										<button class="btn btn-small btn-danger"
-											style="margin-top: 4px; margin-left: 16px;">添加操作</button>
+										 <a
+											class="btn btn-small btn-danger"
+											href="${ctx}/executor/toOperationEdit?fileName=source&&executorId=${vo.id}"
+											style="margin-top: 4px; margin-left: 16px;">添加操作</a>
 
 										<div style="width: 1000px;">
 											<table class="table table-bordered">
@@ -413,14 +330,29 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr>
-														<td></td>
-														<td class="center">2012/01/01</td>
-														<td class="center">Member</td>
-														<td class="center"><span class="label label-success">Active</span></td>
-														<td class="center"><a href="#">编辑</a>/<a href="#">删除</a>
-														</td>
-													</tr>
+													<c:forEach items="${vo.operationMap.source}" var="item">
+														<tr>
+															<c:if test="${item.type == 'loaction'}">
+																<td>元素定位</td>
+															</c:if>
+															<c:if test="${item.type == 'cut'}">
+																<td>字符串截取</td>
+															</c:if>
+															<c:if test="${item.type == 'gettext'}">
+																<td>正则过滤</td>
+															</c:if>
+															<td class="center">${item.param1}<br />${item.param2}<br />${item.param3}<br />${item.param4}<br />${item.param5}</td>
+															<td class="center">${item.returnType}</td>
+															<td class="center">${item.weight}</td>
+
+															<td class="center"><a
+																href="${ctx}/executor/toOperationEdit?fileName=source&&executorId=${vo.id}&&id=${item.id}&&keyWord=edit">编辑</a>/
+																<a
+																href="${ctx}/executor/delOperation?executorId=${vo.id}&&id=${item.id}">删除</a>
+
+															</td>
+														</tr>
+													</c:forEach>
 
 												</tbody>
 											</table>
@@ -429,6 +361,59 @@
 										</div>
 
 									</div>
+
+									<div class="control-group">
+
+										<label class="control-label" for="typeahead">新闻详情数据操作</label>
+										 <a
+											class="btn btn-small btn-danger"
+											href="${ctx}/executor/toOperationEdit?fileName=detail&&executorId=${vo.id}"
+											style="margin-top: 4px; margin-left: 16px;">添加操作</a>
+
+										<div style="width: 1000px;">
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th>操作类型</th>
+														<th>参数</th>
+														<th>返回类型</th>
+														<th>权重</th>
+														<th>操作</th>
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach items="${vo.operationMap.detail}" var="item">
+														<tr>
+															<c:if test="${item.type == 'loaction'}">
+																<td>元素定位</td>
+															</c:if>
+															<c:if test="${item.type == 'cut'}">
+																<td>字符串截取</td>
+															</c:if>
+															<c:if test="${item.type == 'gettext'}">
+																<td>正则过滤</td>
+															</c:if>
+															<td class="center">${item.param1}<br />${item.param2}<br />${item.param3}<br />${item.param4}<br />${item.param5}</td>
+															<td class="center">${item.returnType}</td>
+															<td class="center">${item.weight}</td>
+
+															<td class="center"><a
+																href="${ctx}/executor/toOperationEdit?fileName=detail&&executorId=${vo.id}&&id=${item.id}&&keyWord=edit">编辑</a>/
+																<a
+																href="${ctx}/executor/delOperation?executorId=${vo.id}&&id=${item.id}">删除</a>
+
+															</td>
+														</tr>
+													</c:forEach>
+
+												</tbody>
+											</table>
+
+
+										</div>
+
+									</div>
+
 
 
 									<div class="form-actions">
@@ -441,20 +426,8 @@
 						</div>
 					</div>
 					<!--/span-->
-
 				</div>
-				<!--/row-->
-
-				<!--/row-->
-
-				<!--/row-->
-
-
 			</div>
-
-
-
-
 		</div>
 	</div>
 
