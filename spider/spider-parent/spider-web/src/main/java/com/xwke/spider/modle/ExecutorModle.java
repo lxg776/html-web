@@ -2,7 +2,6 @@ package com.xwke.spider.modle;
 
 import com.xwke.base.core.annotation.po.FieldName;
 import com.xwke.base.core.annotation.po.TableName;
-import com.xwke.base.core.beans.Po;
 
 @TableName(name = "s_executor")
 public class ExecutorModle extends BaseModle {
@@ -16,6 +15,10 @@ public class ExecutorModle extends BaseModle {
 	private String type;
 	@FieldName(name = "link_url")
 	private String linkUrl;
+	@FieldName(name = "config_jsontext")
+	private String configJsonText;
+	
+	
 
 	// // 详情 docment的选择表达
 	// private String docmentSelector;
@@ -43,6 +46,14 @@ public class ExecutorModle extends BaseModle {
 	// private String sourceSelector;
 	// /** 新闻图片选择表达式*/
 	// private String imgUrlsSelector;
+
+	public String getConfigJsonText() {
+		return configJsonText;
+	}
+
+	public void setConfigJsonText(String configJsonText) {
+		this.configJsonText = configJsonText;
+	}
 
 	public long getId() {
 		return id;
@@ -83,7 +94,5 @@ public class ExecutorModle extends BaseModle {
 	public void setLinkUrl(String linkUrl) {
 		this.linkUrl = linkUrl;
 	}
-	
-	
 
 }

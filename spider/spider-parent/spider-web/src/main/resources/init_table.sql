@@ -38,6 +38,9 @@ CREATE TABLE s_data_operation(
   PRIMARY KEY  (`id`)
 )
 
+
+
+
 CREATE TABLE s_executor_operation_rel(
   id int(11) NOT NULL auto_increment,
   executor_id int(11),
@@ -112,3 +115,15 @@ create table s_image_record (
 		`status` varchar(10), 
 		PRIMARY KEY  (`id`)
 )
+
+
+CREATE TABLE s_preview_data(
+  id int(11) NOT NULL auto_increment,
+  executor_id  int(11),
+  d_type varchar(100),
+  html_data text,
+  PRIMARY KEY  (`id`)
+)
+
+
+

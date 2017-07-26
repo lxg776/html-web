@@ -22,6 +22,7 @@ CREATE TABLE s_executor(
   c_type varchar(100),
    link_url varchar(100),
   c_describe varchar(100),
+  config_jsontext text,
   PRIMARY KEY  (`id`)
 )
 

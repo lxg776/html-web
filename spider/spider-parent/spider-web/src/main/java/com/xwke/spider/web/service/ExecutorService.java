@@ -1,6 +1,7 @@
 package com.xwke.spider.web.service;
 
 import com.xwke.spider.modle.PageOnterModle;
+import com.xwke.spider.modle.PreviewDataModle;
 import com.xwke.spider.vo.DataOperationVo;
 import com.xwke.spider.vo.ExectorVo;
 
@@ -17,13 +18,13 @@ public interface ExecutorService {
 	public DataOperationVo getDataOperationById(long id);
 
 	public void addDataOperation(DataOperationVo vo);
-	
+
 	public void updateDataOperation(DataOperationVo vo);
-	
+
 	public ExectorVo getExecutorAndDataOperationById(long id);
 
-	
-
 	public void delDataOperation(int exectorId, int operationId);
+
+	//public int addOrUpdatePreviewData(PreviewDataModle modle);
 
 }

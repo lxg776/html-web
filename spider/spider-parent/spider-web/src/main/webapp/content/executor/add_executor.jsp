@@ -107,6 +107,20 @@
 
 										</div>
 									</div>
+									
+									
+								<div class="control-group">
+									<label class="control-label" for="typeahead">配置 </label>
+									<div class="controls">
+										<textarea name="configJsonText" rows="10" cols="30" style="width: 700px; height: 600px;">${vo.configJsonText}</textarea>
+										
+
+									</div>
+								</div>
+									
+									
+									
+									
 									<c:if test="${vo!=null}">
 										<input type="hidden" name="id" value="${vo.id}">
 										<input type="hidden" name="keyWord" value="${vo.keyWord}">
