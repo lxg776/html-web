@@ -13,6 +13,7 @@ public class ExectorVo extends ExecutorModle {
 	public final static String KEY_AUTHOR = "author";
 	public final static String KEY_SOURCE = "source";
 	public final static String KEY_IMGURLS = "newsImages";
+	public final static String KEY_NEWSCONTENT = "newsContent";
 
 	public static String OPERATION_LOCATION = "location"; // 定位操作
 	public static String OPERATION_CUT = "cut"; // 字符串截取

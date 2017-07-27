@@ -1,11 +1,14 @@
 package com.xwke.spider.huntsman;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
 
 import com.xwke.spider.huntsman.configuration.NewsConfiguration;
 import com.xwke.spider.huntsman.core.SimpleNewsHandle;
+import com.xwke.spider.modle.NewsModle;
 import com.xwke.spider.vo.ExectorVo;
 
 import us.codecraft.webmagic.Page;
@@ -54,7 +57,8 @@ public class PreviewHunter implements PageProcessor {
 	public void process(Page page) {
 		// TODO Auto-generated method stub
 
-		listPage = page;
+		handle.handleNewsByExeutor(config, exectorVo, page, true);
+
 	}
 
 	@Override
@@ -79,6 +83,16 @@ public class PreviewHunter implements PageProcessor {
 		// jxGovConfig.setConfig("123123");
 		this.exectorVo = exectorVo;
 		Spider.create(this).addUrl(exectorVo.getLinkUrl()).run();
+		List<NewsModle> newsList = handle.getNewsList();
+	
+		
+		if (null != newsList && newsList.size() > 0) {
+			System.out.println(newsList.get(0).getTitle());
+			System.out.println(newsList.get(0).getAuthor());
+			System.out.println(newsList.get(0).getSource());
+			System.out.println(newsList.get(0).getSourceUrl());
+			System.out.println(newsList.get(0).getContent());
+		}
 
 	}
 

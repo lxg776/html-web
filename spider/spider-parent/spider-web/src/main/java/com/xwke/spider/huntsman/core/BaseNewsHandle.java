@@ -1,9 +1,11 @@
 package com.xwke.spider.huntsman.core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Repository;
+
 import com.xwke.spider.huntsman.configuration.NewsConfiguration;
 import com.xwke.spider.modle.NewsModle;
 import com.xwke.spider.vo.ExectorVo;
@@ -19,40 +21,54 @@ import us.codecraft.webmagic.Page;
 @Repository
 public abstract class BaseNewsHandle implements NewsHandle {
 
-	NewsModle newModle;
-	protected Document mDocument;
-	protected Document mListDocument;
-
 	/** 抓取的配置 */
-	protected ExectorVo executor;
+	protected ExectorVo mExecutor;
 
-	public void handleNewsByExeutor(NewsConfiguration config, Page page) {
-		executor = geExectorVo(config);
-		if (executor == null) {
+	protected List<NewsModle> newsList = new ArrayList();
+
+	public List<NewsModle> getNewsList() {
+		return newsList;
+	}
+
+	public void setNewsList(List<NewsModle> newsList) {
+		this.newsList = newsList;
+	}
+
+	public void handleNewsByExeutor(NewsConfiguration config, ExectorVo executor, Page page, boolean isPreview) {
+		mExecutor = executor;
+		if (mExecutor == null) {
 			return;
 		}
-		mDocument = getDocument(executor, page);
-		mListDocument = getListDocument(executor, page);
 
-		if (isNewsListPage(executor, page)) {
+		if (isNewsListPage(mExecutor, page)) {
 			/**
 			 * 当前页面是新闻列表
 			 */
 
 			// 获取新闻列放入爬虫
-			List<String> urls = getLinksUrl(executor, page);
+			List<String> urls = getLinksUrl(mExecutor, page);
 			urls = handleLinkUrl(urls);
 			if (urls.size() > 0 && null != urls) {
-				page.addTargetRequests(urls);
+
+				if (isPreview) {
+					if (urls.size() > 0) {
+						page.addTargetRequest(urls.get(0));
+					}
+				} else {
+					page.addTargetRequests(urls);
+				}
 			}
 
-		} else if (isNewsListPage(executor, page)) {
+		} else if (isNewsDetailPage(mExecutor, page)) {
 			/**
 			 * 当前页面是新闻详情页面
 			 */
-			NewsModle newModle = getNewsByExeutor(executor, page);
-			saveNews(newModle);
-
+			NewsModle newModle = getNewsByExeutor(mExecutor, page);
+			if (isPreview) {
+				newsList.add(newModle);
+			} else {
+				saveNews(newModle);
+			}
 		}
 
 	}
@@ -114,13 +130,5 @@ public abstract class BaseNewsHandle implements NewsHandle {
 	public abstract Document getDocument(ExectorVo executor, Page page);
 
 	public abstract Document getListDocument(ExectorVo executor, Page page);
-
-	/**
-	 * 获取抓取配置
-	 * 
-	 * @param config
-	 * @return
-	 */
-	public abstract ExectorVo geExectorVo(NewsConfiguration config);
 
 }

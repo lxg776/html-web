@@ -124,7 +124,7 @@
 												<tbody>
 													<c:forEach items="${vo.operationMap.newsList}" var="item">
 														<tr>
-															<c:if test="${item.type == 'loaction'}">
+															<c:if test="${item.type == 'location'}">
 																<td>元素定位</td>
 															</c:if>
 															<c:if test="${item.type == 'cut'}">
@@ -145,6 +145,58 @@
 															</td>
 														</tr>
 													</c:forEach>
+												</tbody>
+											</table>
+
+
+										</div>
+
+									</div>
+									
+													<div class="control-group">
+
+										<label class="control-label" for="typeahead">新闻详情数据操作</label>
+										 <a
+											class="btn btn-small btn-danger"
+											href="${ctx}/executor/toOperationEdit?fileName=detail&&executorId=${vo.id}"
+											style="margin-top: 4px; margin-left: 16px;">添加操作</a>
+
+										<div style="width: 1000px;">
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th>操作类型</th>
+														<th>参数</th>
+														<th>返回类型</th>
+														<th>权重</th>
+														<th>操作</th>
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach items="${vo.operationMap.detail}" var="item">
+														<tr>
+															<c:if test="${item.type == 'location'}">
+																<td>元素定位</td>
+															</c:if>
+															<c:if test="${item.type == 'cut'}">
+																<td>字符串截取</td>
+															</c:if>
+															<c:if test="${item.type == 'gettext'}">
+																<td>正则过滤</td>
+															</c:if>
+															<td class="center">${item.param1}<br />${item.param2}<br />${item.param3}<br />${item.param4}<br />${item.param5}</td>
+															<td class="center">${item.returnType}</td>
+															<td class="center">${item.weight}</td>
+
+															<td class="center"><a
+																href="${ctx}/executor/toOperationEdit?fileName=detail&&executorId=${vo.id}&&id=${item.id}&&keyWord=edit">编辑</a>/
+																<a
+																href="${ctx}/executor/delOperation?executorId=${vo.id}&&id=${item.id}">删除</a>
+
+															</td>
+														</tr>
+													</c:forEach>
+
 												</tbody>
 											</table>
 
@@ -175,7 +227,7 @@
 												<tbody>
 													<c:forEach items="${vo.operationMap.title}" var="item">
 														<tr>
-															<c:if test="${item.type == 'loaction'}">
+															<c:if test="${item.type == 'location'}">
 																<td>元素定位</td>
 															</c:if>
 															<c:if test="${item.type == 'cut'}">
@@ -228,7 +280,7 @@
 												<tbody>
 													<c:forEach items="${vo.operationMap.newsImages}" var="item">
 														<tr>
-															<c:if test="${item.type == 'loaction'}">
+															<c:if test="${item.type == 'location'}">
 																<td>元素定位</td>
 															</c:if>
 															<c:if test="${item.type == 'cut'}">
@@ -280,7 +332,7 @@
 												<tbody>
 													<c:forEach items="${vo.operationMap.author}" var="item">
 														<tr>
-															<c:if test="${item.type == 'loaction'}">
+															<c:if test="${item.type == 'location'}">
 																<td>元素定位</td>
 															</c:if>
 															<c:if test="${item.type == 'cut'}">
@@ -332,7 +384,7 @@
 												<tbody>
 													<c:forEach items="${vo.operationMap.source}" var="item">
 														<tr>
-															<c:if test="${item.type == 'loaction'}">
+															<c:if test="${item.type == 'location'}">
 																<td>元素定位</td>
 															</c:if>
 															<c:if test="${item.type == 'cut'}">
@@ -361,13 +413,14 @@
 										</div>
 
 									</div>
-
-									<div class="control-group">
+									
+									
+													<div class="control-group">
 
 										<label class="control-label" for="typeahead">新闻详情数据操作</label>
 										 <a
 											class="btn btn-small btn-danger"
-											href="${ctx}/executor/toOperationEdit?fileName=detail&&executorId=${vo.id}"
+											href="${ctx}/executor/toOperationEdit?fileName=newsContent&&executorId=${vo.id}"
 											style="margin-top: 4px; margin-left: 16px;">添加操作</a>
 
 										<div style="width: 1000px;">
@@ -382,9 +435,9 @@
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach items="${vo.operationMap.detail}" var="item">
+													<c:forEach items="${vo.operationMap.newsContent}" var="item">
 														<tr>
-															<c:if test="${item.type == 'loaction'}">
+															<c:if test="${item.type == 'location'}">
 																<td>元素定位</td>
 															</c:if>
 															<c:if test="${item.type == 'cut'}">
@@ -398,7 +451,7 @@
 															<td class="center">${item.weight}</td>
 
 															<td class="center"><a
-																href="${ctx}/executor/toOperationEdit?fileName=detail&&executorId=${vo.id}&&id=${item.id}&&keyWord=edit">编辑</a>/
+																href="${ctx}/executor/toOperationEdit?fileName=newsContent&&executorId=${vo.id}&&id=${item.id}&&keyWord=edit">编辑</a>/
 																<a
 																href="${ctx}/executor/delOperation?executorId=${vo.id}&&id=${item.id}">删除</a>
 
@@ -413,6 +466,8 @@
 										</div>
 
 									</div>
+
+					
 
 
 

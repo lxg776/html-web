@@ -40,7 +40,7 @@ public class NewsSpiderHunter implements PageProcessor {
 	public void process(Page page) {
 	
 		//处理新闻
-		newsHandle.handleNewsByExeutor(config, page);
+		//newsHandle.handleNewsByExeutor(config, page,false);
 	}
 
 	@Override

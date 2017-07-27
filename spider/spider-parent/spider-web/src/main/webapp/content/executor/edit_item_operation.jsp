@@ -86,7 +86,7 @@
 										<label class="control-label" for="selectError3">操作类型</label>
 										<div class="controls">
 											<select id="selectError3" name="type">
-												<option value="loaction">元素定位</option>
+												<option value="location">元素定位</option>
 												<option value="cut">字符串截取</option>
 												<option value="gettext">正则过滤</option>
 											</select>
