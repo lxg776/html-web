@@ -15,10 +15,12 @@ import com.github.pagehelper.util.StringUtil;
 import com.xwke.base.core.beans.WherePrams;
 import com.xwke.spider.dao.DataOperationDao;
 import com.xwke.spider.dao.ExecutorDao;
+import com.xwke.spider.dao.PreviewDataDao;
 import com.xwke.spider.huntsman.util.CommonUtil;
 import com.xwke.spider.modle.DataOperationModle;
 import com.xwke.spider.modle.ExecutorModle;
 import com.xwke.spider.modle.PageOnterModle;
+import com.xwke.spider.modle.PreviewDataModle;
 import com.xwke.spider.vo.DataOperationVo;
 import com.xwke.spider.vo.ExectorVo;
 import com.xwke.spider.web.service.ExecutorService;
@@ -30,6 +32,8 @@ public class ExecutorServiceImpl implements ExecutorService {
 	ExecutorDao executorDao;
 	@Resource
 	DataOperationDao dataOperationDao;
+	@Resource
+	PreviewDataDao previewDataDao;
 
 	int pageSize = 10;
 
@@ -134,6 +138,18 @@ public class ExecutorServiceImpl implements ExecutorService {
 		vo.setOperationMap(operationMap);
 		// TODO Auto-generated method stub
 		return vo;
+	}
+
+	@Override
+	public void savePreviewData(PreviewDataModle modle) {
+
+		previewDataDao.addOrUpdatePreviewData(modle);
+
+	}
+	@Override
+	public PreviewDataModle getModleByExecutorIdAndType(long executorId, String type) {
+		
+		return previewDataDao.getModleByExecutorIdAndType(executorId, type);
 	}
 
 }

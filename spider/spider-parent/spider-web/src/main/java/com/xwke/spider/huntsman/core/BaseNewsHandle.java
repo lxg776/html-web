@@ -2,15 +2,16 @@ package com.xwke.spider.huntsman.core;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import javax.annotation.Resource;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Repository;
-
 import com.xwke.spider.huntsman.configuration.NewsConfiguration;
 import com.xwke.spider.modle.NewsModle;
+import com.xwke.spider.modle.PreviewDataModle;
 import com.xwke.spider.vo.ExectorVo;
-
+import com.xwke.spider.web.service.ExecutorService;
 import us.codecraft.webmagic.Page;
+import us.codecraft.webmagic.Request;
 
 /**
  * 新闻抓取处理者
@@ -26,12 +27,38 @@ public abstract class BaseNewsHandle implements NewsHandle {
 
 	protected List<NewsModle> newsList = new ArrayList();
 
+	@Resource
+	ExecutorService executorService;
+
 	public List<NewsModle> getNewsList() {
 		return newsList;
 	}
 
 	public void setNewsList(List<NewsModle> newsList) {
 		this.newsList = newsList;
+	}
+	/**
+	 * 处理本地的数据
+	 * @param executor
+	 */
+	public void handleNewsByHtml(ExectorVo executor) {
+		mExecutor = executor;
+		if (mExecutor == null) {
+			return;
+		}
+
+		PreviewDataModle dataModle = executorService.getModleByExecutorIdAndType(executor.getId(), "news");
+		Page page = new Page();
+		page.setRawText(dataModle.getHtmlData());
+		page.setRequest(new Request(executor.getLinkUrl()));
+		
+		if (isNewsDetailPage(mExecutor, page)) {
+			/**
+			 * 当前页面是新闻详情页面
+			 */
+			NewsModle newModle = getNewsByExeutor(mExecutor, page);
+			newsList.add(newModle);
+		}
 	}
 
 	public void handleNewsByExeutor(NewsConfiguration config, ExectorVo executor, Page page, boolean isPreview) {
@@ -40,7 +67,24 @@ public abstract class BaseNewsHandle implements NewsHandle {
 			return;
 		}
 
-		if (isNewsListPage(mExecutor, page)) {
+		if (isNewsDetailPage(mExecutor, page)) {
+			/**
+			 * 当前页面是新闻详情页面
+			 */
+			NewsModle newModle = getNewsByExeutor(mExecutor, page);
+			if (isPreview) {
+				// 保存到本地
+				PreviewDataModle dataModle = new PreviewDataModle();
+				dataModle.setExecutorId(mExecutor.getId());
+				dataModle.setHtmlData(page.getRawText());
+				dataModle.setType("news");
+				executorService.savePreviewData(dataModle);
+
+				newsList.add(newModle);
+			} else {
+				saveNews(newModle);
+			}
+		} else if (isNewsListPage(mExecutor, page)) {
 			/**
 			 * 当前页面是新闻列表
 			 */
@@ -59,16 +103,6 @@ public abstract class BaseNewsHandle implements NewsHandle {
 				}
 			}
 
-		} else if (isNewsDetailPage(mExecutor, page)) {
-			/**
-			 * 当前页面是新闻详情页面
-			 */
-			NewsModle newModle = getNewsByExeutor(mExecutor, page);
-			if (isPreview) {
-				newsList.add(newModle);
-			} else {
-				saveNews(newModle);
-			}
 		}
 
 	}

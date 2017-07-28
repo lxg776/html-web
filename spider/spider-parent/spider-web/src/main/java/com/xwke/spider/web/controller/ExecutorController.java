@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.pagehelper.util.StringUtil;
+import com.xwke.spider.huntsman.PreviewHunter;
+import com.xwke.spider.modle.NewsModle;
 import com.xwke.spider.vo.DataOperationVo;
 import com.xwke.spider.vo.ExectorVo;
+import com.xwke.spider.vo.NewsModleVo;
 import com.xwke.spider.web.service.ExecutorService;
 
 /**
@@ -21,6 +24,8 @@ public class ExecutorController {
 
 	@Resource
 	ExecutorService executorService;
+	@Resource
+	PreviewHunter previewHunter;
 
 	@RequestMapping(value = "/executor/list", method = RequestMethod.GET)
 	public String executorList(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum, ModelMap modelMap) {
@@ -106,6 +111,22 @@ public class ExecutorController {
 		executorService.delDataOperation(vo.getExecutorId(), vo.getId());
 		// 返回编辑列表
 		return "redirect:toEditOperation?id=" + vo.getExecutorId();
+	}
+
+	@RequestMapping(value = "/executor/preview", method = RequestMethod.POST)
+	public String preview(@RequestParam int executorId, ModelMap modelMap) {
+		ExectorVo exectorVo = executorService.getExecutorAndDataOperationById(executorId);
+		NewsModle modle = null;
+		if (null != exectorVo) {
+			previewHunter.crawl(exectorVo);
+			if (null != previewHunter.getNewsList() && previewHunter.getNewsList().size() > 0) {
+				modle = previewHunter.getNewsList().get(0);
+			}
+			modelMap.addAttribute("modle", modle);
+		}
+
+		// 返回编辑列表
+		return "executor/preview_news";
 	}
 
 }

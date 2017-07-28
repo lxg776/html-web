@@ -121,7 +121,7 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 	 */
 	private String getTextFromHtml(String str) {
 		String result = "";
-		result = HtmlUtil.getTextFromHtml(str);
+		result = HtmlUtil.delHTMLTag(str);
 		return result;
 	}
 
@@ -132,6 +132,7 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 		String result = "";
 		if (null != operation) {
 			result = html.$(operation.getParam1()).get();
+
 		}
 
 		// HtmlUtils.htmlEscape(input)

@@ -129,7 +129,7 @@
 
 
 									<div class="form-actions">
-										<button type="submit" class="btn btn-primary">保存预览</button>
+										<button type="submit" class="btn btn-primary">保存</button>
 
 									</div>
 								</fieldset>

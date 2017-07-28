@@ -80,7 +80,7 @@
 							</div>
 						</div>
 						<div class="box-content">
-							<form class="form-horizontal">
+							<form class="form-horizontal" action="preview" method="post">
 								<fieldset>
 									<div class="control-group">
 										<label class="control-label" for="typeahead">别名</label>
@@ -91,6 +91,8 @@
 
 										</div>
 									</div>
+									
+									<input type="hidden" name="executorId" value="${vo.id}" >
 
 									<div class="control-group">
 										<label class="control-label" for="typeahead">测试连接</label>
@@ -472,7 +474,7 @@
 
 
 									<div class="form-actions">
-										<button type="submit" class="btn btn-primary">保存预览</button>
+										<button type="submit" class="btn btn-primary" >预览</button>
 										<button type="reset" class="btn">取消</button>
 									</div>
 								</fieldset>

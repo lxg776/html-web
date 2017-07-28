@@ -1,11 +1,5 @@
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.Resource;
-import javax.xml.soap.Node;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,32 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.xwke.base.core.beans.WherePrams;
 import com.xwke.spider.dao.DataOperationDao;
 import com.xwke.spider.dao.ExecutorDao;
-import com.xwke.spider.dao.NewsDao;
 import com.xwke.spider.dao.NodeDao;
 import com.xwke.spider.dao.SiteConfigDao;
 import com.xwke.spider.huntsman.JxGovPageHunter;
 import com.xwke.spider.huntsman.job.ScheduleService;
+import com.xwke.spider.huntsman.util.HtmlUtil;
 import com.xwke.spider.modle.ContentTagModle;
-import com.xwke.spider.modle.ExecutorModle;
-import com.xwke.spider.modle.NewsModle;
-import com.xwke.spider.modle.NodeModle;
-import com.xwke.spider.modle.PageOnterModle;
 import com.xwke.spider.quartz.service.ScheduleJobService;
-import com.xwke.spider.vo.NewsModleVo;
-import com.xwke.spider.vo.NodeVo;
 import com.xwke.spider.web.service.ContentTagService;
 import com.xwke.spider.web.service.NewsService;
 import com.xwke.spider.web.service.NodeService;
-
-import net.coobird.thumbnailator.Thumbnails;
-import us.codecraft.webmagic.selector.Html;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "classpath:spring/spring-beans.xml", "classpath:spring/spring-job.xml",
@@ -76,10 +56,10 @@ public class TestSql {
 
 	@Test
 	public void test02() {
-		String sql = "select count(1) from s_node_relation where f_id = %d and c_id = %d ";
-		sql = String.format(sql, new Long(2), new Long(1));
+		String sql = "<h1>我市上半年接待游客逾300万人 </h1>";
+		//sql = String.format(sql, new Long(2), new Long(1));
 
-		System.out.println(sql);
+		System.out.println(HtmlUtil.getTextFromHtml(sql));
 	}
 
 	//

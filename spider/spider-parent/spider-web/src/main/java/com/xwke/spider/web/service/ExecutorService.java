@@ -25,6 +25,10 @@ public interface ExecutorService {
 
 	public void delDataOperation(int exectorId, int operationId);
 
+	public void savePreviewData(PreviewDataModle modle);
+
+	public PreviewDataModle getModleByExecutorIdAndType(long executorId, String type);
+
 	//public int addOrUpdatePreviewData(PreviewDataModle modle);
 
 }

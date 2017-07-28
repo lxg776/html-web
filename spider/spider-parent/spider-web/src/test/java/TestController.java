@@ -35,7 +35,7 @@ public class TestController {
 		//mockMvc.perform(MockMvcRequestBuilders.post("/node/add").param("node_name", "tag01").param("sort", "2"));
 		
 		
-	 mockMvc.perform((MockMvcRequestBuilders.post("/executor/saveOperation").param("id", "1").param("param1", "101010").param("param2", "lx").param("keyWord", "edit")));
+	 mockMvc.perform((MockMvcRequestBuilders.post("/executor/preview").param("executorId", "1")));
 	 //mockMvc.perform((MockMvcRequestBuilders.get("/executor/list").param("pageNum", "1")));
 		
 	}

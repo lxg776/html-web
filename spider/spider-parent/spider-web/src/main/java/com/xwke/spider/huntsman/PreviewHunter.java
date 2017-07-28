@@ -9,7 +9,9 @@ import org.springframework.stereotype.Component;
 import com.xwke.spider.huntsman.configuration.NewsConfiguration;
 import com.xwke.spider.huntsman.core.SimpleNewsHandle;
 import com.xwke.spider.modle.NewsModle;
+import com.xwke.spider.modle.PreviewDataModle;
 import com.xwke.spider.vo.ExectorVo;
+import com.xwke.spider.web.service.ExecutorService;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -25,8 +27,11 @@ public class PreviewHunter implements PageProcessor {
 	private Page listPage;
 	private Page detailPage;
 
+	private List<NewsModle> newsList;
+
 	@Resource
 	SimpleNewsHandle handle;
+	
 
 	public Page getListPage() {
 		return listPage;
@@ -82,18 +87,25 @@ public class PreviewHunter implements PageProcessor {
 
 		// jxGovConfig.setConfig("123123");
 		this.exectorVo = exectorVo;
-		Spider.create(this).addUrl(exectorVo.getLinkUrl()).run();
-		List<NewsModle> newsList = handle.getNewsList();
-	
 		
-		if (null != newsList && newsList.size() > 0) {
-			System.out.println(newsList.get(0).getTitle());
-			System.out.println(newsList.get(0).getAuthor());
-			System.out.println(newsList.get(0).getSource());
-			System.out.println(newsList.get(0).getSourceUrl());
-			System.out.println(newsList.get(0).getContent());
-		}
+		Spider.create(this).addUrl(exectorVo.getLinkUrl()).run();
+		
+		
+		
+		newsList = handle.getNewsList();
+		
+		
 
 	}
+
+	public List<NewsModle> getNewsList() {
+		return newsList;
+	}
+
+	public void setNewsList(List<NewsModle> newsList) {
+		this.newsList = newsList;
+	}
+	
+	
 
 }
