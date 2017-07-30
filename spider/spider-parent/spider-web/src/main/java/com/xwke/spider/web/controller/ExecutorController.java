@@ -13,7 +13,6 @@ import com.xwke.spider.huntsman.PreviewHunter;
 import com.xwke.spider.modle.NewsModle;
 import com.xwke.spider.vo.DataOperationVo;
 import com.xwke.spider.vo.ExectorVo;
-import com.xwke.spider.vo.NewsModleVo;
 import com.xwke.spider.web.service.ExecutorService;
 
 /**
@@ -114,13 +113,15 @@ public class ExecutorController {
 	}
 
 	@RequestMapping(value = "/executor/preview", method = RequestMethod.POST)
-	public String preview(@RequestParam int executorId, ModelMap modelMap) {
+	public String onLinePreview(@RequestParam int executorId, @RequestParam String keyWord, ModelMap modelMap) {
 		ExectorVo exectorVo = executorService.getExecutorAndDataOperationById(executorId);
 		NewsModle modle = null;
 		if (null != exectorVo) {
-			previewHunter.crawl(exectorVo);
-			if (null != previewHunter.getNewsList() && previewHunter.getNewsList().size() > 0) {
-				modle = previewHunter.getNewsList().get(0);
+			if ("local".equals(keyWord)) {
+				modle = previewHunter.localHandle(exectorVo);
+			} else {
+				previewHunter.crawl(exectorVo);
+				modle = previewHunter.getNewsModle();
 			}
 			modelMap.addAttribute("modle", modle);
 		}

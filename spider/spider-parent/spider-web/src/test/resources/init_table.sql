@@ -115,3 +115,13 @@ create table s_image_record (
 		`status` varchar(10), 
 		PRIMARY KEY  (`id`)
 )
+create table s_preview_data(
+
+	id int(11) NOT NULL auto_increment,
+	`executor_id` int(11) ,
+	`d_type` varchar(200),
+	`html_data` text,
+	PRIMARY KEY  (`id`)
+
+
+)

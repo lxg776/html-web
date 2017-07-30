@@ -6,6 +6,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.xwke.spider.huntsman.PreviewHunter;
+import com.xwke.spider.modle.PreviewDataModle;
 import com.xwke.spider.vo.ExectorVo;
 import com.xwke.spider.web.service.ExecutorService;
 
@@ -22,14 +23,20 @@ public class Test02 {
 	@Test
 	public void testHtml() {
 
-		ExectorVo vo = service.getExecutorAndDataOperationById(1);
-		hunter.crawl(vo);
+		//ExectorVo vo = service.getExecutorAndDataOperationById(1);
+		//hunter.crawl(vo);
 		// ResultItems result =
 		// Spider.create(pageProcessor).get("http://webmagic.io/docs/")
 
 		// String text=page.getHtml().regex("(?<=\\bre)\\w+\\b").get();
 
 		// System.out.println(text);
+		
+		PreviewDataModle dataModle = new PreviewDataModle();
+		dataModle.setExecutorId(1);
+		dataModle.setHtmlData("1123123123123");
+		dataModle.setType("news");
+		service.savePreviewData(dataModle);
 	}
 
 }

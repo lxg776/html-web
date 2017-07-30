@@ -1,6 +1,5 @@
 package com.xwke.spider.huntsman.core;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
 import org.jsoup.nodes.Document;
@@ -12,6 +11,7 @@ import com.xwke.spider.vo.ExectorVo;
 import com.xwke.spider.web.service.ExecutorService;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
+import us.codecraft.webmagic.selector.PlainText;
 
 /**
  * 新闻抓取处理者
@@ -24,47 +24,42 @@ public abstract class BaseNewsHandle implements NewsHandle {
 
 	/** 抓取的配置 */
 	protected ExectorVo mExecutor;
-
-	protected List<NewsModle> newsList = new ArrayList();
-
 	@Resource
 	ExecutorService executorService;
 
-	public List<NewsModle> getNewsList() {
-		return newsList;
-	}
-
-	public void setNewsList(List<NewsModle> newsList) {
-		this.newsList = newsList;
-	}
 	/**
 	 * 处理本地的数据
+	 * 
 	 * @param executor
 	 */
-	public void handleNewsByHtml(ExectorVo executor) {
+	public NewsModle handleNewsByHtml(ExectorVo executor) {
 		mExecutor = executor;
 		if (mExecutor == null) {
-			return;
+			return null;
 		}
 
 		PreviewDataModle dataModle = executorService.getModleByExecutorIdAndType(executor.getId(), "news");
 		Page page = new Page();
 		page.setRawText(dataModle.getHtmlData());
-		page.setRequest(new Request(executor.getLinkUrl()));
-		
+		Request request = new Request(executor.getLinkUrl());
+		page.setUrl(new PlainText(request.getUrl()));
+		page.setRequest(request);
+
 		if (isNewsDetailPage(mExecutor, page)) {
 			/**
 			 * 当前页面是新闻详情页面
 			 */
-			NewsModle newModle = getNewsByExeutor(mExecutor, page);
-			newsList.add(newModle);
+			return getNewsByExeutor(mExecutor, page);
+
 		}
+		return null;
+
 	}
 
-	public void handleNewsByExeutor(NewsConfiguration config, ExectorVo executor, Page page, boolean isPreview) {
+	public NewsModle handleNewsByExeutor(NewsConfiguration config, ExectorVo executor, Page page, boolean isPreview) {
 		mExecutor = executor;
 		if (mExecutor == null) {
-			return;
+			return null;
 		}
 
 		if (isNewsDetailPage(mExecutor, page)) {
@@ -76,11 +71,10 @@ public abstract class BaseNewsHandle implements NewsHandle {
 				// 保存到本地
 				PreviewDataModle dataModle = new PreviewDataModle();
 				dataModle.setExecutorId(mExecutor.getId());
-				dataModle.setHtmlData(page.getRawText());
+				dataModle.setHtmlData(page.getHtml().toString());
 				dataModle.setType("news");
 				executorService.savePreviewData(dataModle);
-
-				newsList.add(newModle);
+				return getNewsByExeutor(mExecutor, page);
 			} else {
 				saveNews(newModle);
 			}
@@ -104,6 +98,8 @@ public abstract class BaseNewsHandle implements NewsHandle {
 			}
 
 		}
+
+		return null;
 
 	}
 

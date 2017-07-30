@@ -27,11 +27,22 @@ public class PreviewHunter implements PageProcessor {
 	private Page listPage;
 	private Page detailPage;
 
-	private List<NewsModle> newsList;
+
 
 	@Resource
 	SimpleNewsHandle handle;
+
+	private NewsModle newsModle;
 	
+	
+
+	public NewsModle getNewsModle() {
+		return newsModle;
+	}
+
+	public void setNewsModle(NewsModle newsModle) {
+		this.newsModle = newsModle;
+	}
 
 	public Page getListPage() {
 		return listPage;
@@ -61,8 +72,10 @@ public class PreviewHunter implements PageProcessor {
 	@Override
 	public void process(Page page) {
 		// TODO Auto-generated method stub
-
-		handle.handleNewsByExeutor(config, exectorVo, page, true);
+		NewsModle modle = handle.handleNewsByExeutor(config, exectorVo, page, true);
+		if (null != modle) {
+			newsModle = modle;
+		}
 
 	}
 
@@ -87,25 +100,23 @@ public class PreviewHunter implements PageProcessor {
 
 		// jxGovConfig.setConfig("123123");
 		this.exectorVo = exectorVo;
-		
 		Spider.create(this).addUrl(exectorVo.getLinkUrl()).run();
-		
-		
-		
-		newsList = handle.getNewsList();
-		
-		
 
 	}
 
-	public List<NewsModle> getNewsList() {
-		return newsList;
+	/**
+	 * 抓取多urls
+	 * 
+	 * @param urls
+	 */
+	public NewsModle localHandle(ExectorVo exectorVo) {
+
+		// jxGovConfig.setConfig("123123");
+		this.exectorVo = exectorVo;
+		return handle.handleNewsByHtml(exectorVo);
+
 	}
 
-	public void setNewsList(List<NewsModle> newsList) {
-		this.newsList = newsList;
-	}
-	
-	
+
 
 }

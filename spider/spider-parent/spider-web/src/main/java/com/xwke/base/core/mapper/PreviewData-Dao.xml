@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xwke.spider.dao.PreviewDataDao">
+
+
+	<insert id="updateHtml" parameterType="com.xwke.spider.modle.PreviewDataModle">
+		update s_preview_data set html_data = #{htmlData} where d_type = #{type} and executor_id = #{executorId}
+	</insert>
+
+
+
+	<insert id="insertHtml" parameterType="com.xwke.spider.modle.PreviewDataModle">
+		insert into s_preview_data
+		(executor_id,d_type,html_data) value (#{executorId},
+		#{type},#{htmlData})
+	</insert>
+
+
+</mapper>

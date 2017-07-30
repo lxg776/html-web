@@ -2,10 +2,16 @@ package com.xwke.spider.dao;
 
 import java.io.Serializable;
 import java.util.Map;
+
 import javax.annotation.Resource;
+
+import org.apache.ibatis.annotations.Insert;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
+
 import com.xwke.base.core.dao.DaoImpl;
+import com.xwke.base.core.sql.where.SqlUtil;
+import com.xwke.spider.huntsman.util.CommonUtil;
 import com.xwke.spider.modle.PreviewDataModle;
 
 @Repository
@@ -24,12 +30,10 @@ public class PreviewDataDao extends DaoImpl<PreviewDataModle, Serializable> {
 		long executorId = modle.getExecutorId();
 		String type = modle.getType();
 		if (getCountByExecutorIdAndTpy(executorId, type) > 0) {
-			String sql = String.format(
-					"update " + getTableName() + " set html_data = %s where d_type = '%s' and executor_id = %d ",
-					modle.getHtmlData(), type, executorId);
-			return sqlSessionTemplateASS.update("updateByPram", sql);
+			return sqlSessionTemplateASS.update("updateHtml", modle);
 		} else {
-			return addLocal(modle);
+			return sqlSessionTemplateASS.update("insertHtml", modle);
+
 		}
 
 	}
@@ -47,12 +51,13 @@ public class PreviewDataDao extends DaoImpl<PreviewDataModle, Serializable> {
 
 	public PreviewDataModle getModleByExecutorIdAndType(long executorId, String type) {
 
-		String sql = String.format("select * from" + getTableName() + " where  d_type = '%s' and executor_id = %d",
+		String sql = String.format("select id,d_type as type,html_data as htmlData,executor_id as executorId from " + getTableName() + " where  d_type = '%s' and executor_id = %d",
 				type, executorId);
 		Map<String, Object> resultMap = sqlSessionTemplateASS.selectOne("getById", sql);
-		return handleResult2(resultMap, PreviewDataModle.class);
+		
+		PreviewDataModle modle = CommonUtil.injectBean(PreviewDataModle.class, resultMap);
+		
+		return modle;
 	}
-	
-	
 
 }

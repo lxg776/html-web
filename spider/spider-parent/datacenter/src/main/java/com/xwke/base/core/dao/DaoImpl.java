@@ -661,36 +661,7 @@ public class DaoImpl<T extends Po, PK extends Serializable> implements BaseDao<T
 		return t;
 	}
 	
-	public T handleResult2(Map<String, Object> resultMap, Class<T> tClazz) {
-		if (null == resultMap) {
-			return null;
-		}
-		T t = null;
-		try {
-			t = tClazz.newInstance();
-		} catch (InstantiationException e) {
-			logger.error("/********************************");
-			logger.error("实例化Bean失败(" + this.entityClass + ")!" + e.getMessage());
-			logger.error("/********************************");
-		} catch (IllegalAccessException e) {
-			logger.error("/********************************");
-			logger.error("实例化Bean失败(" + this.entityClass + ")!" + e.getMessage());
-			logger.error("/********************************");
-		}
-		for (Map.Entry<String, Object> entry : resultMap.entrySet()) {
-			String key = entry.getKey();
-			Serializable val = (Serializable) entry.getValue();
-			try {
-				SqlUtil.setFileValue(t, key, val);
-			} catch (Exception e) {
-				// TODO: handle exception
-				logger.error("/********************************");
-				logger.error("/ʵ�л�����(" + this.entityClass + ")ʱ���ֶθ�ֵ�쳣(" + key + "):" + e.getMessage());
-				logger.error("/********************************");
-			}
-		}
-		return t;
-	}
+
 
 	/**
 	 * �����һ�����е�ֵ

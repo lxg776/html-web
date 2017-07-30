@@ -91,8 +91,8 @@
 
 										</div>
 									</div>
-									
-									<input type="hidden" name="executorId" value="${vo.id}" >
+
+									<input type="hidden" name="executorId" value="${vo.id}">
 
 									<div class="control-group">
 										<label class="control-label" for="typeahead">测试连接</label>
@@ -154,12 +154,11 @@
 										</div>
 
 									</div>
-									
-													<div class="control-group">
+
+									<div class="control-group">
 
 										<label class="control-label" for="typeahead">新闻详情数据操作</label>
-										 <a
-											class="btn btn-small btn-danger"
+										<a class="btn btn-small btn-danger"
 											href="${ctx}/executor/toOperationEdit?fileName=detail&&executorId=${vo.id}"
 											style="margin-top: 4px; margin-left: 16px;">添加操作</a>
 
@@ -257,9 +256,9 @@
 										</div>
 
 									</div>
-									
-									
-																		<div class="control-group">
+
+
+									<div class="control-group">
 
 										<label class="control-label" for="typeahead">新闻图片数据操作</label>
 										<a class="btn btn-small btn-danger"
@@ -310,12 +309,11 @@
 										</div>
 
 									</div>
-									
-									
+
+
 									<div class="control-group">
 
-										<label class="control-label" for="typeahead">发布时间操作</label>
-										 <a
+										<label class="control-label" for="typeahead">作者数据操作</label> <a
 											class="btn btn-small btn-danger"
 											href="${ctx}/executor/toOperationEdit?fileName=author&&executorId=${vo.id}"
 											style="margin-top: 4px; margin-left: 16px;">添加操作</a>
@@ -366,8 +364,7 @@
 
 									<div class="control-group">
 
-										<label class="control-label" for="typeahead">来源数据操作</label>
-										 <a
+										<label class="control-label" for="typeahead">来源数据操作</label> <a
 											class="btn btn-small btn-danger"
 											href="${ctx}/executor/toOperationEdit?fileName=source&&executorId=${vo.id}"
 											style="margin-top: 4px; margin-left: 16px;">添加操作</a>
@@ -417,11 +414,62 @@
 									</div>
 									
 									
-													<div class="control-group">
+									<div class="control-group">
+
+										<label class="control-label" for="typeahead">发布时间</label> <a
+											class="btn btn-small btn-danger"
+											href="${ctx}/executor/toOperationEdit?fileName=pubDate&&executorId=${vo.id}"
+											style="margin-top: 4px; margin-left: 16px;">添加操作</a>
+
+										<div style="width: 1000px;">
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th>操作类型</th>
+														<th>参数</th>
+														<th>返回类型</th>
+														<th>权重</th>
+														<th>操作</th>
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach items="${vo.operationMap.pubDate}" var="item">
+														<tr>
+															<c:if test="${item.type == 'location'}">
+																<td>元素定位</td>
+															</c:if>
+															<c:if test="${item.type == 'cut'}">
+																<td>字符串截取</td>
+															</c:if>
+															<c:if test="${item.type == 'gettext'}">
+																<td>正则过滤</td>
+															</c:if>
+															<td class="center">${item.param1}<br />${item.param2}<br />${item.param3}<br />${item.param4}<br />${item.param5}</td>
+															<td class="center">${item.returnType}</td>
+															<td class="center">${item.weight}</td>
+
+															<td class="center"><a
+																href="${ctx}/executor/toOperationEdit?fileName=pubDate&&executorId=${vo.id}&&id=${item.id}&&keyWord=edit">编辑</a>/
+																<a
+																href="${ctx}/executor/delOperation?executorId=${vo.id}&&id=${item.id}">删除</a>
+
+															</td>
+														</tr>
+													</c:forEach>
+
+												</tbody>
+											</table>
+
+
+										</div>
+
+									</div>
+
+
+									<div class="control-group">
 
 										<label class="control-label" for="typeahead">新闻详情数据操作</label>
-										 <a
-											class="btn btn-small btn-danger"
+										<a class="btn btn-small btn-danger"
 											href="${ctx}/executor/toOperationEdit?fileName=newsContent&&executorId=${vo.id}"
 											style="margin-top: 4px; margin-left: 16px;">添加操作</a>
 
@@ -437,7 +485,8 @@
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach items="${vo.operationMap.newsContent}" var="item">
+													<c:forEach items="${vo.operationMap.newsContent}"
+														var="item">
 														<tr>
 															<c:if test="${item.type == 'location'}">
 																<td>元素定位</td>
@@ -469,13 +518,18 @@
 
 									</div>
 
-					
+									<div class="controls">
+										<select id="selectError3" name="keyWord">
+										<option value="online">抓取</option>
+										<option value="local">本地</option>
+										</select>
+									</div>
 
 
 
 									<div class="form-actions">
-										<button type="submit" class="btn btn-primary" >预览</button>
-										<button type="reset" class="btn">取消</button>
+										<button type="submit" class="btn btn-primary">预览</button>
+										
 									</div>
 								</fieldset>
 							</form>
