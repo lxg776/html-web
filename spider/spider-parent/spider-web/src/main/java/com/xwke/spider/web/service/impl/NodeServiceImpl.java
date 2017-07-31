@@ -1,6 +1,8 @@
 package com.xwke.spider.web.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.xml.soap.Node;
@@ -8,6 +10,7 @@ import javax.xml.soap.Node;
 import org.springframework.stereotype.Service;
 
 import com.xwke.spider.dao.NodeDao;
+import com.xwke.spider.huntsman.util.CommonUtil;
 import com.xwke.spider.modle.ContentTagModle;
 import com.xwke.spider.modle.NodeModle;
 import com.xwke.spider.vo.ContentTagVo;
@@ -107,6 +110,11 @@ public class NodeServiceImpl implements NodeService {
 	public int addTag(Long tagId, Long nodeId) {
 		// TODO Auto-generated method stub
 		return nodeDao.addTag(tagId, nodeId, ContentTagVo.STATUS_WORK);
+	}
+	@Override
+	public List<NodeVo> getNodeList() {
+
+		return nodeDao.getNodeList();
 	}
 
 }

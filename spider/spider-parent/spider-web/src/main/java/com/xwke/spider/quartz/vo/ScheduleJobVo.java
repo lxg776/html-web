@@ -18,6 +18,10 @@ public class ScheduleJobVo extends Pageable {
 
 	/** 任务id */
 	private Long scheduleJobId;
+	
+	
+	/** 任务id */
+	private Long executorId;
 
 	/** 任务名称 */
 	private String jobName;
@@ -51,6 +55,29 @@ public class ScheduleJobVo extends Pageable {
 
 	/** 任务执行url */
 	private String url;
+	
+	private String nodeIds;
+	
+	
+	
+	
+	
+
+	public String getNodeIds() {
+		return nodeIds;
+	}
+
+	public void setNodeIds(String nodeIds) {
+		this.nodeIds = nodeIds;
+	}
+
+	public Long getExecutorId() {
+		return executorId;
+	}
+
+	public void setExecutorId(Long executorId) {
+		this.executorId = executorId;
+	}
 
 	public Long getScheduleJobId() {
 		return scheduleJobId;

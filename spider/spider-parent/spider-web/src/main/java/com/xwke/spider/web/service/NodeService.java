@@ -53,4 +53,6 @@ public interface NodeService {
 	 */
 	public int addTag(Long tagId, Long nodeId);
 
+	public List<NodeVo> getNodeList();
+
 }

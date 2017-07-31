@@ -35,8 +35,10 @@ public class TestController {
 		//mockMvc.perform(MockMvcRequestBuilders.post("/node/add").param("node_name", "tag01").param("sort", "2"));
 		
 		
-	 mockMvc.perform((MockMvcRequestBuilders.post("/executor/preview").param("executorId", "2").param("keyWord", "onLine")));
-	 //mockMvc.perform((MockMvcRequestBuilders.get("/executor/list").param("pageNum", "1")));
+	 //mockMvc.perform((MockMvcRequestBuilders.post("/executor/preview").param("executorId", "2").param("keyWord", "onLine")));
+	 mockMvc.perform((MockMvcRequestBuilders.get("/job/input-schedule-job").param("scheduleJobId", "2").param("keywords", "delUpdate")));
+		
+		
 		
 	}
 

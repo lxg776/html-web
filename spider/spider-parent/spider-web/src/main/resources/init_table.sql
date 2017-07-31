@@ -49,9 +49,11 @@ CREATE TABLE s_executor_operation_rel(
   PRIMARY KEY  (`id`)
 )
 
+alter table SCHEDULE_JOB add executor_id int(11);
 
 CREATE TABLE `SCHEDULE_JOB` (
   `schedule_job_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `executor_id` int(11),
   `job_name` varchar(255) DEFAULT NULL,
   `alias_name` varchar(255) DEFAULT NULL,
   `job_group` varchar(255) DEFAULT NULL,

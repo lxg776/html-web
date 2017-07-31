@@ -36,6 +36,10 @@ public class ExecutorServiceImpl implements ExecutorService {
 	PreviewDataDao previewDataDao;
 
 	int pageSize = 10;
+	
+	
+	
+	
 
 	@Override
 	public void addExecutor(ExectorVo exectorVo) {
@@ -59,6 +63,14 @@ public class ExecutorServiceImpl implements ExecutorService {
 		Page<ExecutorModle> pageonter = PageHelper.startPage(pageNum, pageSize);
 		List<ExecutorModle> list = executorDao.list(new WherePrams(null, null, null));
 		return CommonUtil.getPageOnter(pageonter);
+
+	}
+
+	@Override
+	public List<ExecutorModle> getAllList() {
+		// TODO Auto-generated method stub
+
+		return executorDao.list(new WherePrams(null, null, null));
 
 	}
 
@@ -146,9 +158,10 @@ public class ExecutorServiceImpl implements ExecutorService {
 		previewDataDao.addOrUpdatePreviewData(modle);
 
 	}
+
 	@Override
 	public PreviewDataModle getModleByExecutorIdAndType(long executorId, String type) {
-		
+
 		return previewDataDao.getModleByExecutorIdAndType(executorId, type);
 	}
 

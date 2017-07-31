@@ -9,6 +9,19 @@ public class NodeVo extends NodeModle {
 	// 等级
 
 	private int node_level;
+	
+	private boolean isSelect=false;
+	
+	
+	
+
+	public boolean isSelect() {
+		return isSelect;
+	}
+
+	public void setSelect(boolean isSelect) {
+		this.isSelect = isSelect;
+	}
 
 	public int getNode_level() {
 		return node_level;

@@ -29,14 +29,13 @@ public class NodeDao extends DaoImpl<NodeModle, Serializable> {
 		sql = String.format(sql, fid, cid);
 		return sqlSessionTemplateASS.selectOne("getCountNodeRel", sql);
 	}
-	
-	public int addTag(Long tagId, Long nodeId,String status) {
+
+	public int addTag(Long tagId, Long nodeId, String status) {
 		String sql = "insert into s_node_tag_relation(tag_id,node_id,status)values(%d,%d,'%s')";
-		sql = String.format(sql, tagId, nodeId,status);
+		sql = String.format(sql, tagId, nodeId, status);
 		return excuse(sql);
-		//return sqlSessionTemplateASS.selectOne("getCountNodeRel", sql);
+		// return sqlSessionTemplateASS.selectOne("getCountNodeRel", sql);
 	}
-	
 
 	public NodeVo getNodeVoByid(Long id) {
 		String sql = String.format(
@@ -59,6 +58,18 @@ public class NodeDao extends DaoImpl<NodeModle, Serializable> {
 		String sql = String.format("insert into s_node_relation(f_id,c_id,node_level)values(%d,%d,%d)", fid, cid,
 				node_level);
 		return excuse(sql);
+	}
+
+	public List<NodeVo> getNodeList() {
+		String sql = String.format(
+				"select distinct  node.id, node.node_name as nodeName,node.sort,rel.f_id as fid ,rel.node_level from s_news_node as node  join  s_node_relation as rel on node.id = rel.c_id order by node.id desc");
+		List<Map<String, Object>> selectList = listBySql(sql);
+		List<NodeVo> list = new ArrayList<>();
+		for (Map<String, Object> map : selectList) {
+			NodeVo vo = CommonUtil.injectBean(NodeVo.class, map);
+			list.add(vo);
+		}
+		return list;
 	}
 
 	public List<NodeVo> getAllNode() {

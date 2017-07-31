@@ -1,3 +1,5 @@
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -6,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.xwke.spider.huntsman.PreviewHunter;
+import com.xwke.spider.modle.ExecutorModle;
 import com.xwke.spider.modle.PreviewDataModle;
 import com.xwke.spider.vo.ExectorVo;
 import com.xwke.spider.web.service.ExecutorService;
@@ -32,11 +35,15 @@ public class Test02 {
 
 		// System.out.println(text);
 		
-		PreviewDataModle dataModle = new PreviewDataModle();
-		dataModle.setExecutorId(1);
-		dataModle.setHtmlData("1123123123123");
-		dataModle.setType("news");
-		service.savePreviewData(dataModle);
+//		PreviewDataModle dataModle = new PreviewDataModle();
+//		dataModle.setExecutorId(1);
+//		dataModle.setHtmlData("1123123123123");
+//		dataModle.setType("news");
+//		service.savePreviewData(dataModle);
+		
+		List<ExecutorModle> executList = service.getAllList();
+		System.out.println(executList.get(0).getId());
+		System.out.println(executList.get(0).getName());
 	}
 
 }

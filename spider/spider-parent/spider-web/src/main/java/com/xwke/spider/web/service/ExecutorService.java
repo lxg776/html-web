@@ -1,5 +1,8 @@
 package com.xwke.spider.web.service;
 
+import java.util.List;
+
+import com.xwke.spider.modle.ExecutorModle;
 import com.xwke.spider.modle.PageOnterModle;
 import com.xwke.spider.modle.PreviewDataModle;
 import com.xwke.spider.vo.DataOperationVo;
@@ -28,6 +31,8 @@ public interface ExecutorService {
 	public void savePreviewData(PreviewDataModle modle);
 
 	public PreviewDataModle getModleByExecutorIdAndType(long executorId, String type);
+
+	public List<ExecutorModle> getAllList();
 
 	//public int addOrUpdatePreviewData(PreviewDataModle modle);
 
