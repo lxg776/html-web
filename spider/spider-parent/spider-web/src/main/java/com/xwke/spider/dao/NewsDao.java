@@ -41,11 +41,51 @@ public class NewsDao extends DaoImpl<NewsModle, Serializable> {
 	 * 
 	 * @param newsModle
 	 */
+	public int addNewsAndRel(NewsModle newsModle, String[] nodeIds, String status) {
+		if (!isExistBySource(newsModle.getSourceUrl())) {
+
+			add(newsModle);
+			if (nodeIds != null && nodeIds.length > 0) {
+				for (int i = 0; i < nodeIds.length; i++) {
+					addNewsRel(new Long(nodeIds[i]), newsModle.getId(), status);
+				}
+			}
+		}
+
+		return -1;
+	}
+
+	/**
+	 * 添加新闻
+	 * 
+	 * @param newsModle
+	 */
 	public int addNews(NewsModle newsModle) {
 		if (!isExistBySource(newsModle.getSourceUrl())) {
 			return add(newsModle);
 		}
+		return -1;
+	}
 
+	/**
+	 * 添加关系
+	 * 
+	 * @param nodeId
+	 * @param newsId
+	 * @param status
+	 * @return
+	 */
+	public int addNewsRel(Long nodeId, Long newsId, String status) {
+
+		String tableName = "s_node_news_relation";
+		String sql = String.format("select count(id) from " + tableName + " where node_id =  %d and news_id = %d",
+				nodeId, newsId);
+		int count = sqlSessionTemplateASS.selectOne("getCountBySourceUrl", sql);
+		String insertSql = String.format("insert into  " + tableName + "(node_id,newsId,pub_status)values(%d,%d,'%s')",
+				nodeId, newsId, status);
+		if (count <= 0) {
+			return sqlSessionTemplateASS.insert("add", insertSql);
+		}
 		return -1;
 	}
 }

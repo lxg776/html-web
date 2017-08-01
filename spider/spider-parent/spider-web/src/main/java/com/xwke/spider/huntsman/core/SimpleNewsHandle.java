@@ -15,6 +15,7 @@ import com.xwke.spider.huntsman.configuration.NewsConfiguration;
 import com.xwke.spider.huntsman.util.CommonUtil;
 import com.xwke.spider.huntsman.util.HtmlUtil;
 import com.xwke.spider.modle.NewsModle;
+import com.xwke.spider.quartz.model.ScheduleJob;
 import com.xwke.spider.vo.DataOperationVo;
 import com.xwke.spider.vo.ExectorVo;
 import com.xwke.spider.web.service.ImageRecordService;
@@ -22,21 +23,26 @@ import com.xwke.spider.web.service.NewsService;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.selector.Html;
 
-@Component
 public class SimpleNewsHandle extends BaseNewsHandle {
 
-	@Resource
 	ThreadPoolTaskExecutor taskExecutor;
 
-	@Resource
 	NewsService newsService;
 
-	@Resource
 	ImageRecordService imageRecordService;
 
 	NewsConfiguration config;
 
+	ScheduleJob scheduleJob;
+
 	public static String OPERATION_LOCATION = "location";// 正则定位
+
+	public static final String STATUS_PUB = "publish";
+
+	public SimpleNewsHandle(ThreadPoolTaskExecutor mTaskExecutor, ImageRecordService imageRecordService,
+			NewsService newsService, NewsConfiguration config) {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public boolean isNewsListPage(ExectorVo executor, Page page) {
@@ -229,9 +235,14 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 	}
 
 	@Override
-	public void saveNews(NewsModle newsModle) {
+	public void saveNews(NewsModle newsModle, ExectorVo exectorVo) {
 		// TODO Auto-generated method stub
-		newsService.addNews(newsModle);
+		String[] nodeIds = null;
+		if (!StringUtil.isBlank(scheduleJob.getNodeIds())) {
+			nodeIds = scheduleJob.getNodeIds().split(",");
+
+		}
+		newsService.addNewsAndRel(newsModle, nodeIds, STATUS_PUB);
 	}
 
 	@Override

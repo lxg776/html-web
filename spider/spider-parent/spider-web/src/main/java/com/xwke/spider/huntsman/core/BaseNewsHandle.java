@@ -76,7 +76,7 @@ public abstract class BaseNewsHandle implements NewsHandle {
 				executorService.savePreviewData(dataModle);
 				return getNewsByExeutor(mExecutor, page);
 			} else {
-				saveNews(newModle);
+				saveNews(newModle, executor);
 			}
 		} else if (isNewsListPage(mExecutor, page)) {
 			/**
@@ -155,10 +155,11 @@ public abstract class BaseNewsHandle implements NewsHandle {
 	 * @param page
 	 * @return
 	 */
-	public abstract void saveNews(NewsModle newsModle);
 
 	public abstract Document getDocument(ExectorVo executor, Page page);
 
 	public abstract Document getListDocument(ExectorVo executor, Page page);
+
+	public abstract void saveNews(NewsModle newsModle, ExectorVo exectorVo);
 
 }

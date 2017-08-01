@@ -10,17 +10,18 @@ public class NodeVo extends NodeModle {
 
 	private int node_level;
 	
-	private boolean isSelect=false;
+	private int selectValue;
+	
 	
 	
 	
 
-	public boolean isSelect() {
-		return isSelect;
+	public int getSelectValue() {
+		return selectValue;
 	}
 
-	public void setSelect(boolean isSelect) {
-		this.isSelect = isSelect;
+	public void setSelectValue(int selectValue) {
+		this.selectValue = selectValue;
 	}
 
 	public int getNode_level() {

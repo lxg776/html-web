@@ -62,7 +62,7 @@ public class ScheduleJobController {
 				long nodeId = new Long(nodeArray[i]);
 				for (NodeVo item : nodeList) {
 					if (item.getId() == nodeId) {
-						item.setSelect(true);
+						item.setSelectValue(1);
 					}
 				}
 			}

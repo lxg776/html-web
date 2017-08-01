@@ -13,11 +13,9 @@ import org.quartz.TriggerBuilder;
 import org.quartz.TriggerKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.xwke.spider.quartz.exceptions.ScheduleException;
 import com.xwke.spider.quartz.model.ScheduleJob;
-import com.xwke.spider.quartz.quartz.AsyncJobFactory;
-import com.xwke.spider.quartz.quartz.SyncJobFactory;
+import com.xwke.spider.quartz.quartz.NewsSpiderJobFactory;
 import com.xwke.spider.quartz.vo.ScheduleJobVo;
 
 /**
@@ -100,7 +98,7 @@ public class ScheduleUtils {
 		// SyncJobFactory.class;
 
 		if (jobClass == null) {
-			jobClass = SyncJobFactory.class;
+			jobClass = NewsSpiderJobFactory.class;
 		}
 
 		// 构建job信息

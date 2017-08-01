@@ -15,4 +15,6 @@ public interface NewsService {
 	 */
 	public int addNews(NewsModle modle);
 
+	int addNewsAndRel(NewsModle newsModle, String[] nodeIds, String status);
+
 }

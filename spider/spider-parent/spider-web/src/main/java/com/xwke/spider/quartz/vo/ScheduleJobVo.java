@@ -2,7 +2,6 @@ package com.xwke.spider.quartz.vo;
 
 import com.dexcoder.commons.pager.Pageable;
 
-
 import java.util.Date;
 
 /**
@@ -18,8 +17,7 @@ public class ScheduleJobVo extends Pageable {
 
 	/** 任务id */
 	private Long scheduleJobId;
-	
-	
+
 	/** 任务id */
 	private Long executorId;
 
@@ -55,13 +53,8 @@ public class ScheduleJobVo extends Pageable {
 
 	/** 任务执行url */
 	private String url;
-	
+
 	private String nodeIds;
-	
-	
-	
-	
-	
 
 	public String getNodeIds() {
 		return nodeIds;

@@ -48,4 +48,15 @@ public class NewsServiceImpl implements NewsService {
 		return newsDao.addNews(modle);
 	}
 
+	/**
+	 * 添加新闻
+	 * 
+	 * @param newsModle
+	 */
+	@Override
+	public int addNewsAndRel(NewsModle newsModle, String[] nodeIds, String status) {
+
+		return newsDao.addNewsAndRel(newsModle, nodeIds, status);
+	}
+
 }

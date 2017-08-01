@@ -118,21 +118,20 @@
 							</div>
 						</div>
 
-					
+
 
 						<div class="form-group">
-							<label class="control-label" for="selectError3">
-								执行者</label>
+							<label class="control-label" for="selectError3"> 执行者</label>
 							<div class="controls">
 								<select id="selectError3" name="executorId">
 									<c:forEach items="${executList}" var="item">
-										<option value="${item.id}">${item.name}</option>
+										<option value="${item.id}" <c:if test="${scheduleJobVo.executorId ==item.id }"> selected="selected"</c:if> >${item.name}</option>
 									</c:forEach>
 								</select>
 							</div>
 						</div>
-						
-					
+
+
 						<div class="form-group">
 							<label for="url" class="col-sm-2 control-label">任务执行url</label>
 							<div class="col-sm-8">
@@ -146,20 +145,22 @@
 						<div class="control-group">
 							<label class="control-label" for="selectError1">内容标签</label>
 							<div class="controls">
-								<select class="chosen-select" name="nodeIdsArray" data-placeholder="选择节点" multiple>
+								<select class="chosen-select" name="nodeIdsArray"
+									data-placeholder="选择节点" multiple>
 									<c:forEach items="${nodeList}" var="item">
-									
-									
-									
-										<option value="${item.id}"     >${item.nodeName} /  ${item.id}  / </option>
+
+										
+
+										<option value="${item.id}" <c:if test="${item.selectValue ==1}">selected="selected"</c:if> >${item.nodeName}/
+											${item.id} /</option>
 									</c:forEach>
 								</select>
 							</div>
 						</div>
-						
-						
-						
-						
+
+
+
+
 
 						<div class="form-group">
 							<label for="description" class="col-sm-2 control-label">任务描述</label>

@@ -21,6 +21,7 @@ import com.dexcoder.dal.JdbcDao;
 import com.dexcoder.dal.build.Criteria;
 import com.xwke.spider.quartz.model.ScheduleJob;
 import com.xwke.spider.quartz.quartz.JxGovSpiderJobFactory;
+import com.xwke.spider.quartz.quartz.NewsSpiderJobFactory;
 import com.xwke.spider.quartz.service.ScheduleJobService;
 import com.xwke.spider.quartz.utils.ScheduleUtils;
 import com.xwke.spider.quartz.vo.ScheduleJobVo;
@@ -33,6 +34,7 @@ import com.xwke.spider.quartz.vo.ScheduleJobVo;
 public class ScheduleJobServiceImpl implements ScheduleJobService {
 
 	public static String EXECUTOR_JXGOV_SPIDER = "jxgov_spider";
+	public static String EXECUTOR_NEWS_SPIDER = "news_spider";
 
 	/** 调度工厂Bean */
 	@Autowired
@@ -41,9 +43,6 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
 	/** 通用dao */
 	@Autowired
 	private JdbcDao jdbcDao;
-
-	@Autowired
-	private JxGovSpiderJobFactory jxGovJob;
 
 	public void initScheduleJob() {
 		List<ScheduleJob> scheduleJobList = jdbcDao.queryList(Criteria.select(ScheduleJob.class));
@@ -70,8 +69,8 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
 	public Class<? extends Job> getJobClassByVo(ScheduleJobVo scheduleJobVo) {
 		Class<? extends Job> jobClass = null;
 
-		if (EXECUTOR_JXGOV_SPIDER.equals(scheduleJobVo.getExecutor())) {
-			jobClass = jxGovJob.getClass();
+		if (EXECUTOR_NEWS_SPIDER.equals(scheduleJobVo.getExecutor())) {
+			jobClass = NewsSpiderJobFactory.class;
 		}
 		return jobClass;
 	}

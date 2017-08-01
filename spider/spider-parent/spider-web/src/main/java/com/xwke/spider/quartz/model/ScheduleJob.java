@@ -52,6 +52,32 @@ public class ScheduleJob extends Pageable {
 	
 	
 	
+	private String nodeIds;
+	
+	/** 任务id */
+	private Long executorId;
+	
+	
+	
+	
+	
+	
+
+	public String getNodeIds() {
+		return nodeIds;
+	}
+
+	public void setNodeIds(String nodeIds) {
+		this.nodeIds = nodeIds;
+	}
+
+	public Long getExecutorId() {
+		return executorId;
+	}
+
+	public void setExecutorId(Long executorId) {
+		this.executorId = executorId;
+	}
 
 	public String getExecutor() {
 		return executor;
@@ -155,6 +181,6 @@ public class ScheduleJob extends Pageable {
 				+ aliasName + '\'' + ", jobGroup='" + jobGroup + '\'' + ", jobTrigger='" + jobTrigger + '\''
 				+ ", status='" + status + '\'' + ", cronExpression='" + cronExpression + '\'' + ", executor='" + executor
 				+ '\'' + ", description='" + description + '\'' + ", gmtCreate=" + gmtCreate + ", gmtModify="
-				+ gmtModify + ", url='" + url + '\'' + '}';
+				+ gmtModify + ", nodeIds='" + nodeIds + '\''+", executorId='" + executorId + '\''+", url='" + url + '\'' + '}';
 	}
 }

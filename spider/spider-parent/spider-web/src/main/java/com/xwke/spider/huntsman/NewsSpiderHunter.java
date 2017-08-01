@@ -1,71 +1,44 @@
 package com.xwke.spider.huntsman;
 
-import java.util.List;
-
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Component;
-
-import com.xwke.base.core.beans.WherePrams;
-import com.xwke.spider.dao.SiteConfigDao;
+import com.github.pagehelper.util.StringUtil;
 import com.xwke.spider.huntsman.configuration.NewsConfiguration;
 import com.xwke.spider.huntsman.core.SimpleNewsHandle;
-import com.xwke.spider.modle.ExecutorModle;
-import com.xwke.spider.modle.SiteConfigModle;
+import com.xwke.spider.quartz.model.ScheduleJob;
+import com.xwke.spider.vo.ExectorVo;
+import com.xwke.spider.web.service.ExecutorService;
 
-import us.codecraft.webmagic.Page;
-import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.processor.PageProcessor;
 
 @Component
-public class NewsSpiderHunter implements PageProcessor {
+public class NewsSpiderHunter {
 
-	@Resource
-	SiteConfigDao siteConfigDao;
 	
-	@Resource
 	SimpleNewsHandle newsHandle;
-	
-	// 网站的配置
-	private NewsConfiguration config;
-
-	
-
-	public void crawl() {
-		Spider.create(this).addUrl(getSite().getDomain()).thread(20).run();
-	}
-
-	@Override
-	public void process(Page page) {
-	
-		//处理新闻
-		//newsHandle.handleNewsByExeutor(config, page,false);
-	}
-
-	@Override
-	public Site getSite() {
-		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
-		if (config == null) {
-			config = new NewsConfiguration();
-			List<SiteConfigModle> list = siteConfigDao.list(new WherePrams("c_alias", " = ", "jxGov"));
-			if (list != null && list.size() > 0) {
-				config.setConfig(list.get(0).getConfigJsonText());
-			}
-		}
-		return config.getSite();
-	}
+	@Resource
+	ExecutorService executorService;
 
 	/**
 	 * 抓取多urls
 	 * 
 	 * @param urls
 	 */
-	public void crawl(String[] urls) {
+	public void crawl(ScheduleJob scheduleJob) {
+		String[] urls = null;
+		if (StringUtil.isNotEmpty(scheduleJob.getUrl())) {
+			urls = scheduleJob.getUrl().split(",");
+		}
+		ExectorVo exectorVo = executorService.getExecutorAndDataOperationById(scheduleJob.getExecutorId());
+		NewsConfiguration config = new NewsConfiguration(exectorVo.getConfigJsonText());
+		NewsPageProcessor newsPageProcessor = new NewsPageProcessor(newsHandle, exectorVo, config);
+		/*
+		 * 进行抓取
+		 */
+		if (null != urls && urls.length > 0 && config.getSite() != null) {
+			Spider.create(newsPageProcessor).addUrl(urls).thread(20).run();
+		}
 
-		// jxGovConfig.setConfig("123123");
-		Spider.create(this).addUrl(urls).thread(20).run();
 	}
 
 }

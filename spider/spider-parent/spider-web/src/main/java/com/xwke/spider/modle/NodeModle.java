@@ -1,6 +1,5 @@
 package com.xwke.spider.modle;
 
-import java.util.List;
 
 import com.xwke.base.core.annotation.po.FieldName;
 import com.xwke.base.core.annotation.po.TableName;
