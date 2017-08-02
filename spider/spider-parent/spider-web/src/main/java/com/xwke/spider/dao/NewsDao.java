@@ -9,11 +9,33 @@ import org.springframework.stereotype.Repository;
 import com.github.pagehelper.util.StringUtil;
 import com.xwke.base.core.dao.DaoImpl;
 import com.xwke.spider.modle.NewsModle;
+import com.xwke.spider.modle.PageOnterModle;
 
 @Repository
 public class NewsDao extends DaoImpl<NewsModle, Serializable> {
 	@Resource
 	private SqlSessionTemplate sqlSessionTemplateASS;
+
+	public PageOnterModle getNewsByNode(long nodeIds[]) {
+
+		String sql = "select n.id,n.title,n.summary,n.content,n.grasping_time,n.source,n.thum_img,n.pic_array,n.thum_img_array,n.pub_time,n.author from s_news as n"
+				+ "where EXISTS (select 1 from (select id,node_id,news_id,pub_status from s_node_news_relation %s ) as r where n.id = r.news_id)";
+		String nodeSql = "";
+		if (null != nodeIds) {
+
+			for (int i = 0; i < nodeIds.length; i++) {
+				if (i == 0) {
+					nodeSql = "where node_id = " + nodeIds[i];
+				} else {
+					nodeSql = nodeSql + " or node_id = " + nodeIds[i];
+				}
+			}
+		}
+		sql = String.format(sql, nodeSql);
+		list(sql);
+
+		return null;
+	}
 
 	public long getCountBySourceUrl(String url) {
 		// TODO Auto-generated method stub
