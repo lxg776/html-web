@@ -13,8 +13,8 @@ import us.codecraft.webmagic.Spider;
 
 @Component
 public class NewsSpiderHunter {
-
 	
+	@Resource
 	SimpleNewsHandle newsHandle;
 	@Resource
 	ExecutorService executorService;
@@ -31,7 +31,7 @@ public class NewsSpiderHunter {
 		}
 		ExectorVo exectorVo = executorService.getExecutorAndDataOperationById(scheduleJob.getExecutorId());
 		NewsConfiguration config = new NewsConfiguration(exectorVo.getConfigJsonText());
-		NewsPageProcessor newsPageProcessor = new NewsPageProcessor(newsHandle, exectorVo, config);
+		NewsPageProcessor newsPageProcessor = new NewsPageProcessor(newsHandle, exectorVo, scheduleJob);
 		/*
 		 * 进行抓取
 		 */

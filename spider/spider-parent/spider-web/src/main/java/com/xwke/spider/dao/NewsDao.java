@@ -80,8 +80,8 @@ public class NewsDao extends DaoImpl<NewsModle, Serializable> {
 		String tableName = "s_node_news_relation";
 		String sql = String.format("select count(id) from " + tableName + " where node_id =  %d and news_id = %d",
 				nodeId, newsId);
-		int count = sqlSessionTemplateASS.selectOne("getCountBySourceUrl", sql);
-		String insertSql = String.format("insert into  " + tableName + "(node_id,newsId,pub_status)values(%d,%d,'%s')",
+		long count = sqlSessionTemplateASS.selectOne("getCountBySourceUrl", sql);
+		String insertSql = String.format("insert into  " + tableName + "(node_id,news_id,pub_status)values(%d,%d,'%s')",
 				nodeId, newsId, status);
 		if (count <= 0) {
 			return sqlSessionTemplateASS.insert("add", insertSql);

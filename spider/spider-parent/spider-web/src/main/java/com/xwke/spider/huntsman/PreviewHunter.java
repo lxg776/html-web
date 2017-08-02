@@ -1,7 +1,5 @@
 package com.xwke.spider.huntsman;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
@@ -9,9 +7,7 @@ import org.springframework.stereotype.Component;
 import com.xwke.spider.huntsman.configuration.NewsConfiguration;
 import com.xwke.spider.huntsman.core.SimpleNewsHandle;
 import com.xwke.spider.modle.NewsModle;
-import com.xwke.spider.modle.PreviewDataModle;
 import com.xwke.spider.vo.ExectorVo;
-import com.xwke.spider.web.service.ExecutorService;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -27,14 +23,10 @@ public class PreviewHunter implements PageProcessor {
 	private Page listPage;
 	private Page detailPage;
 
-
-
 	@Resource
 	SimpleNewsHandle handle;
 
 	private NewsModle newsModle;
-	
-	
 
 	public NewsModle getNewsModle() {
 		return newsModle;
@@ -72,7 +64,7 @@ public class PreviewHunter implements PageProcessor {
 	@Override
 	public void process(Page page) {
 		// TODO Auto-generated method stub
-		NewsModle modle = handle.handleNewsByExeutor(config, exectorVo, page, true);
+		NewsModle modle = handle.handleNewsByExeutor(exectorVo, null, page, true);
 		if (null != modle) {
 			newsModle = modle;
 		}
@@ -116,7 +108,5 @@ public class PreviewHunter implements PageProcessor {
 		return handle.handleNewsByHtml(exectorVo);
 
 	}
-
-
 
 }

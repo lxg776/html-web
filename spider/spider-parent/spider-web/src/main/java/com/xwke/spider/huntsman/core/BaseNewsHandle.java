@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.xwke.spider.huntsman.configuration.NewsConfiguration;
 import com.xwke.spider.modle.NewsModle;
 import com.xwke.spider.modle.PreviewDataModle;
+import com.xwke.spider.quartz.model.ScheduleJob;
 import com.xwke.spider.vo.ExectorVo;
 import com.xwke.spider.web.service.ExecutorService;
 import us.codecraft.webmagic.Page;
@@ -22,26 +23,24 @@ import us.codecraft.webmagic.selector.PlainText;
 @Repository
 public abstract class BaseNewsHandle implements NewsHandle {
 
-	/** 抓取的配置 */
-	protected ExectorVo mExecutor;
 	@Resource
-	ExecutorService executorService;
+	public ExecutorService executorService;
 
 	/**
 	 * 处理本地的数据
 	 * 
 	 * @param executor
 	 */
-	public NewsModle handleNewsByHtml(ExectorVo executor) {
-		mExecutor = executor;
+	public NewsModle handleNewsByHtml(ExectorVo mExecutor) {
+
 		if (mExecutor == null) {
 			return null;
 		}
 
-		PreviewDataModle dataModle = executorService.getModleByExecutorIdAndType(executor.getId(), "news");
+		PreviewDataModle dataModle = executorService.getModleByExecutorIdAndType(mExecutor.getId(), "news");
 		Page page = new Page();
 		page.setRawText(dataModle.getHtmlData());
-		Request request = new Request(executor.getLinkUrl());
+		Request request = new Request(mExecutor.getLinkUrl());
 		page.setUrl(new PlainText(request.getUrl()));
 		page.setRequest(request);
 
@@ -56,8 +55,9 @@ public abstract class BaseNewsHandle implements NewsHandle {
 
 	}
 
-	public NewsModle handleNewsByExeutor(NewsConfiguration config, ExectorVo executor, Page page, boolean isPreview) {
-		mExecutor = executor;
+	public NewsModle handleNewsByExeutor(ExectorVo mExecutor, ScheduleJob scheduleJob,
+			Page page, boolean isPreview) {
+
 		if (mExecutor == null) {
 			return null;
 		}
@@ -76,7 +76,7 @@ public abstract class BaseNewsHandle implements NewsHandle {
 				executorService.savePreviewData(dataModle);
 				return getNewsByExeutor(mExecutor, page);
 			} else {
-				saveNews(newModle, executor);
+				saveNews(newModle, mExecutor, scheduleJob);
 			}
 		} else if (isNewsListPage(mExecutor, page)) {
 			/**
@@ -160,6 +160,6 @@ public abstract class BaseNewsHandle implements NewsHandle {
 
 	public abstract Document getListDocument(ExectorVo executor, Page page);
 
-	public abstract void saveNews(NewsModle newsModle, ExectorVo exectorVo);
+	public abstract void saveNews(NewsModle newsModle, ExectorVo exectorVo, ScheduleJob scheduleJob);
 
 }

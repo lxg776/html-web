@@ -9,6 +9,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.xwke.spider.web.controller.ExecutorController;
+import com.xwke.spider.web.controller.ScheduleJobController;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "classpath:spring/spring-beans.xml", "classpath:spring/spring-job.xml",
@@ -16,8 +17,9 @@ import com.xwke.spider.web.controller.ExecutorController;
 
 public class TestController {
 	private MockMvc mockMvc;
+
 	@Autowired
-	private ExecutorController indexController;
+	private ScheduleJobController indexController;
 
 	@Before
 	public void setUp() throws Exception {
@@ -29,17 +31,21 @@ public class TestController {
 	 */
 	@Test
 	public void testIndex() throws Exception {
-//		mockMvc.perform(MockMvcRequestBuilders.get("/index.html"))
-//				.andExpect(MockMvcResultMatchers.view().name("/index")).andReturn();
-		
-		//mockMvc.perform(MockMvcRequestBuilders.post("/node/add").param("node_name", "tag01").param("sort", "2"));
-		
-		
-	 //mockMvc.perform((MockMvcRequestBuilders.post("/executor/preview").param("executorId", "2").param("keyWord", "onLine")));
-	// mockMvc.perform((MockMvcRequestBuilders.get("/job/input-schedule-job").param("scheduleJobId", "2").param("keywords", "delUpdate")));
-		
-		 mockMvc.perform((MockMvcRequestBuilders.post("/job/save-schedule-job").param("executorId", "2").param("keywords", "delUpdate")));
-		
+		// mockMvc.perform(MockMvcRequestBuilders.get("/index.html"))
+		// .andExpect(MockMvcResultMatchers.view().name("/index")).andReturn();
+
+		// mockMvc.perform(MockMvcRequestBuilders.post("/node/add").param("node_name",
+		// "tag01").param("sort", "2"));
+
+		mockMvc.perform(MockMvcRequestBuilders.get("/job/run-once-schedule-job").param("scheduleJobId", "3"));
+		// mockMvc.perform((MockMvcRequestBuilders.post("/executor/preview").param("executorId",
+		// "1").param("keyWord", "onLine")));
+		// mockMvc.perform((MockMvcRequestBuilders.get("/job/input-schedule-job").param("scheduleJobId",
+		// "2").param("keywords", "delUpdate")));
+
+		// mockMvc.perform((MockMvcRequestBuilders.post("/job/save-schedule-job").param("executorId",
+		// "2").param("keywords", "delUpdate")));
+
 	}
 
 }

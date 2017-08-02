@@ -3,6 +3,8 @@ package com.xwke.spider.quartz.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.quartz.CronTrigger;
 import org.quartz.Job;
@@ -20,7 +22,6 @@ import com.dexcoder.commons.bean.BeanConverter;
 import com.dexcoder.dal.JdbcDao;
 import com.dexcoder.dal.build.Criteria;
 import com.xwke.spider.quartz.model.ScheduleJob;
-import com.xwke.spider.quartz.quartz.JxGovSpiderJobFactory;
 import com.xwke.spider.quartz.quartz.NewsSpiderJobFactory;
 import com.xwke.spider.quartz.service.ScheduleJobService;
 import com.xwke.spider.quartz.utils.ScheduleUtils;
@@ -43,6 +44,9 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
 	/** 通用dao */
 	@Autowired
 	private JdbcDao jdbcDao;
+
+	@Resource
+	NewsSpiderJobFactory newsSpiderJobFactory;
 
 	public void initScheduleJob() {
 		List<ScheduleJob> scheduleJobList = jdbcDao.queryList(Criteria.select(ScheduleJob.class));
@@ -71,6 +75,8 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
 
 		if (EXECUTOR_NEWS_SPIDER.equals(scheduleJobVo.getExecutor())) {
 			jobClass = NewsSpiderJobFactory.class;
+		} else {
+			jobClass = newsSpiderJobFactory.getClass();
 		}
 		return jobClass;
 	}

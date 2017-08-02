@@ -11,6 +11,8 @@ import org.jsoup.helper.StringUtil;
 import org.jsoup.nodes.Document;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 import com.xwke.spider.huntsman.configuration.NewsConfiguration;
 import com.xwke.spider.huntsman.util.CommonUtil;
 import com.xwke.spider.huntsman.util.HtmlUtil;
@@ -23,26 +25,18 @@ import com.xwke.spider.web.service.NewsService;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.selector.Html;
 
+@Repository
 public class SimpleNewsHandle extends BaseNewsHandle {
-
+	@Resource
 	ThreadPoolTaskExecutor taskExecutor;
-
+	@Resource
 	NewsService newsService;
-
+	@Resource
 	ImageRecordService imageRecordService;
-
-	NewsConfiguration config;
-
-	ScheduleJob scheduleJob;
 
 	public static String OPERATION_LOCATION = "location";// 正则定位
 
 	public static final String STATUS_PUB = "publish";
-
-	public SimpleNewsHandle(ThreadPoolTaskExecutor mTaskExecutor, ImageRecordService imageRecordService,
-			NewsService newsService, NewsConfiguration config) {
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public boolean isNewsListPage(ExectorVo executor, Page page) {
@@ -131,6 +125,13 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 		return result;
 	}
 
+	private String clearHtmlTag(String str) {
+		if (!StringUtil.isBlank(str)) {
+			str = str.replaceAll("&nbsp;", "");
+		}
+		return str;
+	}
+
 	/*
 	 * 正则定位
 	 */
@@ -197,7 +198,11 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 			List<DataOperationVo> operationList = map.get(ExectorVo.KEY_SOURCE);
 			if (operationList != null && operationList.size() > 0) {
 				DataOperationVo operationModle = operationList.get(operationList.size() - 1);
-				imgUrls = html.$(operationModle.getParam1()).regex("<img(?:\\s+.+?)*?\\s+src=\"([^\"]*?)\".+>").all();
+				if (!StringUtil.isBlank(operationModle.getParam1())) {
+					imgUrls = html.$(operationModle.getParam1()).regex("<img(?:\\s+.+?)*?\\s+src=\"([^\"]*?)\".+>")
+							.all();
+				}
+
 			}
 		}
 
@@ -213,6 +218,8 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 		newsModle.setSource(source);
 		newsModle.setSourceUrl(sourceUrl);
 		newsModle.setContent(content);
+
+		NewsConfiguration config = new NewsConfiguration(executor.getConfigJsonText());
 
 		if (imgUrls != null && imgUrls.size() > 0) {
 			CommonUtil.handleImagesByContent(newsModle, imgUrls, config, taskExecutor, imageRecordService);
@@ -235,7 +242,7 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 	}
 
 	@Override
-	public void saveNews(NewsModle newsModle, ExectorVo exectorVo) {
+	public void saveNews(NewsModle newsModle, ExectorVo exectorVo, ScheduleJob scheduleJob) {
 		// TODO Auto-generated method stub
 		String[] nodeIds = null;
 		if (!StringUtil.isBlank(scheduleJob.getNodeIds())) {
