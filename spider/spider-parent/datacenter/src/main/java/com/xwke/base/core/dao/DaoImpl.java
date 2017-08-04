@@ -321,6 +321,22 @@ public class DaoImpl<T extends Po, PK extends Serializable> implements BaseDao<T
 	}
 
 	@Override
+	public List<T> getlistBySql(String sql) {
+		// TODO Auto-generated method stub
+
+		List<Map<String, Object>> selectList = sqlSessionTemplateASS.selectList("selectList", sql);
+
+		List<T> list = new ArrayList<>();
+		for (Map<String, Object> map : selectList) {
+			T t = handleResult(map, this.entityClass);
+			list.add(t);
+		}
+
+		return list;
+
+	}
+
+	@Override
 	public Serializable[] listFile(WherePrams where, String fileName) {
 		// TODO Auto-generated method stub
 
@@ -660,8 +676,6 @@ public class DaoImpl<T extends Po, PK extends Serializable> implements BaseDao<T
 		}
 		return t;
 	}
-	
-
 
 	/**
 	 * �����һ�����е�ֵ

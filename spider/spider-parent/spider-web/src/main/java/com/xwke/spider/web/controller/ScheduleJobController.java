@@ -45,8 +45,7 @@ public class ScheduleJobController {
 	public String inputScheduleJob(ScheduleJobVo scheduleJobVo, ModelMap modelMap) {
 		List<ExecutorModle> executList = executorService.getAllList();
 		modelMap.put("executList", executList);
-		List<NodeVo> nodeList = nodeService.getNodeList();
-		modelMap.put("nodeList", nodeList);
+		
 		String[] nodeArray = null;
 		if (scheduleJobVo.getScheduleJobId() != null) {
 			ScheduleJobVo scheduleJob = scheduleJobService.get(scheduleJobVo.getScheduleJobId());
@@ -57,6 +56,7 @@ public class ScheduleJobController {
 				nodeArray = nodeIds.split(",");
 			}
 		}
+		List<NodeVo> nodeList = nodeService.getNodeList();
 		if (null != nodeArray && nodeArray.length > 0) {
 			for (int i = 0; i < nodeArray.length; i++) {
 				long nodeId = new Long(nodeArray[i]);
@@ -67,6 +67,7 @@ public class ScheduleJobController {
 				}
 			}
 		}
+		modelMap.put("nodeList", nodeList);
 
 		return "quartz/input-schedule-job";
 	}

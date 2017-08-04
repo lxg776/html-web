@@ -8,7 +8,7 @@ public interface NewsService {
 	/**
 	 * 获取新闻列表
 	 */
-	public PageOnterModle getNewsList(int pageNum);
+	public PageOnterModle getNewsList(int pageNum, long[] nodeIds, String keyWord);
 
 	/**
 	 * 保持新闻

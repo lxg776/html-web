@@ -74,4 +74,7 @@ public interface BaseDao<T extends Po, PK extends Serializable> {
 	
 	
 	public List<T> listFormat(WherePrams where, Formatter fmt);
+
+
+	public List<T> getlistBySql(String sql);
 }

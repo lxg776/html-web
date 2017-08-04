@@ -27,11 +27,10 @@ public class NewsServiceImpl implements NewsService {
 	NewsDao newsDao;
 
 	@Override
-	public PageOnterModle getNewsList(int pageNum) {
+	public PageOnterModle getNewsList(int pageNum, long[] nodeIds, String keyWord) {
 		Page<ExecutorModle> pageonter = PageHelper.startPage(pageNum, 20);
-		List<NewsModle> newsList = newsDao.list(new WherePrams("column_id", "=", 0));
+		List<NewsModle> newsList = newsDao.getNewsByNode(nodeIds, keyWord);
 		PageOnterModle page = CommonUtil.getPageOnter(pageonter);
-
 		List<NewsModleVo> voList = new ArrayList<>();
 		for (NewsModle item : newsList) {
 			NewsModleVo vo = item.getTargetObject(NewsModleVo.class);

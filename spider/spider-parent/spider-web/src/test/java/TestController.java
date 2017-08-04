@@ -8,8 +8,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.xwke.spider.web.controller.ExecutorController;
-import com.xwke.spider.web.controller.ScheduleJobController;
+import com.xwke.spider.web.controller.NewsController;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "classpath:spring/spring-beans.xml", "classpath:spring/spring-job.xml",
@@ -19,7 +18,7 @@ public class TestController {
 	private MockMvc mockMvc;
 
 	@Autowired
-	private ScheduleJobController indexController;
+	private NewsController indexController;
 
 	@Before
 	public void setUp() throws Exception {
@@ -37,7 +36,7 @@ public class TestController {
 		// mockMvc.perform(MockMvcRequestBuilders.post("/node/add").param("node_name",
 		// "tag01").param("sort", "2"));
 
-		mockMvc.perform(MockMvcRequestBuilders.get("/job/run-once-schedule-job").param("scheduleJobId", "3"));
+		mockMvc.perform(MockMvcRequestBuilders.get("/news/newsList").param("nodeId", "14"));
 		// mockMvc.perform((MockMvcRequestBuilders.post("/executor/preview").param("executorId",
 		// "1").param("keyWord", "onLine")));
 		// mockMvc.perform((MockMvcRequestBuilders.get("/job/input-schedule-job").param("scheduleJobId",
