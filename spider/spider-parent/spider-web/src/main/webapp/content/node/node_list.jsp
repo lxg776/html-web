@@ -212,7 +212,7 @@
 						
 						urlstr = "<div><span>"
 								+ o[i]["nodeName"]
-								+ " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"${ctx}/node/toEdit?nodeId="+o[i]["id"]+"\">edit</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"${ctx}/node/toAdd?fid="+o[i]["id"]+"\">add</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"${ctx}/news/newsList?nodeIds="+o[i]["id"]+"\">新闻编辑</a></span><ul>";
+								+ " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"${ctx}/node/toEdit?nodeId="+o[i]["id"]+"\">edit</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"${ctx}/node/toAdd?fid="+o[i]["id"]+"\">add</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"${ctx}/news/newsList?nodeId="+o[i]["id"]+"\">新闻编辑</a></span><ul>";
 					} else {
 						urlstr = "<div><span><a href=" + o[i]["id"] + ">"
 								+ o[i]["nodeName"] + "</a>99</span><ul>";

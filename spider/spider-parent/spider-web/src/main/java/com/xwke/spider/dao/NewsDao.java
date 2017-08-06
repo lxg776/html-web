@@ -24,7 +24,7 @@ public class NewsDao extends DaoImpl<NewsModle, Serializable> {
 
 		String likeSql = " ";
 		if (StringUtil.isNotEmpty(keyWord)) {
-			likeSql = "n.title like 'keyWord'";
+			likeSql = "n.title like '%"+keyWord+"%' and";
 		}
 
 		if (null != nodeIds) {
@@ -50,6 +50,15 @@ public class NewsDao extends DaoImpl<NewsModle, Serializable> {
 
 	}
 
+	public long getNewsidBySourceUrl(String url) {
+		// TODO Auto-generated method stub
+
+		String sql = "select id from " + getTableName() + " where source_url = '" + url + "'";
+		logger.debug(sql);
+		return sqlSessionTemplateASS.selectOne("getCountBySourceUrl", sql);
+
+	}
+
 	public boolean isExistBySource(String sourceUrl) {
 		if (StringUtil.isEmpty(sourceUrl)) {
 			return true;
@@ -68,13 +77,17 @@ public class NewsDao extends DaoImpl<NewsModle, Serializable> {
 	 * @param newsModle
 	 */
 	public int addNewsAndRel(NewsModle newsModle, String[] nodeIds, String status) {
+		long newsId;
 		if (!isExistBySource(newsModle.getSourceUrl())) {
-
 			add(newsModle);
-			if (nodeIds != null && nodeIds.length > 0) {
-				for (int i = 0; i < nodeIds.length; i++) {
-					addNewsRel(new Long(nodeIds[i]), newsModle.getId(), status);
-				}
+			newsId = newsModle.getId();
+		} else {
+			newsId = getNewsidBySourceUrl(newsModle.getSourceUrl());
+
+		}
+		if (nodeIds != null && nodeIds.length > 0) {
+			for (int i = 0; i < nodeIds.length; i++) {
+				addNewsRel(new Long(nodeIds[i]), newsModle.getId(), status);
 			}
 		}
 

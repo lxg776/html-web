@@ -85,6 +85,8 @@ public class NewsController {
 			}
 		}
 		modelMap.put("nodeList", nodeList);
+		modelMap.put("nodeId", nodeId);
+		modelMap.put("keyWord", keyWord);
 		modelMap.addAttribute("page", newsService.getNewsList(pageNum, nodeIds, keyWord));
 
 		return "news/news_list";

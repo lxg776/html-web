@@ -36,7 +36,7 @@ public class TestController {
 		// mockMvc.perform(MockMvcRequestBuilders.post("/node/add").param("node_name",
 		// "tag01").param("sort", "2"));
 
-		mockMvc.perform(MockMvcRequestBuilders.get("/news/newsList").param("nodeId", "14"));
+		mockMvc.perform(MockMvcRequestBuilders.get("/news/newsList").param("nodeId", "23").param("keyWord", "市"));
 		// mockMvc.perform((MockMvcRequestBuilders.post("/executor/preview").param("executorId",
 		// "1").param("keyWord", "onLine")));
 		// mockMvc.perform((MockMvcRequestBuilders.get("/job/input-schedule-job").param("scheduleJobId",

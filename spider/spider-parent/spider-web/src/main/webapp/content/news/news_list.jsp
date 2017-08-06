@@ -31,7 +31,57 @@
 <script type="text/javascript">
 	var listUrl = "${ctx}" + "/news/newsList?pageNum=";
 	function getDataList(pageNum) {
-		window.location.href = listUrl + pageNum;
+		pageLink =  listUrl + pageNum;
+		nodeId = "${nodeId}";
+		keyWord = "${keyWord}";
+		if (nodeId.length != 0) {
+			pageLink = pageLink+"&&nodeId="+nodeId;
+		}
+		if (keyWord.length != 0) {
+			pageLink = pageLink+"&&keyWord="+keyWord;
+		}
+		window.location.href = pageLink;
+	}
+	
+	
+	var baseUrl = "${ctx}" + "/news/newsList";
+	
+	function searchNews(){
+			  searchText = $("#searchText").val();
+			  keyWord="";
+			 if (searchText.length != 0) {
+				 keyWord  = "keyWord="+searchText;
+				 
+			 }
+			  nodeId ="";
+			 $(".chosen-select option").each(function(){
+				 if($(this).is(':checked')) {
+					 if(nodeId.length == 0){
+						 nodeId =  $(this).val();
+					 }else{
+						 nodeId = nodeId+","+ $(this).val();
+					 }
+				 }
+			});
+			 
+			 
+			 url=""; 
+			if (nodeId.length != 0) {
+				url = "nodeId="+nodeId;
+			}
+			
+			if(url.length != 0&&keyWord.length!=0){
+				url=url+"&&"+keyWord;
+			}else{
+				url=url+keyWord;
+			} 
+			
+			if(url.length != 0){
+				url = baseUrl +"?"  + url;
+				window.location.href = url;
+			}
+			
+			
 	}
 </script>
 
@@ -112,8 +162,8 @@
 									<label class="control-label" for="appendedInputButton">查询内容</label>
 									<div class="controls">
 										<div class="input-append">
-											<input id="appendedInputButton" size="16" type="text">
-											<button class="btn" type="button">Search</button>
+											<input id="searchText" size="16" type="text" value="${keyWord}">
+											<button class="btn" type="button" onclick="searchNews();">Search</button>
 										</div>
 									</div>
 								</div>
