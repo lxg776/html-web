@@ -43,8 +43,8 @@ public class TestController {
 		// mockMvc.perform((MockMvcRequestBuilders.get("/job/input-schedule-job").param("scheduleJobId",
 		// "2").param("keywords", "delUpdate")));
 
-		 mockMvc.perform((MockMvcRequestBuilders.post("/executor/preview").param("executorId",
-		 "3").param("keyWord", "local")));
+//		 mockMvc.perform((MockMvcRequestBuilders.post("/executor/preview").param("executorId",
+//		 "3").param("keyWord", "local")));
 
 	}
 
