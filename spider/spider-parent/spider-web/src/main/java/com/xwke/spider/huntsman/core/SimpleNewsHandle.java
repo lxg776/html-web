@@ -69,7 +69,9 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 				if (operation != null && ExectorVo.OPERATION_LOCATION.equals(operation.getType())) {
 					List<String> urls = page.getHtml().$(operation.getParam1())
 							.regex("<a(?:\\s+.+?)*?\\s+href=\"([^\"]*?)\".+>(.*?)</a>").all();
+
 					return urls;
+
 				}
 			}
 		}
@@ -110,6 +112,10 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 
 		}
 
+		if (null != result && "null".equals(result.toLowerCase())) {
+			return null;
+		}
+
 		return result;
 	}
 
@@ -136,14 +142,23 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 	 * 正则定位
 	 */
 	private String getLocationOperation(Html html, DataOperationVo operation) {
-		String result = "";
+		StringBuffer result = new StringBuffer();
 		if (null != operation) {
-			result = html.$(operation.getParam1()).get();
+			if (!StringUtil.isBlank(operation.getParam2()) && "list".equals(operation.getParam2())) {
+				List<String> listString = html.$(operation.getParam1()).all();
+				if (null != listString && listString.size() > 0) {
+					for (int i = 0; i < listString.size(); i++) {
+						result.append(listString.get(i));
+					}
+				}
+			} else {
+				result.append(html.$(operation.getParam1()).get());
+			}
 
 		}
 
 		// HtmlUtils.htmlEscape(input)
-		return result;
+		return result.toString();
 	}
 
 	/*
@@ -158,6 +173,33 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 		}
 
 		return result;
+	}
+
+	/*
+	 * 处理图片地址
+	 */
+	private List<String> handleImgUrlBySource(List<String> urls, String sourceUrl) {
+		List<String> reUrls = null;
+		if (StringUtil.isBlank(sourceUrl)) {
+			return urls;
+		}
+
+		if (null != urls && urls.size() > 0) {
+			reUrls = new ArrayList();
+		}
+
+		String baseUrl = sourceUrl.substring(0, sourceUrl.lastIndexOf("/"));
+
+		for (String itemUrl : urls) {
+			if (itemUrl.startsWith("http")) {
+				reUrls.add(itemUrl);
+			} else if (itemUrl.startsWith("/")) {
+				reUrls.add(baseUrl + itemUrl);
+			} else {
+				reUrls.add(baseUrl + "/" + itemUrl);
+			}
+		}
+		return reUrls;
 	}
 
 	@Override
@@ -195,23 +237,19 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 
 		List<String> imgUrls = null;
 		if (map.containsKey(ExectorVo.KEY_IMGURLS)) {
-			List<DataOperationVo> operationList = map.get(ExectorVo.KEY_SOURCE);
+			List<DataOperationVo> operationList = map.get(ExectorVo.KEY_IMGURLS);
 			if (operationList != null && operationList.size() > 0) {
 				DataOperationVo operationModle = operationList.get(operationList.size() - 1);
 				if (!StringUtil.isBlank(operationModle.getParam1())) {
+
 					imgUrls = html.$(operationModle.getParam1()).regex("<img(?:\\s+.+?)*?\\s+src=\"([^\"]*?)\".+>")
 							.all();
+					// imgUrls =
+					// html.$(operationModle.getParam1()).regex("<img[^<>]*?\\ssrc=['\"]?(.*?)['\"].*?>").all();
 				}
 
 			}
 		}
-
-		// if (!StringUtil.isBlank(executor.getSourceSelector())) {
-		//
-		// source =
-		// Xsoup.compile(executor.getSourceSelector()).evaluate(mDocument).get().toString();
-		// }
-
 		newsModle.setTitle(title);
 		newsModle.setPubTime(date);
 		newsModle.setAuthor(author);
@@ -266,6 +304,8 @@ public class SimpleNewsHandle extends BaseNewsHandle {
 		Document document = null;
 		if (!StringUtil.isBlank(content)) {
 			document = Jsoup.parse(content);
+		} else {
+			return null;
 		}
 		// TODO Auto-generated method stub
 		return document;

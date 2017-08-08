@@ -8,6 +8,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import com.xwke.spider.web.controller.ExecutorController;
 import com.xwke.spider.web.controller.NewsController;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -18,7 +19,7 @@ public class TestController {
 	private MockMvc mockMvc;
 
 	@Autowired
-	private NewsController indexController;
+	private ExecutorController indexController;
 
 	@Before
 	public void setUp() throws Exception {
@@ -36,14 +37,14 @@ public class TestController {
 		// mockMvc.perform(MockMvcRequestBuilders.post("/node/add").param("node_name",
 		// "tag01").param("sort", "2"));
 
-		mockMvc.perform(MockMvcRequestBuilders.get("/news/newsList").param("nodeId", "23").param("keyWord", "市"));
+		//mockMvc.perform(MockMvcRequestBuilders.get("/news/newsList").param("nodeId", "23").param("keyWord", "市"));
 		// mockMvc.perform((MockMvcRequestBuilders.post("/executor/preview").param("executorId",
 		// "1").param("keyWord", "onLine")));
 		// mockMvc.perform((MockMvcRequestBuilders.get("/job/input-schedule-job").param("scheduleJobId",
 		// "2").param("keywords", "delUpdate")));
 
-		// mockMvc.perform((MockMvcRequestBuilders.post("/job/save-schedule-job").param("executorId",
-		// "2").param("keywords", "delUpdate")));
+		 mockMvc.perform((MockMvcRequestBuilders.post("/executor/preview").param("executorId",
+		 "3").param("keyWord", "local")));
 
 	}
 

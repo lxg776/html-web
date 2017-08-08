@@ -36,11 +36,11 @@ public class CommonUtil {
 		if (null != page.getResult() && page.getResult().size() > 0) {
 			pageOnterModle.setDataList(page.getResult());
 		}
-		
-		if(null!=pageOnterModle.getDataList()){
+
+		if (null != pageOnterModle.getDataList()) {
 			pageOnterModle.setDataFla(true);
 		}
-		
+
 		return pageOnterModle;
 	}
 
@@ -91,8 +91,18 @@ public class CommonUtil {
 				// }
 
 				// 线程池下载图片
+				String bUrl = newsModle.getSourceUrl().substring(0, newsModle.getSourceUrl().lastIndexOf("/"));
+				String downImgUrl = "";
 
-				taskExecutor.execute(new DownTask(itemImgUrl, filePath, fileName, new DownImgListener() {
+				if (itemImgUrl.startsWith("http")) {
+					downImgUrl = itemImgUrl;
+				} else if (itemImgUrl.startsWith("/")) {
+					downImgUrl = bUrl + itemImgUrl;
+				} else {
+					downImgUrl = bUrl + "/" + itemImgUrl;
+				}
+
+				taskExecutor.execute(new DownTask(downImgUrl, filePath, fileName, new DownImgListener() {
 
 					@Override
 					public void onSuccess(String url) {
