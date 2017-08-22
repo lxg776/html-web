@@ -64,8 +64,12 @@ public class NewsModle extends BaseModle {
 	@FieldName(name = "thum_img_array")
 	private String thumImgArray;
 	
+
+
 	
 	
+
+
 
 	public String getThumImgArray() {
 		return thumImgArray;

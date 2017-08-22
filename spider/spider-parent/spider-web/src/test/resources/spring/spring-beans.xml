@@ -3,12 +3,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<!-- 	<bean id="jxgov" name="jxgov"
-		class="com.xwke.spider.huntsman.configuration.NewsConfiguration">
-		<constructor-arg index="0" value="site-config/jxgov-config.json" />
-	</bean> -->
+	<!-- <bean id="jxgov" name="jxgov" class="com.xwke.spider.huntsman.configuration.NewsConfiguration"> 
+		<constructor-arg index="0" value="site-config/jxgov-config.json" /> </bean> -->
 
+	<bean id="client" name="esClient" factory-bean="esClientBuilder" factory-method="init"
+		destroy-method="close" />
 
+	<bean id="esClientBuilder" class="com.xwke.spider.elasticsearch.EsClientBuilder">
+		<property name="clusterName" value="elasticsearch" />
+		<property name="nodeIpInfo" value="127.0.0.1:9200" />
+	</bean>
 
 
 </beans>
