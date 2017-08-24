@@ -1,16 +1,19 @@
 
 import org.junit.Test;
 
+import com.xwke.api.tenant.TenantDTO;
+import com.xwke.api.tenant.TenantHelper;
 import com.xwke.spider.huntsman.util.HtmlUtil;
 
 public class TestString {
 	@Test
 	public void test02() {
-		String text = "http://ent.news.cn/2017-08/08/c_1121446895.htm";
-		// sql = String.format(sql, new Long(2), new Long(1));
-		//text = HtmlUtil.delHTMLTag(text);
-		System.out.println(text.substring(0, text.lastIndexOf("/")));
-//		System.out.println(123123);
+		
+		TenantDTO ss =new TenantDTO();
+		TenantHelper.setTenantDto(ss);
+		TenantHelper.getTenantDto().setRef("001");
+
+		System.out.println("123123" + TenantHelper.getTenantDto().getRef());
 	}
 
 }

@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.xwke.api.tenant.TenantHelper;
 import com.xwke.spider.huntsman.NewsSpiderHunter;
 import com.xwke.spider.quartz.model.ScheduleJob;
 import com.xwke.spider.quartz.service.ScheduleJobService;
@@ -27,8 +28,12 @@ public class Test02 {
 	@Test
 	public void testHtml() {
 		
-		ScheduleJob job = scheduleJobService.get(new Long(3)).getTargetObject(ScheduleJob.class);
-		hunter.crawl(job);
+//		ScheduleJob job = scheduleJobService.get(new Long(3)).getTargetObject(ScheduleJob.class);
+//		hunter.crawl(job);
+		
+		TenantHelper.getTenantDto().setRef("001");
+		
+		System.out.println("123123"+TenantHelper.getTenantDto().getRef());
 		
 	}
 
