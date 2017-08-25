@@ -89,4 +89,15 @@
 	<!-- <mvc:resources location="/cdn/bootstrap/" mapping="/bootstrap/**" /> 
 		<mvc:resources location="/cdn/umeditor/" mapping="/umeditor/**" /> -->
 
+
+
+	<!-- 默认通过application.properties读取配置 
+	<bean id="applicationProperties" class="com.xwke.core.spring.ApplicationPropertiesFactoryBean" />
+-->
+	<!-- 定义受环境影响易变的变量 
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="properties" ref="applicationProperties" />
+	</bean>
+-->
 </beans>

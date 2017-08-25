@@ -21,7 +21,8 @@ import eu.bitwalker.useragentutils.UserAgent;
 public class RememberLastUsernameAuthenticationSuccessHandler extends
         SavedRequestAwareAuthenticationSuccessHandler {
     private TenantHolder tenantHolder;
-    private DeviceConnector deviceConnector;
+    
+  //  private DeviceConnector deviceConnector; 保存设备信息
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
@@ -29,7 +30,7 @@ public class RememberLastUsernameAuthenticationSuccessHandler extends
             throws ServletException, IOException {
         this.handleTenant(response);
         this.handleUsername(response, authentication);
-        this.handleDevice(request, response);
+       // this.handleDevice(request, response);
         super.onAuthenticationSuccess(request, response, authentication);
     }
 
@@ -46,32 +47,32 @@ public class RememberLastUsernameAuthenticationSuccessHandler extends
                 username);
     }
 
-    public void handleDevice(HttpServletRequest request,
-            HttpServletResponse response) {
-        String deviceId = getCookie(request, "SECURITY_DEVICE_ID");
-
-        if (deviceId == null) {
-            deviceId = UUID.randomUUID().toString();
-            this.addCookie(response, "SECURITY_DEVICE_ID", deviceId,
-                    3600 * 24 * 365 * 100);
-        }
-
-        DeviceDTO deviceDto = deviceConnector.findDevice(deviceId);
-
-        if (deviceDto == null) {
-            deviceDto = new DeviceDTO();
-            deviceDto.setCode(deviceId);
-
-            UserAgent userAgent = UserAgent.parseUserAgentString(request
-                    .getHeader("User-Agent"));
-            deviceDto.setType(userAgent.getOperatingSystem().getDeviceType()
-                    .toString());
-            deviceDto.setOs(userAgent.getOperatingSystem().toString());
-            deviceDto.setClient(userAgent.getBrowser().toString());
-        }
-
-        deviceConnector.saveDevice(deviceDto);
-    }
+//    public void handleDevice(HttpServletRequest request,
+//            HttpServletResponse response) {
+//        String deviceId = getCookie(request, "SECURITY_DEVICE_ID");
+//
+//        if (deviceId == null) {
+//            deviceId = UUID.randomUUID().toString();
+//            this.addCookie(response, "SECURITY_DEVICE_ID", deviceId,
+//                    3600 * 24 * 365 * 100);
+//        }
+//
+//        DeviceDTO deviceDto = deviceConnector.findDevice(deviceId);
+//
+//        if (deviceDto == null) {
+//            deviceDto = new DeviceDTO();
+//            deviceDto.setCode(deviceId);
+//
+//            UserAgent userAgent = UserAgent.parseUserAgentString(request
+//                    .getHeader("User-Agent"));
+//            deviceDto.setType(userAgent.getOperatingSystem().getDeviceType()
+//                    .toString());
+//            deviceDto.setOs(userAgent.getOperatingSystem().toString());
+//            deviceDto.setClient(userAgent.getBrowser().toString());
+//        }
+//
+//        deviceConnector.saveDevice(deviceDto);
+//    }
 
     public void addCookie(HttpServletResponse response, String key, String value) {
         this.addCookie(response, key, value, 3600 * 24 * 30);
@@ -123,8 +124,8 @@ public class RememberLastUsernameAuthenticationSuccessHandler extends
         this.tenantHolder = tenantHolder;
     }
 
-    @Resource
-    public void setDeviceConnector(DeviceConnector deviceConnector) {
-        this.deviceConnector = deviceConnector;
-    }
+//    @Resource
+//    public void setDeviceConnector(DeviceConnector deviceConnector) {
+//        this.deviceConnector = deviceConnector;
+//    }
 }

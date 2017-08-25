@@ -4,7 +4,7 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
              http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
-
+	
     <http security="none" pattern="/moban/**"/>
     <http security="none" pattern="/cdn/**"/>
 	<http security="none" pattern="/index.jsp"/>
@@ -26,7 +26,7 @@
 		<remember-me key="spider-web"/>
         <custom-filter ref="autoLoginFilter" after="SECURITY_CONTEXT_FILTER" />
 		<custom-filter ref="captchaFilter" before="FORM_LOGIN_FILTER" />
-        <custom-filter ref="switchUserFilter" position="SWITCH_USER_FILTER" />
+       
     </http>
 
     <authentication-manager>

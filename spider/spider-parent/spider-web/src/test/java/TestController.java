@@ -61,15 +61,15 @@ public class TestController {
 		// "3").param("keyWord", "local")));
 		
 		
-		MockMultipartHttpServletRequest request = new MockMultipartHttpServletRequest();
-
-        request.setMethod("POST");
-        request.setContentType("multipart/form-data");
-        request.addHeader("Content-type", "multipart/form-data");
-        FileInputStream fis = new FileInputStream("/Users/sunshine/Desktop/01.jpg");
-        
-        MockMultipartFile mfile = new MockMultipartFile( "/Users/sunshine/Desktop/01.jpg","/Users/sunshine/Desktop/01.jpg",null, fis);
-        this.indexController.images2(mfile);
+//		MockMultipartHttpServletRequest request = new MockMultipartHttpServletRequest();
+//
+//        request.setMethod("POST");
+//        request.setContentType("multipart/form-data");
+//        request.addHeader("Content-type", "multipart/form-data");
+//        FileInputStream fis = new FileInputStream("/Users/sunshine/Desktop/01.jpg");
+//        
+//        MockMultipartFile mfile = new MockMultipartFile( "/Users/sunshine/Desktop/01.jpg","/Users/sunshine/Desktop/01.jpg",null, fis);
+//        this.indexController.images2(mfile);
 
 	}
 

@@ -31,9 +31,9 @@ public class Test02 {
 //		ScheduleJob job = scheduleJobService.get(new Long(3)).getTargetObject(ScheduleJob.class);
 //		hunter.crawl(job);
 		
-		TenantHelper.getTenantDto().setRef("001");
-		
-		System.out.println("123123"+TenantHelper.getTenantDto().getRef());
+//		TenantHelper.getTenantDto().setRef("001");
+//		
+//		System.out.println("123123"+TenantHelper.getTenantDto().getRef());
 		
 	}
 
