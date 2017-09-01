@@ -5,7 +5,24 @@
 
 
 
+	
+	
+		<!-- 校验权限是否匹配 -->
+	<bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+		<constructor-arg>
+			<list>
+				<bean class="com.xwke.security.client.AuthenticatedVoter"/>
+				<bean class="com.xwke.security.perm.PermissionVoter">
+					<property name="permissionChecker" ref="permissionChecker"/>
+				</bean>
+			</list>
+		</constructor-arg>
+	</bean>
 
+	<!-- 校验权限 -->
+	<bean id="permissionChecker" class="com.xwke.security.perm.PermissionChecker"/>
+	
+	
 
 	<!-- 认证 -->
 	<bean id="authenticationProvider"
@@ -21,20 +38,20 @@
 
 	<bean id="accountAliasConnector" class="com.xwke.security.support.MockAccountAliasConnector" />
 
-	<bean id="userAuthConnector" class="com.xwke.security.support.MockUserAuthConnector" />
+	
+	
+	<bean id="userAuthService" class="com.xwke.spider.web.service.impl.UserAuthServiceImpl" />
 
 	<!-- 为认证获取用户信息 -->
 	<bean id="userDetailsService" class="com.xwke.security.client.DefaultUserDetailsService">
-		<property name="userAuthConnector" ref="userAuthConnector" />
-		<property name="accountCredentialConnector" ref="accountCredentialConnector" />
-		<property name="accountAliasConnector" ref="accountAliasConnector" />
-		<property name="debug" value="false" />
-		<property name="tenantHolder" ref="tenantHolder" />
+		<property name="userAuthService" ref="userAuthService" />
 	</bean>
+	
+	
 
 	<!-- 密码加密器 -->
 	<bean id="passwordEncoder" class="com.xwke.security.util.PasswordEncoderFactoryBean">
-		<property name="type" value="md5" />
+		<property name="type" value="md6" />
 		<property name="salt" value="wtf999" />
 	</bean>
 
@@ -44,6 +61,7 @@
 
 	<!-- 验证码 -->
 	<bean id="captchaFilter" class="com.xwke.security.client.CaptchaFilter" />
+	
 
 	<!-- 日志 -->
 	<bean
@@ -53,7 +71,7 @@
 	<!-- 测试环境下使用的自动登录工具 -->
     <bean id="autoLoginFilter" class="com.xwke.security.client.AutoLoginFilter">
 		<property name="enabled" value="false" />
-		<property name="defaultUserName" value="lxg776" />
+		<property name="defaultUserName" value="lxg774" />
 		<property name="userDetailsService" ref="userDetailsService" />
     </bean>
     

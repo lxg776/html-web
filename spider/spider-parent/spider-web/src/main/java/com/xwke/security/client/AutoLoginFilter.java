@@ -16,44 +16,43 @@ import org.springframework.web.filter.GenericFilterBean;
 import com.xwke.security.util.SpringSecurityUtils;
 
 public class AutoLoginFilter extends GenericFilterBean {
-    private UserDetailsService userDetailsService;
-    private boolean enabled = false;
-    private String defaultUserName;
+	private UserDetailsService userDetailsService;
+	private boolean enabled = false;
+	private String defaultUserName;
 
-    public void doFilter(ServletRequest request, ServletResponse response,
-            FilterChain chain) throws IOException, ServletException {
-        if (enabled && (SpringSecurityUtils.getCurrentUser() == null)) {
-            UserDetails userDetails = userDetailsService
-                    .loadUserByUsername(defaultUserName);
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
 
-            if (userDetails == null) {
-                throw new UsernameNotFoundException(defaultUserName);
-            }
+		if (enabled && (SpringSecurityUtils.getCurrentUser() == null)) {
+			UserDetails userDetails = userDetailsService.loadUserByUsername(defaultUserName);
 
-            SpringSecurityUtils.saveUserDetailsToContext(userDetails,
-                    (HttpServletRequest) request);
-        }
+			if (userDetails == null) {
+				throw new UsernameNotFoundException(defaultUserName);
+			}
 
-        chain.doFilter(request, response);
-    }
+			SpringSecurityUtils.saveUserDetailsToContext(userDetails, (HttpServletRequest) request);
+		}
 
-    public void setUserDetailsService(UserDetailsService userDetailsService) {
-        this.userDetailsService = userDetailsService;
-    }
+		chain.doFilter(request, response);
+	}
 
-    public boolean isEnabled() {
-        return enabled;
-    }
+	public void setUserDetailsService(UserDetailsService userDetailsService) {
+		this.userDetailsService = userDetailsService;
+	}
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
+	public boolean isEnabled() {
+		return enabled;
+	}
 
-    public String getDefaultUserName() {
-        return defaultUserName;
-    }
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 
-    public void setDefaultUserName(String defaultUserName) {
-        this.defaultUserName = defaultUserName;
-    }
+	public String getDefaultUserName() {
+		return defaultUserName;
+	}
+
+	public void setDefaultUserName(String defaultUserName) {
+		this.defaultUserName = defaultUserName;
+	}
 }

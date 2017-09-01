@@ -58,7 +58,7 @@ public class LogoutSuccessHandlerImpl extends SimpleUrlLogoutSuccessHandler
         Object principal = authentication.getPrincipal();
 
         if (principal instanceof SpringSecurityUserAuth) {
-            return ((SpringSecurityUserAuth) principal).getId();
+            return ((SpringSecurityUserAuth) principal).getTenantId();
         } else {
             return authentication.getName();
         }

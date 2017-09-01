@@ -67,7 +67,7 @@ public class SpringSecurityUtils {
             return null;
         }
 
-        return springSecurityUserAuth.getId();
+        return springSecurityUserAuth.getTenantId();
     }
 
     /**

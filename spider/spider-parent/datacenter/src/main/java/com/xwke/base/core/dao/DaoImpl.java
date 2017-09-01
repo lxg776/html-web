@@ -41,7 +41,6 @@ public class DaoImpl<T extends Po, PK extends Serializable> implements BaseDao<T
 	private String idName; // ʵ����ID�ֶ����
 
 	private String seq; // ���������
-
 	private String tableName;
 
 	private List<Pram> sqlParms;

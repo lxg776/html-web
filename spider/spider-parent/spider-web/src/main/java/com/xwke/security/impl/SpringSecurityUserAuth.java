@@ -1,92 +1,109 @@
 package com.xwke.security.impl;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.jsoup.helper.StringUtil;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.xwke.api.userauth.UserAuthDTO;
+import com.xwke.spider.modle.UserAuthModle;
 
-public class SpringSecurityUserAuth extends UserAuthDTO implements UserDetails {
-    private String password;
-    private Collection<? extends GrantedAuthority> authorities;
+public class SpringSecurityUserAuth extends UserAuthModle implements UserDetails {
+	
+	private Collection<? extends GrantedAuthority> authorities;
+	private List<String> permissions;
+	private List<String> roles;
 
-    public String getPassword() {
-        return password;
-    }
+	private String tenantId;
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public String getTenantId() {
+		if (StringUtil.isBlank(tenantId)) {
+			tenantId = String.valueOf(id);
+		}
 
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
-    }
+		return tenantId;
+	}
 
-    public void setAuthorities(
-            Collection<? extends GrantedAuthority> authorities) {
-        this.authorities = authorities;
-    }
+	public void setTenantId(String tenantId) {
+		this.tenantId = tenantId;
+	}
 
-    public boolean isCredentialsNonExpired() {
-        return !this.isCredentialsExpired();
-    }
+	public List<String> getRoles() {
+		return roles;
+	}
 
-    public boolean isAccountNonLocked() {
-        return !this.isAccountLocked();
-    }
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
 
-    public boolean isAccountNonExpired() {
-        return !this.isAccountExpired();
-    }
+	public List<String> getPermissions() {
+		return permissions;
+	}
 
-    // ~ ==================================================
-    public void setPermissions(List<String> permissions) {
-        super.setPermissions(permissions);
+		
 
-        if (authorities != null) {
-            return;
-        }
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return authorities;
+	}
 
-        List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
+	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
+		this.authorities = authorities;
+	}
 
-        for (String permission : permissions) {
-            authorities.add(new SimpleGrantedAuthority(permission));
-        }
+	// ~ ==================================================
+	public void setPermissions(List<String> permissions) {
 
-        this.authorities = authorities;
-    }
+		if (authorities != null) {
+			return;
+		}
+		List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
 
-    private void writeObject(ObjectOutputStream out) throws IOException {
-        out.defaultWriteObject();
-        out.writeObject(getId());
-        out.writeObject(getTenantId());
-    }
+		for (String permission : permissions) {
+			authorities.add(new SimpleGrantedAuthority(permission));
+		}
 
-    private void readObject(ObjectInputStream in) throws IOException,
-            ClassNotFoundException {
-        in.defaultReadObject();
-        setId((String) in.readObject());
-        setTenantId((String) in.readObject());
-    }
+		this.authorities = authorities;
+	}
 
-    @Override
-    public boolean equals(Object rhs) {
-        if (rhs instanceof UserAuthDTO) {
-            return this.getUsername().equals(((UserAuthDTO) rhs).getUsername());
-        }
+	@Override
+	public boolean equals(Object rhs) {
+		if (rhs instanceof UserAuthDTO) {
+			return this.getUsername().equals(((UserAuthDTO) rhs).getUsername());
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    @Override
-    public int hashCode() {
-        return this.getUsername().hashCode();
-    }
+	@Override
+	public int hashCode() {
+		return this.getUsername().hashCode();
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

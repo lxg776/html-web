@@ -149,6 +149,10 @@ public class CommonUtil {
 
 	// 使用泛型
 	public static final <T> T injectBean(Class<T> beanClass, Map parasMap) {
+		if (parasMap == null || parasMap.size() <= 0) {
+			return null;
+		}
+
 		T bean = null;
 		try {
 			// 通过反射生成对象

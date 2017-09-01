@@ -1,119 +1,59 @@
 package com.xwke.security.client;
 
-import java.util.Collections;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.xwke.api.tenant.TenantHolder;
-import com.xwke.api.userauth.UserAuthDTO;
 import com.xwke.security.impl.SpringSecurityUserAuth;
-import com.xwke.security.support.AccountAliasConnector;
-import com.xwke.security.support.AccountCredentialConnector;
-import com.xwke.security.support.UserAuthConnector;
 import com.xwke.security.util.BeanMapper;
-
-
+import com.xwke.spider.modle.UserAuthModle;
+import com.xwke.spider.web.service.UserAuthService;
 
 public class DefaultUserDetailsService implements UserDetailsService {
-    private static Logger logger = LoggerFactory
-            .getLogger(DefaultUserDetailsService.class);
-    private UserAuthConnector userAuthConnector;
-    private AccountCredentialConnector accountCredentialConnector;
-    private AccountAliasConnector accountAliasConnector;
-    private String defaultPassword;
-    private BeanMapper beanMapper = new BeanMapper();
-    private boolean debug;
-    private TenantHolder tenantHolder;
+	private static Logger logger = LoggerFactory.getLogger(DefaultUserDetailsService.class);
+	private UserAuthService userAuthService;
+	private BeanMapper beanMapper = new BeanMapper();
+	
+	
 
-    /**
-     * 遇到的问题.
-     * 
-     * 主要流程为 1.判断用户是否存在 2.读取用户权限 3.创建UserDetails
-     */
-    public UserDetails loadUserByUsername(String username)
-            throws UsernameNotFoundException {
-        logger.debug("username : {}", username);
+	public UserAuthService getUserAuthService() {
+		return userAuthService;
+	}
 
-        String tenantId = tenantHolder.getTenantId();
+	public void setUserAuthService(UserAuthService userAuthService) {
+		this.userAuthService = userAuthService;
+	}
 
-        if (debug) {
-            SpringSecurityUserAuth userAuth = new SpringSecurityUserAuth();
-            userAuth.setId("1");
-            userAuth.setUsername(username);
-            userAuth.setDisplayName(username);
-            userAuth.setPermissions(Collections.singletonList("*"));
-            userAuth.setTenantId(tenantId);
+	/**
+	 * 遇到的问题.
+	 * 
+	 * 主要流程为 1.判断用户是否存在 2.读取用户权限 3.创建UserDetails
+	 */
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		logger.debug("username : {}", username);
 
-            return userAuth;
-        }
+		if (username == null) {
+			logger.info("username is null");
+			return null;
+		}
+		username = username.toLowerCase();
+		try {
+			UserAuthModle userAuthDto = userAuthService.findByUsername(username);
+			SpringSecurityUserAuth userAuthResult = new SpringSecurityUserAuth();
+			beanMapper.copy(userAuthDto, userAuthResult);
+			return userAuthResult;
+		} catch (UsernameNotFoundException ex) {
+			throw ex;
+		} catch (Exception ex) {
+			logger.error(ex.getMessage(), ex);
+			throw new UsernameNotFoundException(username, ex);
+		}
+	}
 
-        if (username == null) {
-            logger.info("username is null");
+	public void setUserAuthConnector(UserAuthService userAuthConnector) {
+		this.userAuthService = userAuthConnector;
+	}
 
-            return null;
-        }
-
-        username = username.toLowerCase();
-
-        try {
-            username = accountAliasConnector.findUsernameByAlias(username);
-
-            UserAuthDTO userAuthDto = userAuthConnector.findByUsername(
-                    username, tenantId);
-
-            if (userAuthDto == null) {
-                logger.info("cannot find user : {}, {}", username, tenantId);
-
-                throw new UsernameNotFoundException(username + "," + tenantId);
-            }
-
-            String password = accountCredentialConnector.findPassword(username,
-                    tenantId);
-
-            SpringSecurityUserAuth userAuthResult = new SpringSecurityUserAuth();
-            beanMapper.copy(userAuthDto, userAuthResult);
-            userAuthResult.setPassword(password);
-
-            if (defaultPassword != null) {
-                userAuthResult.setPassword(defaultPassword);
-            }
-
-            return userAuthResult;
-        } catch (UsernameNotFoundException ex) {
-            throw ex;
-        } catch (Exception ex) {
-            logger.error(ex.getMessage(), ex);
-            throw new UsernameNotFoundException(username, ex);
-        }
-    }
-
-    public void setUserAuthConnector(UserAuthConnector userAuthConnector) {
-        this.userAuthConnector = userAuthConnector;
-    }
-
-    public void setAccountCredentialConnector(
-            AccountCredentialConnector accountCredentialConnector) {
-        this.accountCredentialConnector = accountCredentialConnector;
-    }
-
-    public void setAccountAliasConnector(
-            AccountAliasConnector accountAliasConnector) {
-        this.accountAliasConnector = accountAliasConnector;
-    }
-
-    public void setDefaultPassword(String defaultPassword) {
-        this.defaultPassword = defaultPassword;
-    }
-
-    public void setDebug(boolean debug) {
-        this.debug = debug;
-    }
-
-    public void setTenantHolder(TenantHolder tenantHolder) {
-        this.tenantHolder = tenantHolder;
-    }
 }
