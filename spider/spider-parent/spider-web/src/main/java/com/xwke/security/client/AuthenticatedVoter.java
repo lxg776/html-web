@@ -17,133 +17,130 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.switchuser.SwitchUserGrantedAuthority;
 
 public class AuthenticatedVoter implements AccessDecisionVoter<Object> {
-    private static Logger logger = LoggerFactory
-            .getLogger(AuthenticatedVoter.class);
-    public static final String IS_GUEST = "IS_GUEST";
-    public static final String IS_USER = "IS_USER";
-    public static final String IS_LOGINED = "IS_LOGINED";
-    public static final String IS_SWITCHED = "IS_SWITCHED";
-    public static final String IS_REMEMBERED = "IS_REMEMBERED";
-    public static final Collection<String> ALLOWED_ATTRIBUTES;
+	private static Logger logger = LoggerFactory.getLogger(AuthenticatedVoter.class);
+	public static final String IS_GUEST = "IS_GUEST";
+	public static final String IS_USER = "IS_USER";
+	public static final String IS_LOGINED = "IS_LOGINED";
+	public static final String IS_SWITCHED = "IS_SWITCHED";
+	public static final String IS_REMEMBERED = "IS_REMEMBERED";
+	public static final String IS_ROLE_USER = "ROLE_USER";
 
-    static {
-        List<String> list = new ArrayList<String>();
-        list.add(IS_GUEST);
-        list.add(IS_USER);
-        list.add(IS_LOGINED);
-        list.add(IS_SWITCHED);
-        list.add(IS_REMEMBERED);
-        ALLOWED_ATTRIBUTES = Collections.unmodifiableCollection(list);
-    }
+	public static final Collection<String> ALLOWED_ATTRIBUTES;
 
-    public boolean supports(ConfigAttribute attribute) {
-        return (attribute.getAttribute() != null)
-                && ALLOWED_ATTRIBUTES.contains(attribute.getAttribute());
-    }
+	static {
+		List<String> list = new ArrayList<String>();
+		list.add(IS_GUEST);
+		list.add(IS_USER);
+		list.add(IS_LOGINED);
+		list.add(IS_SWITCHED);
+		list.add(IS_REMEMBERED);
+		list.add(IS_ROLE_USER);
+		ALLOWED_ATTRIBUTES = Collections.unmodifiableCollection(list);
+	}
 
-    public boolean supports(Class<?> clazz) {
-        return true;
-    }
+	public boolean supports(ConfigAttribute attribute) {
+		return (attribute.getAttribute() != null) && ALLOWED_ATTRIBUTES.contains(attribute.getAttribute());
+	}
 
-    public int vote(Authentication authentication, Object object,
-            Collection<ConfigAttribute> attributes) {
-        int result = ACCESS_ABSTAIN;
+	public boolean supports(Class<?> clazz) {
+		return true;
+	}
 
-        for (ConfigAttribute attribute : attributes) {
-            if (this.supports(attribute)) {
-                result = ACCESS_DENIED;
+	public int vote(Authentication authentication, Object object, Collection<ConfigAttribute> attributes) {
+		int result = ACCESS_ABSTAIN;
 
-                if (isGuest(authentication, attribute.getAttribute())) {
-                    logger.trace("isGuest");
+		for (ConfigAttribute attribute : attributes) {
+			if (this.supports(attribute)) {
+				result = ACCESS_DENIED;
 
-                    return ACCESS_GRANTED;
-                }
+				if (isGuest(authentication, attribute.getAttribute())) {
+					logger.trace("isGuest");
 
-                if (isUser(authentication, attribute.getAttribute())) {
-                    logger.trace("isUser");
+					return ACCESS_GRANTED;
+				}
 
-                    return ACCESS_GRANTED;
-                }
+				if (isUser(authentication, attribute.getAttribute())) {
+					logger.trace("isUser");
 
-                if (isLogined(authentication, attribute.getAttribute())) {
-                    logger.trace("isLogined");
+					return ACCESS_GRANTED;
+				}
 
-                    return ACCESS_GRANTED;
-                }
+				if (isLogined(authentication, attribute.getAttribute())) {
+					logger.trace("isLogined");
 
-                if (isSwitched(authentication, attribute.getAttribute())) {
-                    logger.trace("isSwitched");
+					return ACCESS_GRANTED;
+				}
 
-                    return ACCESS_GRANTED;
-                }
+				if (isSwitched(authentication, attribute.getAttribute())) {
+					logger.trace("isSwitched");
 
-                if (isRemembered(authentication, attribute.getAttribute())) {
-                    logger.trace("isRemembered");
+					return ACCESS_GRANTED;
+				}
 
-                    return ACCESS_GRANTED;
-                }
-            }
-        }
+				if (isRemembered(authentication, attribute.getAttribute())) {
+					logger.trace("isRemembered");
 
-        logger.trace("attributes : {}", attributes);
+					return ACCESS_GRANTED;
+				}
+			}
+		}
 
-        return result;
-    }
+		logger.trace("attributes : {}", attributes);
 
-    // ~ ======================================================================
-    public boolean isGuest(Authentication authentication, String attribute) {
-        return IS_GUEST.equals(attribute);
-    }
+		return result;
+	}
 
-    public boolean isUser(Authentication authentication, String attribute) {
-        if (!IS_USER.equals(attribute)) {
-            return false;
-        }
+	// ~ ======================================================================
+	public boolean isGuest(Authentication authentication, String attribute) {
+		return IS_GUEST.equals(attribute);
+	}
 
-        boolean notGuest = !isOnlyGuest(authentication, IS_GUEST);
-        boolean notRemembered = !isRemembered(authentication, IS_REMEMBERED);
+	public boolean isUser(Authentication authentication, String attribute) {
+		if (!IS_USER.equals(attribute)) {
+			return false;
+		}
 
-        return notGuest && notRemembered;
-    }
+		boolean notGuest = !isOnlyGuest(authentication, IS_GUEST);
+		boolean notRemembered = !isRemembered(authentication, IS_REMEMBERED);
 
-    public boolean isLogined(Authentication authentication, String attribute) {
-        if (!IS_LOGINED.equals(attribute)) {
-            return false;
-        }
+		return notGuest && notRemembered;
+	}
 
-        boolean notGuest = !isOnlyGuest(authentication, IS_GUEST);
+	public boolean isLogined(Authentication authentication, String attribute) {
+		if (!IS_LOGINED.equals(attribute)) {
+			return false;
+		}
 
-        return notGuest;
-    }
+		boolean notGuest = !isOnlyGuest(authentication, IS_GUEST);
 
-    // ~ ======================================================================
-    public boolean isSwitched(Authentication authentication, String attribute) {
-        if (!IS_SWITCHED.equals(attribute)) {
-            return false;
-        }
+		return notGuest;
+	}
 
-        Collection<? extends GrantedAuthority> authorities = authentication
-                .getAuthorities();
+	// ~ ======================================================================
+	public boolean isSwitched(Authentication authentication, String attribute) {
+		if (!IS_SWITCHED.equals(attribute)) {
+			return false;
+		}
 
-        for (GrantedAuthority auth : authorities) {
-            if (auth instanceof SwitchUserGrantedAuthority) {
-                return true;
-            }
-        }
+		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
-        return false;
-    }
+		for (GrantedAuthority auth : authorities) {
+			if (auth instanceof SwitchUserGrantedAuthority) {
+				return true;
+			}
+		}
 
-    public boolean isRemembered(Authentication authentication, String attribute) {
-        return IS_REMEMBERED.equals(attribute)
-                && RememberMeAuthenticationToken.class
-                        .isAssignableFrom(authentication.getClass());
-    }
+		return false;
+	}
 
-    // ~ ======================================================================
-    public boolean isOnlyGuest(Authentication authentication, String attribute) {
-        return IS_GUEST.equals(attribute)
-                && AnonymousAuthenticationToken.class
-                        .isAssignableFrom(authentication.getClass());
-    }
+	public boolean isRemembered(Authentication authentication, String attribute) {
+		return IS_REMEMBERED.equals(attribute)
+				&& RememberMeAuthenticationToken.class.isAssignableFrom(authentication.getClass());
+	}
+
+	// ~ ======================================================================
+	public boolean isOnlyGuest(Authentication authentication, String attribute) {
+		return IS_GUEST.equals(attribute)
+				&& AnonymousAuthenticationToken.class.isAssignableFrom(authentication.getClass());
+	}
 }

@@ -1,5 +1,8 @@
 package com.xwke.security.client;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,8 +18,6 @@ public class DefaultUserDetailsService implements UserDetailsService {
 	private static Logger logger = LoggerFactory.getLogger(DefaultUserDetailsService.class);
 	private UserAuthService userAuthService;
 	private BeanMapper beanMapper = new BeanMapper();
-	
-	
 
 	public UserAuthService getUserAuthService() {
 		return userAuthService;
@@ -42,6 +43,11 @@ public class DefaultUserDetailsService implements UserDetailsService {
 		try {
 			UserAuthModle userAuthDto = userAuthService.findByUsername(username);
 			SpringSecurityUserAuth userAuthResult = new SpringSecurityUserAuth();
+
+			List<String> authorities = new ArrayList();
+			authorities.add(AuthenticatedVoter.IS_ROLE_USER);
+			userAuthResult.setPermissions(authorities);
+
 			beanMapper.copy(userAuthDto, userAuthResult);
 			return userAuthResult;
 		} catch (UsernameNotFoundException ex) {
