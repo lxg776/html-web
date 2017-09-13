@@ -74,17 +74,28 @@
 					</div>
 					<!-- 新闻栏目 -->
 					<div class="box-content">
-						<form action="add" method="post" class="form-horizontal">
+						<form action="saveTable" method="post" class="form-horizontal">
 							<fieldset>
 								<div class="control-group">
 									<label class="control-label" for="typeahead">名称 </label>
 									<div class="controls">
 										<input type="text" class="span6 typeahead" id="typeahead"
-											name="node_name" data-provide="typeahead">
-
+											name="tableShowName" value="${vo.tableShowName}"
+											data-provide="typeahead">
 									</div>
 								</div>
-								
+								<input type="hidden" name="${_csrf.parameterName}"
+									value="${_csrf.token}" />
+
+								<c:if test="${vo.id!=null}">
+
+									<input type="text" class="span6 typeahead" id="typeahead"
+										name="id" value="${vo.id}" data-provide="typeahead">
+									<input type="text" class="span6 typeahead" id="typeahead"
+										name="keyWord" value="${vo.keyWord}" data-provide="typeahead">
+								</c:if>
+
+
 								<div class="form-actions">
 									<button type="submit" class="btn btn-primary">保存</button>
 									<button type="reset" class="btn">取消</button>

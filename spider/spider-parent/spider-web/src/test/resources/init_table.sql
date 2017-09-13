@@ -1,3 +1,16 @@
+create table sd_data_table(
+
+	id int(11) NOT NULL auto_increment,
+	`table_name` int(11) ,
+	`show_table_name` varchar(200),
+	userId int(11) ,	
+	PRIMARY KEY  (`id`)
+
+
+)
+
+
+
 CREATE TABLE s_news (
   id bigint(20) NOT NULL AUTO_INCREMENT,
   title varchar(50)NOT NULL,
@@ -125,3 +138,7 @@ create table s_preview_data(
 
 
 )
+
+
+
+

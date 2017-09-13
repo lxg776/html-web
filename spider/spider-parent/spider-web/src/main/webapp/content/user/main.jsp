@@ -77,7 +77,7 @@
 								class="break"></span>执行者
 						</h2>
 						<div class="box-icon">
-							<a href="${ctx}/executor/toSave" style="color: #FFF">添加</a>
+							<a href="${ctx}/u/addtable" style="color: #FFF">添加</a>
 
 						</div>
 					</div>
@@ -91,32 +91,26 @@
 
 								</tr>
 							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td class="center">新闻表</td>
-									<td class="center"><a href="#" style="color: #0033FF">字段管理</a>
-										/<a href="#" style="color: #0033FF">规则管理</a>/<a href="#" style="color: #0033FF">数据查看</a>
-								</tr>
-							</tbody>
-							<!--
-						<c:if test="${page.dataFla == true}">
-							<tbody>
-								<c:forEach var="item" items="${page.dataList}">
-									<tr>
-										<td>${item.id}</td>
-										<td class="center">${item.name}</td>
-										<td class="center">${item.executorDescribe}</td>
-										<td class="center"><a
-											href="${ctx}/executor/toSave?keyWord=edit&&id=${item.id}"
-											style="color: #0033FF">编辑</a> /<a
-											href="${ctx}/executor/toEditOperation?id=${item.id}"
-											style="color: #F00">解析规则</a></td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</c:if>
-						-->
+
+
+							<c:if test="${page.dataFla == true}">
+								<tbody>
+									<c:forEach var="item" items="${page.dataList}">
+										<tr>
+											<td>${item.id}</td>
+											<td class="center">${item.tableShowName}</td>
+
+											<td class="center"><a
+												href="${ctx}/u/addtable?id=${item.id}&&keyWord=update"
+												style="color: #0033FF">修改名称</a> <a href="#"
+												style="color: #0033FF">字段管理</a> /<a href="#"
+												style="color: #0033FF">规则管理</a>/<a href="#"
+												style="color: #0033FF">数据查看</a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</c:if>
+
 						</table>
 						<c:if test="${page.dataFla == true}">
 							<%@include file="/common/c_pagination.jsp"%>
