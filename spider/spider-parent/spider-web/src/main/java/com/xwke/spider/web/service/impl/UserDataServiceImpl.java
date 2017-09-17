@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.xwke.spider.dao.DataTableDao;
+import com.xwke.spider.elasticsearch.service.EsNewsServiceImpy;
 import com.xwke.spider.huntsman.util.CommonUtil;
 import com.xwke.spider.modle.DataTableModle;
 import com.xwke.spider.modle.ExecutorModle;
@@ -22,6 +23,9 @@ public class UserDataServiceImpl implements UserDataService {
 	final int pageSize = 20;
 	@Resource
 	DataTableDao dataTableDao;
+	@Resource
+	EsNewsServiceImpy esService;
+	
 
 	@Override
 	public PageOnterModle getTableListByUserId(long userId, int pageNum) {
@@ -51,6 +55,7 @@ public class UserDataServiceImpl implements UserDataService {
 			return dataTableDao.update(modle);
 		} else {
 			DataTableModle modle = vo.getTargetObject(DataTableModle.class);
+
 			return dataTableDao.addLocal(modle);
 		}
 
