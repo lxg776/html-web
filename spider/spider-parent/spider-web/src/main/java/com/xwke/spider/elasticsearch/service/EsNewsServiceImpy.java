@@ -82,10 +82,13 @@ public class EsNewsServiceImpy {
 
 		XContentBuilder builder = buliderByObject(buliderMolde, null);
 		PutMappingRequest mapping = Requests.putMappingRequest(indices).type(mappingType).source(builder);
-		System.out.println(mapping.source());
+		//System.out.println(mapping.source());
 		client.admin().indices().putMapping(mapping).actionGet();
 
 	}
+	
+	
+	
 
 	private XContentBuilder buliderByObject(BulidMode buliderMolde, XContentBuilder builder) throws Exception {
 		boolean endFla = false;

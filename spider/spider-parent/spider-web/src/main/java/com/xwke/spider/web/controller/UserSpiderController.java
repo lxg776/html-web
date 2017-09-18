@@ -52,7 +52,7 @@ public class UserSpiderController {
 		if ("update".equals(vo.getKeyWord())) {
 
 		} else {
-			String tableName = RandomUtils.getRandom(6);
+			String tableName = RandomUtils.getRandomString(6);
 			String userId = SpringSecurityUtils.getCurrentUserId();
 			vo.setTableName(tableName);
 			vo.setUserId(Long.parseLong(userId));

@@ -9,6 +9,16 @@ create table sd_data_table(
 
 )
 
+create table sd_field_table(
+
+	id int(11) NOT NULL auto_increment,
+	`field_name` varchar(200) ,
+	`show_field_name` varchar(200),
+	`field_type` varchar(200),
+	`t_id` int(11) ,	
+	PRIMARY KEY  (`id`)
+)
+
 
 CREATE TABLE s_news (
   id bigint(20) NOT NULL AUTO_INCREMENT,

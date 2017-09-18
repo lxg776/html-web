@@ -89,9 +89,9 @@
 
 								<c:if test="${vo.id!=null}">
 
-									<input type="text" class="span6 typeahead" id="typeahead"
+									<input type="hidden" class="span6 typeahead" id="typeahead"
 										name="id" value="${vo.id}" data-provide="typeahead">
-									<input type="text" class="span6 typeahead" id="typeahead"
+									<input type="hidden" class="span6 typeahead" id="typeahead"
 										name="keyWord" value="${vo.keyWord}" data-provide="typeahead">
 								</c:if>
 
