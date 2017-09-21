@@ -74,7 +74,7 @@
 					<div class="box-header">
 						<h2>
 							<i class="halflings-icon white align-justify"></i><span
-								class="break"></span>字段列表
+								class="break"></span>${table.tableShowName}
 						</h2>
 						<div class="box-icon">
 							<a href="${ctx}/executor/toSave" style="color: #FFF">添加</a>
@@ -91,23 +91,15 @@
 									<th style="width: 300px;">操作</th>
 								</tr>
 							</thead>
+							
+							
+						<c:if test="${list == null}">
 							<tbody>
-								<tr>
-									<td>1</td>
-									<td class="center">标题</td>
-									<td class="center">分词类型</td>
-									<td class="center"><a href="#" style="color: #0033FF">修改</a>
-										/<a href="#" style="color: #0033FF">删除</a>
-								</tr>
-							</tbody>
-							<!--
-						<c:if test="${page.dataFla == true}">
-							<tbody>
-								<c:forEach var="item" items="${page.dataList}">
+								<c:forEach var="item" items="${list}">
 									<tr>
 										<td>${item.id}</td>
-										<td class="center">${item.name}</td>
-										<td class="center">${item.executorDescribe}</td>
+										<td class="center">${item.show_field_name}</td>
+										<td class="center">中文分词</td>
 										<td class="center"><a
 											href="${ctx}/executor/toSave?keyWord=edit&&id=${item.id}"
 											style="color: #0033FF">编辑</a> /<a
@@ -117,11 +109,9 @@
 								</c:forEach>
 							</tbody>
 						</c:if>
-						-->
+					
 						</table>
-						<c:if test="${page.dataFla == true}">
-							<%@include file="/common/c_pagination.jsp"%>
-						</c:if>
+					
 					</div>
 
 				</div>

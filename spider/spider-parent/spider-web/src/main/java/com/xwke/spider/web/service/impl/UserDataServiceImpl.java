@@ -97,4 +97,11 @@ public class UserDataServiceImpl implements UserDataService {
 
 	}
 
+	@Override
+	public List<DataFieldModle> getFieldListByTid(long tid) {
+
+		return dataFieldDao.getFieldsByTid(tid);
+		// TODO Auto-generated method stub
+	}
+
 }

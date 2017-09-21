@@ -1,5 +1,7 @@
 package com.xwke.spider.web.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.github.pagehelper.util.StringUtil;
 import com.xwke.security.util.SpringSecurityUtils;
 import com.xwke.spider.huntsman.util.RandomUtils;
+import com.xwke.spider.modle.DataFieldModle;
 import com.xwke.spider.vo.DataTableVo;
 import com.xwke.spider.web.service.UserDataService;
 
@@ -63,10 +66,19 @@ public class UserSpiderController {
 	}
 
 	@RequestMapping(value = "/fieldList")
-	public String fieldList(MultipartFile upfile) {
-
+	public String fieldList(@RequestParam(value = "tid", defaultValue = "0") int tid, ModelMap modelMap) {
+		DataTableVo tarVo = userDataService.getDataTableById(tid);
+		String userId = SpringSecurityUtils.getCurrentUserId();
+		if (tarVo == null || tarVo.getUserId() != Long.parseLong(userId)) {
+			return "error/qx";
+		}
+		List<DataFieldModle> list = userDataService.getFieldListByTid(tid);
+		modelMap.put("list", list);
+		modelMap.put("table", tarVo);
 		return "user/list_field";
 	}
+	
+	
 
 	@RequestMapping(value = "/addfield")
 	public String addfield(MultipartFile upfile) {
