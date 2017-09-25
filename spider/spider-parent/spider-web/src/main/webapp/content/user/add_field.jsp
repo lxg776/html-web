@@ -75,17 +75,17 @@
 					</div>
 					<!-- 新闻栏目 -->
 					<div class="box-content">
-						<form action="add" method="post" class="form-horizontal">
+						<form action="saveField" method="post" class="form-horizontal">
 							<fieldset>
 								<div class="control-group">
 									<label class="control-label" for="typeahead">字段别名 </label>
 									<div class="controls">
 										<input type="text" class="span6 typeahead" id="typeahead"
-											name="node_name" data-provide="typeahead">
+											name="show_field_name"  value="{vo.show_field_name}" data-provide="typeahead">
 
 									</div>
 								</div>
-								
+										<!--
 								<div class="controls">
 										<select id="selectError3" name="keyWord">
 										<option value="online">无</option>
@@ -93,7 +93,7 @@
 										<option value="en">英文分词</option>
 										</select>
 									</div>
-								
+								-->
 								<div class="form-actions">
 									<button type="submit" class="btn btn-primary">保存</button>
 									<button type="reset" class="btn">取消</button>

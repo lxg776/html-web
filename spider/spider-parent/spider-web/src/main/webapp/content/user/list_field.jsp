@@ -77,7 +77,7 @@
 								class="break"></span>${table.tableShowName}
 						</h2>
 						<div class="box-icon">
-							<a href="${ctx}/executor/toSave" style="color: #FFF">添加</a>
+							<a href="${ctx}/u/addfield?tid=${table.id}" style="color: #FFF">添加</a>
 
 						</div>
 					</div>
