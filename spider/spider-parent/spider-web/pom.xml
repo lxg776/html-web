@@ -187,6 +187,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.5.1</version>
 			</plugin>
+			
+	
 
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
